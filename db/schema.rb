@@ -13,6 +13,9 @@
 ActiveRecord::Schema.define(:version => 20110604190710) do
 
   create_table "users", :force => true do |t|
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
