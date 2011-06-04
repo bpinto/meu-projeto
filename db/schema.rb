@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604190710) do
+ActiveRecord::Schema.define(:version => 20110604205446) do
+
+  create_table "deals", :force => true do |t|
+    t.float    "price",       :null => false
+    t.text     "description", :null => false
+    t.string   "link",        :null => false
+    t.string   "title",       :null => false
+    t.string   "type",        :null => false
+    t.integer  "user_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "confirmation_token"
