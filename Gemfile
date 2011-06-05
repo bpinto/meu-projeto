@@ -12,9 +12,9 @@ gem 'uglifier'
 group :development, :test do
   gem 'awesome_print'
   gem "factory_girl_rails", ">= 1.1.beta1", :group => :test
-  gem 'mongrel'
+  gem 'mongrel', '1.2.0.pre2'
   gem "rspec-rails", ">= 2.6.1"
-  gem 'ruby-debug'
+  gem 'ruby-debug19'
 end
 
 group :test do
