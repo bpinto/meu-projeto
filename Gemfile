@@ -10,17 +10,17 @@ gem 'sass'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'awesome_print'
+  gem "factory_girl_rails", ">= 1.1.beta1", :group => :test
+  gem 'mongrel'
   gem "rspec-rails", ">= 2.6.1"
   gem 'ruby-debug'
-  gem 'mongrel'
-  gem 'awesome_print'
 end
 
 group :test do
   gem "capybara", ">= 1.0.0.beta1", :group => :test
   gem "cucumber-rails", ">= 0.5.1", :group => :test
   gem "database_cleaner", ">= 0.6.7", :group => :test
-  gem "factory_girl_rails", ">= 1.1.beta1", :group => :test
   gem "launchy", ">= 0.4.0", :group => :test
   #gem 'spork'
   gem 'guard'
