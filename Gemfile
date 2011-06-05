@@ -23,17 +23,17 @@ group :test do
   gem "factory_girl_rails", ">= 1.1.beta1", :group => :test
   gem "launchy", ">= 0.4.0", :group => :test
   #gem 'spork'
-  #gem 'guard'
+  gem 'guard'
   #gem 'guard-livereload'
-  #gem 'guard-rspec'
+  gem 'guard-rspec'
   #gem 'guard-cucumber'
   #gem 'guard-spork'
 
   if `uname -a`.include? "Darwin" #Mac OSX
-    #gem 'rb-fsevent'
-    #gem 'growl'
+    gem 'rb-fsevent'
+    gem 'growl'
   else
-    #gem 'rb-inotify'
-    #gem 'libnotify'
+    gem 'rb-inotify'
+    gem 'libnotify'
   end
 end
