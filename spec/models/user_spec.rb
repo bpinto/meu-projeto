@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe User do
   let(:user) { Factory.build :user }
+  subject { user }
 
-  it "should create a new instance given a valid attribute" do
-    user.save!
-  end
+  its(:save) { should be_true }
+  it { should respond_to :deals }
 
   it "should require an email address" do
     user.email = ""
@@ -72,7 +72,6 @@ describe User do
   end
 
   describe "password encryption" do
-
     it "should have an encrypted password attribute" do
       user.should respond_to(:encrypted_password)
     end
