@@ -26,7 +26,7 @@ group :test do
   gem 'guard'
   #gem 'guard-livereload'
   gem 'guard-rspec'
-  #gem 'guard-cucumber'
+  gem 'guard-cucumber'
   #gem 'guard-spork'
 
   if `uname -a`.include? "Darwin" #Mac OSX

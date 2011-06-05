@@ -6,4 +6,8 @@ FactoryGirl.define do
     email 'factory@dealwit.me'
     password 'F_PASSWORD'
   end
+
+  factory :confirmed_user, :parent => :user do
+    after_create { |user| user.confirm! }
+  end
 end

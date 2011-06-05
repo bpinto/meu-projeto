@@ -3,10 +3,11 @@ Given /^no user exists with an email of "(.*)"$/ do |email|
 end
 
 Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  User.new(:name => name,
+  Factory.create :confirmed_user,
+            :name => name,
             :email => email,
             :password => password,
-            :password_confirmation => password).save!
+            :password_confirmation => password
 end
 
 Given /^I am a new, authenticated user$/ do
