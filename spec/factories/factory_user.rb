@@ -3,7 +3,7 @@ require 'factory_girl'
 FactoryGirl.define do
   factory :user do
     name 'F_NAME'
-    email 'factory@dealwit.me'
+    sequence(:email) { |n| "factory#{n}@dealwit.me" }
     password 'F_PASSWORD'
   end
 

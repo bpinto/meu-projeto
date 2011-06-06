@@ -6,6 +6,8 @@ describe User do
 
   its(:save) { should be_true }
   it { should respond_to :deals }
+  it { should respond_to :relationships }
+  it { should respond_to :followers }
 
   it "should require an email address" do
     user.email = ""
