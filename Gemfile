@@ -22,12 +22,12 @@ group :test do
   gem "cucumber-rails", ">= 0.5.1", :group => :test
   gem "database_cleaner", ">= 0.6.7", :group => :test
   gem "launchy", ">= 0.4.0", :group => :test
-  #gem 'spork'
+  gem 'spork', "0.9.0.rc8"
   gem 'guard'
   #gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  #gem 'guard-spork'
+  gem 'guard-spork'
 
   if `uname -a`.include? "Darwin" #Mac OSX
     gem 'rb-fsevent'
