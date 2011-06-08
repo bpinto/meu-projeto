@@ -10,8 +10,8 @@ Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*
             :password_confirmation => password
 end
 
-Given /^I am a user with an email "([^"]*)"$/ do |email|
-  Factory.create :confirmed_user, :email => email
+Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email, password|
+  Factory.create :confirmed_user, :email => email, :password => password
 end
 
 Given /^I am a new, authenticated user$/ do
