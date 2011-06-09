@@ -1,4 +1,7 @@
 <h3>Home</h3>
+<% if user_signed_in? %>
+  <%=link_to "Cadastrar Oferta", new_user_deal_path(:user_id => current_user) %>
+<% end %>
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
 <% end %>

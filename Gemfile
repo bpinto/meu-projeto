@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'mysql2'
 gem 'rails', '3.1.0.rc1'
 gem 'sass'
+gem 'therubyracer'
 gem 'uglifier'
 
 group :development, :test do
