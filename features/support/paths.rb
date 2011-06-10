@@ -17,8 +17,17 @@ module NavigationHelpers
     when /the sign in page/
       '/users/sign_in'
 
+    when /^(.*)'s page/i
+      user_path(User.find_by_email($1))
+
     when /^(.*)'s new deal page/i
       new_user_deal_path(User.find_by_email($1))
+
+    when /^(.*)'s follow page/i
+      follow_user_path(User.find_by_email($1))
+
+    when /^(.*)'s unfollow page/i
+      unfollow_user_path(User.find_by_email($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

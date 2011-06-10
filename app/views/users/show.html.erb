@@ -2,3 +2,8 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<% if current_user.follow? @user %>
+  <%= link_to 'Unfollow', unfollow_user_path(@user) %>
+<% else %>
+  <%= link_to 'Follow', follow_user_path(@user) %>
+<% end %>

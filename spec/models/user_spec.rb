@@ -8,6 +8,8 @@ describe User do
   it { should respond_to :deals }
   it { should respond_to :relationships }
   it { should respond_to :followers }
+  it { should respond_to :following }
+  it { should respond_to :reverse_relationships }
 
   it "should require an email address" do
     user.email = ""
@@ -80,6 +82,73 @@ describe User do
 
     it "should set the encrypted password attribute" do
       user.encrypted_password.should_not be_blank
+    end
+  end
+
+  describe "relationships" do
+    let(:user) { Factory.create :confirmed_user }
+    let(:another_user) { Factory.create :confirmed_user }
+
+    it "shouldn't be able to follow himself" do
+      pending
+      lambda { user.follow! user }.should raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    context "no user followed" do
+      before(:each) do
+        user.following.size.should == 0
+      end
+
+      it "should be able to follow another user" do
+        user.follow! another_user
+      end
+    end
+
+    context "one user followed" do
+      before(:each) do
+        @followed_user = Factory.create :confirmed_user
+        user.follow! @followed_user
+
+        user.following.size.should == 1
+      end
+
+      it "should follow that user" do
+        (user.follow? @followed_user).should == true
+      end
+
+      it "should be able to follow one more user" do
+        user.follow! another_user
+      end
+
+      it "should be able to stop following the followed user" do
+        user.unfollow! @followed_user
+      end
+    end
+
+    context "two users followed" do
+      before(:each) do
+        @first_followed_user = Factory.create :confirmed_user
+        @second_followed_user = Factory.create :confirmed_user
+        user.follow! @first_followed_user
+        user.follow! @second_followed_user
+
+        user.following.size.should == 2
+      end
+
+      it "should follow both users" do
+        (user.follow? @first_followed_user).should == true
+        (user.follow? @second_followed_user).should == true
+      end
+
+      it "should be able to follow one more user" do
+        user.follow! another_user
+      end
+
+      it "shouldn't stop following all other users once a user stops following one" do
+        user.unfollow! @first_followed_user
+
+        user.following.first.should == @second_followed_user
+      end
     end
   end
 end
