@@ -3,8 +3,19 @@ Feature: New Deal
   I want to register a new deal
   so I can share the deal with others users
 
-    Scenario: Viewing new deal form
+    Background:
       Given I am a user with an email "test@email.com" and a password "teste123"
       When I sign in as "test@email.com/teste123"
-      And follow "Cadastrar Oferta"
+
+    Scenario: Viewing new deal form
+      When I follow "Cadastrar Oferta"
       Then I should be on test@email.com's new deal page
+
+    @bruno
+    Scenario: Saving new deal form
+      Given I am on test@email.com's new deal page
+      When I fill the deal fields correctly
+      And I press "Confirm"
+      Then I should see "Deal created with success!"
+      And go to home page  
+
