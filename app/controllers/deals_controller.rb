@@ -7,11 +7,9 @@ class DealsController < ApplicationController
   def create
     @deal  = current_user.deals.build(params[:deal])
     if @deal.save
-      flash[:success] = "Oferta cadastrada com sucesso!"
-      redirect_to root_path
+      redirect_to root_path, :success => "Deal created with success!"
     else
-      render "new"
+      render :new
     end
   end
-
 end
