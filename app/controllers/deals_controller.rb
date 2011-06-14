@@ -4,11 +4,11 @@ class DealsController < ApplicationController
   end
 
   def create
-    puts params[:deal][:type]
     @deal  = current_user.deals.build(params[:deal])
     if @deal.save
-      redirect_to root_path, :notice => "Deal created with success!"
+      redirect_to root_path, :notice => "Oferta criada com sucesso!"
     else
+      flash.now[:alert] = "Foram encontrados erros ao criar a oferta."
       render :new
     end
   end
