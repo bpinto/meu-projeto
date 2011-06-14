@@ -11,11 +11,10 @@ Feature: New Deal
       When I follow "Cadastrar Oferta"
       Then I should be on test@email.com's new deal page
 
-    @bruno
     Scenario: Saving new deal form
       Given I am on test@email.com's new deal page
       When I fill the deal fields correctly
       And I press "Confirm"
       Then I should see "Deal created with success!"
-      And go to home page  
+      And go to the home page
 

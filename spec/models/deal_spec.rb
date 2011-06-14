@@ -7,6 +7,14 @@ describe Deal do
   its(:save) { should be_true }
   it { should respond_to :user }
 
+  describe "Accessibility" do
+    it { should allow_mass_assignment_of(:description) }
+    it { should allow_mass_assignment_of(:link) }
+    it { should allow_mass_assignment_of(:price) }
+    it { should allow_mass_assignment_of(:title) }
+    it { should allow_mass_assignment_of(:type) }
+  end
+
   describe "Validations" do
     it "should require a price" do
       deal.price = nil

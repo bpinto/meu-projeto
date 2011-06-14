@@ -29,6 +29,7 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-spork'
+  gem "shoulda-matchers"
 
   if `uname -a`.include? "Darwin" #Mac OSX
     gem 'rb-fsevent'

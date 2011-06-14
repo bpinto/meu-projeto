@@ -3,6 +3,10 @@
   <tr>
     <td>
       <%= form_for([current_user, @deal]) do |f| %>
+        <% @deal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        
         <div>
           <%= f.label :title %>
           <%= f.text_field :title %> - 

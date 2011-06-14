@@ -11,6 +11,14 @@ describe User do
   it { should respond_to :following }
   it { should respond_to :reverse_relationships }
 
+  describe "Accessibility" do
+    it { should allow_mass_assignment_of(:email) }
+    it { should allow_mass_assignment_of(:name) }
+    it { should allow_mass_assignment_of(:password) }
+    it { should allow_mass_assignment_of(:password_confirmation) }
+    it { should allow_mass_assignment_of(:remember_me) }
+  end
+
   it "should require an email address" do
     user.email = ""
     user.should_not be_valid

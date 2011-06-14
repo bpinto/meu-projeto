@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :following,              :through => :relationships,         :source => :followed
   has_many :reverse_relationships,  :foreign_key => "followed_id",      :class_name => "Relationship"#,      :dependent => :destroy
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :name, :password, :password_confirmation, :remember_me
 
   def follow!(another_user)
     relationships.create! :followed_id => another_user.id
