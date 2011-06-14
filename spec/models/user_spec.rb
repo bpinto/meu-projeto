@@ -90,8 +90,19 @@ describe User do
     let(:another_user) { Factory.create :confirmed_user }
 
     it "shouldn't be able to follow himself" do
-      pending
       lambda { user.follow! user }.should raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it "should create a new relationship when a user follow another" do
+      user.follow! another_user
+      user.reload
+      user.following.length.should == 1
+    end
+
+    it "should destroy the relationship when a user unfollow another" do
+      user.follow! another_user
+      user.unfollow! another_user
+      user.following.length.should == 0
     end
 
     context "no user followed" do
