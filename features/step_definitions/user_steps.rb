@@ -2,6 +2,19 @@ Given /^no user exists with an email of "(.*)"$/ do |email|
   User.find(:first, :conditions => { :email => email }).should be_nil
 end
 
+Given /^one user with an email "([^"]*)" exists$/ do |email|
+  Factory.create :confirmed_user, :email => email
+end
+
+Given /^I am a user with an email "([^"]*)"$/ do |email|
+  user = Factory.create :confirmed_user, :email => email
+
+  And %{I go to the sign in page}
+  And %{I fill in "user_email" with "#{user.email}"}
+  And %{I fill in "user_password" with "#{user.password}"}
+  And %{I press "Sign in"}
+end
+
 Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
   Factory.create :confirmed_user,
             :name => name,
@@ -12,18 +25,6 @@ end
 
 Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email, password|
   Factory.create :confirmed_user, :email => email, :password => password
-end
-
-Given /^I am a new, authenticated user$/ do
-  email = 'testing@man.net'
-  name = 'Testing man'
-  password = 'secretpass'
-
-  Given %{I am a user named "#{name}" with an email "#{email}" and password "#{password}"}
-  And %{I go to the sign in page}
-  And %{I fill in "user_email" with "#{email}"}
-  And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
 end
 
 Then /^I should be already signed in$/ do

@@ -5,10 +5,14 @@ DealWitMe::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
-  resources :users, :only => :show
 
   resources :users do
     resources :deals
+
+    member do
+      get 'follow'
+      get 'unfollow'
+    end
   end
 
 
