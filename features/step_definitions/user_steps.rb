@@ -27,18 +27,6 @@ Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email
   Factory.create :confirmed_user, :email => email, :password => password
 end
 
-Given /^I am a new, authenticated user$/ do
-  email = 'testing@man.net'
-  name = 'Testing man'
-  password = 'secretpass'
-
-  Given %{I am a user named "#{name}" with an email "#{email}" and password "#{password}"}
-  And %{I go to the sign in page}
-  And %{I fill in "user_email" with "#{email}"}
-  And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
-end
-
 Then /^I should be already signed in$/ do
   And %{I should see "Logout"}
 end

@@ -4,8 +4,7 @@ Feature: New Deal
   so I can share the deal with others users
 
     Background:
-      Given I am a user with an email "test@email.com" and a password "teste123"
-      When I sign in as "test@email.com/teste123"
+      Given I am a user with an email "test@email.com"
 
     Scenario: Viewing new deal form
       When I follow "Cadastrar Oferta"
