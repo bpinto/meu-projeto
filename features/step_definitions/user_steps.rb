@@ -55,7 +55,7 @@ When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
 end
 
 Then /^I should be signed in$/ do
-  Then %{I should see "Signed in successfully."}
+  Then %{I should see "Fez login com sucesso."}
 end
 
 Then /^I sign out$/ do

@@ -1,5 +1,8 @@
+require 'i18n/missing_translations'
+
 DealWitMe::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  config.app_middleware.use(I18n::MissingTranslations)
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
