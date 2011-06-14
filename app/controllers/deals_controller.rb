@@ -12,4 +12,8 @@ class DealsController < ApplicationController
       render :new
     end
   end
+
+  def today
+    @deals = Deal.today
+  end
 end

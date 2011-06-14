@@ -1,8 +1,7 @@
 DealWitMe::Application.routes.draw do
   
   #get \"users\/show\"
-
-  root :to => "home#index"
+  get "deals/today"
 
   devise_for :users
 
@@ -15,6 +14,7 @@ DealWitMe::Application.routes.draw do
     end
   end
 
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

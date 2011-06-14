@@ -6,7 +6,7 @@ FactoryGirl.define do
     description "F_DESCRIPTION"
     f.link "F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
     title "F_TITLE"
-    type "Bebidas" #TODO: Refatorar
+    kind "Bebidas"
     user
   end
 end

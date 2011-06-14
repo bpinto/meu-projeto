@@ -12,7 +12,7 @@ describe Deal do
     it { should allow_mass_assignment_of(:link) }
     it { should allow_mass_assignment_of(:price) }
     it { should allow_mass_assignment_of(:title) }
-    it { should allow_mass_assignment_of(:type) }
+    it { should allow_mass_assignment_of(:kind) }
   end
 
   describe "Validations" do
@@ -31,8 +31,8 @@ describe Deal do
       deal.should_not be_valid
     end
 
-    it "should require a type" do
-      deal.type = nil
+    it "should require a kind" do
+      deal.kind = nil
       deal.should_not be_valid
     end
   end

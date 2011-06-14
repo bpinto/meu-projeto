@@ -17,6 +17,9 @@ module NavigationHelpers
     when /the sign in page/
       '/users/sign_in'
 
+    when /today's deals page/
+      deals_today_path
+
     when /^(.*)'s page/i
       user_path(User.find_by_email($1))
 

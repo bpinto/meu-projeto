@@ -13,7 +13,7 @@ module Fields
     "link" => "deal_link",
     "price" => "deal_price",
     "title" => "deal_title",
-    "type" => "deal_type"
+    "kind" => "deal_kind"
   }
 end
 

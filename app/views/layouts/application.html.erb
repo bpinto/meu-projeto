@@ -10,6 +10,7 @@
   <ul class="hmenu">
     <%= render 'devise/menu/registration_items' %>
     <%= render 'devise/menu/login_items' %>
+    <%= link_to 'Ofertas do Dia', deals_today_path %>
   </ul>
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>

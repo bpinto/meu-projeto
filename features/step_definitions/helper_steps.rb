@@ -1,5 +1,5 @@
 Then /^stop$/ do
-  debugger
+  breakpoint
   1
 end
 
