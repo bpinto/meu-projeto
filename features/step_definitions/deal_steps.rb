@@ -1,3 +1,9 @@
+Given /^(\d+) deals? exists?$/i do |amount|
+  amount.to_i.times do
+    Factory.create :deal
+  end
+end
+
 When /^I fill the deal fields correctly$/ do
   deal = Factory.build :deal
   fill_in(get_field("deal", "title") , :with => deal.title)
@@ -7,7 +13,7 @@ When /^I fill the deal fields correctly$/ do
   select(deal.kind, :from => get_field("deal", "kind")) 
 end
 
-Given /^(\d+) deal(?:|s) (?:was|were) registered (\w*)$/ do |amount, date_name|
+Given /^(\d+) deals? (?:was|were) registered (\w*)$/ do |amount, date_name|
   case date_name
   when "today"
     date = Date.today
@@ -20,6 +26,10 @@ Given /^(\d+) deal(?:|s) (?:was|were) registered (\w*)$/ do |amount, date_name|
   end
 end
 
-Then /^I should see (\d+) deals$/i do |amount|
-  page.all(:xpath, "//div[@id='deals']/div[@name='title']").length.should == 2
+Given /^I have (\d+) deals?$/i do |amount|
+  Factory.create :deal, :user => @current_user
+end
+
+Then /^I should see (\d+) deals?$/i do |amount|
+  page.all(:xpath, "//div[@id='deals']/div[@name='title']").length.should == amount.to_i
 end

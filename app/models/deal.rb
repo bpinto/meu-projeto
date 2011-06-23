@@ -12,5 +12,10 @@ class Deal < ActiveRecord::Base
   KINDS = ["Bebidas", "Beleza e Saúde", "Celulares e Telefones", "DVDs e CDs", "Eletrodomésticos", "Eletrônicos", "Esportes e Lazer", "Informática", "Livros", "Roupas e Calçados", "Viagens"]
 
   default_scope order("created_at desc")
-  scope :today, where("created_at >= ?", Date.today)
+
+  def self.kind(kind)
+    where(:kind => kind)
+  end
+
+  scope :today, where("deals.created_at >= ?", Date.today)
 end

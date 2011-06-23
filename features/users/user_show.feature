@@ -1,9 +1,18 @@
 Feature: Show Users
-  As a visitor to the website
-  I want to see registered users listed on the homepage
-  so I can know if the site has users
+  As a registered user of the website
+  I want to see my user profile
+  so I can see my informations on the site
 
-    Scenario: Viewing users
-      Given I am a user named "foo" with an email "user@test.com" and password "please"
-      When I go to the homepage
-      Then I should see "User: foo"
+    Background:
+      Given I am a user with an email "test@email.com"
+
+    Scenario: Viewing my deals
+      And I have 1 deal
+      When I go to test@email.com's page
+      Then I should see 1 deal
+
+    Scenario: Viewing my deals but not others'
+      And I have 1 deal
+      And 1 deal exist
+      When I go to test@email.com's page
+      Then I should see 1 deal

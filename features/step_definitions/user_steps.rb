@@ -7,16 +7,16 @@ Given /^one user with an email "([^"]*)" exists$/ do |email|
 end
 
 Given /^I am a user with an email "([^"]*)"$/ do |email|
-  user = Factory.create :confirmed_user, :email => email
+  @current_user = Factory.create :confirmed_user, :email => email
 
   And %{I go to the sign in page}
-  And %{I fill in "user_email" with "#{user.email}"}
-  And %{I fill in "user_password" with "#{user.password}"}
+  And %{I fill in "user_email" with "#{@current_user.email}"}
+  And %{I fill in "user_password" with "#{@current_user.password}"}
   And %{I press "Sign in"}
 end
 
 Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  Factory.create :confirmed_user,
+  @current_user = Factory.create :confirmed_user,
             :name => name,
             :email => email,
             :password => password,
@@ -24,7 +24,7 @@ Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*
 end
 
 Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email, password|
-  Factory.create :confirmed_user, :email => email, :password => password
+  @current_user = Factory.create :confirmed_user, :email => email, :password => password
 end
 
 Then /^I should be already signed in$/ do

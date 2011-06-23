@@ -7,3 +7,12 @@
 <% else %>
   <%= link_to 'Follow', follow_user_path(@user) %>
 <% end %>
+
+
+<div id="deals">
+  <% @user.deals.each do |deal| %>
+    <div name="title">
+      Title: <%= deal.title %>
+    </div>
+  <% end %>
+</div>
