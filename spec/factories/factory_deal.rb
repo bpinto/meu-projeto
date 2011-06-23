@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :deal do |f|
     price "0.99"
     description "F_DESCRIPTION"
-    f.link "F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
+    f.link "http://F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
     title "F_TITLE"
     kind "Bebidas"
     user

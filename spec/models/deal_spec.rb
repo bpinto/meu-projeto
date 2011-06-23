@@ -36,4 +36,23 @@ describe Deal do
       deal.should_not be_valid
     end
   end
+
+  describe "#links" do
+    describe "should begin with http:// or https://" do
+      it "http://www.dealwit.me" do
+        deal.link = "http://www.dealwit.me"
+        deal.should be_valid
+      end
+
+      it "https://www.dealwit.me" do
+        deal.link = "https://www.dealwit.me"
+        deal.should be_valid
+      end
+
+      it "www.dealwit.me" do
+        deal.link = "www.dealwit.me"
+        deal.should have(1).error_on(:link)
+      end
+    end
+  end
 end

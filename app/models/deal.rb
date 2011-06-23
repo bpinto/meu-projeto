@@ -4,7 +4,7 @@ class Deal < ActiveRecord::Base
 
   validates :price,       :presence => true
   validates :description, :presence => true
-  validates :link,        :presence => true
+  validates :link,        :presence => true, :format => /^https?:\/\/.+/
   validates :kind,        :presence => true
 
   attr_accessible :description, :kind, :link, :price, :title
