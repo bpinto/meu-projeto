@@ -1,22 +1,544 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>DealWit.Me</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <ul class="hmenu">
-    <%= render 'devise/menu/registration_items' %>
-    <%= render 'devise/menu/login_items' %>
-    <%= link_to 'Ofertas do Dia', deals_today_path %>
-  </ul>
-  <%- flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  <%- end -%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>DealWit.Me</title>
 
-<%= yield %>
+    <!-- TODO: Rever essa parte abaixo -->
+    <meta name="keyword" content="Compra Coletiva, Clube de Compras, Descontos, Ofertas, Promo&ccedil;&otilde;es" />
+    <meta name="description" content="Todas as ofertas anunciadas nos melhores sites de Compra Coletiva e Clubes de Compra do pa&iacute;s em um s&oacute; lugar" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Language" content="pt-br" />
+    <meta http-equiv="Cache-Control" content="public" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Buscap&eacute; Inc." />
+    <meta name="copyright" content="&copy;2011 BuscaPe Inc." />
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" type="text/css" href="http://imagem.zipme.com.br/css/saveme.css?v=20110711-2"/>
+    <link rel="stylesheet" type="text/css" href="http://imagem.zipme.com.br/css/usuario.css?v=20110624"/>
+    <script>var hostimagem  = 'http://imagem.zipme.com.br';</script>
+    <script type="text/javascript" src="http://imagem.zipme.com.br/js/saveme.js?v=20110713-2"></script>
+    <script type="text/javascript" id="navegg" src="http://lt.navegg.com/lt.js?1011"></script>
+  </head>
+
+  <body>
+    <ul class="hmenu">
+      <%= render 'devise/menu/registration_items' %>
+      <%= render 'devise/menu/login_items' %>
+      <%= link_to 'Ofertas do Dia', deals_today_path %>
+    </ul>
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>
+
+    <%= yield %>
+
+    <div id="main">
+      <div id="superbanner">
+        <script type="text/javascript" language="JavaScript1.1" src="http://ads.buscape.com.br/RealMedia/ads/adstream_jx.ads/br.saveme/ros@Top!Top"></script>
+      </div>
+
+      <div id="header">
+        <!-- INFORMACOES DE LOGIN DO USUARIO-->
+        <div class="login">
+          <a href="/cadastre-se?c=rio-de-janeiro&amp;catgs=&amp;orig=home"><img src="http://imagem.zipme.com.br/css/images/cadastro-icon.gif" border="0" />Cadastre-se</a><span class="separador-login"> | </span>
+          <a href="javascript:;" onclick="ShowHide(); return false;" class="login-link"><img src="http://imagem.zipme.com.br/css/images/login-icon.gif" border="0" />Login</a>
+
+          <div class="box-login" id="box-login">
+            <form name="loginform" method="post" action="/auth/login" class="formlogin">
+              <label for="email">E-mail: </label> <input type="text" name="email" class="input-login" />
+              <label for="senha">Senha: </label> <input type="password" name="senha" class="input-login" />
+              <a href="/cadastre-se/esqueceu-senha" class="esqueceu-senha-link">Esqueceu sua senha?</a><input type="submit" name="login" value="Entrar" class="entrar-login-btn" />
+            </form>
+          </div>
+
+          <a href="javascript:;" class="duvida_login"><img src="http://imagem.zipme.com.br/css/images/interrogacao.gif" border="0" /><span>Se você não possui cadastro no SaveMe clique em "Cadastre-se" e crie a sua conta. Se você já cadastrou seu e-mail no SaveMe, mas ainda não criou a sua conta, clique em "Esqueci minha senha" dentro da área de Login e siga as instruções enviadas no seu e-mail.</span></a>
+          <div class="clear"></div>
+        </div>
+
+        <script type="text/javascript" charset="utf-8">
+          function ShowHide(){
+            $("#box-login").animate({"height": "toggle"}, { duration: 200 });
+          }
+        </script>
+        <!-- FIM DO LOGIN -->
+
+        <a class="logo" href="http://www.saveme.com.br" title="SaveMe | Encontre sua oferta!"></a>
+
+        <form id="cadastro" name="cadastrese" action="/cadastre-se/" method="post" style="margin-left:15px; width:auto;">
+          <input type="hidden" name="catgs_cid" id="catgs_cid" value="" />
+          <input name="email" type="text" class="email-cadastre" id="email-cadastre-br" title="Digite seu e-mail e receba nossas ofertas" style="width:490px !important; *width:410px !important;" />
+
+          <input type="hidden" name="c" value="rio-de-janeiro" />
+          <a href="#" id="cadastrar">Cadastrar</a>
+        </form>
+
+        <div class="compartilhe_cabecalho">
+          <a class="saveme_rss_novo" href="http://www.saveme.com.br/rss/index?slug=rio-de-janeiro" target="_blank"></a>
+          <a class="saveme_twitter_novo" href="http://twitter.com/sigasaveme" target="_blank"></a>
+          <a class="saveme_facebook_novo" href="http://www.facebook.com/pages/Saveme/162368550447634" target="_blank"></a>
+        </div>
+      </div>
+
+      <script src="http://imagem.zipme.com.br/JQueryLib/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+      <script src="http://imagem.zipme.com.br/JQueryLib/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+      <script type="text/javascript" src="http://imagem.zipme.com.br/js/saveme_geo.js?v=20110711"></script>
+      <script type="text/javascript" src="http://imagem.zipme.com.br/js/layerpopup.js?v=20110712"></script>
+      <script type="text/javascript" src="http://imagem.zipme.com.br/js/compracoletiva.js?v=20110711"></script>
+      <link rel="stylesheet" href="http://imagem.zipme.com.br/JQueryLib/css/prettyPhoto.css" type="text/css" media="screen" />
+      <script>
+        var limit='20110528';
+        var cur  ='20110714';
+        var baseurls = {"cidade":"\/compra-coletiva\/%s\/","ordenar":"\/compra-coletiva\/rio-de-janeiro\/?ordenar_por=%s","caturl":"\/compra-coletiva\/rio-de-janeiro\/%s\/","catids":"\/compra-coletiva\/rio-de-janeiro\/?catgs=%s","pagina":"\/compra-coletiva\/rio-de-janeiro\/pagina-%d\/","geosort":"\/compra-coletiva\/rio-de-janeiro\/?ordenar_por=geo","geomap":"\/compra-coletiva\/mapa\/rio-de-janeiro\/","pagina1":"\/compra-coletiva\/rio-de-janeiro\/","mundo":"\/compra-coletiva\/%s\/rio-de-janeiro\/mundo\/","busca":"\/compra-coletiva\/rio-de-janeiro"};
+        var catslug = {"1":"esporte","2":"saude-e-beleza","3":"restaurantes","4":"entretenimento","5":"servicos-locais","6":"hoteis-e-viagens","7":"cursos-e-aulas","10":"produtos","11":"bares-e-baladas"};
+        var translate ={
+          'aguarde':'Aguarde',
+          'fale_conosco_botao_enviar':'Enviar'
+        };
+      </script>
+
+      <style type="text/css">
+        div.light_square .pp_left, div.light_square .pp_middle, div.light_square .pp_right, div.light_square .pp_content {
+            background: none repeat scroll 0 0 transparent;
+        }
+        div.light_square .pp_details {
+          margin-top:-10px;
+        }
+        div.light_square .pp_close {
+          display:none;
+        }
+
+        #pp_full_res iframe {
+          background-color:transparent;
+        }
+        .ppt {
+          display:none !important;
+        }
+        .pp_loaderIcon {
+              display: block;
+              height: 24px;
+              left: 10%;
+              margin: -12px 0 0 -12px;
+              position: absolute;
+              top: 50%;
+              width: 208px;
+        }
+      </style>
+
+      <form name="formOferta" target="blank" action=""></form>
+        <div id="filters_content_top">
+          <div class="filters_top_busca" style="padding:0; margin:0;">
+            <form action="/ofertas/compra-coletiva" id="form_busca" method="get" style="padding:0; margin:0;">
+              <input name="catgs" id="catgs_busca" type="hidden" value="" />
+              <input name="c" type="hidden" value="rio-de-janeiro" />
+              <input name="ordernar_por" type="hidden" value="ordenar_por" />
+              <input type="text" name="busca" id="busca" value="Buscar no SaveMe..." title="Buscar no SaveMe..." class="campos_fc" style="float:left; width:140px; height:20px;" />
+              <input id="ok_busca" type="submit" value="Buscar" style="background: url('http://imagem.zipme.com.br/css/images/bt_buscar_novo.png') no-repeat scroll 0 0 transparent; height:30px; *margin-top:5px;" />
+            </form>
+          </div>
+
+          <div class="folders_top  compra">
+            <ul id="folders">
+              <li>
+                <h1><a href="/ofertas/compra-coletiva/" class="aba_compra">Compra Coletiva</a></h1>
+              </li>
+              <li>
+                <a href="/ofertas/clube-de-compras/" class="aba_clube2">Clube de Compras</a>
+              </li>
+              <li>
+                <a href="/ofertas/varejo/" class="aba_varejo2" style="padding-left:65px;">Ofertas Exclusivas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="filters_content">
+          <div style="width:224px; float:left;">
+            <div class="titulo_lateral">
+              <strong>Categorias</strong>
+            </div>
+
+            <div id="filters">
+              <div id="filters_area">
+                <div id="categories">
+                  <form action="" id="form_categorias" method="get">
+                    <input name="catgs" id="catgs" type="hidden" value="" />
+                    <input name="c" type="hidden" value="rio-de-janeiro" />
+                    <input name="mundo" id="mundo" type="hidden" value="" />
+                    <input name="ordernar_por" type="hidden" value="ordenar_por" />
+                  </form>
+
+                  <span class="todas_limpar"><a href="javascript:void(0);" id="todascat">Selecionar Todos</a> | <a href="javascript:void(0);" id="limparcat">Limpar</a></span>
+                  <ul>
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="11" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/bares-e-baladas/'>Bares e Baladas</a>
+                        <span style="float:right; color:#999;">(7)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="7" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/cursos-e-aulas/'>Cursos e Aulas</a>
+                        <span style="float:right; color:#999;">(33)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="4" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/entretenimento/'>Entretenimento</a>
+                        <span style="float:right; color:#999;">(86)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="1" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/esporte/'>Esportes</a>
+                        <span style="float:right; color:#999;">(10)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="6" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/hoteis-e-viagens/'>Hotéis e Viagens</a>
+                        <span style="float:right; color:#999;">(466)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="10" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/produtos/'>Produtos</a>
+                        <span style="float:right; color:#999;">(241)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="3" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/restaurantes/'>Restaurantes</a>
+                        <span style="float:right; color:#999;">(75)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="2" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/saude-e-beleza/'>Saúde e Beleza</a>
+                        <span style="float:right; color:#999;">(453)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="5" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/servicos-locais/'>Serviços Locais</a>
+                        <span style="float:right; color:#999;">(65)</span>
+                      </label>
+                    </li>
+                  </ul>
+
+                  <input id="filtrar" type="submit" value="Filtrar" onclick="post_categ()" />
+                </div>
+
+                <h3 class="mobileh3">Você curte o SaveMe?</h3>
+                <div style="padding:0 0 0 8px;">
+                  <div id="fb-root"></div>
+                  <script src="http://connect.facebook.net/pt_BR/all.js#xfbml=1"></script>
+                  <fb:like-box href="http://www.facebook.com/savemebr" width="205" show_faces="true" stream="false" header="false" height="255"></fb:like-box>
+                </div>
+
+                <h3>Siga o SaveMe!</h3>
+                <div style="margin:0 0 0 8px">
+                  <a href="http://www.twitter.com/sigasaveme/" target="_blank"><img src="http://imagem.zipme.com.br/css/images/siga_saveme.jpg" alt="Siga o SaveMe no Twitter e fique por dentro das novidades." border="0" /></a>
+                </div>
+              </div>
+            </div>
+            <div id="more_offers_footer">&nbsp;</div>
+          </div>
+
+          <div id="content">
+            <div id="result_tools">
+              <div class="lista_todas_cidades_full">
+                <div class="cidades_drop">
+                  <div class="botao_listar_todas_cidades_div">
+                    <a href="#" class="botao_listar_todas_cidades" onclick="toogleDropCidade(); return false;">Rio de Janeiro <span>- 1436 ofertas</span> <img src="http://imagem.zipme.com.br/css/images/listar_cidade_botao.gif" alt="Ver todas as cidades" /></a>
+                  </div>
+
+                  <div class="lista_todas_cidades_bg">
+                    <div class="lista_todas_cidades">
+                      <ul>
+                         <li><a href="/compra-coletiva/oferta-nacional/">Oferta Nacional </a></li>
+                         <li><a href="/compra-coletiva/sao-paulo/">São Paulo </a></li>
+                         <li><a href="/compra-coletiva/rio-de-janeiro/">Rio de Janeiro </a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ordenar_drop">
+                  <div class="div_ordenar_resultados">
+                    <a href="#" class="botao_ordenar_resultados" onclick="toogleDropOrdenar(); return false;"> Ordenar por <img src="http://imagem.zipme.com.br/css/images/listar_cidade_botao.gif" alt="Ordenar" /></a>
+                  </div>
+
+                  <div class="ordenar_resultados_novo_bg">
+                    <div class="ordenar_resultados_novo">
+                      <ul>
+                       <li><a href="#" onclick="alteraOrdenarPor('ordenar_por',false);">Ordenar por</a></li>
+                       <li><a href="#" onclick="alteraOrdenarPor('desconto',false);">Maior Desconto</a></li>
+                       <li><a href="#" onclick="alteraOrdenarPor('menor_preco',false);">Menor Pre&ccedil;o</a></li>
+                       <li><a href="#" onclick="alteraOrdenarPor('novas_ofertas',false);">Novas Ofertas</a></li>
+                       <li><a href="#" onclick="alteraOrdenarPor('tempo_restante',false);">Tempo Restante</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="botao_ordenar">
+                  <a href="#" onclick="GeoSort(); return false;">Ordenar por distância</a>
+                </div>
+
+                <div class="botao_ver_mapa">
+                  <a href="/compra-coletiva/mapa/rio-de-janeiro/" onclick="GeoMap(); return false;">Ver no mapa</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="geos">
+              <div class="filtrar_local_geo">
+                <form action="#" class="searchAddressForm" id='geosort'>
+                  <label for="endereco">Digite o endereço ou CEP: </label>
+                  <input type="text" name="endereco" class="input_geo" id='geosort_endereco' />
+                  <input type="submit" class="submit_geo" value="Ordenar" />
+                </form>
+              </div>
+
+              <div class="ver_mapa_geo">
+                <form action="#" class="searchAddressForm" id='geomap'>
+                  <label for="endereco">Digite o endereço ou CEP: </label>
+                  <input type="text" name="endereco" class="input_geo" id='geomap_endereco' />
+                  <input type="submit" class="submit_geo" value="Ver no mapa" />
+                </form>
+              </div>
+            </div>
+
+            <p class="titulo_varios_results" id='geo_error'></p>
+
+            <div class="todos_resultados_geo">
+              <p class="titulo_varios_results">Mais de um resultado foi encontrado para sua pesquisa. Selecione o endereço mais relevante:</p>
+              <div id='multi-addr-result'></div>
+            </div>
+
+            <div id="result_offers">
+              <div class="offer">
+                <a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" target="_blank"><img src="http://imagem.zipme.com.br/peq/37ba1463284a2d6ad6bc6f5b3d244821.jpg" class="offer_img" alt="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" title="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" width="200" height="150" /></a>
+                <div class="offer_text">
+                  <div class="offer_desc">
+                    <h2><a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank">Búzios: 2 diárias p/ 3 pessoas  +  café da manhã  +  pizza  +  refrigerante</a></h2>
+                  </div>
+
+                  <a href='/compra-coletiva/rio-de-janeiro/hoteis-e-viagens/bazios-2-diarias-para-3-pessoas-mais-cafa-da-manha-mais-pizza-mais-refrigerante-343017' class="link-detalhes"><img src="http://imagem.zipme.com.br/css/images/ver-detalhes.gif" alt="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" title="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" /></a>
+                  <h4>
+                    <strong>Em:</strong> Hotéis e Viagens<br/>
+                    <strong>Oferta por:</strong>
+                    Clube do Desconto
+                    <a class="offer_mail" href="javascript:void(0);" onclick="box_email(this,343017)"></a>
+                    <a class="offer_facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.clubedodesconto.com.br%2Frio-de-janeiro%2Fpousada-encanto-dos-anjos-buzios-desconto.htm&t=Oferta%20SaveMe" target="_blank"></a>
+                    <a class="offer_twitter" href="http://twitter.com/?status=@sigasaveme B%C3%BAzios%3A+2+di%C3%A1rias+p%2F+3+pessoas+%2B+caf%C3%A9+da+manh%C3%A3+%2B+pizza+%2B+refrigerante http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" target="_blank"></a>
+                  </h4>
+                </div>
+
+                <!-- compra_coletiva -->
+                <div class="offer_values ">
+                  <div class="offer_value">
+                    <a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank"> R$ <strong>189</strong>,90</a>
+                  </div>
+
+                  <div class="offer_discount"><strong>57%</strong><br />desconto</div>
+                  <div class="offer_real">De:<br /><strong>R$ 450,00</strong></div> 
+                  <div class="offer_economy">Economia:<br /><strong>R$ 260,10</strong></div>
+                  <div class="offer_time contador0"></div>
+                  <div class="offer_go"><a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank">Ir para o site</a></div>
+                </div>
+
+              <!-- clube_compra -->
+              </div>
+            </div>
+
+            <div class="offers_pagination">
+              <p>
+                <a class="pag_first" href="/compra-coletiva/rio-de-janeiro/"></a>
+                <a class="pag_now" href="#">1</a>
+                <a href="/compra-coletiva/rio-de-janeiro/pagina-2/">2</a>
+                <a href="/compra-coletiva/rio-de-janeiro/pagina-3/">3</a>
+                <a href="/compra-coletiva/rio-de-janeiro/pagina-4/">4</a>
+                <a href="/compra-coletiva/rio-de-janeiro/pagina-5/">5</a>
+                <a href="/compra-coletiva/rio-de-janeiro/pagina-6/">6</a>
+                <a class="pag_next" href="/compra-coletiva/rio-de-janeiro/pagina-2/"></a>
+                <a class="pag_last" href="/compra-coletiva/rio-de-janeiro/pagina-48/"></a>
+              </p>
+
+              <p>( + 1406 Ofertas )</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="send-email" style="display:none">
+          <div class="fechar-send-email"><a href="javascript:void(0);" onclick="javascript:$('.send-email').css('display','none');$('.form-send-email').css('display','block');$('.ok-send-email').css('display','none');">x</a></div>
+          <div class="form-send-email">
+            <p><strong>Enviar oferta por e-mail</strong></p>
+            <p><span>Seu email:</span><input name="email" id="rem_email" size="43" type="text" alt="Digite o seu e-mail..." value="Digite o seu e-mail..." /></p>
+            <p><span>Destinat&aacute;rio:</span><input name="dest" id="dest_email" size="43" type="text"  alt="Digite o e-mail do destinat&aacute;rio..." value="Digite o e-mail do destinat&aacute;rio..." /></p>
+            <p><span>Coment&aacute;rios:</span><input name="coment" id="coment_email" size="43" type="text" value="" />
+            <input type="submit" value="Enviar" id="send_offer" /><input name="cod_oferta" id="cod_oferta" type="hidden" value="" /></p>
+          </div>
+          <p class="ok-send-email"><strong>E-mail enviado com sucesso!</strong></p>
+        </div>
+
+        <script type="text/javascript">
+          atualizaContador(2011,07,15,23,59,59,0);
+          atualizaContador(2011,07,14,23,59,59,1);
+          atualizaContador(2011,07,16,00,00,00,2);
+          atualizaContador(2011,07,14,23,59,59,3);
+          atualizaContador(2011,07,15,23,59,59,4);
+          atualizaContador(2011,07,14,23,59,59,5);
+          atualizaContador(2011,07,15,23,59,59,6);
+          atualizaContador(2011,07,14,23,59,59,7);
+          atualizaContador(2011,07,14,23,59,59,8);
+          atualizaContador(2011,07,14,23,59,59,9);
+          atualizaContador(2011,07,16,00,00,00,10);
+          atualizaContador(2011,08,02,23,59,59,11);
+          atualizaContador(2011,07,14,23,59,59,12);
+          atualizaContador(2011,07,14,23,59,59,13);
+          atualizaContador(2011,07,14,23,59,59,14);
+          atualizaContador(2011,07,14,23,59,59,15);
+          atualizaContador(2011,07,16,23,59,59,16);
+          atualizaContador(2011,07,14,23,59,59,17);
+          atualizaContador(2011,07,16,00,00,00,18);
+          atualizaContador(2011,07,14,23,59,59,19);
+          atualizaContador(2011,07,21,23,59,59,20);
+          atualizaContador(2011,07,14,23,59,59,21);
+          atualizaContador(2011,07,20,23,59,59,22);
+          atualizaContador(2011,07,14,23,59,59,23);
+          atualizaContador(2011,07,14,23,59,59,24);
+          atualizaContador(2011,07,15,23,59,59,25);
+          atualizaContador(2011,07,15,23,59,59,26);
+          atualizaContador(2011,07,14,23,59,59,27);
+          atualizaContador(2011,07,16,23,59,59,28);
+          atualizaContador(2011,07,15,23,59,59,29);
+        </script>
+
+        <div class="filters_content_footer"></div>
+      </div>
+
+      <div id="footer">
+        <div id="footer_corp">
+          <div id="footer_corp_clear"></div>
+          <div id="footer_corp_saveme">
+            <ul>
+              <li><a href="/cadastre-se/?c=rio-de-janeiro&amp;catgs=&amp;orig=home">Cadastre-se</a></li>
+              <li><a href="/sobre/?c=rio-de-janeiro&amp;catgs=">Sobre</a></li>
+              <li><a href="/fale-conosco/?c=rio-de-janeiro&amp;catgs=">Fale Conosco</a></li>
+              <li><a href="/imprensa/?c=rio-de-janeiro&amp;catgs=">Imprensa</a></li>
+            </ul>
+          </div>
+
+          <div id="footer_corp_content">
+            <ul>
+              <li><a href="/compra-coletiva/?c=rio-de-janeiro&amp;catgs=">O que &eacute; Compra Coletiva?</a></li>
+              <li><a href="/clube-compra/?c=rio-de-janeiro&amp;catgs=">O que &eacute; Clube de Compra?</a></li>
+            </ul>
+
+            <ul id="flags">
+              <li class="flag_arg"><a target='_blank' href="http://www.saveme.com.ar">SaveMe Argentina</a></li>
+              <li class="flag_chi"><a target='_blank' href="http://www.saveme.cl">SaveMe Chile</a></li>
+              <li class="flag_clb"><a target='_blank' href="http://www.saveme.com.co">SaveMe Col&ocirc;mbia</a></li>
+              <li class="flag_mex"><a target='_blank' href="http://www.saveme.com.mx">SaveMe M&eacute;xico</a></li>
+            </ul>
+          </div>
+
+          <div id="footer_corp_copyrights">
+              <p>O SaveMe &eacute; um portal que re&uacute;ne todas as ofertas anunciadas nos sites de compra coletiva e clubes de compra do país em um s&oacute; lugar. O portal faz com que o usu&aacute;rio economize tempo e dinheiro ao buscar ofertas e descontos na Web, gerando uma enorme praticidade e economia.</p>
+          </div>
+        </div>
+
+        <div style="width:100%; background-color:red; background:url(http://imagem.zipme.com.br/css/images/bg_footer.jpg) 0 -195px; padding:10px 5px 5px 5px; text-align:center; font-size:11px; color:#c8c8c8">
+          <p>© 2011 SaveMe - Todos os direitos reservados. Nomes, imagens e marcas pertencem a seus respectivos propriet&aacute;rios.
+            <a href="/termo/?c=rio-de-janeiro&amp;catgs="><strong>Termo</strong></a>
+            <span class="ip_servidor">(50.23.239.135)</span>
+          </p>
+        </div>
+      </div>
+
+      <script type='text/javascript'>
+        //<![CDATA[
+
+        try{
+          var __$loc_domain_cookie = ".saveme.com.br";
+          var __$loc_data = {
+
+          refino_cidade: '3',
+          refino_categoria: '',
+          charset_usuario: 'UTF-8',
+          versao_java_us: '1.7',
+          cidade_usu: '',
+          email_usu: '',
+
+          url_pag: window.location,
+          tit_pag: document.title,
+          h2_pag: $('h2:first').text(),
+          referer_pag: document.referrer,
+          propriedade : "SM"
+        };
+
+        (function() {
+          var loc = document.createElement('script'); loc.type = 'text/javascript';
+          loc.src = ('https:' == document.location.protocol ? 'https://s' : 'http://c') + '.lomadee.com/loc/write.js';//producao
+          //loc.src = ('https:' == document.location.protocol ? 'https://s' : 'http://c') + '.lomadee.com/loc/write.js2';//testes
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(loc, s);
+        })();
+      }catch (e) {alert(e)}
+
+      //]]>
+    </script>
+
+    <script type="text/javascript">
+      setTimeout(function(){var a=document.createElement("script");
+      var b=document.getElementsByTagName('script')[0];
+      a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0006/4532.js";
+      a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+
+    <script type="text/javascript">
+      var _sf_async_config={uid:25435,domain:"saveme.com.br"};
+      (function(){
+        function loadChartbeat() {
+        window._sf_endpt=(new Date()).getTime();
+        var e = document.createElement('script');
+        e.setAttribute('language', 'javascript');
+        e.setAttribute('type', 'text/javascript');
+        e.setAttribute('src',
+        (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+        "js/chartbeat.js");
+        document.body.appendChild(e);
+        }
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+        loadChartbeat : function() { oldonload(); loadChartbeat(); };
+      })();
+    </script>
+  </body>
 </html>
