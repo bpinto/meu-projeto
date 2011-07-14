@@ -1,9 +1,6 @@
 <% if user_signed_in? %>
-  <li>
   <%= link_to('Edit account', edit_user_registration_path) %>
-  </li>
 <% else %>
-  <li>
-  <%= link_to('Sign up', new_user_registration_path)  %>
-  </li>
+  <%= link_to(image_tag('cadastro-icon.gif')+ 'Cadastre-se', new_user_registration_path)%>
+  <span class="separador-login"> | </span>
 <% end %>

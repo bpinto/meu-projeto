@@ -28,8 +28,6 @@
 
   <body>
     <ul class="hmenu">
-      <%= render 'devise/menu/registration_items' %>
-      <%= render 'devise/menu/login_items' %>
       <%= link_to 'Ofertas do Dia', deals_today_path %>
     </ul>
     <%- flash.each do |name, msg| -%>
@@ -46,8 +44,8 @@
       <div id="header">
         <!-- INFORMACOES DE LOGIN DO USUARIO-->
         <div class="login">
-          <a href="/cadastre-se?c=rio-de-janeiro&amp;catgs=&amp;orig=home"><img src="http://imagem.zipme.com.br/css/images/cadastro-icon.gif" border="0" />Cadastre-se</a><span class="separador-login"> | </span>
-          <a href="javascript:;" onclick="ShowHide(); return false;" class="login-link"><img src="http://imagem.zipme.com.br/css/images/login-icon.gif" border="0" />Login</a>
+          <%= render 'devise/menu/registration_items' %>
+          <%= render 'devise/menu/login_items' %>
 
           <div class="box-login" id="box-login">
             <form name="loginform" method="post" action="/auth/login" class="formlogin">
