@@ -1,7 +1,96 @@
-<div id="deals">
-  <% @deals.each do |deal| %>
-    <div name="title">
-      Title: <%= deal.title %>
+<div id="result_tools">
+  <!-- TODO: Rever essa parte abaixo -->
+  <div class="lista_todas_cidades_full">
+    <div class="cidades_drop">
+      <div class="botao_listar_todas_cidades_div">
+        <a href="#" class="botao_listar_todas_cidades" onclick="toogleDropCidade(); return false;">Rio de Janeiro <span>- 1436 ofertas</span> <img src="http://imagem.zipme.com.br/css/images/listar_cidade_botao.gif" alt="Ver todas as cidades" /></a>
+      </div>
+
+      <div class="lista_todas_cidades_bg">
+        <div class="lista_todas_cidades">
+          <ul>
+             <li><a href="/compra-coletiva/oferta-nacional/">Oferta Nacional </a></li>
+             <li><a href="/compra-coletiva/sao-paulo/">São Paulo </a></li>
+             <li><a href="/compra-coletiva/rio-de-janeiro/">Rio de Janeiro </a></li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <!-- TODO: Rever essa parte abaixo -->
+    <div class="ordenar_drop">
+      <div class="div_ordenar_resultados">
+        <a href="#" class="botao_ordenar_resultados" onclick="toogleDropOrdenar(); return false;"> Ordenar por <img src="http://imagem.zipme.com.br/css/images/listar_cidade_botao.gif" alt="Ordenar" /></a>
+      </div>
+
+      <div class="ordenar_resultados_novo_bg">
+        <div class="ordenar_resultados_novo">
+          <ul>
+           <li><a href="#" onclick="alteraOrdenarPor('ordenar_por',false);">Ordenar por</a></li>
+           <li><a href="#" onclick="alteraOrdenarPor('desconto',false);">Maior Desconto</a></li>
+           <li><a href="#" onclick="alteraOrdenarPor('menor_preco',false);">Menor Pre&ccedil;o</a></li>
+           <li><a href="#" onclick="alteraOrdenarPor('novas_ofertas',false);">Novas Ofertas</a></li>
+           <li><a href="#" onclick="alteraOrdenarPor('tempo_restante',false);">Tempo Restante</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div id="result_offers">
+  <% @deals.each do |deal| %>
+    <%= default_deal deal %>
   <% end %>
+  <div class="offer">
+    <a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" target="_blank"><img src="http://imagem.zipme.com.br/peq/37ba1463284a2d6ad6bc6f5b3d244821.jpg" class="offer_img" alt="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" title="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" width="200" height="150" /></a>
+    <div class="offer_text">
+      <div class="offer_desc">
+        <h2><a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank">Búzios: 2 diárias p/ 3 pessoas  +  café da manhã  +  pizza  +  refrigerante</a></h2>
+      </div>
+
+      <a href='/compra-coletiva/rio-de-janeiro/hoteis-e-viagens/bazios-2-diarias-para-3-pessoas-mais-cafa-da-manha-mais-pizza-mais-refrigerante-343017' class="link-detalhes"><img src="http://imagem.zipme.com.br/css/images/ver-detalhes.gif" alt="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" title="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" /></a>
+      <h4>
+        <strong>Em:</strong> Hotéis e Viagens<br/>
+        <strong>Oferta por:</strong>
+        Clube do Desconto
+        <a class="offer_mail" href="javascript:void(0);" onclick="box_email(this,343017)"></a>
+        <a class="offer_facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.clubedodesconto.com.br%2Frio-de-janeiro%2Fpousada-encanto-dos-anjos-buzios-desconto.htm&t=Oferta%20SaveMe" target="_blank"></a>
+        <a class="offer_twitter" href="http://twitter.com/?status=@sigasaveme B%C3%BAzios%3A+2+di%C3%A1rias+p%2F+3+pessoas+%2B+caf%C3%A9+da+manh%C3%A3+%2B+pizza+%2B+refrigerante http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" target="_blank"></a>
+      </h4>
+    </div>
+
+    <!-- compra_coletiva -->
+    <div class="offer_values ">
+      <div class="offer_value">
+        <a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank"> R$ <strong>189</strong>,90</a>
+      </div>
+
+      <div class="offer_discount"><strong>57%</strong><br />desconto</div>
+      <div class="offer_real">De:<br /><strong>R$ 450,00</strong></div> 
+      <div class="offer_economy">Economia:<br /><strong>R$ 260,10</strong></div>
+      <div class="offer_time contador0"></div>
+      <div class="offer_go"><a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank">Ir para o site</a></div>
+    </div>
+
+  <!-- clube_compra -->
+  </div>
+</div>
+
+<div class="offers_pagination">
+  <p>
+    <a class="pag_first" href="/compra-coletiva/rio-de-janeiro/"></a>
+    <a class="pag_now" href="#">1</a>
+    <a href="/compra-coletiva/rio-de-janeiro/pagina-2/">2</a>
+    <a href="/compra-coletiva/rio-de-janeiro/pagina-3/">3</a>
+    <a href="/compra-coletiva/rio-de-janeiro/pagina-4/">4</a>
+    <a href="/compra-coletiva/rio-de-janeiro/pagina-5/">5</a>
+    <a href="/compra-coletiva/rio-de-janeiro/pagina-6/">6</a>
+    <a class="pag_next" href="/compra-coletiva/rio-de-janeiro/pagina-2/"></a>
+    <a class="pag_last" href="/compra-coletiva/rio-de-janeiro/pagina-48/"></a>
+  </p>
+
+  <p>( + 1406 Ofertas )</p>
 </div>

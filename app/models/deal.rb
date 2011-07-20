@@ -2,10 +2,15 @@
 class Deal < ActiveRecord::Base
   belongs_to :user
 
-  validates :price,       :presence => true
+  # validates :company,     :presence => true
   validates :description, :presence => true
-  validates :link,        :presence => true, :format => /^https?:\/\/.+/
+  # validates :end_date,    :presence => true
+  # validates :discount,    :presence => true, :if => "self.real_price?"
   validates :kind,        :presence => true
+  validates :link,        :presence => true, :format => /^https?:\/\/.+/
+  validates :price,       :presence => true
+  # validates :real_price
+  # validates :title,       :presence => true
 
   attr_accessible :description, :kind, :link, :price, :title
 
