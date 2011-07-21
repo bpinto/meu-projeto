@@ -8,6 +8,7 @@ describe Deal do
   it { should respond_to :user }
 
   describe "Accessibility" do
+    it { should allow_mass_assignment_of(:address) }
     it { should allow_mass_assignment_of(:category) }
     it { should allow_mass_assignment_of(:company) }
     it { should allow_mass_assignment_of(:description) }
@@ -54,7 +55,7 @@ describe Deal do
       end
 
       describe "should begin with http:// or https://" do
-        it "http://www.dealwit.me" do
+        it "http://www.dealwit.me should be valid" do
           deal.link = "http://www.dealwit.me"
           deal.should be_valid
         end
@@ -110,29 +111,6 @@ describe Deal do
     end
   end
 
-  describe "#calculate_discount" do
-    it "should be calculated before validation" do
-      deal.should_receive(:calculate_discount)
-      deal.valid?
-    end
-
-    it "should withdraw the price from the real price" do
-      deal.real_price = 2
-      deal.price = 1.5
-      deal.calculate_discount
-
-      deal.discount.should == 0.5
-    end
-
-    it "should not withdraw the price from the real price if there's no real price" do
-      deal.real_price = nil
-      deal.discount = nil
-      deal.calculate_discount
-
-      deal.discount.should == nil
-    end
-  end
-
   describe "KINDS" do
     it "should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" do
       Deal::KINDS.should =~ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -180,6 +158,57 @@ describe Deal do
 
     specify "TRAVEL: should be equal 11" do
       Deal::KIND_TRAVEL.should == 11
+    end
+  end
+
+  describe "#calculate_discount" do
+    it "should be calculated on validation" do
+      deal.should_receive(:calculate_discount)
+      deal.valid?
+    end
+
+    it "should withdraw the price from the real price" do
+      deal.real_price = 2
+      deal.price = 1.5
+      deal.calculate_discount
+
+      deal.discount.should == 0.5
+    end
+
+    it "should not withdraw the price from the real price if there's no real price" do
+      deal.real_price = nil
+      deal.discount = nil
+      deal.calculate_discount
+
+      deal.discount.should == nil
+    end
+  end
+
+  describe "#discount_to_percentage" do
+    it "should return nil when there's no discount" do
+      deal.discount = nil
+      deal.discount_to_percentage.should == nil
+    end
+
+    it "should return 0.5 when there's a 50% discount" do
+      deal.real_price = 3.6
+      deal.discount = 1.8
+
+      deal.discount_to_percentage.should == 0.5
+    end
+
+    it "should return 0.3 when there's a 30% discount" do
+      deal.real_price = 7.4
+      deal.discount = 2.22
+
+      deal.discount_to_percentage.should == 0.3
+    end
+
+    it "should return 1 when there's a 100% discount" do
+      deal.real_price = 1
+      deal.discount = 1
+
+      deal.discount_to_percentage.should == 1
     end
   end
 end

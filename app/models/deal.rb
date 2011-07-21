@@ -33,7 +33,7 @@ class Deal < ActiveRecord::Base
 
   after_validation :calculate_discount
 
-  attr_accessible :category, :company, :description, :end_date, :kind, :link, :price, :title
+  attr_accessible :address, :category, :company, :description, :end_date, :kind, :link, :price, :title
 
 
   default_scope order("created_at desc")
@@ -42,6 +42,10 @@ class Deal < ActiveRecord::Base
 
   def self.kind(kind)
     where(:kind => kind)
+  end
+
+  def discount_to_percentage
+    (self.discount / self.real_price) if self.real_price?
   end
 
   def calculate_discount

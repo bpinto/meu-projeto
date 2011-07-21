@@ -41,8 +41,8 @@
 <div class="clear"></div>
 
 <div id="result_offers">
-  <% @deals.each do |deal| %>
-    <%= default_deal deal %>
+  <% @deals.each_with_index do |deal, index| %>
+    <%= default_deal deal, index %>
   <% end %>
   <div class="offer">
     <a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" target="_blank"><img src="http://imagem.zipme.com.br/peq/37ba1463284a2d6ad6bc6f5b3d244821.jpg" class="offer_img" alt="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" title="Búzios: 2 diárias p/ 3 pessoas + café da manhã + pizza + refrigerante" width="200" height="150" /></a>
@@ -71,7 +71,7 @@
       <div class="offer_discount"><strong>57%</strong><br />desconto</div>
       <div class="offer_real">De:<br /><strong>R$ 450,00</strong></div> 
       <div class="offer_economy">Economia:<br /><strong>R$ 260,10</strong></div>
-      <div class="offer_time contador0"></div>
+      <div class="offer_time contador1"></div>
       <div class="offer_go"><a href="http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" onclick="recordOutboundLink(this, 'Outbound Links', 'http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm');" rel="nofollow" target="_blank">Ir para o site</a></div>
     </div>
 

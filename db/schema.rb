@@ -13,19 +13,20 @@
 ActiveRecord::Schema.define(:version => 20110721021452) do
 
   create_table "deals", :force => true do |t|
-    t.float    "price",       :null => false
-    t.text     "description", :null => false
-    t.string   "link",        :null => false
-    t.string   "title",       :null => false
-    t.string   "kind",        :null => false
-    t.integer  "user_id",     :null => false
+    t.float    "price",                                     :null => false
+    t.text     "description",                               :null => false
+    t.string   "link",                                      :null => false
+    t.string   "title",                                     :null => false
+    t.string   "kind",                                      :null => false
+    t.integer  "user_id",                                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category",    :null => false
-    t.string   "company",     :null => false
-    t.float    "discount"
-    t.datetime "end_date",    :null => false
-    t.float    "real_price"
+    t.string   "address"
+    t.integer  "category",                                  :null => false
+    t.string   "company",                                   :null => false
+    t.decimal  "discount",    :precision => 8, :scale => 2
+    t.datetime "end_date"
+    t.decimal  "real_price",  :precision => 8, :scale => 2
   end
 
   create_table "relationships", :force => true do |t|
