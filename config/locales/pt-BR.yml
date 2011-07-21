@@ -237,3 +237,18 @@
 
       full_messages:
         format: "%{attribute} %{message}"
+
+  models:
+    deal:
+      kind:
+        1: "Bebidas"
+        2: "Beleza e Saúde"
+        3: "Celulares e Telefones"
+        4: "DVDs e CDs"
+        5: "Eletrodomésticos"
+        6: "Eletrônicos"
+        7: "Esportes e Lazer"
+        8: "Informática"
+        9: "Livros"
+        10: "Roupas e Calçados"
+        11: "Viagens"
