@@ -13,7 +13,7 @@ Given /^(\d+) deals? (?:was|were) registered (\w*)$/ do |amount, date_name|
   end
 
   amount.to_i.times do
-    Factory.create :deal, :created_at => date
+    Factory.create :deal, :created_at => date, :title => date_name
   end
 end
 

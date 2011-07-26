@@ -53,6 +53,6 @@ class Deal < ActiveRecord::Base
   end
 
   def self.kinds
-    DEAL::KINDS.each {|id| [id, I18n.t("models.deal.kind.#{id}")]}
+    Deal::KINDS.each {|id| [id, I18n.t("models.deal.kind.#{id}")]}
   end
 end

@@ -39,29 +39,15 @@
       </div>
 
       <div id="header">
-        <!-- INFORMACOES DE LOGIN DO USUARIO-->
-        <div class="login">
-          <%= render 'devise/menu/registration_items' %>
-          <%= render 'devise/menu/login_items' %>
-          <div class="clear"></div>
-        </div>
-
-        <script type="text/javascript" charset="utf-8">
-          function ShowHide(){
-            $("#box-login").animate({"height": "toggle"}, { duration: 200 });
-          }
-        </script>
-        <!-- FIM DO LOGIN -->
+        <%= render 'devise/menu/login_items' %>
 
         <a class="logo" href="http://www.saveme.com.br" title="SaveMe | Encontre sua oferta!"></a>
 
         <!-- TODO: Rever essa parte abaixo -->
-        <form id="cadastro" name="cadastrese" action="/cadastre-se/" method="post" style="margin-left:15px; width:auto;">
-          <input type="hidden" name="catgs_cid" id="catgs_cid" value="" />
-          <input name="email" type="text" class="email-cadastre" id="email-cadastre-br" title="Digite seu e-mail e receba nossas ofertas" style="width:490px !important; *width:410px !important;" />
+        <form id="cadastro" name="cadastrese" action="#" method="post" style="margin-left:15px; width:auto;">
+          <input name="email" type="text" class="email-cadastre" id="email-cadastre-br" title="Buscar oferta" style="width:490px !important; *width:410px !important;" />
 
-          <input type="hidden" name="c" value="rio-de-janeiro" />
-          <a href="#" id="cadastrar">Cadastrar</a>
+          <a href="#" id="cadastrar">Buscar</a>
         </form>
 
         <!-- TODO: Rever essa parte abaixo -->
@@ -74,22 +60,7 @@
 
       <!-- TODO: Rever essa parte abaixo -->
       <script src="http://imagem.zipme.com.br/JQueryLib/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-      <script src="http://imagem.zipme.com.br/JQueryLib/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
-      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-      <script type="text/javascript" src="http://imagem.zipme.com.br/js/saveme_geo.js?v=20110711"></script>
-      <script type="text/javascript" src="http://imagem.zipme.com.br/js/layerpopup.js?v=20110712"></script>
-      <script type="text/javascript" src="http://imagem.zipme.com.br/js/compracoletiva.js?v=20110711"></script>
       <link rel="stylesheet" href="http://imagem.zipme.com.br/JQueryLib/css/prettyPhoto.css" type="text/css" media="screen" />
-      <script>
-        var limit='20110528';
-        var cur  ='20110714';
-        var baseurls = {"cidade":"\/compra-coletiva\/%s\/","ordenar":"\/compra-coletiva\/rio-de-janeiro\/?ordenar_por=%s","caturl":"\/compra-coletiva\/rio-de-janeiro\/%s\/","catids":"\/compra-coletiva\/rio-de-janeiro\/?catgs=%s","pagina":"\/compra-coletiva\/rio-de-janeiro\/pagina-%d\/","geosort":"\/compra-coletiva\/rio-de-janeiro\/?ordenar_por=geo","geomap":"\/compra-coletiva\/mapa\/rio-de-janeiro\/","pagina1":"\/compra-coletiva\/rio-de-janeiro\/","mundo":"\/compra-coletiva\/%s\/rio-de-janeiro\/mundo\/","busca":"\/compra-coletiva\/rio-de-janeiro"};
-        var catslug = {"1":"esporte","2":"saude-e-beleza","3":"restaurantes","4":"entretenimento","5":"servicos-locais","6":"hoteis-e-viagens","7":"cursos-e-aulas","10":"produtos","11":"bares-e-baladas"};
-        var translate ={
-          'aguarde':'Aguarde',
-          'fale_conosco_botao_enviar':'Enviar'
-        };
-      </script>
 
       <!-- TODO: Rever essa parte abaixo -->
       <style type="text/css">

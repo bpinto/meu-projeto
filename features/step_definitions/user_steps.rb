@@ -37,7 +37,7 @@ Given /^I am signed up as "(.*)\/(.*)"$/ do |email, password|
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
   And %{I fill in "Password confirmation" with "#{password}"}
-  And %{I press "Sign up"}
+  And %{I press "Cadastre-se"}
   Then %{I should see "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."}
   And %{I am logout}
 end
@@ -67,7 +67,7 @@ When /^I return next time$/ do
 end
 
 Then /^I should be signed out$/ do
-  And %{I should see "Sign up"}
+  And %{I should see "Cadastre-se"}
   And %{I should see "Login"}
   And %{I should not see "Logout"}
 end
