@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 module DealsHelper
+  #TODO: O link de ver detalhes ainda não funciona.
   def default_deal(deal, index)
     html = <<-EOS
       <div class="offer">
-        #{link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => deal.title, :class => "offer_img", :width => '200', :height => '150'), deal.link, :rel => "nofollow", :target => '_blank')}
+        #{link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => deal.title, :title => deal.title, :class => "offer_img", :width => '200', :height => '150'), deal.link, :rel => "nofollow", :target => '_blank')}
         <div class="offer_text">
           <div class="offer_desc">
             <h2>#{link_to(deal.title, deal.link, :rel => "nofollow", :target => '_blank')}
             <h3>#{deal.address}</h3>
           </div>
 
+          #{link_to(image_tag('http://imagem.zipme.com.br/css/images/ver-detalhes.gif', :alt => 'Ver detalhes', :title => deal.title), user_deal_path(:id => deal.id, :user_id => deal.user_id), :class => 'link-detalhes')}
+          <h4>
             <strong>Em:</strong> #{I18n.t "models.deal.kind.#{deal.kind}"}<br/>
             <strong>Oferta por:</strong>#{deal.company}
             <a class="offer_mail" href="javascript:void(0);" onclick="box_email(this,343017)"></a>
@@ -19,10 +22,10 @@ module DealsHelper
         </div>
         <div class="offer_values">
           <div class="offer_value">#{link_to(price_to_currency(deal.price), deal.link, :rel => "nofollow", :target => '_blank')}</div>
-          <div class="offer_discount"><strong>#{number_to_percentage(deal.discount_to_percentage) || "--"}</strong><br/>desconto</div>
+          <div class="offer_discount"><strong>#{number_to_percentage(deal.discount_to_percentage, :precision => 0) || "--"}</strong><br/>desconto</div>
           <div class="offer_real">De:<br/><strong>#{number_to_currency(deal.real_price) || "--"}</strong></div>
           <div class="offer_economy">Economia:<br/><strong>#{number_to_currency(deal.discount) || "--"}</strong></div>
-          <div class="offer_time_contador#{index}"></div>
+          <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}">Não informado</div>
           <div class="offer_go">#{link_to "Ir para o site", deal.link, :rel => "nofollow", :target => "_blank"}</div>
         </div>
       </div>

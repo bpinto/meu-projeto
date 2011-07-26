@@ -190,25 +190,25 @@ describe Deal do
       deal.discount_to_percentage.should == nil
     end
 
-    it "should return 0.5 when there's a 50% discount" do
-      deal.real_price = 3.6
-      deal.discount = 1.8
-
-      deal.discount_to_percentage.should == 0.5
-    end
-
-    it "should return 0.3 when there's a 30% discount" do
+    it "should return 30 when there's a 30% discount" do
       deal.real_price = 7.4
       deal.discount = 2.22
 
-      deal.discount_to_percentage.should == 0.3
+      deal.discount_to_percentage.should == 30
     end
 
-    it "should return 1 when there's a 100% discount" do
+    it "should return 50 when there's a 50% discount" do
+      deal.real_price = 3.6
+      deal.discount = 1.8
+
+      deal.discount_to_percentage.should == 50
+    end
+
+    it "should return 100 when there's a 100% discount" do
       deal.real_price = 1
       deal.discount = 1
 
-      deal.discount_to_percentage.should == 1
+      deal.discount_to_percentage.should == 100
     end
   end
 end

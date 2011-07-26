@@ -45,7 +45,7 @@ class Deal < ActiveRecord::Base
   end
 
   def discount_to_percentage
-    (self.discount / self.real_price) if self.real_price?
+    (self.discount / self.real_price) * 100 if self.real_price?
   end
 
   def calculate_discount

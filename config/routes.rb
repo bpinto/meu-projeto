@@ -1,5 +1,5 @@
 DealWitMe::Application.routes.draw do
-  
+
   #get \"users\/show\"
   get "deals/today"
 
