@@ -12,6 +12,7 @@ Feature: New Deal
 
     Scenario: Creating a new deal successfully
       Given I am on test@email.com's new deal page
+      Then show me the page
       When I fill the deal fields correctly
       And I press "Confirm"
       Then I should see "Oferta criada com sucesso!"

@@ -5,22 +5,34 @@
       <%= form_for([current_user, @deal]) do |f| %>
         <div>
           <%= f.label :title %>
-          <%= f.text_field :title %> - 
-          <%= f.label "R$" %>
+          <%= f.text_field :title %>
+        </div>
+
+        <div>
+          <%= f.label :price %>
           <%= f.text_field :price %>
         </div>
+
         <div>
-          <%= f.label :kind %><br/>
-          <%= f.select :kind, Deal::KINDS %>
+          <%= f.label :real_price %>
+          <%= f.text_field :real_price %>
         </div>
+
         <div>
-          <%= f.label :description %><br />
+          <%= f.label :kind %>
+          <%= f.select :kind, Deal.kinds %>
+        </div>
+
+        <div>
+          <%= f.label :description %>
           <%= f.text_area :description %>
         </div>
+
         <div>
-          <%= f.label :link %><br />
+          <%= f.label :link %>
           <%= f.text_field :link %>
         </div>
+
         <div>
           <%= f.submit "Confirm" %>
         </div>

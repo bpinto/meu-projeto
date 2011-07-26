@@ -51,4 +51,8 @@ class Deal < ActiveRecord::Base
   def calculate_discount
     (self.discount = self.real_price - self.price) if self.real_price?
   end
+
+  def self.kinds
+    DEAL::KINDS.each {|id| [id, I18n.t("models.deal.kind.#{id}")]}
+  end
 end
