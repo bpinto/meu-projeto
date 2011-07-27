@@ -28,7 +28,7 @@ Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email
 end
 
 Then /^I should be already signed in$/ do
-  And %{I should see "Logout"}
+  And %{I should see "Sair"}
 end
 
 Given /^I am signed up as "(.*)\/(.*)"$/ do |email, password|

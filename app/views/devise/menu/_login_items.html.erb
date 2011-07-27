@@ -17,8 +17,8 @@
 
     <div class="box-login" id="box-login">
       <%= form_for("user", :url => user_session_path, :html => {:class => 'formlogin'}) do |f| %>
-        <%= f.label :email %> <%= f.text_field :email, :class => 'input-login', :size => nil %>
-        <%= f.label :password, "Senha: " %> <%= f.password_field :password , :class =>'input-login', :size => nil %>
+        <%= label_tag 'js_user_email', 'Email: ' %> <%= f.text_field :email, :id => 'js_user_email', :class => 'input-login', :size => nil %>
+        <%= label_tag 'js_user_password', "Senha: " %> <%= f.password_field :password, :id => 'js_user_password', :class =>'input-login', :size => nil %>
         <%= link_to "Esqueceu sua senha?", new_password_path('user'), :class => "esqueceu-senha-link" %>
         <%= f.submit "Entrar", :class => "entrar-login-btn" %>
       <% end %>
