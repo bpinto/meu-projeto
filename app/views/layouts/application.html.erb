@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="http://imagem.zipme.com.br/css/saveme.css?v=20110711-2"/>
     <link rel="stylesheet" type="text/css" href="http://imagem.zipme.com.br/css/usuario.css?v=20110624"/>
     <script>var hostimagem  = 'http://imagem.zipme.com.br';</script>
+    <script type="text/javascript" src="http://imagem.zipme.com.br/js/saveme.js?v=20110720"></script>
     <script type="text/javascript" id="navegg" src="http://lt.navegg.com/lt.js?1011"></script>
   </head>
 
@@ -110,10 +111,10 @@
           <div class="folders_top compra">
             <ul id="folders">
               <li>
-                <%= link_to 'Perfil', deals_today_path, :class => "aba_compra2"%>
+                <h1><%= link_to 'Ofertas do Dia', deals_today_path, :class => "aba_compra"%></h1>
               </li>
               <li>
-                <h1><%= link_to 'Ofertas do Dia', deals_today_path, :class => "aba_clube"%></h1>
+                <%= link_to 'Perfil', deals_today_path, :class => "aba_clube2"%>
               </li>
               <li>
                 <%= link_to 'Seguidores', deals_today_path, :class => "aba_varejo2", :style => 'padding-left:65px' %>

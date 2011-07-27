@@ -9,10 +9,4 @@
 <% end %>
 
 
-<div id="deals">
-  <% @user.deals.each do |deal| %>
-    <div name="title">
-      Title: <%= deal.title %>
-    </div>
-  <% end %>
-</div>
+<%= default_deal(@user.deals) %>

@@ -1,7 +1,36 @@
 # -*- coding: utf-8 -*-
 module DealsHelper
+  def default_deal(deals)
+    html = "<div id='result_offers'>"
+
+    deals.each_with_index do |deal, index|
+      html += single_default_deal(deal, index)
+    end
+
+    html += "</div>"
+    html += <<-EOS
+    <div class="offers_pagination">
+      <p>
+        <a class="pag_first" href="/compra-coletiva/rio-de-janeiro/"></a>
+        <a class="pag_now" href="#">1</a>
+        <a href="/compra-coletiva/rio-de-janeiro/pagina-2/">2</a>
+        <a href="/compra-coletiva/rio-de-janeiro/pagina-3/">3</a>
+        <a href="/compra-coletiva/rio-de-janeiro/pagina-4/">4</a>
+        <a href="/compra-coletiva/rio-de-janeiro/pagina-5/">5</a>
+        <a href="/compra-coletiva/rio-de-janeiro/pagina-6/">6</a>
+        <a class="pag_next" href="/compra-coletiva/rio-de-janeiro/pagina-2/"></a>
+        <a class="pag_last" href="/compra-coletiva/rio-de-janeiro/pagina-48/"></a>
+      </p>
+
+      <p>( + 1406 Ofertas )</p>
+    </div>
+    EOS
+
+    html.html_safe
+  end
+
   #TODO: O link de ver detalhes ainda não funciona.
-  def default_deal(deal, index)
+  def single_default_deal(deal, index)
     html = <<-EOS
       <div class="offer">
         #{link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => deal.title, :title => deal.title, :class => "offer_img", :width => '200', :height => '150'), deal.link, :rel => "nofollow", :target => '_blank')}
