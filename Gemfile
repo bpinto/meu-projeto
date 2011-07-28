@@ -9,6 +9,7 @@ gem 'rails', '3.1.0.rc1'
 gem 'sass'
 gem 'therubyracer'
 gem 'uglifier'
+gem 'heroku'
 
 group :development, :test do
   gem 'awesome_print'
