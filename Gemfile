@@ -4,7 +4,7 @@ gem "devise", ">= 1.3.4"
 gem 'gravtastic'
 gem 'json'
 gem 'jquery-rails'
-gem 'mysql2'
+#gem 'mysql2'
 gem 'rails', '3.1.0.rc1'
 gem 'sass'
 gem 'therubyracer'
@@ -33,11 +33,11 @@ gem 'heroku'
 #  gem 'guard-spork'
 #  gem "shoulda-matchers"
 
-  if `uname -a`.include? "Darwin" #Mac OSX
-    gem 'rb-fsevent'
-    gem 'growl'
-  else
-    gem 'rb-inotify'
-    gem 'libnotify'
-  end
-end
+#  if `uname -a`.include? "Darwin" #Mac OSX
+#    gem 'rb-fsevent'
+#    gem 'growl'
+#  else
+#    gem 'rb-inotify'
+#    gem 'libnotify'
+#  end
+#end
