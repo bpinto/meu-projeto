@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>DealWit.Me</title>
+
+    <!-- TODO: Rever essa parte abaixo -->
+    <meta name="keyword" content="Compra Coletiva, Clube de Compras, Descontos, Ofertas, Promo&ccedil;&otilde;es" />
+    <meta name="description" content="Todas as ofertas anunciadas nos melhores sites de Compra Coletiva e Clubes de Compra do pa&iacute;s em um s&oacute; lugar" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Language" content="pt-br" />
+    <meta http-equiv="Cache-Control" content="public" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Buscap&eacute; Inc." />
+    <meta name="copyright" content="&copy;2011 BuscaPe Inc." />
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <!-- TODO: Rever essa parte abaixo -->
+    <link rel="stylesheet" type="text/css" href="http://imagem.zipme.com.br/css/saveme.css?v=20110711-2"/>
+    <link rel="stylesheet" type="text/css" href="http://imagem.zipme.com.br/css/usuario.css?v=20110624"/>
+    <script>var hostimagem  = 'http://imagem.zipme.com.br';</script>
+    <script type="text/javascript" src="http://imagem.zipme.com.br/js/saveme.js?v=20110720"></script>
+    <script type="text/javascript" id="navegg" src="http://lt.navegg.com/lt.js?1011"></script>
+  </head>
+
+  <body>
+    <!-- TODO: Rever essa parte abaixo -->
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>
+
+    <div id="main">
+      <!-- TODO: Rever essa parte abaixo -->
+      <div id="superbanner">
+        <script type="text/javascript" language="JavaScript1.1" src="http://ads.buscape.com.br/RealMedia/ads/adstream_jx.ads/br.saveme/ros@Top!Top"></script>
+      </div>
+
+      <div id="header">
+        <%= render 'devise/menu/login_items' %>
+
+        <a class="logo" href="http://www.saveme.com.br" title="SaveMe | Encontre sua oferta!"></a>
+
+        <!-- TODO: Rever essa parte abaixo -->
+        <form id="cadastro" name="cadastrese" action="#" method="post" style="margin-left:15px; width:auto;">
+          <input name="email" type="text" class="email-cadastre" id="email-cadastre-br" title="Buscar oferta" style="width:490px !important; *width:410px !important;" />
+
+          <a href="#" id="cadastrar">Buscar</a>
+        </form>
+
+        <!-- TODO: Rever essa parte abaixo -->
+        <div class="compartilhe_cabecalho">
+          <a class="saveme_rss_novo" href="http://www.saveme.com.br/rss/index?slug=rio-de-janeiro" target="_blank"></a>
+          <a class="saveme_twitter_novo" href="http://twitter.com/#!/DealWitMe" target="_blank"></a>
+          <a class="saveme_facebook_novo" href="http://www.facebook.com/pages/DealWitMe/185842298135367" target="_blank"></a>
+        </div>
+      </div>
+
+      <!-- TODO: Rever essa parte abaixo -->
+      <script src="http://imagem.zipme.com.br/JQueryLib/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+      <link rel="stylesheet" href="http://imagem.zipme.com.br/JQueryLib/css/prettyPhoto.css" type="text/css" media="screen" />
+
+      <!-- TODO: Rever essa parte abaixo -->
+      <style type="text/css">
+        div.light_square .pp_left, div.light_square .pp_middle, div.light_square .pp_right, div.light_square .pp_content {
+            background: none repeat scroll 0 0 transparent;
+        }
+        div.light_square .pp_details {
+          margin-top:-10px;
+        }
+        div.light_square .pp_close {
+          display:none;
+        }
+
+        #pp_full_res iframe {
+          background-color:transparent;
+        }
+        .ppt {
+          display:none !important;
+        }
+        .pp_loaderIcon {
+              display: block;
+              height: 24px;
+              left: 10%;
+              margin: -12px 0 0 -12px;
+              position: absolute;
+              top: 50%;
+              width: 208px;
+        }
+      </style>
+
+      <!-- TODO: Rever essa parte abaixo -->
+      <form name="formOferta" target="blank" action=""></form>
+        <div id="filters_content_top">
+          <div class="filters_top_busca" style="padding:0; margin:0;">
+            <form action="/ofertas/compra-coletiva" id="form_busca" method="get" style="padding:0; margin:0;">
+              <input name="catgs" id="catgs_busca" type="hidden" value="" />
+              <input name="c" type="hidden" value="rio-de-janeiro" />
+              <input name="ordernar_por" type="hidden" value="ordenar_por" />
+              <input type="text" name="busca" id="busca" value="Buscar no SaveMe..." title="Buscar no SaveMe..." class="campos_fc" style="float:left; width:140px; height:20px;" />
+              <input id="ok_busca" type="submit" value="Buscar" style="background: url('http://imagem.zipme.com.br/css/images/bt_buscar_novo.png') no-repeat scroll 0 0 transparent; height:30px; *margin-top:5px;" />
+            </form>
+          </div>
+
+          <!-- Abas -->
+          <!-- TODO: Rever essa parte abaixo -->
+          <!-- É necessário o h1 e o número 2 no nome das classes -->
+          <div class="folders_top clube">
+            <ul id="folders">
+              <li>
+                <%= link_to 'Perfil', deals_today_path, :class => "aba_compra2"%>
+              </li>
+              <li>
+                <h1><%= link_to 'Ofertas do Dia', deals_today_path, :class => "aba_clube"%></h1>
+              </li>
+              <li>
+                <%= link_to 'Seguidores', deals_today_path, :class => "aba_varejo2", :style => 'padding-left:65px' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="filters_content">
+          <div style="width:224px; float:left;">
+            <div class="titulo_lateral">
+              <strong>Categorias</strong>
+            </div>
+
+            <div id="filters">
+              <div id="filters_area">
+                <div id="categories">
+                  <form action="" id="form_categorias" method="get">
+                    <input name="catgs" id="catgs" type="hidden" value="" />
+                    <input name="c" type="hidden" value="rio-de-janeiro" />
+                    <input name="mundo" id="mundo" type="hidden" value="" />
+                    <input name="ordernar_por" type="hidden" value="ordenar_por" />
+                  </form>
+
+                  <span class="todas_limpar"><a href="javascript:void(0);" id="todascat">Selecionar Todos</a> | <a href="javascript:void(0);" id="limparcat">Limpar</a></span>
+                  <ul>
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="11" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/bares-e-baladas/'>Bares e Baladas</a>
+                        <span style="float:right; color:#999;">(7)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="7" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/cursos-e-aulas/'>Cursos e Aulas</a>
+                        <span style="float:right; color:#999;">(33)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="4" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/entretenimento/'>Entretenimento</a>
+                        <span style="float:right; color:#999;">(86)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="1" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/esporte/'>Esportes</a>
+                        <span style="float:right; color:#999;">(10)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="6" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/hoteis-e-viagens/'>Hotéis e Viagens</a>
+                        <span style="float:right; color:#999;">(466)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="10" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/produtos/'>Produtos</a>
+                        <span style="float:right; color:#999;">(241)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="3" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/restaurantes/'>Restaurantes</a>
+                        <span style="float:right; color:#999;">(75)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="2" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/saude-e-beleza/'>Saúde e Beleza</a>
+                        <span style="float:right; color:#999;">(453)</span>
+                      </label>
+                    </li>
+
+                    <li>
+                      <label>
+                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="5" />
+                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/servicos-locais/'>Serviços Locais</a>
+                        <span style="float:right; color:#999;">(65)</span>
+                      </label>
+                    </li>
+                  </ul>
+
+                  <input id="filtrar" type="submit" value="Filtrar" onclick="post_categ()" />
+                </div>
+
+                <h3 class="mobileh3">Você curte o SaveMe?</h3>
+                <div style="padding:0 0 0 8px;">
+                  <div id="fb-root"></div>
+                  <script src="http://connect.facebook.net/pt_BR/all.js#xfbml=1"></script>
+                  <fb:like-box href="http://www.facebook.com/savemebr" width="205" show_faces="true" stream="false" header="false" height="255"></fb:like-box>
+                </div>
+
+                <h3>Siga o SaveMe!</h3>
+                <div style="margin:0 0 0 8px">
+                  <a href="http://twitter.com/#!/DealWitMe" target="_blank"><img src="http://imagem.zipme.com.br/css/images/siga_saveme.jpg" alt="Siga o SaveMe no Twitter e fique por dentro das novidades." border="0" /></a>
+                </div>
+              </div>
+            </div>
+            <div id="more_offers_footer">&nbsp;</div>
+          </div>
+
+          <div id="content">
+            <%= yield %>
+          </div>
+        </div>
+
+        <div class="send-email" style="display:none">
+          <div class="fechar-send-email"><a href="javascript:void(0);" onclick="javascript:$('.send-email').css('display','none');$('.form-send-email').css('display','block');$('.ok-send-email').css('display','none');">x</a></div>
+          <div class="form-send-email">
+            <p><strong>Enviar oferta por e-mail</strong></p>
+            <p><span>Seu email:</span><input name="email" id="rem_email" size="43" type="text" alt="Digite o seu e-mail..." value="Digite o seu e-mail..." /></p>
+            <p><span>Destinat&aacute;rio:</span><input name="dest" id="dest_email" size="43" type="text"  alt="Digite o e-mail do destinat&aacute;rio..." value="Digite o e-mail do destinat&aacute;rio..." /></p>
+            <p><span>Coment&aacute;rios:</span><input name="coment" id="coment_email" size="43" type="text" value="" />
+            <input type="submit" value="Enviar" id="send_offer" /><input name="cod_oferta" id="cod_oferta" type="hidden" value="" /></p>
+          </div>
+          <p class="ok-send-email"><strong>E-mail enviado com sucesso!</strong></p>
+        </div>
+
+        <div class="filters_content_footer"></div>
+      </div>
+
+      <div id="footer">
+        <div id="footer_corp">
+          <div id="footer_corp_clear"></div>
+          <div id="footer_corp_saveme">
+            <ul>
+              <li><a href="/cadastre-se/?c=rio-de-janeiro&amp;catgs=&amp;orig=home">Cadastre-se</a></li>
+              <li><a href="/sobre/?c=rio-de-janeiro&amp;catgs=">Sobre</a></li>
+              <li><a href="/fale-conosco/?c=rio-de-janeiro&amp;catgs=">Fale Conosco</a></li>
+              <li><a href="/imprensa/?c=rio-de-janeiro&amp;catgs=">Imprensa</a></li>
+            </ul>
+          </div>
+
+          <div id="footer_corp_content">
+            <ul>
+              <li><a href="/compra-coletiva/?c=rio-de-janeiro&amp;catgs=">O que &eacute; Compra Coletiva?</a></li>
+              <li><a href="/clube-compra/?c=rio-de-janeiro&amp;catgs=">O que &eacute; Clube de Compra?</a></li>
+            </ul>
+
+            <ul id="flags">
+              <li class="flag_arg"><a target='_blank' href="http://www.saveme.com.ar">SaveMe Argentina</a></li>
+              <li class="flag_chi"><a target='_blank' href="http://www.saveme.cl">SaveMe Chile</a></li>
+              <li class="flag_clb"><a target='_blank' href="http://www.saveme.com.co">SaveMe Col&ocirc;mbia</a></li>
+              <li class="flag_mex"><a target='_blank' href="http://www.saveme.com.mx">SaveMe M&eacute;xico</a></li>
+            </ul>
+          </div>
+
+          <div id="footer_corp_copyrights">
+              <p>O SaveMe &eacute; um portal que re&uacute;ne todas as ofertas anunciadas nos sites de compra coletiva e clubes de compra do país em um s&oacute; lugar. O portal faz com que o usu&aacute;rio economize tempo e dinheiro ao buscar ofertas e descontos na Web, gerando uma enorme praticidade e economia.</p>
+          </div>
+        </div>
+
+        <div style="width:100%; background-color:red; background:url(http://imagem.zipme.com.br/css/images/bg_footer.jpg) 0 -195px; padding:10px 5px 5px 5px; text-align:center; font-size:11px; color:#c8c8c8">
+          <p>© 2011 SaveMe - Todos os direitos reservados. Nomes, imagens e marcas pertencem a seus respectivos propriet&aacute;rios.
+            <a href="/termo/?c=rio-de-janeiro&amp;catgs="><strong>Termo</strong></a>
+            <span class="ip_servidor">(50.23.239.135)</span>
+          </p>
+        </div>
+      </div>
+  </body>
+</html>
