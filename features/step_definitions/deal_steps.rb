@@ -18,12 +18,11 @@ end
 
 Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
-
-  hash = {}
-  hash[attribute.to_s] = value
+  value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
+  value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
 
   amount.to_i.times do
-    Factory.create :deal, hash
+    Factory.create :deal, Hash[attribute => value]
   end
 end
 
