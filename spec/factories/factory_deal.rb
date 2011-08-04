@@ -2,10 +2,10 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :deal do |f|
-    category 1 #TODO: Refatorar
+    category Deal::CATEGORY_DRINK
     company "F_COMPANY"
     description "F_DESCRIPTION"
-    kind Deal::KIND_DRINK
+    kind 1 #TODO: Refatorar
     f.link "http://F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
     price 0.99
     title "F_TITLE"

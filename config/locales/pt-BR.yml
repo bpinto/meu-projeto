@@ -240,10 +240,10 @@
 
   models:
     deal:
-      kind:
+      category:
         '1': "Bebidas"
         '2': "Beleza e Saúde"
-        '3': "Celulares e Telefones"
+        '3': "Celulares, Telefones e Câmeras"
         '4': "DVDs e CDs"
         '5': "Eletrodomésticos"
         '6': "Eletrônicos"
@@ -252,3 +252,6 @@
         '9': "Livros"
         '10': "Roupas e Calçados"
         '11': "Viagens"
+        '12': "Restaurantes"
+        '13': "Brinquedos"
+        '14': "Artigos e peças automotivas"

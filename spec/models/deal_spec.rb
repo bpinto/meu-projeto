@@ -111,53 +111,65 @@ describe Deal do
     end
   end
 
-  describe "KINDS" do
-    it "should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" do
-      Deal::KINDS.should =~ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  describe "CATEGORIES" do
+    it "should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]" do
+      Deal::CATEGORIES.should =~ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     end
 
     specify "DRINK: should be equal 1" do
-      Deal::KIND_DRINK.should == 1
+      Deal::CATEGORY_DRINK.should == 1
     end
 
     specify "BEAUTY_AND_HEALTH: should be equal 2" do
-      Deal::KIND_BEAUTY_AND_HEALTH.should == 2
+      Deal::CATEGORY_BEAUTY_AND_HEALTH.should == 2
     end
 
     specify "PHONE: should be equal 3" do
-      Deal::KIND_PHONE.should == 3
+      Deal::CATEGORY_PHONE_AND_CAMERA.should == 3
     end
 
     specify "CD_AND_DVD: should be equal 4" do
-      Deal::KIND_CD_AND_DVD.should == 4
+      Deal::CATEGORY_CD_AND_DVD.should == 4
     end
 
     specify "HOME_AND_APPLIANCE: should be equal 5" do
-      Deal::KIND_HOME_AND_APPLIANCE.should == 5
+      Deal::CATEGORY_HOME_AND_APPLIANCE.should == 5
     end
 
     specify "ELETRONICS: should be equal 6" do
-      Deal::KIND_ELETRONICS.should == 6
+      Deal::CATEGORY_ELETRONICS.should == 6
     end
 
     specify "FITNESS: should be equal 7" do
-      Deal::KIND_FITNESS.should == 7
+      Deal::CATEGORY_FITNESS.should == 7
     end
 
     specify "COMPUTER: should be equal 8" do
-      Deal::KIND_COMPUTER.should == 8
+      Deal::CATEGORY_COMPUTER.should == 8
     end
 
     specify "BOOK: should be equal 9" do
-      Deal::KIND_BOOK.should == 9
+      Deal::CATEGORY_BOOK.should == 9
     end
 
     specify "CLOTHES: should be equal 10" do
-      Deal::KIND_CLOTHES.should == 10
+      Deal::CATEGORY_CLOTHES.should == 10
     end
 
     specify "TRAVEL: should be equal 11" do
-      Deal::KIND_TRAVEL.should == 11
+      Deal::CATEGORY_TRAVEL.should == 11
+    end
+
+    specify "RESTAURANT: should be equal 12" do
+      Deal::CATEGORY_RESTAURANT.should == 12
+    end
+
+    specify "TOY: should be equal 13" do
+      Deal::CATEGORY_TOY.should == 13
+    end
+
+    specify "CAR: should be equal 14" do
+      Deal::CATEGORY_CAR.should == 14
     end
   end
 

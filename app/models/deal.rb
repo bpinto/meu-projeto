@@ -1,31 +1,30 @@
 # coding: utf-8
 class Deal < ActiveRecord::Base
-  KIND_DRINK = 1
-  KIND_BEAUTY_AND_HEALTH = 2
-  KIND_PHONE = 3
-  KIND_CD_AND_DVD = 4
-  KIND_HOME_AND_APPLIANCE = 5
-  KIND_ELETRONICS = 6
-  KIND_FITNESS = 7
-  KIND_COMPUTER = 8
-  KIND_BOOK = 9
-  KIND_CLOTHES = 10
-  KIND_TRAVEL = 11
 
-  KINDS = [ KIND_DRINK, KIND_BEAUTY_AND_HEALTH, KIND_PHONE, KIND_CD_AND_DVD, KIND_HOME_AND_APPLIANCE,
-            KIND_ELETRONICS, KIND_FITNESS, KIND_COMPUTER, KIND_BOOK, KIND_CLOTHES,
-            KIND_TRAVEL ]
+  CATEGORY_DRINK = 1
+  CATEGORY_BEAUTY_AND_HEALTH = 2
+  CATEGORY_PHONE_AND_CAMERA = 3
+  CATEGORY_CD_AND_DVD = 4
+  CATEGORY_HOME_AND_APPLIANCE = 5
+  CATEGORY_ELETRONICS = 6
+  CATEGORY_FITNESS = 7
+  CATEGORY_COMPUTER = 8
+  CATEGORY_BOOK = 9
+  CATEGORY_CLOTHES = 10
+  CATEGORY_TRAVEL = 11
+  CATEGORY_RESTAURANT = 12
+  CATEGORY_TOY = 13
+  CATEGORY_CAR = 14
 
-
-  #CATEGORIES = []
+  CATEGORIES = [ CATEGORY_DRINK, CATEGORY_BEAUTY_AND_HEALTH, CATEGORY_PHONE_AND_CAMERA, CATEGORY_CD_AND_DVD, CATEGORY_HOME_AND_APPLIANCE,  CATEGORY_ELETRONICS, CATEGORY_FITNESS, CATEGORY_COMPUTER, CATEGORY_BOOK, CATEGORY_CLOTHES, CATEGORY_TRAVEL, CATEGORY_RESTAURANT,  CATEGORY_TOY, CATEGORY_CAR ]
 
   belongs_to :user
 
-  validates :category,    :presence => true
+  validates :category,    :presence => true,      :inclusion => CATEGORIES
   validates :company,     :presence => true
   validates :description, :presence => true
   validates :discount,    :inclusion => [nil],    :unless => "self.real_price?"
-  validates :kind,        :presence => true,      :inclusion => KINDS
+  validates :kind,        :presence => true
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true
   validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?"
@@ -40,8 +39,8 @@ class Deal < ActiveRecord::Base
 
   scope :today, where("deals.created_at >= ?", Date.today)
 
-  def self.kind(kind)
-    where(:kind => kind)
+  def self.category(category)
+    where(:category => category)
   end
 
   def discount_to_percentage
@@ -52,7 +51,7 @@ class Deal < ActiveRecord::Base
     (self.discount = self.real_price - self.price) if self.real_price?
   end
 
-  def self.kinds
-    Deal::KINDS.each {|id| [id, I18n.t("models.deal.kind.#{id}")]}
+  def self.categories
+    Deal::CATEGORIES.each {|id| [id, I18n.t("models.deal.category.#{id}")]}
   end
 end
