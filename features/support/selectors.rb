@@ -11,6 +11,9 @@ module HtmlSelectorsHelpers
     when "the page"
       "html > body"
 
+    when /^(\w+)'s (\w+)$/
+      ".#{get_field($1, $2)}"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

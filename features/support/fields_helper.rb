@@ -9,6 +9,7 @@ module Fields
 
 
   DEAL = {
+    "address" => "deal_address",
     "description" => "deal_description",
     "link" => "deal_link",
     "price" => "deal_price",

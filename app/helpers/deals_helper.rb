@@ -36,8 +36,8 @@ module DealsHelper
         #{link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => deal.title, :title => deal.title, :class => "offer_img", :width => '200', :height => '150'), deal.link, :rel => "nofollow", :target => '_blank')}
         <div class="offer_text">
           <div class="offer_desc">
-            <h2>#{link_to(deal.title, deal.link, :rel => "nofollow", :target => '_blank')}
-            <h3>#{deal.address}</h3>
+            <h2 class="deal_title">#{link_to(deal.title, deal.link, :rel => "nofollow", :target => '_blank')}</h2>
+            <h3 class="deal_address">#{deal.address}</h3>
           </div>
 
           #{link_to(image_tag('http://imagem.zipme.com.br/css/images/ver-detalhes.gif', :alt => 'Ver detalhes', :title => deal.title), user_deal_path(:id => deal.id, :user_id => deal.user_id), :class => 'link-detalhes')}

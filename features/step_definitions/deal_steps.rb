@@ -4,13 +4,8 @@ Given /^(\d+) deals? exists?$/i do |amount|
   end
 end
 
-Given /^(\d+) deals? (?:was|were) registered (\w*)$/ do |amount, date_name|
-  case date_name
-  when "today"
-    date = Date.today
-  when "yesterday"
-    date = Date.yesterday
-  end
+Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
+  date = get_date(date_name)
 
   amount.to_i.times do
     Factory.create :deal, :created_at => date, :title => date_name
@@ -19,6 +14,17 @@ end
 
 Given /^I have (\d+) deals?$/i do |amount|
   Factory.create :deal, :user => @current_user
+end
+
+Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
+  date = get_date(date_name)
+
+  hash = {}
+  hash[attribute.to_s] = value
+
+  amount.to_i.times do
+    Factory.create :deal, hash
+  end
 end
 
 When /^I fill the deal fields correctly$/ do
