@@ -13,12 +13,8 @@ Feature: View default deal details
       And I am on today's deals page
       Then I should see "Shopping Mall" within deal's address
 
-    Scenario: Viewing deal's real price
-      Given 1 deal with real_price as "1020.01" was registered today
+    @todo_i18n
+    Scenario: Viewing deal's category
+      Given 1 deal with category as "Computer" was registered today
       And I am on today's deals page
-      Then I should see "R$ 1.020,01" within deal's real_price
-
-    Scenario: Viewing deal's price
-      Given 1 deal with price as "190.99" was registered today
-      And I am on today's deals page
-      Then I should see "R$ 190,99" within deal's price
+      Then I should see "Informática" within deal's category

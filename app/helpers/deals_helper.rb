@@ -42,8 +42,8 @@ module DealsHelper
 
           #{link_to(image_tag('http://imagem.zipme.com.br/css/images/ver-detalhes.gif', :alt => 'Ver detalhes', :title => deal.title), user_deal_path(:id => deal.id, :user_id => deal.user_id), :class => 'link-detalhes')}
           <h4>
-            <strong>Em:</strong> #{I18n.t "models.deal.category.#{deal.category}"}<br/>
-            <strong>Oferta por:</strong><h:outputText class="deal_company" value="#{deal.company}" />
+            <strong>Em: </strong><span class="deal_category">#{I18n.t "models.deal.category.#{deal.category}"}</span><br/>
+            <strong>Oferta por: </strong><span class="deal_company">#{deal.company}<span/>
             <a class="offer_mail" href="javascript:void(0);" onclick="box_email(this,343017)"></a>
             <a class="offer_facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.clubedodesconto.com.br%2Frio-de-janeiro%2Fpousada-encanto-dos-anjos-buzios-desconto.htm&t=Oferta%20SaveMe" target="_blank"></a>
             <a class="offer_twitter" href="http://twitter.com/?status=@sigasaveme B%C3%BAzios%3A+2+di%C3%A1rias+p%2F+3+pessoas+%2B+caf%C3%A9+da+manh%C3%A3+%2B+pizza+%2B+refrigerante http://www.clubedodesconto.com.br/rio-de-janeiro/pousada-encanto-dos-anjos-buzios-desconto.htm" target="_blank"></a>

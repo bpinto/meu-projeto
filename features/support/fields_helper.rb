@@ -10,6 +10,8 @@ module Fields
 
   DEAL = {
     "address" => "deal_address",
+    "category" => "deal_category",
+    "company" => "deal_company",
     "description" => "deal_description",
     "link" => "deal_link",
     "price" => "deal_price",
