@@ -255,3 +255,7 @@
         '12': "Restaurantes"
         '13': "Brinquedos"
         '14': "Artigos e peças automotivas"
+      kind:
+        '1': "Ofertas"
+        '2': "Compras Coletivas"
+        '3': "Liquidação"

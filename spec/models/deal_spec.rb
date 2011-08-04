@@ -173,6 +173,24 @@ describe Deal do
     end
   end
 
+  describe "KINDS" do
+    it "should return [1, 2, 3]" do
+      Deal::KINDS.should =~ [1, 2, 3]
+    end
+
+    specify "OFFER: should be equal 1" do
+      Deal::KIND_OFFER.should == 1
+    end
+
+    specify "DAILY_DEAL: should be equal 2" do
+      Deal::KIND_DAILY_DEAL.should == 2
+    end
+
+    specify "ON_SALE: should be equal 3" do
+      Deal::KIND_ON_SALE.should == 3
+    end
+  end
+
   describe "#calculate_discount" do
     it "should be calculated on validation" do
       deal.should_receive(:calculate_discount)

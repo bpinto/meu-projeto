@@ -18,13 +18,19 @@ class Deal < ActiveRecord::Base
 
   CATEGORIES = [ CATEGORY_DRINK, CATEGORY_BEAUTY_AND_HEALTH, CATEGORY_PHONE_AND_CAMERA, CATEGORY_CD_AND_DVD, CATEGORY_HOME_AND_APPLIANCE,  CATEGORY_ELETRONICS, CATEGORY_FITNESS, CATEGORY_COMPUTER, CATEGORY_BOOK, CATEGORY_CLOTHES, CATEGORY_TRAVEL, CATEGORY_RESTAURANT,  CATEGORY_TOY, CATEGORY_CAR ]
 
+  KIND_OFFER = 1
+  KIND_DAILY_DEAL = 2
+  KIND_ON_SALE = 3
+
+  KINDS = [ KIND_OFFER, KIND_DAILY_DEAL, KIND_ON_SALE]
+
   belongs_to :user
 
   validates :category,    :presence => true,      :inclusion => CATEGORIES
   validates :company,     :presence => true
   validates :description, :presence => true
   validates :discount,    :inclusion => [nil],    :unless => "self.real_price?"
-  validates :kind,        :presence => true
+  validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true
   validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?"
@@ -43,6 +49,10 @@ class Deal < ActiveRecord::Base
     where(:category => category)
   end
 
+  def self.kind(kind)
+    where(:kind => kind)
+  end
+
   def discount_to_percentage
     (self.discount / self.real_price) * 100 if self.real_price?
   end
@@ -53,5 +63,9 @@ class Deal < ActiveRecord::Base
 
   def self.categories
     Deal::CATEGORIES.each {|id| [id, I18n.t("models.deal.category.#{id}")]}
+  end
+
+  def self.kinds
+    Deal::KINDS.each {|id| [id, I18n.t("models.deal.kind.#{id}")]}
   end
 end
