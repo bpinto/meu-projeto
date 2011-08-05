@@ -27,6 +27,10 @@ Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email
   @current_user = Factory.create :confirmed_user, :email => email, :password => password
 end
 
+Given /^I am a user with an username "([^"]*)" and a password "([^"]*)"$/ do |username, password|
+  @current_user = Factory.create :confirmed_user, :username => username, :password => password
+end
+
 Then /^I should be already signed in$/ do
   And %{I should see "Sair"}
 end

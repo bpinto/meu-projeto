@@ -30,3 +30,14 @@ Feature: Sign in
       And I should be signed in
       When I return next time
       Then I should be already signed in
+
+    @wip
+    Scenario: User signs in successfully with username
+      Given I am not logged in
+      And I am a user named "foo" with an username "username" and password "please"
+      When I go to the sign in page
+      And I sign in as "user@test.com/please"
+      Then I should see "Fez login com sucesso."
+      And I should be signed in
+      When I return next time
+      Then I should be already signed in

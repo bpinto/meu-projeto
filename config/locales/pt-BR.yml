@@ -223,6 +223,10 @@
       even: "deve ser par"
 
   activerecord:
+    attributes:
+      user:
+        login: "Nome do usuário ou email"
+
     errors:
       template:
         header:
