@@ -1,4 +1,3 @@
-#OK
 Given /^no user exists with an (?:username|email) of "(.*)"$/ do |login|
   User.find_record(login).should be_nil
 end
@@ -16,12 +15,10 @@ Given /^I am a user with an email "([^"]*)"$/ do |email|
   And %{I press "Sign in"}
 end
 
-#OK
 Given /^I am a user with an email "([^"]*)" and password "([^"]*)"$/ do |email, password|
   @current_user = Factory.create :confirmed_user, :email => email, :password => password, :password_confirmation => password
 end
 
-#OK
 Given /^I am a user with an username "([^"]*)" and password "([^"]*)"$/ do |username, password|
   @current_user = Factory.create :confirmed_user, :username => username, :password => password, :password_confirmation => password
 end
@@ -45,7 +42,6 @@ Given /^I am logout$/ do
   visit('/users/sign_out')
 end
 
-#OK
 When /^I sign in as "(.*)\/(.*)"$/ do |login, password|
   Given %{I am not logged in}
   When %{I go to the sign in page}
