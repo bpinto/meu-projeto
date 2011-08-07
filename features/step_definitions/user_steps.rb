@@ -1,5 +1,5 @@
-Given /^no user exists with an email of "(.*)"$/ do |email|
-  User.find(:first, :conditions => { :email => email }).should be_nil
+Given /^no user exists with an (?:username|email) of "(.*)"$/ do |login|
+  User.find_record(login).should be_nil
 end
 
 Given /^one user with an email "([^"]*)" exists$/ do |email|
@@ -10,25 +10,17 @@ Given /^I am a user with an email "([^"]*)"$/ do |email|
   @current_user = Factory.create :confirmed_user, :email => email
 
   And %{I go to the sign in page}
-  And %{I fill in "user_email" with "#{@current_user.email}"}
+  And %{I fill in "user_login" with "#{@current_user.email}"}
   And %{I fill in "user_password" with "#{@current_user.password}"}
   And %{I press "Sign in"}
 end
 
-Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  @current_user = Factory.create :confirmed_user,
-            :name => name,
-            :email => email,
-            :password => password,
-            :password_confirmation => password
+Given /^I am a user with an email "([^"]*)" and password "([^"]*)"$/ do |email, password|
+  @current_user = Factory.create :confirmed_user, :email => email, :password => password, :password_confirmation => password
 end
 
-Given /^I am a user with an email "([^"]*)" and a password "([^"]*)"$/ do |email, password|
-  @current_user = Factory.create :confirmed_user, :email => email, :password => password
-end
-
-Given /^I am a user with an username "([^"]*)" and a password "([^"]*)"$/ do |username, password|
-  @current_user = Factory.create :confirmed_user, :username => username, :password => password
+Given /^I am a user with an username "([^"]*)" and password "([^"]*)"$/ do |username, password|
+  @current_user = Factory.create :confirmed_user, :username => username, :password => password, :password_confirmation => password
 end
 
 Then /^I should be already signed in$/ do
@@ -50,11 +42,11 @@ Given /^I am logout$/ do
   visit('/users/sign_out')
 end
 
-When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
+When /^I sign in as "(.*)\/(.*)"$/ do |login, password|
   Given %{I am not logged in}
   When %{I go to the sign in page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
+  And %{I fill in "user_login" with "#{login}"}
+  And %{I fill in "user_password" with "#{password}"}
   And %{I press "Sign in"}
 end
 

@@ -3,9 +3,10 @@ Feature: Edit User
   I want to edit my user profile
   so I can change my username
 
+    @wip
     Scenario: I sign in and edit my account
-      Given I am a user named "foo" with an email "user@test.com" and password "please"
-      When I sign in as "user@test.com/please"
+      Given I am a user with an email "user@email.com" and password "password"
+      When I sign in as "user@email.com/password"
       Then I should be signed in
       When I follow "Edit account"
       And I fill in "Name" with "baz"

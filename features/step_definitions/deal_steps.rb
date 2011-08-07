@@ -32,7 +32,8 @@ When /^I fill the deal fields correctly$/ do
   fill_in(get_field("deal", "price"), :with => deal.price)
   fill_in(get_field("deal", "link"), :with => deal.link)
   fill_in(get_field("deal", "description"), :with => deal.description)
-  select(deal.kind, :from => get_field("deal", "kind")) 
+  select(deal.category.to_s, :from => get_field("deal", "category")) 
+  # select(I18n.t "models.deal.category.#{deal.category}", :from => get_field("deal", "category")) 
 end
 
 Then /^I should see (\d+) deals?$/i do |amount|
