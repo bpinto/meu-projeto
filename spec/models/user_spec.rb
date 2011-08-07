@@ -10,6 +10,8 @@ describe User do
   it { should respond_to :followers }
   it { should respond_to :following }
   it { should respond_to :reverse_relationships }
+  it { should respond_to :login }
+  it { should respond_to :login= }
 
   describe "Accessibility" do
     it { should allow_mass_assignment_of(:email) }
@@ -17,40 +19,63 @@ describe User do
     it { should allow_mass_assignment_of(:password) }
     it { should allow_mass_assignment_of(:password_confirmation) }
     it { should allow_mass_assignment_of(:remember_me) }
+    it { should allow_mass_assignment_of(:username) }
   end
 
-  it "should require an email address" do
-    user.email = ""
-    user.should_not be_valid
-  end
-
-  it "should accept valid email addresses" do
-    addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
-    addresses.each do |address|
-      user.email = address
-      user.should be_valid
+  describe "email" do
+    it "should be required" do
+      user.email = ""
+      user.should_not be_valid
     end
-  end
 
-  it "should reject invalid email addresses" do
-    addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
-    addresses.each do |address|
-      user.email = address
+    it "should accept valid email addresses" do
+      addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
+      addresses.each do |address|
+        user.email = address
+        user.should be_valid
+      end
+    end
+
+    it "should reject invalid email addresses" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
+      addresses.each do |address|
+        user.email = address
+        user.should_not be_valid
+      end
+    end
+
+    it "should reject duplicate email addresses" do
+      duplicated_email = Factory.create(:user).email
+      user.email = duplicated_email
+      user.should_not be_valid
+    end
+
+    it "should reject email addresses identical up to case" do
+      email = "upcase@test.com"
+      Factory.create :user, :email => email
+      user.email = email.upcase
       user.should_not be_valid
     end
   end
 
-  it "should reject duplicate email addresses" do
-    duplicated_email = Factory.create(:user).email
-    user.email = duplicated_email
-    user.should_not be_valid
-  end
+  describe "username" do
+    it "should be required" do
+      user.username = ""
+      user.should_not be_valid
+    end
 
-  it "should reject email addresses identical up to case" do
-    upcased_email = user.email.upcase
-    Factory.create :user, :email => upcased_email
-    user.email = upcased_email
-    user.should_not be_valid
+    it "should reject duplicate usernames" do
+      duplicated_username = Factory.create(:user).username
+      user.username = duplicated_username
+      user.should_not be_valid
+    end
+
+    it "should reject usernames identical up to case" do
+      username = "upcase test"
+      Factory.create :user, :username => username
+      user.username = username.upcase
+      user.should_not be_valid
+    end
   end
 
   describe "passwords" do

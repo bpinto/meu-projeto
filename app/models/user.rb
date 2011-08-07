@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :following,              :through => :relationships,         :source => :followed
   has_many :reverse_relationships,  :foreign_key => "followed_id",      :class_name => "Relationship"#,      :dependent => :destroy
 
+  validates :username,  :presence => true,  :uniqueness => true
+
   attr_accessible :email, :login, :name, :password, :password_confirmation, :remember_me, :username
 
   # Virtual attribute for authenticating by either username or email
