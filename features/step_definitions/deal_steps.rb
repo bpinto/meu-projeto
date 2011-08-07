@@ -38,3 +38,7 @@ end
 Then /^I should see (\d+) deals?$/i do |amount|
   page.all(:xpath, "//div[@class='offer']").length.should == amount.to_i
 end
+
+Then /^deal should link to "([^"]*)"$/ do |text|
+  page.find(:xpath, "//div[@class='deal_link']").each { |a| a[:href] == text}
+end

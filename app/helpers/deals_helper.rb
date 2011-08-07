@@ -55,7 +55,7 @@ module DealsHelper
           <div class="offer_real">De:<br/><strong>#{number_to_currency(deal.real_price) || "--"}</strong></div>
           <div class="offer_economy">Economia:<br/><strong>#{number_to_currency(deal.discount) || "--"}</strong></div>
           <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}">Não informado</div>
-          <div class="offer_go">#{link_to "Ir para o site", deal.link, :rel => "nofollow", :target => "_blank"}</div>
+          <div class="offer_go deal_link">#{link_to "Ir para o site", deal.link, :rel => "nofollow", :target => "_blank"}</div>
         </div>
       </div>
     EOS

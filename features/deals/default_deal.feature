@@ -18,3 +18,14 @@ Feature: View default deal details
       Given 1 deal with category as "Computer" was registered today
       And I am on today's deals page
       Then I should see "Informática" within deal's category
+
+#    @todo_i18n
+#    Scenario: Viewing deal's kind
+#      Given 1 deal with kind as "daily_deal" was registered today
+#      And I am on today's deals page
+#      Then I should see "Compras Coletivas" within deal's kind
+
+    Scenario: Viewing deal's link
+      Given 1 deal with link as "http://www.google.com" was registered today
+      And I am on today's deals page
+      Then deal should link to "http://www.google.com"
