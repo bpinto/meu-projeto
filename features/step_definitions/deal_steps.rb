@@ -41,5 +41,5 @@ Then /^I should see (\d+) deals?$/i do |amount|
 end
 
 Then /^deal should link to "([^"]*)"$/ do |text|
-  page.find(:xpath, "//div[@class='deal_link']").each { |a| a[:href] == text}
+  page.find(:xpath, "//div[@class='offer_go']")[:href] == text
 end
