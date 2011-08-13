@@ -5,6 +5,8 @@ describe User do
   subject { user }
 
   its(:save) { should be_true }
+  its(:switched_on?) { should be_true }
+
   it { should respond_to :deals }
   it { should respond_to :relationships }
   it { should respond_to :followers }

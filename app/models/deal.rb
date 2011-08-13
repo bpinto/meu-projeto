@@ -1,5 +1,6 @@
 # coding: utf-8
 class Deal < ActiveRecord::Base
+  has_paper_trail
 
   CATEGORY_DRINK = 1
   CATEGORY_BEAUTY_AND_HEALTH = 2

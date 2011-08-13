@@ -6,6 +6,8 @@ describe Deal do
   subject { deal }
 
   its(:save) { should be_true }
+  its(:switched_on?) { should be_true }
+
   it { should respond_to :user }
 
   describe "Accessibility" do

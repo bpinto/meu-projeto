@@ -1,10 +1,13 @@
 source 'http://rubygems.org'
+# gem 'acts_as_commentable'
+# gem 'acts_as_commentable'
 gem 'coffee-script'
 gem "devise", ">= 1.3.4"
 gem 'gravtastic'
 gem 'json'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'paper_trail'
 gem 'rails', '3.1.0.rc1'
 gem 'sass'
 #gem 'therubyracer'

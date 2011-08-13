@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include  Gravtastic
   gravtastic
+  has_paper_trail
 
   devise :confirmable, :database_authenticatable, :recoverable,
          :registerable, :rememberable, :trackable, :validatable
