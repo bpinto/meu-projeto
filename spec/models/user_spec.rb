@@ -24,6 +24,16 @@ describe User do
     it { should allow_mass_assignment_of(:username) }
   end
 
+  describe "#guest?" do
+    it "should be true to unregistered users" do
+      User.new.guest?.should == true
+    end
+
+    it "should be false to registered users" do
+      user.tap{|u| u.save!}.guest?.should == false
+    end
+  end
+
   describe "email" do
     it "should be required" do
       user.email = ""
@@ -57,41 +67,6 @@ describe User do
       Factory.create :user, :email => email
       user.email = email.upcase
       user.should_not be_valid
-    end
-  end
-
-  describe "username" do
-    it "should be required" do
-      user.username = ""
-      user.should_not be_valid
-    end
-
-    it "should be unique" do
-      duplicated_username = Factory.create(:user).username
-      user.username = duplicated_username
-      user.should_not be_valid
-    end
-
-    it "should be case-insensitive" do
-      username = "upcase_test"
-      Factory.create :user, :username => username
-      user.username = username.upcase
-      user.should_not be_valid
-    end
-
-    it "should not have less than 5 characters" do
-      user.username = "a" * 4
-      user.should_not be_valid
-    end
-
-    it "should not have more than 20 characters" do
-      user.username = "a" * 21
-      user.should_not be_valid
-    end
-
-    it "should allow underscores" do
-      user.username = "with_underscore"
-      user.should be_valid
     end
   end
 
@@ -210,6 +185,41 @@ describe User do
 
         user.following.first.should == @second_followed_user
       end
+    end
+  end
+
+  describe "username" do
+    it "should be required" do
+      user.username = ""
+      user.should_not be_valid
+    end
+
+    it "should be unique" do
+      duplicated_username = Factory.create(:user).username
+      user.username = duplicated_username
+      user.should_not be_valid
+    end
+
+    it "should be case-insensitive" do
+      username = "upcase_test"
+      Factory.create :user, :username => username
+      user.username = username.upcase
+      user.should_not be_valid
+    end
+
+    it "should not have less than 5 characters" do
+      user.username = "a" * 4
+      user.should_not be_valid
+    end
+
+    it "should not have more than 20 characters" do
+      user.username = "a" * 21
+      user.should_not be_valid
+    end
+
+    it "should allow underscores" do
+      user.username = "with_underscore"
+      user.should be_valid
     end
   end
 end

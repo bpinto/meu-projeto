@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   gravtastic
   has_paper_trail
 
-  devise :confirmable, :database_authenticatable, :recoverable,
-         :registerable, :rememberable, :trackable, :validatable
+  devise :confirmable, :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
 
   has_many :deals
   has_many :relationships,          :foreign_key => "follower_id"#,      :dependent => :destroy
@@ -18,6 +17,10 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
+
+  def guest?
+    self.new_record?
+  end
 
   def follow!(another_user)
     relationships.create! :followed_id => another_user.id

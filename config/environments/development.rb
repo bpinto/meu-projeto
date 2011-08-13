@@ -1,5 +1,3 @@
-require 'i18n/missing_translations'
-
 DealWitMe::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
