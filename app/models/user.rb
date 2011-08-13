@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :following,              :through => :relationships,         :source => :followed
   has_many :reverse_relationships,  :foreign_key => "followed_id",      :class_name => "Relationship"#,      :dependent => :destroy
 
-  validates :username,  :presence => true,  :uniqueness => true
+  validates :username,  :presence => true,  :uniqueness => true,  :format => /^[a-zA-Z0-9_]{5,20}$/
 
   attr_accessible :email, :login, :name, :password, :password_confirmation, :remember_me, :username
 

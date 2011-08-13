@@ -66,17 +66,32 @@ describe User do
       user.should_not be_valid
     end
 
-    it "should reject duplicate usernames" do
+    it "should be unique" do
       duplicated_username = Factory.create(:user).username
       user.username = duplicated_username
       user.should_not be_valid
     end
 
-    it "should reject usernames identical up to case" do
-      username = "upcase test"
+    it "should be case-insensitive" do
+      username = "upcase_test"
       Factory.create :user, :username => username
       user.username = username.upcase
       user.should_not be_valid
+    end
+
+    it "should not have less than 5 characters" do
+      user.username = "a" * 4
+      user.should_not be_valid
+    end
+
+    it "should not have more than 20 characters" do
+      user.username = "a" * 21
+      user.should_not be_valid
+    end
+
+    it "should allow underscores" do
+      user.username = "with_underscore"
+      user.should be_valid
     end
   end
 
