@@ -20,7 +20,12 @@
 
         <div>
           <%= f.label :category %>
-          <%= f.select :category, Deal.categories %>
+          <%= f.select :category, Deal.i18n_categories %>
+        </div>
+
+        <div>
+          <%= f.label :kind %>
+          <%= f.select :kind, Deal.i18n_kinds %>
         </div>
 
         <div>
@@ -31,6 +36,11 @@
         <div>
           <%= f.label :link %>
           <%= f.text_field :link %>
+        </div>
+
+        <div>
+          <%= f.label :company %>
+          <%= f.text_field :company %>
         </div>
 
         <div>

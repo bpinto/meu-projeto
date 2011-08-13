@@ -3,8 +3,10 @@ module Fields
   def get_field(klass, field)
     case klass
     when "deal"
-      Fields::DEAL[field]
+      field_id = Fields::DEAL[field]
     end
+
+    field_id ? field_id : "#{field} not found"
   end
 
 
@@ -15,6 +17,7 @@ module Fields
     "description" => "deal_description",
     "link" => "deal_link",
     "price" => "deal_price",
+    "real_price" => "deal_real_price",
     "title" => "deal_title",
     "kind" => "deal_kind"
   }

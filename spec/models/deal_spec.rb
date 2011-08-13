@@ -1,3 +1,4 @@
+#encoding: UTF-8
 require 'spec_helper'
 
 describe Deal do
@@ -111,8 +112,8 @@ describe Deal do
     end
   end
 
-  describe "CATEGORIES" do
-    it "should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]" do
+  describe "Categories" do
+    it "CATEGORIES should return all categories" do
       Deal::CATEGORIES.should =~ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     end
 
@@ -136,8 +137,8 @@ describe Deal do
       Deal::CATEGORY_HOME_AND_APPLIANCE.should == 5
     end
 
-    specify "ELETRONICS: should be equal 6" do
-      Deal::CATEGORY_ELETRONICS.should == 6
+    specify "ELECTRONICS: should be equal 6" do
+      Deal::CATEGORY_ELECTRONICS.should == 6
     end
 
     specify "FITNESS: should be equal 7" do
@@ -171,10 +172,79 @@ describe Deal do
     specify "CAR: should be equal 14" do
       Deal::CATEGORY_CAR.should == 14
     end
+
+    describe "i18n" do
+      specify "i18n_categories should return all categories' i18n name" do
+        categories = []
+        Deal::CATEGORIES.each do |id|
+          categories << [Deal.i18n_category(id), id]
+        end
+
+        Deal.i18n_categories.should =~ categories
+      end
+
+      describe "pt-BR" do
+        specify "DRINK: should be equal 'Bebidas'" do
+          Deal.i18n_category(Deal::CATEGORY_DRINK).should == 'Bebidas'
+        end
+
+        specify "BEAUTY AND HEALTH: should be equal 'Beleza e Saúde'" do
+          Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH).should == 'Beleza e Saúde'
+        end
+
+        specify "PHONE AND CAMERA: should be equal 'Celulares, Telefones e Câmeras'" do
+          Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA).should == 'Celulares, Telefones e Câmeras'
+        end
+
+        specify "CD AND DVD: should be equal 'DVDs e CDs'" do
+          Deal.i18n_category(Deal::CATEGORY_CD_AND_DVD).should == 'DVDs e CDs'
+        end
+
+        specify "HOME AND APPLIANCE: should be equal 'Eletrodomésticos'" do
+          Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE).should == 'Eletrodomésticos'
+        end
+
+        specify "ELETRONICS: should be equal 'Eletrônicos'" do
+          Deal.i18n_category(Deal::CATEGORY_ELECTRONICS).should == 'Eletrônicos'
+        end
+
+        specify "FITNESS: should be equal 'Esportes e Lazer'" do
+          Deal.i18n_category(Deal::CATEGORY_FITNESS).should == 'Esportes e Lazer'
+        end
+
+        specify "COMPUTER: should be equal 'Informática'" do
+          Deal.i18n_category(Deal::CATEGORY_COMPUTER).should == 'Informática'
+        end
+
+        specify "BOOK: should be equal 'Livros'" do
+          Deal.i18n_category(Deal::CATEGORY_BOOK).should == 'Livros'
+        end
+
+        specify "CLOTHES: should be equal 'Roupas e Calçados'" do
+          Deal.i18n_category(Deal::CATEGORY_CLOTHES).should == 'Roupas e Calçados'
+        end
+
+        specify "TRAVEL: should be equal 'Viagens'" do
+          Deal.i18n_category(Deal::CATEGORY_TRAVEL).should == 'Viagens'
+        end
+
+        specify "RESTAURANT: should be equal 'Restaurantes'" do
+          Deal.i18n_category(Deal::CATEGORY_RESTAURANT).should == 'Restaurantes'
+        end
+
+        specify "TOY: should be equal 'Brinquedos'" do
+          Deal.i18n_category(Deal::CATEGORY_TOY).should == 'Brinquedos'
+        end
+
+        specify "CAR: should be equal 'Artigos e peças automotivas'" do
+          Deal.i18n_category(Deal::CATEGORY_CAR).should == 'Artigos e peças automotivas'
+        end
+      end
+    end
   end
 
   describe "KINDS" do
-    it "should return [1, 2, 3]" do
+    it "should return all kinds" do
       Deal::KINDS.should =~ [1, 2, 3]
     end
 
@@ -188,6 +258,31 @@ describe Deal do
 
     specify "ON_SALE: should be equal 3" do
       Deal::KIND_ON_SALE.should == 3
+    end
+
+    describe "i18n" do
+      specify "i18n_kinds should return all kinds' i18n name" do
+        kinds = []
+        Deal::KINDS.each do |id|
+          kinds << [Deal.i18n_kind(id), id]
+        end
+
+        Deal.i18n_kinds.should =~ kinds
+      end
+
+      describe "pt-BR" do
+        specify "OFFER: should be equal 'Ofertas'" do
+          Deal.i18n_kind(Deal::KIND_OFFER).should == 'Ofertas'
+        end
+
+        specify "DAILY_DEAL: should be equal 'Compras Coletivas'" do
+          Deal.i18n_kind(Deal::KIND_DAILY_DEAL).should == 'Compras Coletivas'
+        end
+
+        specify "ON_SALE: should be equal 'Liquidação'" do
+          Deal.i18n_kind(Deal::KIND_ON_SALE).should == 'Liquidação'
+        end
+      end
     end
   end
 

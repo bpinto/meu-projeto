@@ -6,6 +6,8 @@ module Helpers
       Date.today
     when "tomorrow"
       Date.tomorrow
+    when "yesterday"
+      Date.yesterday
     end
   end
 end

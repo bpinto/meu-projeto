@@ -6,7 +6,7 @@ class Deal < ActiveRecord::Base
   CATEGORY_PHONE_AND_CAMERA = 3
   CATEGORY_CD_AND_DVD = 4
   CATEGORY_HOME_AND_APPLIANCE = 5
-  CATEGORY_ELETRONICS = 6
+  CATEGORY_ELECTRONICS = 6
   CATEGORY_FITNESS = 7
   CATEGORY_COMPUTER = 8
   CATEGORY_BOOK = 9
@@ -16,7 +16,7 @@ class Deal < ActiveRecord::Base
   CATEGORY_TOY = 13
   CATEGORY_CAR = 14
 
-  CATEGORIES = [ CATEGORY_DRINK, CATEGORY_BEAUTY_AND_HEALTH, CATEGORY_PHONE_AND_CAMERA, CATEGORY_CD_AND_DVD, CATEGORY_HOME_AND_APPLIANCE,  CATEGORY_ELETRONICS, CATEGORY_FITNESS, CATEGORY_COMPUTER, CATEGORY_BOOK, CATEGORY_CLOTHES, CATEGORY_TRAVEL, CATEGORY_RESTAURANT,  CATEGORY_TOY, CATEGORY_CAR ]
+  CATEGORIES = [ CATEGORY_DRINK, CATEGORY_BEAUTY_AND_HEALTH, CATEGORY_PHONE_AND_CAMERA, CATEGORY_CD_AND_DVD, CATEGORY_HOME_AND_APPLIANCE,  CATEGORY_ELECTRONICS, CATEGORY_FITNESS, CATEGORY_COMPUTER, CATEGORY_BOOK, CATEGORY_CLOTHES, CATEGORY_TRAVEL, CATEGORY_RESTAURANT,  CATEGORY_TOY, CATEGORY_CAR ]
 
   KIND_OFFER = 1
   KIND_DAILY_DEAL = 2
@@ -45,12 +45,20 @@ class Deal < ActiveRecord::Base
 
   scope :today, where("deals.created_at >= ?", Date.today)
 
-  def self.category(category)
+  def self.by_category(category)
     where(:category => category)
   end
 
-  def self.kind(kind)
+  def self.by_kind(kind)
     where(:kind => kind)
+  end
+
+  def self.i18n_category(category)
+    I18n.t("models.deal.category.#{category}")
+  end
+
+  def self.i18n_kind(kind)
+    I18n.t("models.deal.kind.#{kind}")
   end
 
   def discount_to_percentage
@@ -61,11 +69,11 @@ class Deal < ActiveRecord::Base
     (self.discount = self.real_price - self.price) if self.real_price?
   end
 
-  def self.categories
-    Deal::CATEGORIES.each {|id| [id, I18n.t("models.deal.category.#{id}")]}
+  def self.i18n_categories
+    Deal::CATEGORIES.collect {|id| [Deal.i18n_category(id), id]}
   end
 
-  def self.kinds
-    Deal::KINDS.each {|id| [id, I18n.t("models.deal.kind.#{id}")]}
+  def self.i18n_kinds
+    Deal::KINDS.collect {|id| [Deal.i18n_kind(id), id]}
   end
 end
