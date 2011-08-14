@@ -2,39 +2,65 @@ require 'spec_helper'
 require "cancan/matchers"
 
 describe Ability do
-  let(:user) { Factory.create :user }
+  shared_examples_for "All Users" do
+    it "should be able to see todays' deals" do
+      ability.should be_able_to(:today, Deal)
+    end
 
-  let(:guest_ability) { Ability.new(User.new) }
-  let(:user_ability) { Ability.new(user) }
+    it "should be able to see other user's page" do
+      ability.should be_able_to(:read, User)
+    end
+  end
 
   describe "deal" do
     describe "guests" do
+      let(:ability) { Ability.new(User.new) }
+
+      it_should_behave_like "All Users"
+
       it "should be able to read all deals" do
-        guest_ability.should be_able_to(:read, Deal)
+        ability.should be_able_to(:read, Deal)
       end
 
       it "should not be able to manage any deal" do
-        guest_ability.should_not be_able_to(:manage, Deal)
+        ability.should_not be_able_to(:manage, Deal)
       end
     end
 
     describe "users" do
+      let(:user) { Factory.create :user }
+      let(:ability) { Ability.new(user) }
+
+      it_should_behave_like "All Users"
+
       it "should be able to read all deals" do
-        user_ability.should be_able_to(:read, Deal)
+        ability.should be_able_to(:read, Deal)
       end
 
       it "should be able to create deals" do
-        user_ability.should be_able_to(:create, Deal)
+        ability.should be_able_to(:create, Deal)
       end
 
       it "should be able to manage theirs deals" do
         own_deal = Factory.create :deal, :user => user
-        user_ability.should be_able_to(:manage, own_deal)
+        ability.should be_able_to(:manage, own_deal)
       end
 
       it "should not be able to manage other user's deals" do
         others_deal = Factory.create :deal
-        user_ability.should_not be_able_to(:manage, others_deal)
+        ability.should_not be_able_to(:manage, others_deal)
+      end
+
+      it "should be able to see todays' deals" do
+        ability.should be_able_to(:today, Deal)
+      end
+
+      it "should be able to follow another user" do
+        ability.should be_able_to(:follow, User)
+      end
+
+      it "should be able to unfollow another user" do
+        ability.should be_able_to(:unfollow, User)
       end
     end
   end

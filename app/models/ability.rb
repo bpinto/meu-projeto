@@ -26,10 +26,15 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     user ||= User.new # guest user (not logged in)
+
+    can :today, Deal
+    can :read, User
+
     if user.guest?
       can :read, Deal
     else
       can :manage, Deal, :user_id => user.id
+      can [:follow, :unfollow], User
     end
   end
 end
