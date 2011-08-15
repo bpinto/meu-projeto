@@ -2,12 +2,12 @@ Given /^no user exists with an (?:username|email) of "(.*)"$/ do |login|
   User.find_record(login).should be_nil
 end
 
-Given /^one user with an email "([^"]*)" exists$/ do |email|
-  Factory.create :confirmed_user, :email => email
+Given /^one user with an (email|username) "([^"]*)" exists$/ do |property, value|
+  Factory.create :confirmed_user, property => value
 end
 
-Given /^I am a user with an email "([^"]*)"$/ do |email|
-  @current_user = Factory.create :confirmed_user, :email => email
+Given /^I am a user with an (email|username) "([^"]*)"$/ do |property, value|
+  @current_user = Factory.create :confirmed_user, property => value
 
   And %{I go to the sign in page}
   And %{I fill in "user_login" with "#{@current_user.email}"}
@@ -15,12 +15,8 @@ Given /^I am a user with an email "([^"]*)"$/ do |email|
   And %{I press "Sign in"}
 end
 
-Given /^I am a user with an email "([^"]*)" and password "([^"]*)"$/ do |email, password|
-  @current_user = Factory.create :confirmed_user, :email => email, :password => password, :password_confirmation => password
-end
-
-Given /^I am a user with an username "([^"]*)" and password "([^"]*)"$/ do |username, password|
-  @current_user = Factory.create :confirmed_user, :username => username, :password => password, :password_confirmation => password
+Given /^I am a user with an (email|username) "([^"]*)" and password "([^"]*)"$/ do |property, value, password|
+  @current_user = Factory.create :confirmed_user, property => value, :password => password, :password_confirmation => password
 end
 
 Then /^I should be already signed in$/ do

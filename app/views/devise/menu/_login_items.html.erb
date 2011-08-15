@@ -3,7 +3,7 @@
     <ul class="lista-logado">
       <li>Olá <strong><%= current_user.name %></strong>, </li>
       <li><%= link_to "Minha Conta", user_path(current_user) %></li>
-      <li><%= link_to "Cadastrar Oferta", new_user_deal_path(:user_id => current_user) %></li>
+      <li><%= link_to "Cadastrar Oferta", new_deal_path(:user_id => current_user) %></li>
       <li><%= link_to "Sair", destroy_user_session_path %></li>
     </ul>
 

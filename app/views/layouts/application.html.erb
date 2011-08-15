@@ -141,77 +141,9 @@
 
                   <span class="todas_limpar"><a href="javascript:void(0);" id="todascat">Selecionar Todos</a> | <a href="javascript:void(0);" id="limparcat">Limpar</a></span>
                   <ul>
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="11" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/bares-e-baladas/'>Bares e Baladas</a>
-                        <span style="float:right; color:#999;">(7)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="7" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/cursos-e-aulas/'>Cursos e Aulas</a>
-                        <span style="float:right; color:#999;">(33)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="4" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/entretenimento/'>Entretenimento</a>
-                        <span style="float:right; color:#999;">(86)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="1" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/esporte/'>Esportes</a>
-                        <span style="float:right; color:#999;">(10)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="6" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/hoteis-e-viagens/'>Hotéis e Viagens</a>
-                        <span style="float:right; color:#999;">(466)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="10" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/produtos/'>Produtos</a>
-                        <span style="float:right; color:#999;">(241)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="3" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/restaurantes/'>Restaurantes</a>
-                        <span style="float:right; color:#999;">(75)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="2" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/saude-e-beleza/'>Saúde e Beleza</a>
-                        <span style="float:right; color:#999;">(453)</span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label>
-                        <input class="categ_value" name="categorias" checked="checked"  type="checkbox" value="5" />
-                        <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/servicos-locais/'>Serviços Locais</a>
-                        <span style="float:right; color:#999;">(65)</span>
-                      </label>
-                    </li>
+                    <% Deal::CATEGORIES.each do |category| %>
+                      <%= filter(category) %>
+                    <% end %>
                   </ul>
 
                   <input id="filtrar" type="submit" value="Filtrar" onclick="post_categ()" />

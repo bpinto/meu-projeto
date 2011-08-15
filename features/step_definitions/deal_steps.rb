@@ -1,4 +1,4 @@
-Given /^(\d+) deals? exists?$/i do |amount|
+Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   amount.to_i.times do
     Factory.create :deal
   end

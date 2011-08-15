@@ -40,7 +40,7 @@ module DealsHelper
             <h3 class="deal_address">#{deal.address}</h3>
           </div>
 
-          #{link_to(image_tag('http://imagem.zipme.com.br/css/images/ver-detalhes.gif', :alt => 'Ver detalhes', :title => deal.title), user_deal_path(:id => deal.id, :user_id => deal.user_id), :class => 'link-detalhes')}
+          #{link_to(image_tag('http://imagem.zipme.com.br/css/images/ver-detalhes.gif', :alt => 'Ver detalhes', :title => deal.title), deal_path(deal.id), :class => 'link-detalhes')}
           <h4>
             <strong>Em: </strong><span class="deal_category">#{I18n.t "models.deal.category.#{deal.category}"}</span><br/>
             <strong>Oferta por: </strong><span class="deal_company">#{deal.company}<span/>
@@ -58,6 +58,20 @@ module DealsHelper
           <div class="offer_go">#{link_to "Ir para o site", deal.link, :rel => "nofollow", :target => "_blank"}</div>
         </div>
       </div>
+    EOS
+    html.html_safe
+  end
+
+  #TODO: Corrigir a quantidade de ofertas por categoria
+  def filter(category)
+    html = <<-EOS
+      <li>
+        <label>
+          <input class="categ_value" name="categorias" checked="checked" type="checkbox" value="#{category}" />
+          <a class='link_categories' href='/compra-coletiva/rio-de-janeiro/bares-e-baladas/'>#{Deal.i18n_category(category)}</a>
+          <span style="float:right; color:#999;">(7)</span>
+        </label>
+      </li>
     EOS
     html.html_safe
   end

@@ -4,21 +4,21 @@ Feature: New Deal
   so I can share the deal with others users
 
     Background:
-      Given I am a user with an email "test@email.com"
+      Given I am a user with an username "username"
 
     Scenario: Viewing new deal form
       When I follow "Cadastrar Oferta"
-      Then I should be on test@email.com's new deal page
+      Then I should be on the new deal page
 
     Scenario: Creating a new deal successfully
-      Given I am on test@email.com's new deal page
+      Given I am on the new deal page
       When I fill the deal fields correctly
       And I press "Confirm"
       Then I should see "Oferta criada com sucesso!"
       And go to the home page
 
     Scenario: Creating a new deal with errors
-      Given I am on test@email.com's new deal page
+      Given I am on the new deal page
       When I fill the deal fields correctly
       And I fill deal's link with ""
       And I press "Confirm"

@@ -3,9 +3,9 @@
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 <% if current_user.follow? @user %>
-  <%= link_to 'Unfollow', unfollow_user_path(@user) %>
+  <%= link_to 'Unfollow', unfollow_user_path(@user.username) %>
 <% else %>
-  <%= link_to 'Follow', follow_user_path(@user) %>
+  <%= link_to 'Follow', follow_user_path(@user.username) %>
 <% end %>
 
 

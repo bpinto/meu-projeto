@@ -8,15 +8,15 @@ DealWitMe::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :deals
-
     member do
       get 'follow'
       get 'unfollow'
     end
   end
 
-  root :to => "home#index"
+  resources :deals
+
+  root :to => "deals#today"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
