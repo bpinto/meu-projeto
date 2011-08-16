@@ -36,11 +36,11 @@ class Deal < ActiveRecord::Base
   validates :price,       :numericality => true
   validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?"
   validates :title,       :presence => true
+  validates :city,        :presence => true
 
   after_validation :calculate_discount
 
-  attr_accessible :address, :category, :company, :description, :end_date, :kind, :link, :price, :title
-
+  attr_accessible :address, :category, :company, :description, :end_date, :kind, :link, :price, :title, :city
 
   default_scope order("created_at desc")
 

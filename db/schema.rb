@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813163319) do
+ActiveRecord::Schema.define(:version => 20110816190907) do
 
   create_table "deals", :force => true do |t|
     t.float    "price",                                     :null => false
@@ -27,7 +27,10 @@ ActiveRecord::Schema.define(:version => 20110813163319) do
     t.decimal  "discount",    :precision => 8, :scale => 2
     t.datetime "end_date"
     t.decimal  "real_price",  :precision => 8, :scale => 2
+    t.string   "city",                                      :null => false
   end
+
+  add_index "deals", ["city"], :name => "index_deals_on_city"
 
   create_table "relationships", :force => true do |t|
     t.integer  "followed_id", :null => false
