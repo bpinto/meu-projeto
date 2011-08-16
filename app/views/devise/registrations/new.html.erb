@@ -1,23 +1,88 @@
-<h2>Sign up</h2>
+<div class="principal">
+  <div class="janela media">
+    <div class="cima"></div>
+    <div class="meio criarPerfil" id="userCreateAreaId">
+      <div>
+        <!-- TODO: Imagem -->
+        <h1>Acessozero</h1>
+        <!-- TODO: Facebook / Google -->
+        <h3>Preencha os campos abaixo ou identifique-se utilizando o<a tabindex="0" class="gwt-Anchor" title="Criar perfil utilizando o Facebook "><img src="../imagens/facebook_criarperfil.png"></a></h3>
+        <div class="alerta alertaAviso" style="display: none; "></div>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <ol>
+            <li>
+            <%= f.label :email, "E-mail:"%>
+            <%= f.text_field :email %>
+            </li>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
+            <li>
+              <%= f.label :username, "Usuário:" %>
+              <%= f.text_field :username %>
+              <span class="limite">Limite <strong>20</strong> caracteres</span>
+            </li>
 
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
+            <li>
+              <%= f.label :name, "Nome completo:" %>
+              <%= f.text_field :name %>
+            </li>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+            <li>
+              <%= f.label :password, "Senha:" %>
+              <%= f.password_field :password %>
+              <span class="limite">Mínimo 6 caracteres</span>
+            </li>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+            <li>
+              <%= f.label :password_confirmation, "Repetir senha:" %>
+              <%= f.password_field :password_confirmation %>
+            </li>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+            <!-- TODO: RECAPTCHA>
+            <li>
+              <label>Digite as letras:</label>
+              <img src="../simpleCaptcha" class="captcha">
+              <input type="text" tabindex="10" class="captcha" maxlength="10">
+            </li>
+            <-->
 
-  <p><%= f.submit "Sign up" %></p>
+            <!-- TODO: TERMOS>
+            <li>
+              <span class="concordar">
+                <input type="checkbox" id="gwt-uid-1" tabindex="10">
+                <label for="gwt-uid-1">Concordo com os <a href="http://www.acessozero.com.br/portal/useagreementpopup" target="_blank">termos de uso</a> e <a href="http://www.acessozero.com.br/portal/privacypolicypopup" target="_blank">política de privacidade</a> do site</label>
+              </span>
+            </li>
+            <-->
+          </ol>
+
+          <!-- TODO: Transformar o botão igual ao link -->
+          <a tabindex="11" class="perfil" href="javascript:;">Criar perfil</a>
+          <%= f.submit "Criar perfil" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="baixo"></div>
+  </div>
+</div>
+				
+<div class="lateral">
+  <div class="janela pequena">
+    <div class="cima"></div>
+    <div class="meio sugestoesAmigo">
+      <h3>Vantagens de ter um perfil:</h3>								
+      <div class="sugestoes">
+        <strong class="descubra">Descubra ofertas disponíveis para você</strong>
+        <strong class="receba">Receba sugestões com ofertas personalizadas</strong>
+        <strong class="compartilhe">Compartilhe sua opinião através de dicas e avaliações</strong>
+        <strong class="relacione">Se relacione com seus estabelecimentos favoritos</strong>
+      </div>
+    </div>
+    <div class="baixo"></div>
+  </div>
+</div>
+
+<%= content_for :css do %>
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/criar-perfil.css" />
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/sugestoes-amigo.css" />
 <% end %>
-
-<%= render :partial => "devise/shared/links" %>

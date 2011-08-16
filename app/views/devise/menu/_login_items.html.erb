@@ -10,21 +10,9 @@
     <div class="clear"></div>
   </div>
 <% else %>
-  <div class="login" id="barlogin">
-    <%= link_to(image_tag('cadastro-icon.gif')+ 'Cadastre-se', new_user_registration_path)%>
-    <span class="separador-login"> | </span>
-    <%= link_to(image_tag('http://imagem.zipme.com.br/css/images/login-icon.gif', :alt => '') + 'Login', new_user_session_path, :id => 'login-link')  %>
-
-    <div class="box-login" id="box-login">
-      <%= form_for("user", :url => user_session_path, :html => {:class => 'formlogin'}) do |f| %>
-        <%= label_tag 'js_user_email', 'Email: ' %> <%= f.text_field :email, :id => 'js_user_email', :class => 'input-login', :size => nil %>
-        <%= label_tag 'js_user_password', "Senha: " %> <%= f.password_field :password, :id => 'js_user_password', :class =>'input-login', :size => nil %>
-        <%= link_to "Esqueceu sua senha?", new_password_path('user'), :class => "esqueceu-senha-link" %>
-        <%= f.submit "Entrar", :class => "entrar-login-btn" %>
-      <% end %>
-    </div>
-
-    <a href="javascript:;" class="duvida_login"><img src="http://imagem.zipme.com.br/css/images/interrogacao.gif" border="0" /><span>Se você não possui cadastro no SaveMe clique em "Cadastre-se" e crie a sua conta. Se você já cadastrou seu e-mail no SaveMe, mas ainda não criou a sua conta, clique em "Esqueci minha senha" dentro da área de Login e siga as instruções enviadas no seu e-mail.</span></a>
-    <div class="clear"></div>
-  </div>
+  <ul class="navUsuario">
+    <li>Olá, seja bem-vindo</li>
+    <li><%= link_to 'Crie seu perfil', new_user_registration_path %></li>
+    <li id="headerLogin"><a tabindex="0" class="gwt-Anchor">Entrar</a></li>
+  </ul>
 <% end %>
