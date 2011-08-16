@@ -40,6 +40,11 @@ describe Deal do
       deal.should_not be_valid
     end
 
+    it "should require a city" do
+      deal.city = nil
+      deal.should_not be_valid
+    end
+
     it "shouldn't require a discount if it lacks a real price" do
       deal.real_price = nil
       deal.discount = 1

@@ -9,6 +9,7 @@ FactoryGirl.define do
     f.link "http://F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
     price 0.99
     title "F_TITLE"
+    city "F_CITY"
 
     user
   end
