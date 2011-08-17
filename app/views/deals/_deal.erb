@@ -11,7 +11,7 @@
         <ul class="desconto">
           <li class="precoOriginal"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
           <li class="precoOferta"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
-          <li class="desconto"><span>Desconto</span><strong><%= deal.discount_to_percentage %>%</strong></li>
+          <li class="desconto"><span>Desconto</span><strong><%= deal.discount_to_percentage %>%</strong></li> 
           <li class="botao"><%= link_to 'Saiba mais', deal_path(deal), :class => "botao"%></li>
         </ul>
       </li>

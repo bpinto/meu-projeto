@@ -19,6 +19,7 @@ describe Deal do
     it { should allow_mass_assignment_of(:kind) }
     it { should allow_mass_assignment_of(:link) }
     it { should allow_mass_assignment_of(:price) }
+    it { should allow_mass_assignment_of(:real_price) }
     it { should allow_mass_assignment_of(:title) }
 
     it { should_not allow_mass_assignment_of(:discount) }

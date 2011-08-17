@@ -40,7 +40,7 @@ class Deal < ActiveRecord::Base
 
   after_validation :calculate_discount
 
-  attr_accessible :address, :category, :company, :description, :end_date, :kind, :link, :price, :title, :city
+  attr_accessible :address, :category, :city, :company, :description, :end_date, :kind, :link, :price, :real_price, :title
 
   default_scope order("created_at desc")
 
