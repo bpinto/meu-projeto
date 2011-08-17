@@ -2,10 +2,8 @@
   <ul class="navUsuario">
     <li>Olá <%= current_user.name %></li>
     <!-- TODO: Menu logado -->
-    <li><%= link_to "Minha Conta", user_path(current_user) %></li>
-    <li><%= link_to "Cadastrar Oferta", new_deal_path %></li>
-    <li><a href="/portal/mypanel" class="ativo">Meu Painel</a></li>
-    <li><a href="/portal/config" class=" ">Configurações</a></li>
+    <li><%= link_to_active "Minha Conta", user_path(current_user.username) %></li>
+    <li><%= link_to_active "Cadastrar Oferta", new_deal_path %></li>
     <li><%= link_to 'Sair', destroy_user_session_path %></li>
   </ul>
 <% else %>
