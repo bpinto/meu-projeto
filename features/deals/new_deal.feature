@@ -24,3 +24,12 @@ Feature: New Deal
       And I press "Confirm"
       Then I should see "Foram encontrados erros ao criar a oferta."
       And go to the home page
+
+    @wip
+    Scenario: Creating a new national deal
+      Given I am on the new deal page
+      When I fill in the deal fields correctly
+      And I choose the deal as national offer
+      And I press "Confirm"
+      Then I go to the deal's page
+      #TODO: verificar que a oferta está como oferta nacional
