@@ -1,43 +1,73 @@
-<div id="result_tools">
-  <!-- TODO: Rever essa parte abaixo -->
-  <div class="lista_todas_cidades_full">
-    <div class="cidades_drop">
-      <div class="botao_listar_todas_cidades_div">
-        <a href="#" class="botao_listar_todas_cidades" onclick="toogleDropCidade(); return false;">Rio de Janeiro <span>- 1436 ofertas</span> <img src="http://imagem.zipme.com.br/css/images/listar_cidade_botao.gif" alt="Ver todas as cidades" /></a>
-      </div>
+<div id="corpo">
+  <div class="janelaPadrao chapeu fundoCinza">
+    <h1>Ofertas do Dia</h1>
+  </div>
 
-      <div class="lista_todas_cidades_bg">
-        <div class="lista_todas_cidades">
-          <ul>
-             <li><a href="/compra-coletiva/oferta-nacional/">Oferta Nacional </a></li>
-             <li><a href="/compra-coletiva/sao-paulo/">São Paulo </a></li>
-             <li><a href="/compra-coletiva/rio-de-janeiro/">Rio de Janeiro </a></li>
+  <div class="principal">
+    <div class="estabelecimentosMapa">
+      <div class="janelaPadrao estabelecimentosPadrao abas" id="sitesPanelView">
+        <div class="conteudo">
+          <div class="alerta alertaAviso" style="display: none; "></div>
+          <ul class="abasPadrao">
+            <li class="ofertas"><a tabindex="0" class="ativo" href="javascript:;">Ofertas quentes</a></li>
+            <li class="avaliacoes"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Mais bem avaliados no mês</a></li>
+            <li class="ordemAlfabetica"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Ordem alfabética</a></li>
           </ul>
+
+          <div class="conteudo">
+            <div class="zero-PagingTable">
+              <div class="zero-PagingTableGrid">
+
+                <div>
+                  <div class="estabelecimento oferta semDesconto">
+                    <a class="foto" href="http://www.acessozero.com.br/curitiba/sorveterias/dolcefreddocidade/oferta-17340218&amp;s=sites"> <img src="http://www.acessozero.com.br/portal/image/dolcefreddocidade-sorveterias-curitiba-4-17340218-4.jpg" alt="Estabelecimento sem imagem"> </a>
+                    <strong class="titulo"><a href="http://www.acessozero.com.br/curitiba/sorveterias/dolcefreddocidade/oferta-17340218&amp;s=sites">Dolce Freddo - Shopping Cidade: duas bolas de sorvete de 8 reais por 3 reais</a></strong>
+                    <ul>
+                      <li><strong>Endereço:</strong> Av. Marechal Floriano Peixoto, 4984 - HAUER</li>
+                      <li>
+                        <ul class="desconto">
+                          <li class="precoOriginal"><span>Preço original</span><strong>R$ 8,00</strong></li>
+                          <li class="precoOferta"><span>Preço oferta</span><strong>R$ 3,00</strong></li>
+                          <li class="desconto"><span>Desconto</span><strong>62%</strong></li>
+                          <li class="botao"><a class="botao" href="http://www.acessozero.com.br/curitiba/sorveterias/dolcefreddocidade/oferta-17340218&amp;s=sites">Saiba mais</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <% @deals.each_with_index do |deal, index| %>
+                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- TODO: Rever essa parte abaixo -->
-    <div class="ordenar_drop">
-      <div class="div_ordenar_resultados">
-        <a href="#" class="botao_ordenar_resultados" onclick="toogleDropOrdenar(); return false;"> Ordenar por <img src="http://imagem.zipme.com.br/css/images/listar_cidade_botao.gif" alt="Ordenar" /></a>
+  <!-- TODO: Colocar algo no menu lateral -->
+  <div class="lateral">
+    <div class="janelaPadrao estabelecimentosBairro">
+      <div class="barra">
+        <h3>Estabelecimentos por bairros</h3>
       </div>
-
-      <div class="ordenar_resultados_novo_bg">
-        <div class="ordenar_resultados_novo">
-          <ul>
-           <li><a href="#" onclick="alteraOrdenarPor('ordenar_por',false);">Ordenar por</a></li>
-           <li><a href="#" onclick="alteraOrdenarPor('desconto',false);">Maior Desconto</a></li>
-           <li><a href="#" onclick="alteraOrdenarPor('menor_preco',false);">Menor Pre&ccedil;o</a></li>
-           <li><a href="#" onclick="alteraOrdenarPor('novas_ofertas',false);">Novas Ofertas</a></li>
-           <li><a href="#" onclick="alteraOrdenarPor('tempo_restante',false);">Tempo Restante</a></li>
-          </ul>
-        </div>
+      <div class="conteudo">
+        <ul>
+          <li><a href="?l=1067173">CAMPO LARGO</a></li>
+          <li><a href="?l=1073899">COLOMBO</a></li>
+          <li><a href="?l=1121836">PINHAIS</a></li>
+          <li><a href="?l=1130034">SÃO JOSÉ DOS PINHAIS</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="clear"></div>
-
-<%= default_deal(@deals) %>
+<%= content_for :css do %>
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/estilo-tela.css" />
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/chapeu.css" />
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/estabelecimentos-bairro.css" />
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/estabelecimentos.css" />
+<% end %>

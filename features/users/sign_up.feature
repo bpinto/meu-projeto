@@ -30,7 +30,7 @@ Feature: Criar perfil
       And I fill in user's password with ""
       And I fill in user's password confirmation with "please"
       And I press "Criar perfil"
-      Then I should see "Password não pode ficar em branco"
+      Then I should see "Senha não pode ficar em branco"
 
     Scenario: User signs up without password confirmation
       Given I am not logged in
@@ -39,7 +39,7 @@ Feature: Criar perfil
       And I fill in user's password with "please"
       And I fill in user's password confirmation with ""
       And I press "Criar perfil"
-      Then I should see "Password não está de acordo com a confirmação"
+      Then I should see "Senha não está de acordo com a confirmação"
 
     Scenario: User signs up with password and password confirmation that doesn't match
       Given I am not logged in
@@ -48,4 +48,4 @@ Feature: Criar perfil
       And I fill in user's password with "please"
       And I fill in user's password confirmation with "please1"
       And I press "Criar perfil"
-      Then I should see "Password não está de acordo com a confirmação"
+      Then I should see "Senha não está de acordo com a confirmação"

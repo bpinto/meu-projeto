@@ -8,5 +8,6 @@
   <%= link_to 'Follow', follow_user_path(@user.username) %>
 <% end %>
 
-
-<%= default_deal(@user.deals) %>
+<% @user.deals.each_with_index do |deal, index| %>
+  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+<% end %>

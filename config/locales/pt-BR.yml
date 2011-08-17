@@ -226,6 +226,10 @@
     attributes:
       user:
         login: "Nome do usuário ou email"
+        name: "Nome"
+        password: "Senha"
+        password_confirmation: "Confirmação da Senha"
+        username: "Usuário"
 
     errors:
       template:

@@ -12,29 +12,29 @@
           <%= devise_error_messages! %>
           <ol>
             <li>
-            <%= f.label :email, "E-mail:"%>
+            <%= f.label :email %>
             <%= f.text_field :email %>
             </li>
 
             <li>
-              <%= f.label :username, "Usuário:" %>
+              <%= f.label :username %>
               <%= f.text_field :username %>
               <span class="limite">Limite <strong>20</strong> caracteres</span>
             </li>
 
             <li>
-              <%= f.label :name, "Nome completo:" %>
+              <%= f.label :name %>
               <%= f.text_field :name %>
             </li>
 
             <li>
-              <%= f.label :password, "Senha:" %>
+              <%= f.label :password %>
               <%= f.password_field :password %>
-              <span class="limite">Mínimo 6 caracteres</span>
+              <span class="limite">Mínimo <strong>6</strong> caracteres</span>
             </li>
 
             <li>
-              <%= f.label :password_confirmation, "Repetir senha:" %>
+              <%= f.label :password_confirmation %>
               <%= f.password_field :password_confirmation %>
             </li>
 
