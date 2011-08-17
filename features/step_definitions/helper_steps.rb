@@ -20,7 +20,7 @@ Then /^a (.*) (?:do|da|de) (.*) deve estar selecionada com a data de hoje$/ do |
   field_labeled("#{campo}_1i").value.should == hoje.year.to_s
 end
 
-When /^I fill (.*)'s (.*) with "(.*)"$/ do |klass_name, field_name, value|
+When /^I fill in (.*)'s (.*) with "(.*)"$/ do |klass_name, field_name, value|
   field = get_field(klass_name, field_name)
   fill_in(field, :with => value)
 end

@@ -59,8 +59,7 @@
 					<div class="interna">
 						<ul class="navGlobal">
               <li><a href="/curitiba" class="">Início</a></li>
-							<li><a href="/curitiba/estabelecimentos" class="">Estabelecimentos</a></li>
-							<li><a href="/consumidores" class="">Consumidores</a></li>
+              <li><%= link_to 'Ofertas do Dia', deals_today_path %>
 							<li><a href="http://blog.acessozero.com.br" target="_blank">Blog</a></li>
 						</ul>
 
@@ -102,10 +101,10 @@
             <!-- TODO: Breadcrumb -->
             <ul class="caminho comLocal">
               <li><a href="/">Início</a><span>»</span></li>
-                <li><a href="/curitiba/estabelecimentos?s=1">Estabelecimentos</a><span>»</span></li>	
-                <li><a href="/curitiba/bares-e-casas-noturnas?s=1">Bares e Casas Noturnas</a><span>»</span></li>	
-                <li><a href="/curitiba/bares-e-casas-noturnas/aueraauara?s=1">Auera Auara</a><span>»</span></li>	
-                <li>Oferta</li>	
+              <li><a href="/curitiba/estabelecimentos?s=1">Estabelecimentos</a><span>»</span></li>	
+              <li><a href="/curitiba/bares-e-casas-noturnas?s=1">Bares e Casas Noturnas</a><span>»</span></li>	
+              <li><a href="/curitiba/bares-e-casas-noturnas/aueraauara?s=1">Auera Auara</a><span>»</span></li>	
+              <li>Oferta</li>	
             </ul>
           </div>
         </div>
@@ -113,6 +112,11 @@
 
       <!--  CORPO -->
       <div id="corpo">
+         <!-- TODO: FLASH -->
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+        <%- end -%>
+
         <%= yield %>
       </div>
 

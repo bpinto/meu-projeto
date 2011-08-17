@@ -1,18 +1,17 @@
 <% if user_signed_in? %>
-  <div class="login-logado">
-    <ul class="lista-logado">
-      <li>Olá <strong><%= current_user.name %></strong>, </li>
-      <li><%= link_to "Minha Conta", user_path(current_user) %></li>
-      <li><%= link_to "Cadastrar Oferta", new_deal_path(:user_id => current_user) %></li>
-      <li><%= link_to "Sair", destroy_user_session_path %></li>
-    </ul>
-
-    <div class="clear"></div>
-  </div>
+  <ul class="navUsuario">
+    <li>Olá <%= current_user.name %></li>
+    <!-- TODO: Menu logado -->
+    <li><%= link_to "Minha Conta", user_path(current_user) %></li>
+    <li><%= link_to "Cadastrar Oferta", new_deal_path %></li>
+    <li><a href="/portal/mypanel" class="ativo">Meu Painel</a></li>
+    <li><a href="/portal/config" class=" ">Configurações</a></li>
+    <li><%= link_to 'Sair', destroy_user_session_path %></li>
+  </ul>
 <% else %>
   <ul class="navUsuario">
     <li>Olá, seja bem-vindo</li>
     <li><%= link_to 'Crie seu perfil', new_user_registration_path %></li>
-    <li id="headerLogin"><a tabindex="0" class="gwt-Anchor">Entrar</a></li>
+    <li><%= link_to 'Entrar', new_user_session_path %></li>
   </ul>
 <% end %>

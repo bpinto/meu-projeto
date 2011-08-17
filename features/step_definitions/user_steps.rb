@@ -41,8 +41,8 @@ end
 When /^I sign in as "(.*)\/(.*)"$/ do |login, password|
   Given %{I am not logged in}
   When %{I go to the sign in page}
-  And %{I fill in "user_login" with "#{login}"}
-  And %{I fill in "user_password" with "#{password}"}
+  And %{I fill in user's login with "#{login}"}
+  And %{I fill in user's password with "#{password}"}
   And %{I press "Sign in"}
 end
 
@@ -59,9 +59,9 @@ When /^I return next time$/ do
 end
 
 Then /^I should be signed out$/ do
-  And %{I should see "Cadastre-se"}
-  And %{I should see "Login"}
-  And %{I should not see "Logout"}
+  And %{I should see "Crie seu perfil"}
+  And %{I should see "Entrar"}
+  And %{I should not see "Sair"}
 end
 
 Given /^I am not logged in$/ do

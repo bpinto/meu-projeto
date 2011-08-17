@@ -26,14 +26,15 @@ Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do 
   end
 end
 
-When /^I fill the deal fields correctly$/ do
+When /^I fill in the deal fields correctly$/ do
   deal = Factory.build :deal
-  fill_in(get_field("deal", "title") , :with => deal.title)
-  fill_in(get_field("deal", "price"), :with => deal.price)
-  fill_in(get_field("deal", "real_price"), :with => deal.real_price)
-  fill_in(get_field("deal", "link"), :with => deal.link)
+  fill_in(get_field("deal", "city") , :with => deal.city)
   fill_in(get_field("deal", "company"), :with => deal.company)
   fill_in(get_field("deal", "description"), :with => deal.description)
+  fill_in(get_field("deal", "link"), :with => deal.link)
+  fill_in(get_field("deal", "price"), :with => deal.price)
+  fill_in(get_field("deal", "real_price"), :with => deal.real_price)
+  fill_in(get_field("deal", "title") , :with => deal.title)
   select(Deal.i18n_category(deal.category), :from => get_field("deal", "category")) 
   select(Deal.i18n_kind(deal.kind), :from => get_field("deal", "kind"))
 end
