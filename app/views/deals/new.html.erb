@@ -46,7 +46,7 @@
         <div>
           <%= f.label :city %>
           <%= f.text_field :city %>
-          <%= check_box :
+          <%= check_box_tag(:national_offer, I18n.t("models.deal.national_offer")) %> <%= label_tag I18n.t "models.deal.national_offer" %>
         </div>
 
         <div>

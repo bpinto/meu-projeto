@@ -7,7 +7,7 @@ class DealsController < AuthorizedController
 
   def create
     @deal.user = current_user
-    @deal.city = national_offer if national_offer
+    @deal.city = params[:national_offer] if params[:national_offer]
     if @deal.save
       redirect_to root_path, :notice => "Oferta criada com sucesso!"
     else
