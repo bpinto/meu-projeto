@@ -45,6 +45,8 @@ class Deal < ActiveRecord::Base
   default_scope order("created_at desc")
 
   scope :today, where("deals.created_at >= ?", Date.today)
+  
+  before_save :normalize_city
 
   def self.by_category(category)
     where(:category => category)
@@ -77,4 +79,10 @@ class Deal < ActiveRecord::Base
   def self.i18n_kinds
     Deal::KINDS.collect {|id| [Deal.i18n_kind(id), id]}
   end
+
+  private
+
+    def normalize_city
+      city.downcase!
+    end
 end

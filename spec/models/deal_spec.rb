@@ -40,9 +40,18 @@ describe Deal do
       deal.should_not be_valid
     end
 
-    it "should require a city" do
-      deal.city = nil
-      deal.should_not be_valid
+    describe "#city" do
+
+      it "should require a city" do
+        deal.city = nil
+        deal.should_not be_valid
+      end
+
+      it "should save in downcase" do
+        deal.city = "RIO DE JANEIRO"
+        deal.save!
+        deal.city.should == "rio de janeiro"
+      end
     end
 
     it "shouldn't require a discount if it lacks a real price" do
