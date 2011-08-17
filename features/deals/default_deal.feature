@@ -18,11 +18,6 @@ Feature: View default deal details
       And I am on today's deals page
       Then I should see "Informática" within deal's category
 
-#    Scenario: Viewing deal's kind
-#      Given 1 deal with kind as "daily_deal" was registered today
-#      And I am on today's deals page
-#      Then I should see "Compras Coletivas" within deal's kind
-
     Scenario: Viewing deal's link
       Given 1 deal with link as "http://www.google.com" was registered today
       And I am on today's deals page

@@ -1,0 +1,20 @@
+<div class="offer">
+  <div class="estabelecimento oferta semDesconto">
+    <%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Estabelecimento sem imagem", :title => deal.title), deal_path(deal), :class => "foto") %>
+    <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}">Não informado</div>
+    <strong class="titulo deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
+    <ul>
+      <li class="deal_address"><strong>Endereço: </strong><%= deal.address %></li>
+      <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
+      <li class="deal_company"><strong>Empresa: </strong><%= deal.company %></li>
+      <li>
+        <ul class="desconto">
+          <li class="precoOriginal"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
+          <li class="precoOferta"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
+          <li class="desconto"><span>Desconto</span><strong><%= deal.discount_to_percentage %>%</strong></li>
+          <li class="botao"><%= link_to 'Saiba mais', deal_path(deal), :class => "botao"%></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

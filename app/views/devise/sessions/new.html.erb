@@ -1,17 +1,43 @@
-<h2>Sign in</h2>
+<!-- TODO: Refatorar o nome do css -->
+<div class="janela media">
+  <div class="meio criarPerfil">
+    <div>
+      <!-- TODO: Imagem -->
+      <h1>Acessozero</h1>
+      <!-- TODO: Facebook / Google -->
+      <h3>Preencha os campos abaixo ou identifique-se utilizando o<a tabindex="0" class="gwt-Anchor" title="Criar perfil utilizando o Facebook "><img src="../imagens/facebook_criarperfil.png"></a></h3>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :login %><br />
-  <%= f.email_field :login %></p>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <ol>
+          <li>
+            <%= f.label :login %>
+            <%= f.email_field :login %>
+          </li>
 
-  <p><%= f.label :password, "Senha" %><br />
-  <%= f.password_field :password %></p>
+          <li>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </li>
 
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
+          <li>
+            <% if devise_mapping.rememberable? -%>
+              <%= f.label :remember_me, 'Mantenha-me Conectado' %>
+              <%= f.check_box :remember_me %>
+            <% end -%>
+          </li>
+        </ol>
 
-  <p><%= f.submit "Sign in" %></p>
+        <!-- TODO: Transformar o botão igual ao link -->
+        <a tabindex="11" class="perfil" href="javascript:;">Entrar</a>
+        <%= f.submit "Sign in" %>
+      <% end %>
+
+      <%= render :partial => "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+<%= content_for :css do %>
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/criar-perfil.css" />
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/sugestoes-amigo.css" />
 <% end %>
-
-<%= render :partial => "devise/shared/links" %>
