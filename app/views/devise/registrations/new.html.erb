@@ -7,9 +7,8 @@
         <h1>Acessozero</h1>
         <!-- TODO: Facebook / Google -->
         <h3>Preencha os campos abaixo ou identifique-se utilizando o<a tabindex="0" class="gwt-Anchor" title="Criar perfil utilizando o Facebook "><img src="../imagens/facebook_criarperfil.png"></a></h3>
-        <div class="alerta alertaAviso" style="display: none; "></div>
+
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
           <ol>
             <li>
             <%= f.label :email %>
