@@ -81,6 +81,7 @@ GEM
     gherkin (2.3.10)
       json (>= 1.4.6)
     gravtastic (3.1.0)
+    growl (1.0.3)
     guard (0.3.4)
       thor (~> 0.14.6)
     guard-cucumber (0.3.2)
@@ -105,8 +106,6 @@ GEM
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    libnotify (0.5.7)
-      ffi (= 1.0.9)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.3.0)
@@ -149,8 +148,7 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2)
-    rb-inotify (0.8.6)
-      ffi (>= 0.5.0)
+    rb-fsevent (0.4.3)
     rdoc (3.9.2)
     rest-client (1.6.3)
       mime-types (>= 1.16)
@@ -219,6 +217,7 @@ DEPENDENCIES
   devise (>= 1.4.2)
   factory_girl_rails (>= 1.1.beta1)
   gravtastic
+  growl
   guard
   guard-cucumber
   guard-rspec
@@ -227,12 +226,11 @@ DEPENDENCIES
   jquery-rails
   json
   launchy (>= 0.4.0)
-  libnotify
   mongrel (= 1.2.0.pre2)
   mysql2
   paper_trail
   rails (= 3.1.0.rc6)
-  rb-inotify
+  rb-fsevent
   rspec-rails (>= 2.6.1)
   ruby-debug19
   sass
