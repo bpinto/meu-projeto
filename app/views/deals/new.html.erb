@@ -1,4 +1,9 @@
 <h1>Deals#new</h1>
+<%- flash.each do |name, msg| -%>
+  <% if msg.is_a?(String)%>
+    <div class="alerta alertaErrado" style="opacity: 1; "><p><%= msg %></p></div>
+  <% end %>
+<%- end -%>
 <table>
   <tr>
     <td>
