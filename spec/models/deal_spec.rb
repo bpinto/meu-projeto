@@ -146,8 +146,8 @@ describe Deal do
       Deal::CATEGORY_PHONE_AND_CAMERA.should == 3
     end
 
-    specify "CD_AND_DVD: should be equal 4" do
-      Deal::CATEGORY_CD_AND_DVD.should == 4
+    specify "MUSIC_AND_MOVIE: should be equal 4" do
+      Deal::CATEGORY_MUSIC_AND_MOVIE.should == 4
     end
 
     specify "HOME_AND_APPLIANCE: should be equal 5" do
@@ -213,8 +213,8 @@ describe Deal do
           Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA).should == 'Celulares, Telefones e Câmeras'
         end
 
-        specify "CD AND DVD: should be equal 'DVDs e CDs'" do
-          Deal.i18n_category(Deal::CATEGORY_CD_AND_DVD).should == 'DVDs e CDs'
+        specify "MUSIC AND MOVIE: should be equal 'Música e Filmes'" do
+          Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE).should == 'Música e Filmes'
         end
 
         specify "HOME AND APPLIANCE: should be equal 'Eletrodomésticos'" do
