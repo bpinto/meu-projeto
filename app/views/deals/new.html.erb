@@ -1,59 +1,92 @@
-<h1>Deals#new</h1>
+<div class="principal">
+  <div class="janela media">
+    <div class="cima"></div>
+    <div class="meio criarPerfil" id="userCreateAreaId">
+      <div>
+        <!-- TODO: Imagem -->
+        <h1>DealWit.Me - Deals#new</h1>
+        <!-- TODO: Facebook / Google -->
+        <h3>Compartilhe uma oferta preenchendo os campos abaixo e clicando em salvar</h3>
 
-<table>
-  <tr>
-    <td>
-      <%= form_for(@deal) do |f| %>
-        <div>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-        </div>
 
-        <div>
-          <%= f.label :price %>
-          <%= f.text_field :price %>
-        </div>
+        <%= form_for(@deal) do |f| %>
+          <ol>
+            <li>
+              <%= f.label :title %>
+              <%= f.text_field :title %>
+            </li>
 
-        <div>
-          <%= f.label :real_price %>
-          <%= f.text_field :real_price %>
-        </div>
+            <li>
+              <%= f.label :price %>
+              <%= f.text_field :price %>
+            </li>
 
-        <div>
-          <%= f.label :category %>
-          <%= f.select :category, Deal.i18n_categories %>
-        </div>
+            <li>
+              <%= f.label :real_price %>
+              <%= f.text_field :real_price %>
+            </li>
 
-        <div>
-          <%= f.label :kind %>
-          <%= f.select :kind, Deal.i18n_kinds %>
-        </div>
+            <li>
+              <%= f.label :category %>
+              <%= f.select :category, Deal.i18n_categories %>
+            </li>
 
-        <div>
-          <%= f.label :description %>
-          <%= f.text_area :description %>
-        </div>
+            <li>
+              <%= f.label :kind %>
+              <%= f.select :kind, Deal.i18n_kinds %>
+            </li>
 
-        <div>
-          <%= f.label :link %>
-          <%= f.text_field :link %>
-        </div>
+            <li>
+              <%= f.label :description %>
+              <%= f.text_area :description %>
+            </li>
 
-        <div>
-          <%= f.label :company %>
-          <%= f.text_field :company %>
-        </div>
+            <li>
+              <%= f.label :link %>
+              <%= f.text_field :link %>
+            </li>
 
-        <div>
-          <%= f.label :city %>
-          <%= f.text_field :city %>
-          <%= check_box_tag(:national_offer, I18n.t("models.deal.national_offer")) %> <%= label_tag I18n.t "models.deal.national_offer" %>
-        </div>
+            <li>
+              <%= f.label :company %>
+              <%= f.text_field :company %>
+            </li>
 
-        <div>
-          <%= f.submit "Confirm" %>
-        </div>
-      <% end %>
-    </td>
-  </tr>
-</table>
+            <li>
+              <%= f.label :city %>
+              <%= f.text_field :city %>
+              <%= check_box_tag(:national_offer, I18n.t("models.deal.national_offer")) %> <%= label_tag I18n.t "models.deal.national_offer" %>
+            </li>
+
+          </ol>
+
+          <!-- TODO: Transformar o botão igual ao link -->
+          <a tabindex="11" class="perfil" href="javascript:;">Cadastrar Oferta</a>
+          <%= f.submit "Compartilhar Oferta" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="baixo"></div>
+  </div>
+</div>
+				
+<div class="lateral">
+  <div class="janela pequena">
+    <div class="cima"></div>
+    <div class="meio sugestoesAmigo">
+      <h3>Vantagens de ter um perfil:</h3>								
+      <div class="sugestoes">
+        <strong class="descubra">Descubra ofertas disponíveis para você</strong>
+        <strong class="receba">Receba sugestões com ofertas personalizadas</strong>
+        <strong class="compartilhe">Compartilhe sua opinião através de dicas e avaliações</strong>
+        <strong class="relacione">Se relacione com seus estabelecimentos favoritos</strong>
+      </div>
+    </div>
+    <div class="baixo"></div>
+  </div>
+</div>
+
+<%= content_for :css do %>
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/criar-perfil.css" />
+  <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/sugestoes-amigo.css" />
+<% end %>
+
