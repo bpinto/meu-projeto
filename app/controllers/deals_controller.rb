@@ -11,7 +11,7 @@ class DealsController < AuthorizedController
     if @deal.save
       redirect_to root_path, :notice => "Oferta criada com sucesso!"
     else
-      flash.now[:alert] = "Foram encontrados erros ao criar a oferta."
+      flash.now[:error] = "Foram encontrados erros ao criar a oferta."
       render :new
     end
   end

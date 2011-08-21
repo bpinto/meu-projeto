@@ -33,3 +33,5 @@ Feature: New Deal
       And I press "Confirm"
       Then I go to the deal's page
       #TODO: verificar que a oferta está como oferta nacional
+
+
