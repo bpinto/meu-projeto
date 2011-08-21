@@ -30,11 +30,13 @@ class Deal < ActiveRecord::Base
   validates :category,    :presence => true,      :inclusion => CATEGORIES
   validates :company,     :presence => true
   validates :description, :presence => true
-  validates :discount,    :inclusion => [nil],    :unless => "self.real_price?"
+  validates :discount,    :inclusion => [nil],    :unless => "self.real_price?" #Essa validação é de acordo com o kind da oferta
+  validates :end_date,    :timeliness => {:after => :now},  :allow_nil => true
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true
-  validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?"
+  validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?" #Essa validação é de acordo com o kind da oferta
+
   validates :title,       :presence => true
   validates :city,        :presence => true
 
@@ -45,7 +47,7 @@ class Deal < ActiveRecord::Base
   default_scope order("created_at desc")
 
   scope :today, where("deals.created_at >= ?", Date.today)
-  
+
   before_save :normalize_city
 
   def self.by_category(category)

@@ -31,6 +31,19 @@ describe Deal do
       deal.should_not be_valid
     end
 
+    describe "#city" do
+      it "should require a city" do
+        deal.city = nil
+        deal.should_not be_valid
+      end
+
+      it "should be saved in downcase" do
+        deal.city = "RIO DE JANEIRO"
+        deal.save!
+        deal.city.should == "rio de janeiro"
+      end
+    end
+
     it "should require a company" do
       deal.company = nil
       deal.should_not be_valid
@@ -41,24 +54,22 @@ describe Deal do
       deal.should_not be_valid
     end
 
-    describe "#city" do
-
-      it "should require a city" do
-        deal.city = nil
-        deal.should_not be_valid
-      end
-
-      it "should save in downcase" do
-        deal.city = "RIO DE JANEIRO"
-        deal.save!
-        deal.city.should == "rio de janeiro"
-      end
-    end
-
     it "shouldn't require a discount if it lacks a real price" do
       deal.real_price = nil
       deal.discount = 1
       deal.should_not be_valid
+    end
+
+    describe "#end_date" do
+      it "should not be before or equal to now" do
+        deal.end_date = Time.now
+        deal.should_not be_valid
+      end
+
+      it "should be after now" do
+        deal.end_date = Time.now + 1
+        deal.should be_valid
+      end
     end
 
     it "should require a kind" do
