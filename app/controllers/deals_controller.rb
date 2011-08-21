@@ -1,5 +1,5 @@
 class DealsController < AuthorizedController
-  skip_before_filter :authenticate_user!, :only => :today
+  skip_before_filter :authenticate_user!, :only => [:show, :today]
   prepend_before_filter :find_todays_deals, :only => :today
 
   def new
@@ -14,6 +14,9 @@ class DealsController < AuthorizedController
       flash.now[:error] = "Foram encontrados erros ao criar a oferta."
       render :new
     end
+  end
+
+  def show
   end
 
   def today
