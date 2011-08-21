@@ -1,0 +1,35 @@
+/* CABECALHO */
+div#cabecalho { min-height: 90px; }
+
+/* INFORMACOES */
+div.informacoes {}
+
+	div.informacoes h3 { margin: 15px 30px 20px; font: 18px/18px Georgia; color: #547100; font-weight: bold; font-style: italic; }
+	
+	div.informacoes h4 { margin: 15px 30px 20px; font: 16px/18px Georgia; color: #547100; font-weight: bold; font-style: italic; }
+	
+	div.informacoes h5 { margin: 15px 30px 20px; font: 15px/18px Georgia; color: #547100; font-weight: bold; font-style: italic; }
+	
+	div.informacoes p { display: block; font: 12px/18px Arial, Helvetica, Sans-Serif; margin: 0 30px 15px; }
+		div.informacoes p strong{ font-family: Arial; color: #000; }
+		div.informacoes p a { color: #789F00; }
+		div.informacoes p a:hover { text-decoration: underline; }
+		div.informacoes p img { margin: 15px auto 0; }
+	div.informacoes p.lista { padding-top: 15px; }
+		div.informacoes p.lista span { display: block; float: left; font: bold 25px/25px Arial, Helvetica, Sans-Serif; margin-right: 15px; }
+	
+	div.informacoes p.data { color: #999; font-style: italic; }
+	
+	div.informacoes a.verOfertas { margin: 0 auto 15px; width: 305px; }
+		
+	div.informacoes ol { display: block; margin: 0 30px; }
+		div.informacoes ol li { list-style: none; margin-bottom: 10px; }
+		
+	div.informacoes ul { display: block; margin: 0 30px 5px 45px; }
+		div.informacoes ul li { margin-bottom: 10px; }
+		
+	div.popup { margin: 30px auto 20px; }
+	
+		div.popup div.meio { display: block !important; overflow: hidden; }
+			
+		div.popup p { display: block; }

@@ -1,0 +1,46 @@
+/* RODAPE */
+div#rodape { background: #222 url(<%= asset_path 'rodape-fundo.png'%>) repeat-x; }
+
+	div#rodape .interna { display: block; margin: 0 auto 10px auto; width: 975px; }			
+	div#rodape .bottomThawteSeal { float: left; margin: 10px 18px; }
+		.menuBottom { padding: 10px 0 0; }
+		.menuBottom ul{ display: block; border-right: 1px dotted #9d9d9d; float: left; padding: 0 19px; height: 300px; }
+		.menuBottom .first{ width: 175px; }
+		.menuBottom .second{ width: 165px; }
+		.menuBottom .third{ width: 155px; }
+		.menuBottom .fourth{ width: 145px; }
+		.menuBottom .fifth{ width: 160px; border: none; padding-right: 0; }
+
+			.menuBottom ul li{ list-style: none; font-family: Georgia; font-style: italic; margin: 10px 0; }
+			.menuBottom ul li a{ color: #9d9d9d; font-family: Arial; font-weight: bold; font-style: italic; }
+			.menuBottom ul li a:hover,
+			.menuBottom ul li a:focus{ color: #AEC49F; margin-left:5px; text-decoration: none; }
+			.menuBottom ul li.title{ color: #AEC49F; font-size: 16px; line-height: 15px; margin: 0 0 30px; font-weight: bold; }
+			.menuBottom ul li a.specialLink{ color: #AEC49F; font-weight: bold; }
+			.menuBottom ul li.first{ margin: 30px 0 0 0; }
+			.menuBottom ul li a.specialLink:hover,
+			.menuBottom ul li a.specialLink:focus{ text-decoration: underline; margin: 0; }
+
+		.socialMenu { height: 90px; background: #000; clear: both; }
+		.socialMenu ul { width: 180px; display: block; float:right; padding: 10px 0; }
+		.socialMenu ul li.title{ width: 180px; font-style: italic; font-family: Georgia; color: #AEC49F; font-size: 16px; text-indent: 0; float: none; line-height: 15px; font-weight: bold; background: none; margin: 0; height: 25px; }
+		.socialMenu ul li.first{ margin: 0 7px 0 10px; }
+		.socialMenu ul li{ display: block; float: left; width: 35px; height: 35px; text-indent: -9999px; margin: 0 7px; }
+    .socialMenu ul li a{ display: block; width: 100%; height: 100%; background: transparent url(<%= asset_path 'icones_redes.png' %>); font-family: Arial; font-weight: bold; }
+		.socialMenu ul li a.facebook{ background-position: -85px -2px; }
+			.socialMenu ul li a.facebook:hover,
+			.socialMenu ul li a.facebook:focus{ background-position: -85px -42px; }
+		.socialMenu ul li a.twitter{ background-position: 0px -2px; }
+			.socialMenu ul li a.twitter:hover,
+			.socialMenu ul li a.twitter:focus{ background-position: 0px -42px; }
+		.socialMenu ul li a.orkut{ background-position: -43px -2px; }
+			.socialMenu ul li a.orkut:hover,
+			.socialMenu ul li a.orkut:focus{ background-position: -43px -42px; }	
+
+		/* copyright */
+		.copyright { background: #fff; clear: both; color: #666; display: block; font: normal normal 12px/12px Arial; padding: 24px 0 14px; text-align: center; }
+		.copyright ul { display: block; }
+		.copyright ul li { float: left; display: block; list-style: none; margin: 0 25px; }
+		.copyright ul li a { color: #666; font: italic normal 12px/12px Arial; }
+		.copyright ul li a:hover,
+		.copyright ul li a:focus { text-decoration: underline; }
