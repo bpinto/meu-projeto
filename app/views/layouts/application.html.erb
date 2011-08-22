@@ -76,20 +76,20 @@
             <!-- /logo -->
             <ul class="menu">
 
-              <li class="drink"><a href="/curitiba/bares-e-casas-noturnas" title="Visualizar a categoria Bebidas"><%= I18n.t "models.deal.category.1" %></a></li>
-              <li class="beauty-health"><a href="/curitiba/beleza-saude" title="Visualizar a categoria Beleza e saúde"><%= I18n.t "models.deal.category.2" %></a></li>
-              <li class="phone-camera"><a href="/curitiba/comidinhas" title="Visualizar a categoria Celulares e Câmeras"><%= I18n.t "models.deal.category.3" %></a></li>
-              <li class="music-movie"><a href="/curitiba/compras-e-shopping" title="Visualizar a categoria Música e Filmes"><%= I18n.t "models.deal.category.4" %></a></li>
-              <li class="home"><a href="/curitiba/educacao-lazer" title="Visualizar a categoria Eletrodomésticos"><%= I18n.t "models.deal.category.5" %></a></li>
-              <li class="eletronics"><a href="/curitiba/profissionais-autonomos" title="Visualizar a categoria Profissionais autônomos"><%= I18n.t "models.deal.category.6" %></a></li>
-              <li class="fitness"><a href="/curitiba/restaurantes" title="Visualizar a categoria Esporte e Lazer"><%= I18n.t "models.deal.category.7" %></a></li>
-              <li class="computer"><a href="/curitiba/servicos" title="Visualizar a categoria Informática"><%= I18n.t "models.deal.category.8" %></a></li>
-              <li class="book"><a href="/curitiba/servicos" title="Visualizar a categoria Livros"><%= I18n.t "models.deal.category.9" %></a></li>
-              <li class="clothes"><a href="/curitiba/servicos" title="Visualizar a categoria Vestuário"><%= I18n.t "models.deal.category.10" %></a></li>
-              <li class="travel"><a href="/curitiba/servicos" title="Visualizar a categoria Viagens"><%= I18n.t "models.deal.category.11" %></a></li>
-              <li class="restaurant"><a href="/curitiba/servicos" title="Visualizar a categoria Restaurantes"><%= I18n.t "models.deal.category.12" %></a></li>
-              <li class="toy"><a href="/curitiba/servicos" title="Visualizar a categoria Brinquedos"><%= I18n.t "models.deal.category.13" %></a></li>
-              <li class="car"><a href="/curitiba/servicos" title="Visualizar a categoria Artigos e Peças automotivos"><%= I18n.t "models.deal.category.14" %></a></li>
+              <li class="drink"><a href="/curitiba/bares-e-casas-noturnas" title="Visualizar a categoria Bebidas"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
+              <li class="beauty-health"><a href="/curitiba/beleza-saude" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
+              <li class="phone-camera"><a href="/curitiba/comidinhas" title="Visualizar a categoria Celulares e Câmeras"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
+              <li class="music-movie"><a href="/curitiba/compras-e-shopping" title="Visualizar a categoria Música e Filmes"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
+              <li class="home"><a href="/curitiba/educacao-lazer" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
+              <li class="eletronics"><a href="/curitiba/profissionais-autonomos" title="Visualizar a categoria Profissionais autônomos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+              <li class="fitness"><a href="/curitiba/restaurantes" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
+              <li class="computer"><a href="/curitiba/servicos" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
+              <li class="book"><a href="/curitiba/servicos" title="Visualizar a categoria Livros"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
+              <li class="clothes"><a href="/curitiba/servicos" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
+              <li class="travel"><a href="/curitiba/servicos" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
+              <li class="restaurant"><a href="/curitiba/servicos" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
+              <li class="toy"><a href="/curitiba/servicos" title="Visualizar a categoria Brinquedos"><%= Deal.i18n_category(Deal::CATEGORY_TOY) %></a></li>
+              <li class="car"><a href="/curitiba/servicos" title="Visualizar a categoria Artigos e Peças automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
 
             </ul>
           </div>
