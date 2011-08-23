@@ -1,0 +1,160 @@
+/* CABECALHO */
+div#cabecalho { min-height: 90px; }
+
+div.estabelecimentosMapa { display: block; min-height: 375px; position: relative; }
+	div.estabelecimentosMapa div.localizacao { position: absolute; right: -330px; top: 0; width: 315px; }
+
+/* ESTABELECIMENTOS */
+div.estabelecimentos {}
+
+	div.estabelecimentos div.semConteudo { clear: both; padding: 30px; overflow: hidden; }
+		div.estabelecimentos div.semConteudo p { color: #4D92AC; display: block; font-size: 18px; line-height: 23px; margin-bottom: 20px; text-align: center; }
+			div.estabelecimentos div.semConteudo p a { color: #396D82; font-size: 20px; text-decoration: underline; }
+
+	div.estabelecimentos h3 { margin: 5px 15px 20px 15px; }
+	
+	div.estabelecimentos div.estabelecimento { background: url(<%= asset_path 'estabelecimento.png' %>) repeat-y -765px 0; float: right; margin: 15px 15px 0; width: 765px; }
+	
+		div.estabelecimentos div.estabelecimento strong.coroa { display: none; }
+		
+		div.estabelecimentos div.estabelecimento div.cima { background: url(<%= asset_path 'estabelecimento.png' %>) no-repeat 0 top; height: 15px; width: 765px; }
+		div.estabelecimentos div.estabelecimento div.meio { background: none; display: block; overflow: hidden; }
+			div.estabelecimentos div.estabelecimento div.meio div { float: left; margin-left: 5px; margin-right: 15px; width: 355px; }
+				div.estabelecimentos div.estabelecimento div.meio div h5 a { color: #789F00; font: italic bold 22px/22px "Myriad Pro",Arial,Sans-Serif; }
+				div.estabelecimentos div.estabelecimento div.meio div h5 a:hover { text-decoration: underline; }
+				div.estabelecimentos div.estabelecimento div.meio div ul { margin: 10px 0; }
+					div.estabelecimentos div.estabelecimento div.meio div ul li { color: #999; display: block; font-size: 10px; list-style: none; line-height: 15px; }
+						div.estabelecimentos div.estabelecimento div.meio div ul li strong { color: #333; font-size: 10px; }
+						div.estabelecimentos div.estabelecimento div.meio div ul li a { color: #789F00; font-size: 10px; }
+						div.estabelecimentos div.estabelecimento div.meio div ul li a:hover { text-decoration: underline; }
+				div.estabelecimentos div.estabelecimento div.meio div p.interacoes { clear: both; margin: 5px 0; }
+					div.estabelecimentos div.estabelecimento div.meio div p.interacoes span { color: #888; display: block; float: left; font-size: 11px !important; height: 20px; line-height: 20px; margin-right: 20px; padding-left: 20px; }
+					div.estabelecimentos div.estabelecimento div.meio div p.interacoes span.pontosFortes { background: url(<%= asset_path 'icones.png' %>) no-repeat -7px -724px; }
+					div.estabelecimentos div.estabelecimento div.meio div p.interacoes span.avaliacoes { background: url(<%= asset_path 'icones.png' %>) no-repeat -7px -4px; }
+			div.estabelecimentos div.estabelecimento div.meio p.pontoForte { float: right; margin: 0 15px; text-align: center; width: 250px; }				
+				div.estabelecimentos div.estabelecimento div.meio p.pontoForte a { color: #666; display: block; font: normal normal normal 16px/20px Arial, Sans-Serif; }
+				div.estabelecimentos div.estabelecimento div.meio p.pontoForte a:hover { color: #789F00; }
+					div.estabelecimentos div.estabelecimento div.meio p.pontoForte a img { display: inline; }
+				div.estabelecimentos div.estabelecimento div.meio p.pontoForte strong { color: #999; font-size: 10px; float: left; font-weight: normal; margin-top: 15px; text-align: left; }
+					div.estabelecimentos div.estabelecimento div.meio p.pontoForte strong a { color: #789F00; display: inline; font: normal normal bold 11px/11px Verdana, Sans-Serif; }
+					div.estabelecimentos div.estabelecimento div.meio p.pontoForte strong a:hover { text-decoration: underline; }
+		div.estabelecimentos div.estabelecimento div.baixo { background: url(<%= asset_path 'estabelecimento.png' %>) no-repeat -1530px bottom; height: 15px; width: 765px; }
+
+	div.estabelecimentos div.parceiro { clear: both; padding: 15px 15px 0; }
+		div.estabelecimentos div.parceiro p { background: #E8F1C6; display: block; padding: 10px; text-align: center; }
+			div.estabelecimentos div.parceiro p a { color: #789F00; font-soize: 13px; font-weight: bold; }
+			div.estabelecimentos div.parceiro p a:hover { text-decoration: underline; }
+	
+	div.estabelecimentos ul.paginacao { margin-top: 0; padding-top: 15px; }
+		
+/* BUSCA */
+div#corpo div.busca h1 { font: italic normal bold 25px/25px Arial, Sans-Serif; margin: 0 15px 10px; }
+
+div#corpo div.busca p { font: italic normal bold 16px/16px Arial, Sans-Serif; margin: 0 15px; }
+	div#corpo div.busca p strong { color: #016E92; font: italic normal bold 18px/16px Arial, Sans-Serif; }
+
+div#corpo ul.categorias { border: none; }					
+		div#corpo ul.categorias a { background: url(<%= asset_path 'abas-busca.png' %>) no-repeat; bottom: 0; padding-left: 10px; }
+		div#corpo ul.categorias a:hover,
+		div#corpo ul.categorias a.ativo { background-position: 0 -70px; }
+			div#corpo ul.categorias a span { background: url(<%= asset_path 'abas-busca.png' %>) no-repeat right -35px; font: italic normal bold 13px/35px Arial, Sans-Serif; }
+			div#corpo ul.categorias a:hover span,
+			div#corpo ul.categorias a.ativo span { background-position: right -105px !important; color: #666; }
+				div#corpo ul.categorias li a span strong { color: #BBB; font: italic normal bold 18px/33px Arial, Sans-Serif; padding-right: 3px; }
+				div#corpo ul.categorias li a:hover span strong,
+				div#corpo ul.categorias li a.ativo span strong { color: #016E92; }
+		
+div#corpo ul.busca { margin-left: 195px; }
+	
+dl.filtros { float: left; margin: 15px 0 0 15px; width: 165px; }
+	dl.filtros dt { color: #333; font: italic normal bold 16px/16px Arial, Helvetica, Sans-Serif; margin-bottom: 10px; }
+	dl.filtros dd a { border-top: 1px solid #e5e5e5; display: block; font: 12px/12px Verdana,Sans-Serif; padding: 7px 0; }
+	dl.filtros dd a:hover,
+	dl.filtros dd a.ativo { color: #016E92; font-weight: bold; }
+	dl.filtros dd a.semBorda { border: 0; }
+		dl.filtros dd a span { color: #999; display: block; font-size: 10px; }
+		
+		
+		
+		
+		
+		
+/* NOVO */
+div.estabelecimentosPadrao { background: #eee; }
+
+	div.estabelecimentosPadrao div.conteudo { padding: 20px 5px 15px; }
+	
+		div.estabelecimentosPadrao div.conteudo p.semConteudo { color: #4C92AC; display: block; font: italic bold 15px/20px Arial, Helvetica, Sans-Srif; padding: 0 15px; text-align: center; }
+	
+		div.estabelecimentosPadrao div.conteudo div.conteudo { padding: 0; }
+			div.estabelecimentosPadrao div.conteudo div.conteudo div.aguarde { background-image: url(<%= asset_path 'aguarde-cinza.gif' %>); }
+
+	div.estabelecimentosPadrao div.estabelecimento {  position: relative; width: 570px; background: #fff; border: 1px solid #ddd; display: block; min-height: 95px; margin: 0 15px 15px; padding: 15px 15px 0; position: relative; /**/ -moz-border-radius: 5px; -webkit-border-radius: 5px; -moz-box-shadow: 1px 1px 0 #fff; }
+	div.estabelecimentosPadrao div.estabelecimento.share { width: auto; }
+	div.estabelecimentosPadrao div.estabelecimento.especial { width: auto; }
+	div.estabelecimentosPadrao div.estabelecimento.especial.search { padding: 15px 33px 0 8px; } 
+	div.estabelecimentosPadrao div.estabelecimento:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	*+html div.estabelecimentosPadrao div.estabelecimento.share ul li { width: 350px;}
+	 
+		div.estabelecimentosPadrao div.estabelecimento .pontoMapa { display: block; position: absolute; right: 10px; top: -15px; }
+		
+		div.estabelecimentosPadrao div.estabelecimento .foto { background: #fff; border: 1px solid #ccc; display: block; float: left; height: 70px; overflow: hidden; margin: 0 15px 15px 0; overflow: hidden; padding: 5px; width: 85px; /**/ -moz-box-shadow: 1px 1px 3px #ddd; }
+		div.estabelecimentosPadrao div.estabelecimento a.foto:hover { border-color: #4C92AC; -moz-box-shadow: 1px 1px 3px #ccc; }
+		
+		div.estabelecimentosPadrao div.estabelecimento .titulo { display: block; margin: 0 0 10px; }
+		div.estabelecimentosPadrao div.estabelecimento .titulo,
+			div.estabelecimentosPadrao div.estabelecimento .titulo * { font: italic bold 18px/20px Arial, Helvetica, Sans-Serif; }
+			div.estabelecimentosPadrao div.estabelecimento .titulo a { text-decoration: none; }
+			div.estabelecimentosPadrao div.estabelecimento .titulo a:hover { text-decoration: underline; }
+		
+		div.estabelecimentosPadrao div.estabelecimento a.avaliacoes { color: #999; display: block; float: left; font: bold 12px/20px Arial, Helvetica, Sans-Serif; text-decoration: none; }
+			div.estabelecimentosPadrao div.estabelecimento a.avaliacoes:hover { text-decoration: underline; }
+				div.estabelecimentosPadrao div.estabelecimento a.avaliacoes strong { color: #666; background: url(<%= asset_path 'icones.png' %>) no-repeat -4px -5px; display: block; float: left; font: bold 20px/20px Arial, Helvetica, Sans-Serif; letter-spacing: -1px; margin: 0 10px 5px 0; padding-left: 23px; }
+		
+		/* ul */
+		div.estabelecimentosPadrao div.estabelecimento.especial ul { float: left; margin-left: 0; clear: none !important;}
+		div.estabelecimentosPadrao div.estabelecimento ul { display: block; margin-bottom: 5px; margin-left: 110px; }
+			div.estabelecimentosPadrao div.estabelecimento.especial ul li { width: 130px; margin-left: 0; }
+			div.estabelecimentosPadrao div.estabelecimento ul li { width: 430px; color: #888; display: block; font: 10px/15px Verdana, Sans-Serif; list-style: none; margin-bottom: 5px; }
+			div.estabelecimentosPadrao div.estabelecimento ul li a,
+			div.estabelecimentosPadrao div.estabelecimento ul li strong { font: bold 10px/10px Verdana, Sans-Serif; }
+			div.estabelecimentosPadrao div.estabelecimento ul li a { text-decoration: none; }
+			div.estabelecimentosPadrao div.estabelecimento ul li a:hover { text-decoration: underline; }
+			
+			div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes { display: block; overflow: hidden; margin-top: 10px; padding: 0; margin-left: 0; }
+				div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes li { display: inline; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes li a { background: url(<%= asset_path 'icones.png' %>) no-repeat; color: #666; display: block; float: left; font-family: Verdana, Sans-Serif; font-size: 10px; font-weight: normal; height: 20px; line-height: 20px; margin-right: 15px; padding-left: 20px; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes li a.dica { background-position: -7px -724px; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes li a.avaliacoes { background-position: -5px -5px; width: auto; }
+						div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes li a.avaliacoes strong { background: none; display: inline; float: none; font: bold 10px/10px Verdana, Sans-Serif; letter-spacing: 0; margin: 0; padding: 0; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.interacoes li a.fotos { background-position: -7px -1110px; }
+					
+			div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto { display: block; overflow: hidden; margin: 0 0 10px 0; padding: 0; width: 410px; }
+				div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li { display: block; float: left; width: auto; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li span { color: #999; display: block; font-size: 10px; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li strong { display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; margin-top: 5px; }
+					
+				div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.precoOriginal { border-right: 1px solid #ddd; margin-right: 15px; padding-right: 15px; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.precoOriginal strong { color: #D69999; text-decoration: line-through; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.precoOferta strong { color: #516017; }
+				div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.desconto { border-left: 1px solid #ddd; margin-left: 15px; padding-left: 15px; }
+				div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.botao { float: right; padding: 13px 0 10px 0; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.botao a.botao { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -120px; border: 1px solid #834512; color: #834512; font: 12px/12px Verdana, Sans-Serif; padding: 6px; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; /**/ -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+					div.estabelecimentosPadrao div.estabelecimento ul li ul.desconto li.botao a.botao:hover { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -155px; border: 1px solid #C1611A; color: #C1611A; /**/ -moz-box-shadow: 1px 1px 3px #bbb; }
+					
+		/* tags */
+		ul.tags { clear: both; display: block; padding-bottom: 5px; width: 430px; overflow: hidden; position: relative; }
+			ul.tags li { display: inline !important; float: left; width: auto !important; }
+				ul.tags li a { background: url(<%= asset_path 'bg-tag-estabelecimento.png' %>) no-repeat; display: block; height: 20px; float: left; margin: 0 10px 5px 0; padding-left: 17px; text-decoration: none; }
+				ul.tags a:hover { background-position: 0 -20px; text-decoration: none !important; }
+					ul.tags li a span { background: #E6E6E6; color: #666; display: block; height: 20px; float: left; font-size: 10px; font-weight: normal; line-height: 18px; padding: 0 8px 0 0; /**/ -moz-border-radius: 0 5px 5px 0; -webkit-border-radius: 0 5px 5px 0; }
+					ul.tags li a:hover span { background: #4C92AC; color: #fff; }
+	
+	/* especial */		
+	/* div.estabelecimentosPadrao div.especial { background: #ffc; border: 1px solid #D6AA52; }
+		div.estabelecimentosPadrao div.especial a { color: #BA7100; text-decoration: none; }
+		div.estabelecimentosPadrao div.especial a:hover { text-decoration: underline; }
+			div.estabelecimentosPadrao div.especial a strong { color: #BA7100; font-size: 17px; }
+		div.estabelecimentosPadrao div.especial .foto,
+		div.estabelecimentosPadrao div.especial a.foto:hover { border-color: #D6AA52; } */
+		div.estabelecimentosPadrao div.especial .coroa { background: url(<%= asset_path 'etiqueta.png' %>) no-repeat 0 0; height: 70px; position: absolute; right: -14px; text-indent: -999em; top: 2px; width: 35px; }

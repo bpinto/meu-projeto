@@ -17,13 +17,6 @@
     <!-- /META -->
 
     <!-- TODO: CSS -->
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/compartilhar.css" />
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/pagina-oferta.css" />
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/criar-perfil.css" />
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/sugestoes-amigo.css" />
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/chapeu.css" />
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/estabelecimentos-bairro.css" />
-    <link media="screen" type="text/css" rel="stylesheet" href="http://www.acessozero.com.br/css/pagina/corpo/estabelecimentos.css" />
     <%= stylesheet_link_tag "application" %>
     <!-- TODO: /CSS -->
 
@@ -69,34 +62,12 @@
 				</div>
 
         <!-- TODO: CATEGORIAS -->
-        <div class="categorias">
+        <div class="caminho">
           <div class="conteudo">
+          
             <!-- logo -->
             <h1 class="logo">DealWit.Me</h1>
             <!-- /logo -->
-            <ul class="menu">
-
-              <li class="drink"><a href="/curitiba/bares-e-casas-noturnas" title="Visualizar a categoria Bebidas"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
-              <li class="beauty-health"><a href="/curitiba/beleza-saude" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-              <li class="phone-camera"><a href="/curitiba/comidinhas" title="Visualizar a categoria Celulares e Câmeras"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
-              <li class="music-movie"><a href="/curitiba/compras-e-shopping" title="Visualizar a categoria Música e Filmes"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
-              <li class="home"><a href="/curitiba/educacao-lazer" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
-              <li class="eletronics"><a href="/curitiba/profissionais-autonomos" title="Visualizar a categoria Profissionais autônomos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
-              <li class="fitness"><a href="/curitiba/restaurantes" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
-              <li class="computer"><a href="/curitiba/servicos" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-              <li class="book"><a href="/curitiba/servicos" title="Visualizar a categoria Livros"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
-              <li class="clothes"><a href="/curitiba/servicos" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
-              <li class="travel"><a href="/curitiba/servicos" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-              <li class="restaurant"><a href="/curitiba/servicos" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
-              <li class="toy"><a href="/curitiba/servicos" title="Visualizar a categoria Brinquedos"><%= Deal.i18n_category(Deal::CATEGORY_TOY) %></a></li>
-              <li class="car"><a href="/curitiba/servicos" title="Visualizar a categoria Artigos e Peças automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
-
-            </ul>
-          </div>
-        </div>
-
-        <div class="caminho">
-          <div class="interna">
             <!-- TODO: Busca -->
             <form class="busca" action="/portal/search" method="get" onsubmit="if(document.getElementById('key').value == 'Procure aqui: pizza, sushi, bar, escova, massagem...') (document.getElementById('key').value = ''); if(document.getElementById('where').value == 'Ex.: bairro, rua...') (document.getElementById('where').value = '');">
               <fieldset>
@@ -114,6 +85,30 @@
               <li><a href="/curitiba/bares-e-casas-noturnas?s=1">Bares e Casas Noturnas</a><span>»</span></li>	
               <li><a href="/curitiba/bares-e-casas-noturnas/aueraauara?s=1">Auera Auara</a><span>»</span></li>	
               <li>Oferta</li>	
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="categorias">
+          <div class="conteudo">
+            <ul class="menu">
+
+              <li class="drink"><a href="/curitiba/bares-e-casas-noturnas" title="Visualizar a categoria Bebidas"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
+              <li class="beauty-health"><a href="/curitiba/beleza-saude" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
+              <li class="phone-camera"><a href="/curitiba/comidinhas" title="Visualizar a categoria Celulares e Câmeras"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
+              <li class="music-movie"><a href="/curitiba/compras-e-shopping" title="Visualizar a categoria Música e Filmes"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
+              <li class="home"><a href="/curitiba/educacao-lazer" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
+              <li class="electronics"><a href="/curitiba/profissionais-autonomos" title="Visualizar a categoria Profissionais autônomos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+              <li class="fitness"><a href="/curitiba/restaurantes" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
+              <li class="computer"><a href="/curitiba/servicos" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
+              <li class="book"><a href="/curitiba/servicos" title="Visualizar a categoria Livros"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
+              <li class="clothes"><a href="/curitiba/servicos" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
+              <li class="travel"><a href="/curitiba/servicos" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
+              <li class="restaurant"><a href="/curitiba/servicos" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
+              <li class="toy"><a href="/curitiba/servicos" title="Visualizar a categoria Brinquedos"><%= Deal.i18n_category(Deal::CATEGORY_TOY) %></a></li>
+              <li class="car"><a href="/curitiba/servicos" title="Visualizar a categoria Artigos e Peças automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
+
             </ul>
           </div>
         </div>
