@@ -1,0 +1,315 @@
+div.principal { *padding-bottom: 15px; }
+
+/* pagina oferta */
+div.paginaOferta { padding: 15px 15px 0; position: relative; }
+	
+	/* altura 100% */
+	div.altura { display: block; *display: table; position: relative; margin-bottom: 15px; width: 975px; }
+	div.altura:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+		
+		div.altura div.lateral { min-height: 460px; }
+		div.altura div.lateral .mapTitle h3{ color: #547100; font: italic bold 18px/18px Georgia; text-shadow: 1px 1px 0 #FFFFFF; }
+		div.altura div.paginaOferta { margin-bottom: 0; }
+		div.altura div.localizacao { position: relative; width: 315px; }
+		div.altura div.lateral .backOffer { color: #cc0000; float: right; text-decoration: underline; margin: 5px 10px 10px 0; }
+		div.altura div.lateral .backOffer:hover,
+		div.altura div.lateral .backOffer:focus { text-decoration: none; }                   
+		.altura .securityAdvice { position: relative; width: 275px; padding: 30px 20px; background: #ffffff; }
+			.altura .securityAdvice .imgThawte { height: 200px; float: left; background: transparent url(<%= asset_path 'security_badge.jpg' %>) no-repeat; padding: 0 15px 0 0; }
+			.altura .securityAdvice h3 { color: #547100; font-size: 16px; margin: 0 0 10px; }
+			.altura .securityAdvice p { font: normal 12px/18px Arial; }
+		
+		div.altura div.lateral div.oferta { border: none; /**/ box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; }  
+	
+	/* titulo */
+	div.paginaOferta div.titulo { display: block; padding: 0 15px 10px; }
+	.paginaOferta .titulo.paymentContentTitle { border: 1px solid #e5e5e5; padding: 5px; margin: 10px 15px; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+	.paginaOferta .titulo.paymentContentTitle { zoom: 1; display: block; }
+	.paginaOferta .paymentContentTitle:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;   }
+		div.paginaOferta div.titulo h1 { color: #4C92AC; display: block; font-size: 22px; margin-bottom: 15px; }
+		div.paginaOferta div.titulo .paymentTitle { float: left; padding: 0 0 0 10px; width: 455px; margin: 0; }
+		div.paginaOferta div.titulo .imgAdvertisementPayment { float: left; padding: 5px; border: 1px solid #d0d0d0; }
+		div.paginaOferta div.titulo h2 { color: #333; display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; margin-bottom: 5px; }
+		div.paginaOferta div.titulo .backSite { display: block; float:left; width: 20px; height: 20px; text-decoration: none; border: none; outline: none; background: transparent url(<%= asset_path 'seta-back-estabelecimento.png' %>) no-repeat ; margin: 5px 5px 0 0; text-indent: -9999px;}
+		div.paginaOferta div.titulo .backSite:hover,
+		div.paginaOferta div.titulo .backSite:focus { background-position: 0 -22px ; } 
+	
+	/* detalhes */
+	div.paginaOferta div.detalhes { display: block; height: 232px; padding: 0 15px 30px; }
+		
+		/* foto */
+		div.paginaOferta div.detalhes div.foto { background: #fff; border: 1px solid #ccc; display: block; float: left; margin-right: 30px; overflow: hidden; padding: 5px; /**/ box-shadow: 1px 1px 3px #ddd; -webkit-box-shadow: 1px 1px 3px #ddd; -moz-box-shadow: 1px 1px 3px #ddd; }
+			div.paginaOferta div.detalhes div.foto div { height: 220px; overflow: hidden; width: 300px; }
+		
+		/* desconto */	
+		div.paginaOferta div.detalhes div.desconto { display: block; float: left; margin-bottom: 15px; padding-top: 10px; width: 240px; }	
+		div.paginaOferta div.detalhes div.semOferta { padding-top: 70px; position: relative; }
+		div.paginaOferta div.detalhes div.status { padding-top: 40px; }
+			
+			div.paginaOferta div.detalhes div.desconto div.porcentagem { background: url(<%= asset_path 'bg-oferta-porcentagem.png' %>) no-repeat; display: block; height: 200px; position: absolute; right: -23px; top: 5px; width: 90px; }
+					div.paginaOferta div.detalhes div.desconto div.porcentagem strong { color: #516117; display: block; font: bold 35px/35px Arial, Helvetica, Sans-Serif; letter-spacing: -3px; padding: 109px 0 4px 6px; text-align: center; }
+						div.paginaOferta div.detalhes div.desconto div.porcentagem strong sup { color: #516117; font-size: 10px; }
+					div.paginaOferta div.detalhes div.desconto div.porcentagem span { color: #516117; display: block; font: bold 15px/15px Arial, Helvetica, Sans-Serif; padding: 8px; text-align: center; text-transform: uppercase; }
+				
+				div.paginaOferta div.detalhes div.desconto div.de { display: block; margin-bottom: 5px; }
+					div.paginaOferta div.detalhes div.desconto div.de span { color: #888; font: bold 15px/15px Arial, Helvetica, Sans-Serif; }
+					div.paginaOferta div.detalhes div.desconto div.de strong { background: url(<%= asset_path 'bg-pagina-oferta-preco.png' %>) no-repeat center center; color: #900; font: bold 35px/35px Arial, Helvetica, Sans-Serif; }
+						div.paginaOferta div.detalhes div.desconto div.de strong span { color: #900 !important; font: bold 20px/20px Arial, Helvetica, Sans-Serif; }
+						
+				div.paginaOferta div.detalhes div.desconto div.por { display: block; margin-bottom: 25px; }
+					div.paginaOferta div.detalhes div.desconto div.por span { color: #888; font: bold 15px/15px Arial, Helvetica, Sans-Serif; }
+					div.paginaOferta div.detalhes div.desconto div.por strong { color: #516017; font: bold 35px/35px Arial, Helvetica, Sans-Serif; letter-spacing: -2px; }
+						div.paginaOferta div.detalhes div.desconto div.por strong span { color: #516017 !important; font: bold 20px/20px Arial, Helvetica, Sans-Serif; letter-spacing: 0; }
+						
+				div.paginaOferta div.detalhes div.desconto div.comprar { display: block; margin-bottom: 25px; overflow: hidden; }
+					div.paginaOferta div.detalhes div.desconto div.comprar a.botao { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -190px; border: 1px solid #834512; color: #834512; display: block; float: left; font: bold 17px/17px Arial, Helvetica, Sans-Serif; padding: 11px 10px 9px; text-align: center; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; /**/ -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+					div.paginaOferta div.detalhes div.desconto div.comprar a.botao span { font: bold 17px/17px Arial, Helvetica, Sans-Serif; color: #834512; }
+					div.paginaOferta div.detalhes div.desconto div.comprar a.botao:hover { background-position: 0 -230px; border-color: #C1611A; -moz-box-shadow: 1px 1px 3px #bbb; }
+					div.paginaOferta div.detalhes div.desconto div.comprar a.botao span {  }
+				div.paginaOferta div.detalhes div.desconto div.recomendacoes {}
+					div.paginaOferta div.detalhes div.desconto div.recomendacoes span.legenda { color: #999; display: block; font: 11px/11px Verdana, Sans-Serif; margin-bottom: 10px; }
+					div.paginaOferta div.detalhes div.desconto div.recomendacoes p { display: block; overflow: hidden; }
+						div.paginaOferta div.detalhes div.desconto div.recomendacoes p em { color: #333; displat: block; float: left; font: bold 20px/30px Arial, Helvetica, Sans-Serif; letter-spacing: -1px; }
+						div.paginaOferta div.detalhes div.desconto div.recomendacoes p em.icone { background: url(<%= asset_path 'icone-recomendacoes-pagina-oferta.jpg' %>) no-repeat 7px center; padding-left: 37px; }
+			
+				div.paginaOferta div.detalhes div.desconto strong.faixa { background: url(<%= asset_path 'faixa-sem-oferta.jpg' %>) no-repeat; color: #fff; display: block; font: 18px/45px Arial, Helvetica, Sans-Serif; height: 50px; left: -30px; position: absolute; text-indent: 10px; top: 0; width: 300px; }
+				
+				div.paginaOferta div.detalhes div.desconto div.aviso { display: block; }
+					div.paginaOferta div.detalhes div.desconto div.aviso p { color: #666; display: block; font: bold 15px/17px Arial, Helvetica, Sans-Serif; margin-bottom: 25px; text-align: center; }
+					div.paginaOferta div.detalhes div.desconto div.aviso a.botaoPadrao { margin: 0 auto 25px; width: 145px; }
+					div.paginaOferta div.detalhes div.desconto div.aviso div.email { display: block; overflow: hidden; padding-bottom: 25px; }
+						div.paginaOferta div.detalhes div.desconto div.aviso div.email input { border: 1px solid #aaa; color: #999; float: left; font-size: 11px; padding: 7px; width: 155px; /**/ border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+						div.paginaOferta div.detalhes div.desconto div.aviso div.email input:focus { border-color: #4C92AC; color: #4C92AC; /**/ box-shadow: inset 1px 1px 5px #ccc; -webkit-box-shadow: inset 1px 1px 5px #ccc; -moz-box-shadow: inset 1px 1px 5px #ccc; }
+						div.paginaOferta div.detalhes div.desconto div.aviso div.email a.botaoPadrao { float: right; margin: 0; width: auto; }
+					div.paginaOferta div.detalhes div.desconto div.aviso a.saibaMais { background: url(<%= asset_path 'icones.png' %>) no-repeat -8px -1178px; color: #4C92AC; display: block; font: 10px/15px Verdana, Sans-Serif; padding-left: 20px; }
+					
+					div.paginaOferta div.detalhes div.feedback {}
+						div.paginaOferta div.detalhes div.feedback p { color: #4C92AC; }
+						div.paginaOferta div.detalhes div.feedback p.mensagem { background: #e5e5e5; color: #666; display: block; font: 11px/11px Arial, Helvetica, Sans-Serif !important; padding: 7px 10px; /**/ border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
+						
+					div.paginaOferta div.detalhes div.status div.aviso {}
+						div.paginaOferta div.detalhes div.status div.aviso p { color: #4C92AC; }
+						div.paginaOferta div.detalhes div.status div.aviso p.mensagem { background: #ffc; border: 1px solid #fc0; color: #900; display: block; font: 15px/15px Arial, Helvetica, Sans-Serif; padding: 7px 10px; /**/ border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
+						
+		/* deslogado */
+		div.paginaOferta div.deslogado div.desconto div.de span { color: #ccc; }
+		div.paginaOferta div.deslogado div.desconto div.de strong,
+			div.paginaOferta div.deslogado div.desconto div.de strong span { color: #EB9999 !important; }
+		div.paginaOferta div.deslogado div.desconto div.por span { color: #ccc; }
+		div.paginaOferta div.deslogado div.desconto div.por strong,
+			div.paginaOferta div.deslogado div.desconto div.por strong span { color: #B9BFA2 !important; }
+		div.paginaOferta div.deslogado div.desconto div.recomendacoes span { color: #ccc !important; }
+		div.paginaOferta div.deslogado div.desconto div.recomendacoes em { color: #aaa !important; }
+		div.paginaOferta div.deslogado div.desconto div.porcentagem { background: url(<%= asset_path 'bg-oferta-cadeado.png' %>) no-repeat !important; height: 80px; opacity: 10; right: -37px !important; }
+			div.paginaOferta div.deslogado div.desconto div.porcentagem * { text-indent: -999em; }
+			
+				div.paginaOferta div.deslogado div.desconto div.comprar { margin-bottom: 0; }
+  				div.paginaOferta div.deslogado div.comprar a.botao { height: 40px; background: url(<%= asset_path 'bt_offer_available.png' %>) no-repeat scroll 0 0 transparent !important; padding:0 !important; border: none !important; width: 218px;text-shadow: none !important; width: 208px; -moz-border-radius: 0 !important; border-radius: 0 !important; -webkit-border-radius: 0 !important; box-shadow: none !important; -moz-box-shadow: none !important;  }
+				div.paginaOferta div.deslogado div.comprar a.botao span{ width: 202px; background: url(<%= asset_path 'bt_offer_available.png' %>) no-repeat scroll 204px -42px transparent !important; padding: 0 10px 10px !important; display: block; color: #fff !important; font: bold 13px/30px Arial, Helvetica, Sans-Serif !important; }
+				div.paginaOferta div.deslogado div.comprar a.botao:hover { background-position: 0 -80px !important; border: none !important; padding: 2px 0 0 0 !important; height: 38px; }
+				div.paginaOferta div.deslogado div.comprar a.botao:hover span { background-position: 203px -125px !important; }
+						
+				div.paginaOferta div.deslogado .support_call { color: #666666; font: 10px/15px  Arial, Helvetica, Sans-Serif !important; margin: 0 0 10px 63px; }
+	/* info */
+	div.paginaOferta div.info { display: inline-block; *display: inline; padding: 0 10px 25px 15px; vertical-align: top; zoom: 1; }
+	
+		div.paginaOferta div.info div.topicoPadrao div.titulo img { margin-bottom: 15px !important; }
+		
+		div.paginaOferta div.info div.barra { background: #4C92AC; border: none; display: block; margin: 0; padding: 5px; /**/ border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; }
+			div.paginaOferta div.info div.barra h2 { color: #fff; font: bold 14px/14px Arial, Helvetica, Sans-Serif; text-align: center; }
+			
+		div.paginaOferta div.info div.conteudo { border: 1px solid #ddd; border-top: none; display: block; padding: 20px 20px 5px; /**/ border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; }
+			div.paginaOferta div.info div.conteudo ul.fixa { display: block; padding-bottom: 5px; width: 238px; }
+				div.paginaOferta div.info div.conteudo ul.fixa li { background: url(<%= asset_path 'lista.png' %>) no-repeat -5px 0; color: #666; display: block; font: 11px/13px Verdana, Sans-Serif; list-style: none; padding-bottom: 10px; padding-left: 15px; }
+				div.paginaOferta div.info div.conteudo ul.fixa li.validade { background: #ffc; color: #333; font: bold 14px/14px Arial, Helvetica, Sans-Serif; margin-bottom: 10px; padding: 5px; text-align: center; /**/ border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
+					div.paginaOferta div.info div.conteudo ul.fixa li.validade span { color: #c00; font: bold 14px/14px Arial, Helvetica, Sans-Serif; }
+				
+			div.paginaOferta div.info div.conteudo p { color: #666; display: block; font: 11px/15px Verdana, Sans-Serif; padding-bottom: 15px; width: 543px; }
+			
+			div.paginaOferta div.info div.conteudo div.dica { margin: 0 0 15px; width: 543px; }
+				div.paginaOferta div.info div.conteudo div.dica div.titulo { padding: 0; }
+					div.paginaOferta div.info div.conteudo div.dica div.titulo p { width: auto; }
+						div.paginaOferta div.info div.conteudo div.dica div.titulo p a { text-decoration: none; }
+						div.paginaOferta div.info div.conteudo div.dica div.titulo p a:hover { text-decoration: underline; }
+					div.paginaOferta div.info div.conteudo div.dica div.titulo p.usuario { margin-bottom: 0; }
+						div.paginaOferta div.info div.conteudo div.dica div.titulo p.usuario a { color: #859944; }
+						
+			div.paginaOferta div.info div.conteudo div.avaliacao { margin: 0 0 15px; width: 543px; }
+				div.paginaOferta div.info div.conteudo div.avaliacao p.texto { padding: 0; width: auto; }
+						
+			div.paginaOferta div.foto { background: #fff; border: 1px solid #ccc; display: block; margin-bottom: 15px; padding: 5px; /**/ box-shadow: 1px 1px 3px #ddd; -webkit-box-shadow: 1px 1px 3px #ddd; -moz-box-shadow: 1px 1px 3px #ddd; }
+				div.paginaOferta div.foto img { display: block; margin: auto; }
+	
+	/* formulario */
+	div.paginaOferta .confirmarDados { padding: 0 15px 15px; }
+		div.paginaOferta .stepList li { list-style: none; display: block; }
+		div.paginaOferta .stepList li .indexStep { text-shadow: 1px 1px 0 #ce0b0b, -1px 1px 0 #ce0b0b, 1px -1px 0 #ce0b0b, -1px -1px 0 #ce0b0b; margin-right: 7px; -moz-border-radius: 5px 5px 5px 5px; border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; color: #FFFFFF; display: block; float: left; font: bold 23px/23px Gerogia; margin-right: 5px; padding: 5px 10px; background: #f55351; /* Old browsers */ background: -moz-linear-gradient(top, #f55351 0%, #c92523 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f55351), color-stop(100%,#c92523)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, #f55351 0%,#c92523 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #f55351 0%,#c92523 100%); /* Opera11.10+ */ background: -ms-linear-gradient(top, #f55351 0%,#c92523 100%); /* IE10+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f55351', endColorstr='#c92523',GradientType=0 ); /* IE6-9 */ background: linear-gradient(top, #f55351 0%,#c92523 100%); /* W3C */  }
+			div.paginaOferta .confirmarDados ol { clear: both; background: #eee; padding: 10px 20px 10px 40px; /**/ border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; }
+			div.paginaOferta .confirmarDados ol li { clear: both; display: block; list-style: none; position: relative; }
+				
+				div.paginaOferta .confirmarDados ol:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+				
+				div.paginaOferta .confirmarDados ol li:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+				div.paginaOferta .confirmarDados ol li label { color: #333; display: block; font: bold 13px/22px Arial, Helvetica, Sans-Serif; }
+				div.paginaOferta .confirmarDados ol li label.descLbl { font: normal 9px/12px Arial, Helvetica, Sans-Serif; }
+				div.paginaOferta .confirmarDados ol li label.dateLbl { font: bold 10px/12px Arial, Helvetica, Sans-Serif; float: left; margin: 10px 10px 0 -7px; }
+				div.paginaOferta .confirmarDados ol li label.dateLbl.sample { font: normal 10px/12px Arial, Helvetica, Sans-Serif; float: left; margin: 10px 10px 0 0px; }
+				div.paginaOferta .confirmarDados ol li input,
+				div.paginaOferta .confirmarDados ol li select { float: left; margin: 0 10px 2px 0; padding: 3px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; -moz-box-shadow: inset 1px 1px 3px #ccc; }
+				div.paginaOferta .confirmarDados ol li select { min-width: 170px; }
+				div.paginaOferta .confirmarDados ol li span { display: block; float: left; font: italic 10px/22px Arial, Helvetica, Sans-Serif; margin-right: 15px; }
+				div.paginaOferta .confirmarDados ol li span.descricao { background: url(<%= asset_path 'icones.png' %>) no-repeat -8px -1175px; color: #4C92AC; font: 10px/20px Verdana, Sans-Serif; padding-left: 20px; text-decoration: underline; }
+				div.paginaOferta .confirmarDados ol li strong { color: #569F0D; display: block; font: normal bold 13px/22px Arial, Helvetica, Sans-Serif;  margin: 0 0 2px 0; width: 525px; }
+				div.paginaOferta .confirmarDados ol li a { display: block; float: left; font: 11px/11px Verdana, Sans-Serif; padding: 6px 0; }
+				div.paginaOferta .confirmarDados ol li p { background: #FFFFFF; border: 2px solid #569F0D; bottom: 30px; display: block; font-size: 11px; font-weight: normal; padding: 10px; position: absolute; right: -1px; text-align: center; width: 350px; /**/ border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; box-shadow: 1px 1px 3px #ccc; -webkit-box-shadow: 1px 1px 3px #ccc; -moz-box-shadow: 1px 1px 3px #ccc; }
+
+				div.paginaOferta .confirmarDados ol li input.certo { background: #F1F5E5 url(<%= asset_path 'icones.png' %>) no-repeat right -35px; border-color: #789F00 #C9D999 #C9D999 #789F00; color: #789F00 !important; padding-right: 30px; }
+				div.paginaOferta .confirmarDados ol li input.errado { background: #FAE5E5 url(<%= asset_path 'icones.png' %>) no-repeat right -305px; border-color: #C00 #EB9999 #EB9999 #C00; color: #C00 !important; padding-right: 30px; }		
+				
+				div.paginaOferta .confirmarDados ol li.email input { width: 355px; }
+				div.paginaOferta .confirmarDados ol li.nome input { width: 355px; }
+				div.paginaOferta .confirmarDados ol li.cep input { width: 190px; }
+				div.paginaOferta .confirmarDados ol li.endereco input { width: 298px; }
+				div.paginaOferta .confirmarDados ol li.numero input { width: 170px; }
+				div.paginaOferta .confirmarDados ol li.complemento input { width: 370px; }
+				div.paginaOferta .confirmarDados ol li.telefone input { width: 120px; }
+				div.paginaOferta .confirmarDados ol li.telefone input.ddd { width: 40px; }
+				div.paginaOferta .confirmarDados ol li.cpf input { width: 195px; }
+				div.paginaOferta .confirmarDados ol li .defaultButton.green.tt { cursor: default; float: left; font-size: 17px; height: 22px; width: 25px; box-shadow: 1px 1px 2px #666; }
+				div.paginaOferta .confirmarDados ol li.cardTypet select { width: 150px; }
+				div.paginaOferta .confirmarDados ol li.cardOwner input { width: 500px; }
+				div.paginaOferta .confirmarDados ol li.cardNumber input { width: 200px }
+				div.paginaOferta .confirmarDados ol li.codeNumber input { width: 120px }
+				div.paginaOferta .confirmarDados ol li.validDate input { width: 40px; }
+				
+				
+				div.paginaOferta .confirmarDados ol li span.checkbox { display: block; margin-left: 126px; overflow: hidden; padding-top: 10px; }
+					div.paginaOferta .confirmarDados ol li span.checkbox input { border: none; display: block; float: left; height: 14px; margin-right: 7px; padding: 0; width: 14px; }
+					div.paginaOferta .confirmarDados ol li span.checkbox label { float: left; font: 11px/13px Arial, Helvetica, Sans-Serif; width: 375px; }
+				
+				div.paginaOferta .confirmarDados ol li span.concordar { display: block; margin-top:10px 0 0 0; overflow: hidden; padding-top: 5px; }
+					div.paginaOferta .confirmarDados ol li span.concordar input { border: none; display: block; float: left; height: 14px; margin-right: 7px; padding: 0; width: 14px; }
+					div.paginaOferta .confirmarDados ol li span.concordar label { float: left; font: 11px/13px Arial, Helvetica, Sans-Serif; width: 370px; }
+						div.paginaOferta .confirmarDados ol li span.concordar label a { display: inline; float: none; font: 11px/13px Arial, Helvetica, Sans-Serif; padding: 0; }
+					
+		div.paginaOferta .confirmarDados div.continuar { background: #e5e5e5; display: block; overflow: hidden; margin-bottom: 25px; padding: 20px; /**/ border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; }
+			div.paginaOferta .confirmarDados div.continuar p { display: block; float: left; font: bold 11px/18px Verdana, Sans-Serif; }
+				div.paginaOferta .confirmarDados div.continuar p strong { display: block; font: bold 11px/18px Verdana, Sans-Serif; }
+					div.paginaOferta .confirmarDados div.continuar p strong span.pagseguro { background: #FAE5E5 url(<%= asset_path 'continuar-pagseguro.jpg' %>) no-repeat; display: inline-block; *display: inline; height: 21px; text-indent: -999em; width: 96px; zoom: 1; }
+				div.paginaOferta .confirmarDados div.continuar p a { font: 11px/18px Verdana, Sans-Serif; }
+			div.paginaOferta .confirmarDados div.continuar a.botao { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -190px; border: 1px solid #834512; color: #834512; display: block; float: right; font: bold 17px/17px Arial, Helvetica, Sans-Serif; padding: 11px 10px 9px; text-align: center; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; /**/ -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+			div.paginaOferta .confirmarDados div.continuar a.botao:hover { background-position: 0 -230px; border-color: #C1611A; -moz-box-shadow: 1px 1px 3px #bbb; }
+			
+			div.paginaOferta .confirmarDados div.continuar a.aguarde,
+			div.paginaOferta .confirmarDados div.continuar a.aguarde:hover,
+			div.paginaOferta .confirmarDados div.continuar a.aguarde:focus { background: none; border: 1px solid #CED4C3; overflow: hidden; padding: 0; text-decoration: none; width: auto !important; /**/ -moz-box-shadow: none; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+				div.paginaOferta .confirmarDados div.continuar a.aguarde span,
+				div.paginaOferta .confirmarDados div.continuar a.aguarde:hover span,
+				div.paginaOferta .confirmarDados div.continuar a.aguarde:focus span { background-position: 6px center !important; display: block; font: bold 17px/17px Arial, Helvetica, Sans-Serif; padding: 10px 10px 8px 35px !important; text-shadow: none; /**/ -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}	
+			
+		div.paginaOferta .confirmarDados a.voltar,
+		div.paginaOferta .confirmarDados a.cancelar { color: #c00; font: 11px/13px Verdana, Sans-Serif; }
+		
+	/* fotos */
+	div.paginaOferta div.fotos { min-height: 0; padding: 14px 14px 0; }
+		div.paginaOferta div.fotos ul.album { margin: 0 -30px 0 0; }
+		div.paginaOferta div.fotos ul.album li { margin: 0 30px 30px 0; *margin-right: 20px; }
+		
+	/* Buying Screen */
+	.takeTicket h2 { color: #666; font: bold 17px/20px Arial,Helvetica,Sans-Serif; padding: 7px 0 15px; float: left; display: block; zoom: 1; }
+	.takeTicket h2:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	.takeTicket .quantityContent { padding: 0 15px 15px; display: block; }
+	.takeTicket .quantityContent h2 strong { color: #569F0D; font: bold 18px/20px Arial,Helvetica,Sans-Serif; }
+	.takeTicket .quantityContent .usedTickets { font-weight: bold; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; background: #EEEEEE;  float: right; padding: 5px 9px; width: 140px}
+	.takeTicket .quantityContent .usedTickets strong { color: #4C92AC; }
+	.takeTicket .quantityContent .quantityChoose { clear: both; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; background: #EEEEEE; padding: 10px 20px 10px 40px; height: 23px; }
+	.takeTicket .quantityContent .quantityChoose label { font: bold 13px/22px Arial,Helvetica,Sans-Serif; margin:0 2px; color: #888888; }
+	.takeTicket .quantityContent .quantityChoose dl { float: right; display: block; }
+	*+html .takeTicket .quantityContent .quantityChoose dl { margin-top: -23px; }
+	.takeTicket .quantityContent .quantityChoose dl * { float: left; }
+	.takeTicket .quantityContent .quantityChoose dl .title { font: italic bold 15px/22px Arial,Helvetica,Sans-Serif; margin:0 5px 0 0; padding: 2px 0 0; display: block; color: #666;}
+	.takeTicket .quantityContent .quantityChoose dl .price { font: bold italic 18px/22px Arial,Helvetica,Sans-Serif; color: #569F0D; }
+	
+	
+	/* Payments Choose */
+	.takeTicket .paymentChoose { padding: 0 15px 15px; display: block; }
+	.takeTicket .paymentChoose ol{ clear: both; padding: 10px 30px 10px 30px; display: block; background: #eee;  border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+	.takeTicket .paymentChoose ol li{ padding: 5px 10px; display: block; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+	.takeTicket .paymentChoose ol li.active{ background: #dfe0dd; }
+	.takeTicket .paymentChoose h2 strong { color: #569F0D; font: bold 18px/20px Arial,Helvetica,Sans-Serif; }
+	.takeTicket .paymentChoose .paymentOpt{ display: block; zoom: 1; }
+	.takeTicket .paymentChoose .paymentOpt span input{ display: block; float: left; }
+	.takeTicket .paymentChoose .paymentOpt span label{ display: block; float: left; margin: -1px 10px 0; font-weight: bold; color: #666; }
+	.takeTicket .paymentChoose .paymentOpt:after{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	.takeTicket .paymentChoose .paymentOpt .listOpt{ float: left; width: 100%; margin: 0 25px; }
+	
+	.takeTicket .paymentChoose .paymentOpt .listOpt ul li{ padding: 0; display: block; float: left; margin: 5px 0;  border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  }
+	.takeTicket .paymentChoose .paymentOpt .listOpt ul li strong { color: #95B94D; display: block; font-size: 10px; margin: 15px 0 0; }
+	.takeTicket .paymentChoose .paymentOpt .listOpt ul li.active{ background:#95B94D; }
+	.takeTicket li .itemPaymentChoice{ display: block; float: left; width: 55px; background: transparent url(<%= asset_path 'credit-card-choice.png' %>) no-repeat; height: 37px; margin: 5px 5px 4px 6px; }
+	.takeTicket li .itemPaymentChoice.aura{ background-position: 0 0; }
+	.takeTicket li .itemPaymentChoice.amex{ background-position: 0 -60px; }
+	.takeTicket li .itemPaymentChoice.dinners{ background-position: 0 -300px; }
+	.takeTicket li .itemPaymentChoice.master{ background-position: 0 -180px; }
+	.takeTicket li .itemPaymentChoice.hiper{ background-position: 0 -240px; }
+	.takeTicket li .itemPaymentChoice.visa{ background-position: 0 -120px; }
+	.takeTicket li .itemPaymentChoice.itau{ background-position: -70px 0; }
+	.takeTicket li .itemPaymentChoice.bradesco{ background-position: -70px -59px; }
+	.takeTicket li .itemPaymentChoice.banrisul{ background-position: -70px -119px; }
+	.takeTicket li .itemPaymentChoice.hsbc{ background-position: -70px -180px; }
+	.takeTicket li .itemPaymentChoice.santander{ background-position: -70px -240px; }
+	.takeTicket li .itemPaymentChoice.bb{ background-position: -70px -300px; }
+	.takeTicket li .itemPaymentChoice.bill{ background-position: -140px 0; }
+	.takeTicket li .itemPaymentChoice.pagseguro{ background-position: -140px -60px; }
+	
+	/* Payments Data */
+	div.paginaOferta .confirmarDados ol li.codeNumber .descricao{ width: 260px; text-align: left; right: 120px; }
+	div.paginaOferta .confirmarDados ol li.codeNumber strong{ text-align: left; }
+	div.paginaOferta .confirmarDados ol li.codeNumber img{ margin: 0 auto; display: block; }
+	div.paginaOferta .confirmarDados ol li.codeNumber strong.subtitle{ text-align: left; color: #666; }
+	.takeTicket .paymentData { padding: 0 12px 30px; display: block; }
+	.takeTicket .paymentData ol { display: block; }
+	.takeTicket .paymentData ol li{ zoom: 1; }
+	.takeTicket .paymentData ol li:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	.takeTicket .paymentData h2 strong { color: #569F0D; font: bold 18px/20px Arial,Helvetica,Sans-Serif; }
+	.takeTicket li.bankOpt span{ margin-right: 0px !important; padding: 15px 0 0 0; }
+	.takeTicket li.bankOpt span input{ margin: 0 5px 0 !important;  padding: 0 !important; }
+	.takeTicket .billWarning { width:245px; float: left; padding: 14px; }
+		.takeTicket .billWarning p{ font: bold 12px/20px Arial,Helvetica,Sans-Serif; color: #FF9900; }
+	.takeTicket .billValue { width:240px; border-left: 1px solid #569F0D; float: left; padding: 15px; }
+	.takeTicket .billValue dl dt { float: left; margin:0 10px 0 0; }
+	.takeTicket .billValue dl .benefitValue{ color: #000; font: bold 12px/20px Arial,Helvetica,Sans-Serif; }
+	.takeTicket .billValue dl .billTaxValue{ color: #333; font: bold 12px/20px Arial,Helvetica,Sans-Serif; }
+	.takeTicket .billValue dl .amountValue{ color: #000; font: bold 16px/20px Arial,Helvetica,Sans-Serif;  }
+	.takeTicket .billValue dl dd{ font: bold 14px/20px Arial,Helvetica,Sans-Serif; color: #569F0D;}
+	.takeTicket .pagseguroInfo, .takeTicket .billInfo { clear: both; margin: 0 0 0 -10px; }
+	.takeTicket .pagseguroInfo:after, .takeTicket .billInfo:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	.takeTicket .pagseguroWarning { width:240px; float: left; padding: 14px 55px 14px 0; }
+		.takeTicket .pagseguroWarning a{ display: block; font-size: 12px; font-weight: bold; margin: 5px 0 0; text-decoration: none; } 
+		.takeTicket .pagseguroWarning a:hover,
+		.takeTicket .pagseguroWarning a:focus{ text-decoration: underline; }
+		.takeTicket .pagseguroWarning p{ font: normal 12px/20px Arial,Helvetica,Sans-Serif; color: #666; }
+		.takeTicket .pagseguroWarning p strong{ display: block; color: #569F0D; font-size: 10px;}
+	.takeTicket .pagseguroValue { width:225px; float: left; padding: 35px 0 0 15px; }
+	.takeTicket .pagseguroValue dl dt { float: left; margin:0 10px 0 0; }
+	.takeTicket .pagseguroValue dl .amountValuePS{ color: #000; font: bold 16px/20px Arial,Helvetica,Sans-Serif; }
+	.takeTicket .pagseguroValue dl dd{ font: bold italic 18px/22px Arial,Helvetica,Sans-Serif; color: #569F0D;}
+	.takeTicket .redirectPagseguro{ font: bold 12px/20px Arial,Helvetica,Sans-Serif; color: #666; display: block; background: transparent url(<%= asset_path 'pagseguro_logo.jpg' %>) no-repeat 250px 0 ;  clear: both; height: 33px; padding: 10px 0 0; }
+	
+	.takeTicket .mostrar { display: block !important; }
+	.continuar { padding: 15px; display: block; zoom: 1; }
+	.continuar:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	.continuar span { display: block; float: left; margin-top: 10px; }
+	.continuar span *{ display: block; float: left; }
+	.continuar span label{ font: bold 12px/18px Arial; margin: -1px 0 0 6px; }
+	.continuar .defaultButton { float: right; padding: 10px 30px; text-decoration: none; width: 85px; font-size: 16px; }
+	.continuar .defaultButton.aguarde { background: #DEE6CE !important ;background-color: #DEE6CE !important; float: right !important; padding: 10px 30px !important; text-decoration: none !important; width: 80px !important; font-size: 16px !important; }
+	div.continuar a.defaultButton.green.aguarde { padding: 0 !important; width: 135px !important;  }
+	div.continuar a.defaultButton.green.aguarde span{ padding: 10px 40px !important; }
+	.continuar .defaultButton.aguarde:hover,
+	.continuar .defaultButton.aguarde:focus { float: right !important; padding: 10px 30px !important; text-decoration: none !important; width: 80px !important; font-size: 16px !important; }
+	.continuar .defaultButton.aguarde span{ background: #DEE6CE url(<%= asset_path 'aguarde-padrao.gif' %>) no-repeat scroll 0 center !important; border: none; display: block; margin-top: 0; text-shadow: none;  }
+	.continuar .defaultButton.aguarde:hover span,
+	.continuar .defaultButton.aguarde:focus span{ border: none; }
+	*+html .continuar .defaultButton { width: 90px; padding: 10px 20px; }
+	.continuar .defaultButton:hover, .continuar .defaultButton:focus { text-decoration: none; margin: 1px -1px -1px 0 }
