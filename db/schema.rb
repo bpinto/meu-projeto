@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(:version => 20110824224559) do
 
   create_table "cities", :force => true do |t|
-    t.string   "city",       :null => false
+    t.string   "name",       :null => false
     t.string   "state",      :null => false
     t.string   "country",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cities", ["city"], :name => "index_cities_on_city"
+  add_index "cities", ["name"], :name => "index_cities_on_name"
 
   create_table "deals", :force => true do |t|
     t.text     "description",                               :null => false
