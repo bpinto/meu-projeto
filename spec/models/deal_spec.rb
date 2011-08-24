@@ -55,13 +55,6 @@ describe Deal do
 
     describe "#discount" do
 
-      it "shouldn't require a discount if it lacks a real price and not on sale" do
-        deal.real_price = nil
-        deal.kind = Deal::KIND_OFFER
-        deal.discount = nil
-        deal.should be_valid
-      end
-
       it "should require a discount if it is a deal on sale" do
         deal.kind = Deal::KIND_ON_SALE
         deal.discount = nil
@@ -134,9 +127,23 @@ describe Deal do
     end
 
     describe "#real_price" do
-      it "should not be required" do
+      it "should not be required when the kind is on sale" do
         deal.real_price = nil
+        deal.discount = 1
+        deal.kind = Deal::KIND_ON_SALE
         deal.should be_valid
+      end
+
+      it "should be required when the kind is daily deal" do
+        deal.real_price = nil
+        deal.kind = Deal::KIND_DAILY_DEAL
+        deal.should_not be_valid
+      end
+
+      it "should be required when the kind is offer" do
+        deal.real_price = nil
+        deal.kind = Deal::KIND_OFFER
+        deal.should_not be_valid
       end
 
       it "should be greater than price" do
@@ -365,10 +372,6 @@ describe Deal do
   end
 
   describe "#discount_to_percentage" do
-    it "should return nil when there's no discount" do
-      deal.discount = nil
-      deal.discount_to_percentage.should == nil
-    end
 
     it "should return 30 when there's a 30% discount" do
       deal.real_price = 7.4

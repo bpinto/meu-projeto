@@ -30,18 +30,18 @@ class Deal < ActiveRecord::Base
   validates :category,    :presence => true,      :inclusion => CATEGORIES
   validates :company,     :presence => true
   validates :description, :presence => true
-  validates :discount,    :inclusion => [nil],    :unless => "self.real_price? or on_sale?"
   validates :discount,    :presence => true,      :if => "on_sale?"
   validates :end_date,    :timeliness => {:after => :now},  :allow_nil => true
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true,  :unless => "on_sale?"
-  validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?" #Essa validação é de acordo com o kind da oferta
+  validates :real_price,  :numericality => true,  :unless => "on_sale?" 
+  validates :real_price,  :greater_than => :price, :if => "self.price? and self.real_price?"
 
   validates :title,       :presence => true
   validates :city,        :presence => true
 
-  after_validation :calculate_discount, :unless => "on_sale?"
+  after_validation :calculate_discount, :if => "self.real_price? and self.price? and not on_sale?"
 
   attr_accessible :address, :category, :city, :company, :description, :discount, :end_date, :kind, :link, :price, :real_price, :title
 
