@@ -34,7 +34,7 @@ class Deal < ActiveRecord::Base
   validates :end_date,    :timeliness => {:after => :now},  :allow_nil => true
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
-  validates :price,       :numericality => true
+  validates :price,       :numericality => true,  :unless => "on_sale?"
   validates :real_price,  :numericality => true,  :greater_than => :price,  :if => "self.real_price?" #Essa validação é de acordo com o kind da oferta
 
   validates :title,       :presence => true
@@ -83,7 +83,11 @@ class Deal < ActiveRecord::Base
   end
 
   private
-
+  
+    def on_sale?
+      self.kind == KIND_ON_SALE
+    end
+    
     def normalize_city
       city.downcase!
     end

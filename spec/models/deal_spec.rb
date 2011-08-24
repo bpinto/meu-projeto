@@ -101,9 +101,26 @@ describe Deal do
       end
     end
 
-    it "should require a price" do
-      deal.price = nil
-      deal.should_not be_valid
+    describe "#price" do
+
+      it "should require a price if the kind is offer" do
+        deal.kind = Deal::KIND_OFFER
+        deal.price = nil
+        deal.should_not be_valid
+      end
+
+      it "should require a price if the kind is daily deal" do
+        deal.kind = Deal::KIND_DAILY_DEAL
+        deal.price = nil
+        deal.should_not be_valid
+      end
+
+      it "should not require a price if the kind is on sale" do
+        deal.kind = Deal::KIND_ON_SALE
+        deal.price = nil
+        deal.should be_valid
+      end
+
     end
 
     describe "#real_price" do
