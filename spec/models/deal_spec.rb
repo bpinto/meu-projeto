@@ -15,14 +15,13 @@ describe Deal do
     it { should allow_mass_assignment_of(:category) }
     it { should allow_mass_assignment_of(:company) }
     it { should allow_mass_assignment_of(:description) }
+    it { should allow_mass_assignment_of(:discount) }
     it { should allow_mass_assignment_of(:end_date) }
     it { should allow_mass_assignment_of(:kind) }
     it { should allow_mass_assignment_of(:link) }
     it { should allow_mass_assignment_of(:price) }
     it { should allow_mass_assignment_of(:real_price) }
     it { should allow_mass_assignment_of(:title) }
-
-    it { should_not allow_mass_assignment_of(:discount) }
   end
 
   describe "Validations" do
@@ -54,10 +53,20 @@ describe Deal do
       deal.should_not be_valid
     end
 
-    it "shouldn't require a discount if it lacks a real price" do
-      deal.real_price = nil
-      deal.discount = 1
-      deal.should_not be_valid
+    describe "#discount" do
+
+      it "shouldn't require a discount if it lacks a real price and not on sale" do
+        deal.real_price = nil
+        deal.kind = Deal::KIND_OFFER
+        deal.discount = nil
+        deal.should be_valid
+      end
+
+      it "should require a discount if it is a deal on sale" do
+        deal.kind = Deal::KIND_ON_SALE
+        deal.discount = nil
+        deal.should_not be_valid
+      end
     end
 
     describe "#end_date" do
@@ -118,6 +127,7 @@ describe Deal do
       it "should not require a price if the kind is on sale" do
         deal.kind = Deal::KIND_ON_SALE
         deal.price = nil
+        deal.discount = 1
         deal.should be_valid
       end
 

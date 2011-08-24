@@ -30,7 +30,8 @@ class Deal < ActiveRecord::Base
   validates :category,    :presence => true,      :inclusion => CATEGORIES
   validates :company,     :presence => true
   validates :description, :presence => true
-  validates :discount,    :inclusion => [nil],    :unless => "self.real_price?" #Essa validação é de acordo com o kind da oferta
+  validates :discount,    :inclusion => [nil],    :unless => "self.real_price? or on_sale?"
+  validates :discount,    :presence => true,      :if => "on_sale?"
   validates :end_date,    :timeliness => {:after => :now},  :allow_nil => true
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
@@ -40,9 +41,9 @@ class Deal < ActiveRecord::Base
   validates :title,       :presence => true
   validates :city,        :presence => true
 
-  after_validation :calculate_discount
+  after_validation :calculate_discount, :unless => "on_sale?"
 
-  attr_accessible :address, :category, :city, :company, :description, :end_date, :kind, :link, :price, :real_price, :title
+  attr_accessible :address, :category, :city, :company, :description, :discount, :end_date, :kind, :link, :price, :real_price, :title
 
   default_scope order("created_at desc")
 
