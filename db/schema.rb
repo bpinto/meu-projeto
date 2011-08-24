@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,14 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110816190907) do
+ActiveRecord::Schema.define(:version => 20110824224559) do
+
+  create_table "cities", :force => true do |t|
+    t.string   "city",       :null => false
+    t.string   "state",      :null => false
+    t.string   "country",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["city"], :name => "index_cities_on_city"
 
   create_table "deals", :force => true do |t|
-    t.float    "price",                                     :null => false
     t.text     "description",                               :null => false
     t.string   "link",                                      :null => false
     t.string   "title",                                     :null => false
-    t.integer  "kind",                                      :null => false
     t.integer  "user_id",                                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,10 +36,10 @@ ActiveRecord::Schema.define(:version => 20110816190907) do
     t.decimal  "discount",    :precision => 8, :scale => 2
     t.datetime "end_date"
     t.decimal  "real_price",  :precision => 8, :scale => 2
-    t.string   "city",                                      :null => false
+    t.integer  "kind",                                      :null => false
+    t.decimal  "price",       :precision => 8, :scale => 2
+    t.integer  "city",                                      :null => false
   end
-
-  add_index "deals", ["city"], :name => "index_deals_on_city"
 
   create_table "relationships", :force => true do |t|
     t.integer  "followed_id", :null => false
