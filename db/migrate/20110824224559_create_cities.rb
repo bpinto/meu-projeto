@@ -12,14 +12,14 @@ class CreateCities < ActiveRecord::Migration
 
     remove_index  :deals, :city
     remove_column :deals, :city
-    add_column    :deals, :city, :integer, :null => false
+    add_column    :deals, :city_id, :integer, :null => false
   end
 
   def down
     remove_index  :cities, :name
     drop_table    :cities
 
-    remove_column :deals, :city
+    remove_column :deals, :city_id
     add_column    :deals, :city, :string, :null => false
     add_index     :deals, :city
   end

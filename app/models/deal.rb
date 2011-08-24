@@ -25,6 +25,7 @@ class Deal < ActiveRecord::Base
 
   KINDS = [ KIND_OFFER, KIND_DAILY_DEAL, KIND_ON_SALE]
 
+  belongs_to :city
   belongs_to :user
 
   validates :category,    :presence => true,      :inclusion => CATEGORIES
@@ -48,8 +49,6 @@ class Deal < ActiveRecord::Base
   default_scope order("created_at desc")
 
   scope :today, where("deals.created_at >= ?", Date.today)
-
-  before_save :normalize_city
 
   def self.by_category(category)
     where(:category => category)
@@ -84,12 +83,8 @@ class Deal < ActiveRecord::Base
   end
 
   private
-  
-    def on_sale?
-      self.kind == KIND_ON_SALE
-    end
-    
-    def normalize_city
-      city.downcase!
-    end
+
+  def on_sale?
+    self.kind == KIND_ON_SALE
+  end
 end

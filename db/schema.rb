@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20110824224559) do
     t.decimal  "real_price",  :precision => 8, :scale => 2
     t.integer  "kind",                                      :null => false
     t.decimal  "price",       :precision => 8, :scale => 2
-    t.integer  "city",                                      :null => false
+    t.integer  "city_id",                                   :null => false
   end
 
   create_table "relationships", :force => true do |t|

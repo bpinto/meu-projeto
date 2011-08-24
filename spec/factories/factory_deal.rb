@@ -10,8 +10,8 @@ FactoryGirl.define do
     price 0.99
     real_price 1.99
     title "F_TITLE"
-    city
 
+    city
     user
   end
 
