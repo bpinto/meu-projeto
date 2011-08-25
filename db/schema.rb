@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110824224559) do
+ActiveRecord::Schema.define(:version => 20110824235706) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(:version => 20110824224559) do
   add_index "cities", ["name"], :name => "index_cities_on_name"
 
   create_table "deals", :force => true do |t|
+    t.float    "price"
     t.text     "description",                               :null => false
     t.string   "link",                                      :null => false
     t.string   "title",                                     :null => false
+    t.integer  "kind",                                      :null => false
     t.integer  "user_id",                                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,10 +38,10 @@ ActiveRecord::Schema.define(:version => 20110824224559) do
     t.decimal  "discount",    :precision => 8, :scale => 2
     t.datetime "end_date"
     t.decimal  "real_price",  :precision => 8, :scale => 2
-    t.integer  "kind",                                      :null => false
-    t.decimal  "price",       :precision => 8, :scale => 2
     t.integer  "city_id",                                   :null => false
   end
+
+  add_index "deals", ["city_id"], :name => "index_deals_on_city_id"
 
   create_table "relationships", :force => true do |t|
     t.integer  "followed_id", :null => false
