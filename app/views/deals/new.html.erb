@@ -27,13 +27,18 @@
             </li>
 
             <li>
+              <%= f.label :discount %>
+              <%= f.text_field :discount %>
+            </li>
+
+            <li>
               <%= f.label :category %>
-              <%= f.select :category, Deal.i18n_categories %>
+              <%= f.select :category, Deal.i18n_categories, {:include_blank => ''} %>
             </li>
 
             <li>
               <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds %>
+              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => ''}%>
             </li>
 
             <li>
@@ -53,8 +58,7 @@
 
             <li>
               <%= f.label :city %>
-              <%= f.text_field :city %>
-              <%= check_box_tag(:national_offer, I18n.t("models.deal.national_offer")) %> <%= label_tag I18n.t "models.deal.national_offer" %>
+              <%= f.select(:city_id, City.all.collect{|c| [c.name, c.id] },{:include_blank => ''})%>
             </li>
 
           </ol>
