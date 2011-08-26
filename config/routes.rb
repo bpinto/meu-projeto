@@ -16,6 +16,8 @@ DealWitMe::Application.routes.draw do
 
   resources :deals
 
+  match '/deals/today/:category', :to => "deals#today"
+
   root :to => "deals#today"
 
   # The priority is based upon order of creation:

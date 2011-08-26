@@ -24,6 +24,10 @@ class DealsController < AuthorizedController
   private
 
   def find_todays_deals
-    @deals = Deal.today
+    if params[:category]
+      @deals = Deal.today.by_category(params[:category])
+    else
+      @deals = Deal.today
+    end
   end
 end
