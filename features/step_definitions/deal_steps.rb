@@ -28,7 +28,6 @@ end
 
 When /^I fill in the deal fields correctly$/ do
   deal = Factory.build :deal
-  fill_in(get_field("deal", "city") , :with => deal.city)
   fill_in(get_field("deal", "company"), :with => deal.company)
   fill_in(get_field("deal", "description"), :with => deal.description)
   fill_in(get_field("deal", "link"), :with => deal.link)
@@ -37,6 +36,7 @@ When /^I fill in the deal fields correctly$/ do
   fill_in(get_field("deal", "title") , :with => deal.title)
   select(Deal.i18n_category(deal.category), :from => get_field("deal", "category")) 
   select(Deal.i18n_kind(deal.kind), :from => get_field("deal", "kind"))
+  select(City.all.collect{|c| [c.name, c.id] }, :from => get_field("deal", "city_id")) #TODO: Não está funcionando, não consegui colocar pra funcionar!!!!
 end
 
 Then /^I should see (\d+) deals?$/i do |amount|
