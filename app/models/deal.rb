@@ -40,11 +40,11 @@ class Deal < ActiveRecord::Base
   validates :real_price,  :greater_than => :price, :if => "self.price? and self.real_price?"
 
   validates :title,       :presence => true
-  validates :city,        :presence => true
+  validates :city_id,        :presence => true
 
   after_validation :calculate_discount, :if => "self.real_price? and self.price? and not on_sale?"
 
-  attr_accessible :address, :category, :city, :company, :description, :discount, :end_date, :kind, :link, :price, :real_price, :title
+  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :real_price, :title
 
   default_scope order("created_at desc")
 
@@ -87,4 +87,5 @@ class Deal < ActiveRecord::Base
   def on_sale?
     self.kind == KIND_ON_SALE
   end
+
 end
