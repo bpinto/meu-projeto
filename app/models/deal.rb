@@ -66,20 +66,20 @@ class Deal < ActiveRecord::Base
     I18n.t("models.deal.kind.#{kind}")
   end
 
-  def discount_to_percentage
-    ((self.discount / self.real_price) * 100).to_i if self.real_price?
-  end
-
-  def calculate_discount
-    (self.discount = self.real_price - self.price) if self.real_price?
-  end
-
   def self.i18n_categories
     Deal::CATEGORIES.collect {|id| [Deal.i18n_category(id), id]}
   end
 
   def self.i18n_kinds
     Deal::KINDS.collect {|id| [Deal.i18n_kind(id), id]}
+  end
+
+  def discount_to_percentage
+    ((self.discount / self.real_price) * 100).to_i if self.real_price?
+  end
+
+  def calculate_discount
+    (self.discount = self.real_price - self.price) if self.real_price?
   end
 
   private
