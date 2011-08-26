@@ -8,7 +8,7 @@ module Fields
       field_id = Fields::USER[field]
     end
 
-    field_id ? field_id : "#{field} not found"
+    field_id ? field_id : "#{field} not found on #{__FILE__}"
   end
 
   USER = {
@@ -23,7 +23,7 @@ module Fields
   DEAL = {
     "address" => "deal_address",
     "category" => "deal_category",
-    "city" => "deal_city",
+    "city" => "deal_city_id",
     "company" => "deal_company",
     "description" => "deal_description",
     "link" => "deal_link",

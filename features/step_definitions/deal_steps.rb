@@ -36,7 +36,7 @@ When /^I fill in the deal fields correctly$/ do
   fill_in(get_field("deal", "title") , :with => deal.title)
   select(Deal.i18n_category(deal.category), :from => get_field("deal", "category")) 
   select(Deal.i18n_kind(deal.kind), :from => get_field("deal", "kind"))
-  select(City.all.collect{|c| [c.name, c.id] }, :from => get_field("deal", "city_id")) #TODO: Não está funcionando, não consegui colocar pra funcionar!!!!
+  select(City::RIO_DE_JANEIRO, :from => get_field("deal", "city"))
 end
 
 Then /^I should see (\d+) deals?$/i do |amount|

@@ -8,7 +8,6 @@
         <!-- TODO: Facebook / Google -->
         <h3>Compartilhe uma oferta preenchendo os campos abaixo e clicando em salvar</h3>
 
-
         <%= form_for(@deal) do |f| %>
           <ol>
             <li>
@@ -38,7 +37,7 @@
 
             <li>
               <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => ''}%>
+              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => ''} %>
             </li>
 
             <li>
@@ -58,9 +57,8 @@
 
             <li>
               <%= f.label :city %>
-              <%= f.select(:city_id, City.all.collect{|c| [c.name, c.id] },{:include_blank => ''})%>
+              <%= f.select :city_id, @cities_name, {:include_blank => ''} %>
             </li>
-
           </ol>
 
           <!-- TODO: Transformar o botão igual ao link -->

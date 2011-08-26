@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
   include  Gravtastic
+
+  devise :confirmable, :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
   gravtastic
   has_paper_trail
 
-  devise :confirmable, :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
-
+  has_and_belongs_to_many :cities
   has_many :deals
   has_many :relationships,          :foreign_key => "follower_id"#,      :dependent => :destroy
   has_many :followers,              :through => :reverse_relationships, :source => :follower

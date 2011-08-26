@@ -1,6 +1,7 @@
 class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:show, :today]
   prepend_before_filter :find_todays_deals, :only => :today
+  before_filter :populate_cities_name, :only => :new
 
   def new
   end
@@ -29,5 +30,9 @@ class DealsController < AuthorizedController
     else
       @deals = Deal.today
     end
+  end
+
+  def populate_cities_name
+    @cities_name = City.all.collect { |c| [c.name, c.id] }
   end
 end
