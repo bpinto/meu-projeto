@@ -227,6 +227,65 @@ describe Deal do
       Deal::CATEGORY_CAR.should == 14
     end
 
+    describe "categories dictionary" do
+
+      it "should return CATEGORY_DRINK if we pass 'drink' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["drink"].should == Deal::CATEGORY_DRINK
+      end
+
+      it "should return CATEGORY_BEAUTY_AND_HEALTH if we pass 'beauty_and_health' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["beauty_and_health"].should == Deal::CATEGORY_BEAUTY_AND_HEALTH
+      end
+
+      it "should return CATEGORY_PHONE_AND_CAMERA if we pass 'phone_and_camera' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["phone_and_camera"].should == Deal::CATEGORY_PHONE_AND_CAMERA
+      end
+
+      it "should return CATEGORY_MUSIC_AND_MOVIE if we pass 'music_and_movie' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["music_and_movie"].should == Deal::CATEGORY_MUSIC_AND_MOVIE
+      end
+
+      it "should return CATEGORY_HOME_AND_APPLIANCE if we pass 'home_and_appliance' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["home_and_appliance"].should == Deal::CATEGORY_HOME_AND_APPLIANCE
+      end
+
+      it "should return CATEGORY_ELECTRONICS if we pass 'eletrocnics' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["electronics"].should == Deal::CATEGORY_ELECTRONICS
+      end
+
+      it "should return CATEGORY_FITNESS if we pass 'fitness' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["fitness"].should == Deal::CATEGORY_FITNESS
+      end
+
+      it "should return CATEGORY_COMPUTER if we pass 'computer' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["computer"].should == Deal::CATEGORY_COMPUTER
+      end
+
+      it "should return CATEGORY_BOOK if we pass 'book' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["book"].should == Deal::CATEGORY_BOOK
+      end
+
+      it "should return CATEGORY_CLOTHES if we pass 'clothes' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["clothes"].should == Deal::CATEGORY_CLOTHES
+      end
+
+      it "should return CATEGORY_TRAVEL if we pass 'travel' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["travel"].should == Deal::CATEGORY_TRAVEL
+      end
+
+      it "should return CATEGORY_RESTAURANT if we pass 'restaurant' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["restaurant"].should == Deal::CATEGORY_RESTAURANT
+      end
+
+      it "should return CATEGORY_TOY if we pass 'toy' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["toy"].should == Deal::CATEGORY_TOY
+      end
+
+      it "should return CATEGORY_CAR if we pass 'car' to the dictionary" do
+        Deal::CATEGORIES_DICTIONARY["car"].should == Deal::CATEGORY_CAR
+      end
+    end
+
     describe "i18n" do
       specify "i18n_categories should return all categories' i18n name" do
         categories = []
