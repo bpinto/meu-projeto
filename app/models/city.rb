@@ -7,6 +7,4 @@ class City < ActiveRecord::Base
   validates :country,   :presence => true
   validates :name,      :presence => true
   validates :state,     :presence => true
-
-  RIO_DE_JANEIRO = 1
 end

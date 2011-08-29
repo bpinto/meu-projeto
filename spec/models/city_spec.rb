@@ -7,6 +7,9 @@ describe City do
   its(:save) { should be_true }
   its(:switched_on?) { should be_true }
 
+  it { should respond_to :users }
+  it { should respond_to :deals }
+
   describe "Accessibility" do
     it { should allow_mass_assignment_of(:name) }
     it { should allow_mass_assignment_of(:state) }
