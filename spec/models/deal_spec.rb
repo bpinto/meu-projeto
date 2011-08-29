@@ -2,128 +2,221 @@
 require 'spec_helper'
 
 describe Deal do
-  let(:deal) { Factory.build :deal }
-  subject { deal }
 
-  its(:save) { should be_true }
-  its(:switched_on?) { should be_true }
+  shared_examples_for "All Deals" do
+    its(:save) { should be_true }
+    its(:switched_on?) { should be_true }
 
-  it { should respond_to :user }
+    it { should respond_to :user }
 
-  describe "Accessibility" do
-    it { should allow_mass_assignment_of(:address) }
-    it { should allow_mass_assignment_of(:category) }
-    it { should allow_mass_assignment_of(:company) }
-    it { should allow_mass_assignment_of(:description) }
-    it { should allow_mass_assignment_of(:discount) }
-    it { should allow_mass_assignment_of(:end_date) }
-    it { should allow_mass_assignment_of(:kind) }
-    it { should allow_mass_assignment_of(:link) }
-    it { should allow_mass_assignment_of(:price) }
-    it { should allow_mass_assignment_of(:real_price) }
-    it { should allow_mass_assignment_of(:title) }
+    describe "Accessibility" do
+      it { should allow_mass_assignment_of(:address) }
+      it { should allow_mass_assignment_of(:category) }
+      it { should allow_mass_assignment_of(:company) }
+      it { should allow_mass_assignment_of(:description) }
+      it { should allow_mass_assignment_of(:discount) }
+      it { should allow_mass_assignment_of(:end_date) }
+      it { should allow_mass_assignment_of(:kind) }
+      it { should allow_mass_assignment_of(:link) }
+      it { should allow_mass_assignment_of(:price) }
+      it { should allow_mass_assignment_of(:real_price) }
+      it { should allow_mass_assignment_of(:title) }
+    end
+
+    describe "Validations" do
+      it "should require a category" do
+        deal.category = nil
+        deal.should_not be_valid
+      end
+
+      it "should require a city" do
+        deal.city = nil
+        deal.should_not be_valid
+      end
+
+      it "should require a company" do
+        deal.company = nil
+        deal.should_not be_valid
+      end
+
+      it "should require a descrition" do
+        deal.description = nil
+        deal.should_not be_valid
+      end
+
+      describe "#end_date" do
+        it "should not be before or equal to now" do
+          deal.end_date = Time.now
+          deal.should_not be_valid
+        end
+
+        it "should be after now" do
+          deal.end_date = Time.now + 1
+          deal.should be_valid
+        end
+      end
+
+      it "should require a kind" do
+        deal.kind = nil
+        deal.should_not be_valid
+      end
+
+      describe "#link" do
+        it "should be required"do
+          deal.link = nil
+          deal.should_not be_valid
+        end
+
+        describe "should begin with http:// or https://" do
+          it "http://www.dealwit.me should be valid" do
+            deal.link = "http://www.dealwit.me"
+            deal.should be_valid
+          end
+
+          it "https://www.dealwit.me should be valid" do
+            deal.link = "https://www.dealwit.me"
+            deal.should be_valid
+          end
+
+          it "www.dealwit.me should be invalid" do
+            deal.link = "www.dealwit.me"
+            deal.should have(1).error_on(:link)
+          end
+        end
+      end
+
+      describe "#real_price" do
+        it "should be greater than price" do
+          deal.real_price = 2
+          deal.price = 1
+           deal.should be_valid
+        end
+        it "shouldn't be equal to price" do
+          deal.real_price = 1
+          deal.price = 1
+          deal.should_not be_valid
+        end
+        it "shouldn't be smaller than price" do
+          deal.real_price = 1
+          deal.price = 2
+          deal.should_not be_valid
+        end
+      end
+   
+      it "should require a title" do
+        deal.title = nil
+        deal.should_not be_valid
+      end
+    end
   end
 
-  describe "Validations" do
-    it "should require a category" do
-      deal.category = nil
-      deal.should_not be_valid
-    end
+  describe "On Sale Deals" do
+    let(:deal) { Factory.build :deal_on_sale }
+    subject { deal }
 
-    it "should require a city" do
-      deal.city = nil
-      deal.should_not be_valid
-    end
-
-    it "should require a company" do
-      deal.company = nil
-      deal.should_not be_valid
-    end
-
-    it "should require a descrition" do
-      deal.description = nil
-      deal.should_not be_valid
-    end
-
-    describe "#discount" do
-
-      it "should require a discount if it is a deal on sale" do
-        deal.kind = Deal::KIND_ON_SALE
+    it_should_behave_like "All Deals"
+    
+    describe "Validations" do  
+      it "should require a discount" do
         deal.discount = nil
         deal.should_not be_valid
       end
-    end
 
-    describe "#end_date" do
-      it "should not be before or equal to now" do
-        deal.end_date = Time.now
-        deal.should_not be_valid
+      it "should not require a price" do
+        deal.price = nil
+        deal.should be_valid
       end
 
-      it "should be after now" do
-        deal.end_date = Time.now + 1
+      it "should not require a real price" do
+        deal.real_price = nil
         deal.should be_valid
       end
     end
+  end
 
-    it "should require a kind" do
-      deal.kind = nil
-      deal.should_not be_valid
-    end
+  describe "Deals Offer" do
+    let(:deal) { Factory.build :deal_offer }
+    subject { deal }
 
-    describe "#link" do
-      it "should be required"do
-        deal.link = nil
-        deal.should_not be_valid
-      end
+    it_should_behave_like "All Deals"
 
-      describe "should begin with http:// or https://" do
-        it "http://www.dealwit.me should be valid" do
-          deal.link = "http://www.dealwit.me"
-          deal.should be_valid
-        end
-
-        it "https://www.dealwit.me should be valid" do
-          deal.link = "https://www.dealwit.me"
-          deal.should be_valid
-        end
-
-        it "www.dealwit.me should be invalid" do
-          deal.link = "www.dealwit.me"
-          deal.should have(1).error_on(:link)
-        end
-      end
-    end
-
-    describe "#price" do
-
-      it "should require a price if the kind is offer" do
-        deal.kind = Deal::KIND_OFFER
+    describe "Validations" do
+      it "should require a price" do
         deal.price = nil
         deal.should_not be_valid
       end
 
+      it "should require a real price" do
+        deal.real_price = nil
+        deal.should_not be_valid
+      end
+      describe "#calculate_discount" do
+        it "should be calculated on validation" do
+          deal.should_receive(:calculate_discount)
+          deal.valid?
+        end
+
+        it "should withdraw the price from the real price" do
+          deal.real_price = 2
+          deal.price = 1.5
+          deal.calculate_discount
+
+          deal.discount.should == 0.5
+        end
+
+        it "should not withdraw the price from the real price if there's no real price" do
+          deal.real_price = nil
+          deal.discount = nil
+          deal.calculate_discount
+
+          deal.discount.should == nil
+        end
+      end
+
+      describe "#discount_to_percentage" do
+
+        it "should return 30 when there's a 30% discount" do
+          deal.real_price = 7.4
+          deal.discount = 2.22
+
+          deal.discount_to_percentage.should == 30
+        end
+
+        it "should return 30 when there's a 30.4% discount" do
+          deal.real_price = 7.3
+          deal.discount = 2.22
+
+          deal.discount_to_percentage.should == 30
+        end
+
+        it "should return 50 when there's a 50% discount" do
+          deal.real_price = 3.6
+          deal.discount = 1.8
+
+          deal.discount_to_percentage.should == 50
+        end
+
+        it "should return 100 when there's a 100% discount" do
+          deal.real_price = 1
+          deal.discount = 1
+
+          deal.discount_to_percentage.should == 100
+        end
+      end
+    end  
+  end
+
+  describe "Daily Deals" do
+    let(:deal) { Factory.build :daily_deal }
+    subject { deal }
+
+    it_should_behave_like "All Deals"
+
+    describe "Validations" do
       it "should require a price if the kind is daily deal" do
         deal.kind = Deal::KIND_DAILY_DEAL
         deal.price = nil
         deal.should_not be_valid
-      end
-
-      it "should not require a price if the kind is on sale" do
-        deal.kind = Deal::KIND_ON_SALE
-        deal.price = nil
-        deal.discount = 1
-        deal.should be_valid
-      end
-
-    end
-
-    describe "#real_price" do
-      it "should not be required when the kind is on sale" do
-        deal.real_price = nil
-        deal.discount = 1
-        deal.kind = Deal::KIND_ON_SALE
-        deal.should be_valid
       end
 
       it "should be required when the kind is daily deal" do
@@ -131,41 +224,62 @@ describe Deal do
         deal.kind = Deal::KIND_DAILY_DEAL
         deal.should_not be_valid
       end
+      describe "#calculate_discount" do
+        it "should be calculated on validation" do
+          deal.should_receive(:calculate_discount)
+          deal.valid?
+        end
 
-      it "should be required when the kind is offer" do
-        deal.real_price = nil
-        deal.kind = Deal::KIND_OFFER
-        deal.should_not be_valid
+        it "should withdraw the price from the real price" do
+          deal.real_price = 2
+          deal.price = 1.5
+          deal.calculate_discount
+
+          deal.discount.should == 0.5
+        end
+
+        it "should not withdraw the price from the real price if there's no real price" do
+          deal.real_price = nil
+          deal.discount = nil
+          deal.calculate_discount
+
+          deal.discount.should == nil
+        end
       end
 
-      it "should be greater than price" do
-        deal.real_price = 2
-        deal.price = 1
+      describe "#discount_to_percentage" do
 
-        deal.should be_valid
-      end
+        it "should return 30 when there's a 30% discount" do
+          deal.real_price = 7.4
+          deal.discount = 2.22
 
-      it "shouldn't be equal to price" do
-        deal.real_price = 1
-        deal.price = 1
+          deal.discount_to_percentage.should == 30
+        end
 
-        deal.should_not be_valid
-      end
+        it "should return 30 when there's a 30.4% discount" do
+          deal.real_price = 7.3
+          deal.discount = 2.22
 
-      it "shouldn't be smaller than price" do
-        deal.real_price = 1
-        deal.price = 2
+          deal.discount_to_percentage.should == 30
+        end
 
-        deal.should_not be_valid
+        it "should return 50 when there's a 50% discount" do
+          deal.real_price = 3.6
+          deal.discount = 1.8
+
+          deal.discount_to_percentage.should == 50
+        end
+
+        it "should return 100 when there's a 100% discount" do
+          deal.real_price = 1
+          deal.discount = 1
+
+          deal.discount_to_percentage.should == 100
+        end
       end
     end
 
-    it "should require a title" do
-      deal.title = nil
-      deal.should_not be_valid
-    end
   end
-
   describe "Categories" do
     it "CATEGORIES should return all categories" do
       Deal::CATEGORIES.should =~ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
@@ -399,57 +513,4 @@ describe Deal do
     end
   end
 
-  describe "#calculate_discount" do
-    it "should be calculated on validation" do
-      deal.should_receive(:calculate_discount)
-      deal.valid?
-    end
-
-    it "should withdraw the price from the real price" do
-      deal.real_price = 2
-      deal.price = 1.5
-      deal.calculate_discount
-
-      deal.discount.should == 0.5
-    end
-
-    it "should not withdraw the price from the real price if there's no real price" do
-      deal.real_price = nil
-      deal.discount = nil
-      deal.calculate_discount
-
-      deal.discount.should == nil
-    end
-  end
-
-  describe "#discount_to_percentage" do
-
-    it "should return 30 when there's a 30% discount" do
-      deal.real_price = 7.4
-      deal.discount = 2.22
-
-      deal.discount_to_percentage.should == 30
-    end
-
-    it "should return 30 when there's a 30.4% discount" do
-      deal.real_price = 7.3
-      deal.discount = 2.22
-
-      deal.discount_to_percentage.should == 30
-    end
-
-    it "should return 50 when there's a 50% discount" do
-      deal.real_price = 3.6
-      deal.discount = 1.8
-
-      deal.discount_to_percentage.should == 50
-    end
-
-    it "should return 100 when there's a 100% discount" do
-      deal.real_price = 1
-      deal.discount = 1
-
-      deal.discount_to_percentage.should == 100
-    end
-  end
 end
