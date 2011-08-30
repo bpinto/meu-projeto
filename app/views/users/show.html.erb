@@ -1,17 +1,3 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<% if current_user.follow? @user %>
-  <%= link_to 'Unfollow', unfollow_user_path(@user.username) %>
-<% else %>
-  <%= link_to 'Follow', follow_user_path(@user.username) %>
-<% end %>
-
-<% @user.deals.each_with_index do |deal, index| %>
-  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-<% end %>
-
 <div id="corpo" class="vcard"> 
 	<!-- principal --> 
 	<div class="principal"> 
@@ -20,7 +6,7 @@
 			<div class="cima"></div> 
 				<div class="meio perfil"> 
 					<div class="titulo"> 
-					  <h1 class="fn">João Paulo Lethier</h1> 
+					  <h1 class="fn"><%= @user.name %></h1><br/>
 					</div> 
 					<div class="foto consumidor photo"> 
 						<!--  <a href="consumidor-painel-editarperfil.jsp#editarPerfil"><span>Trocar foto</span></a>--> 
@@ -29,15 +15,16 @@
 					</div>
 					<strong class="titulo">Um pouco sobre mim</strong> 
 					<div class="sobremim"> 
-					  <p>Aluno de computação da uff em busca de ofertas e descontos de qualidade</p> 
+					  <p>Email: <%= @user.email if @user.email %></p><br/>
 					</div> 
 					<ul class="interacoes"> 
-						<li class="pontosFortes"> 
-						  <a href="#strongPoints" onclick="return updateTokenOutsideMenu(this);"><strong>0</strong><span>Dicas</span></a> 
-						</li> 
-            <li class="avaliacoes"> 
-						  <a href="#evaluation" class="numero" onclick="return updateTokenOutsideMenu(this);"><strong>0</strong><span>Avaliações</span></a> 
-					  </li>																	
+            <li>
+					    <% if current_user.follow? @user %>
+                <%= link_to 'Unfollow', unfollow_user_path(@user.username) %>
+              <% else %>
+                <%= link_to 'Follow', follow_user_path(@user.username) %>
+              <% end %>
+            </li>
 				  </ul> 
 			  </div> 
 		  <div class="baixo"></div> 
@@ -45,26 +32,35 @@
 		<!-- /janela PERFIL --> 
 						
 		<!-- janela CONTEÚDO --> 
-    <div class="media"> 
+    <!--<div class="media"> 
 			<ul id="menu" class="menuUl"> 
-				<li><a href="#strongPoints" onclick="return updateToken(this);">Dicas</a></li> 
-				<li><a href="#evaluation" onclick="return updateToken(this);">Avaliações</a></li> 
+				<li><a href="#strongPoints" onclick="return updateToken(this);">Minhas Ofertas Compartilhadas</a></li> 
+				<li><a href="#evaluation" onclick="return updateToken(this);">Meus Dados</a></li> 
 			  <li><a href="#profile" onclick="return updateToken(this);">Informações</a></li> 
-			</ul> 
+			</ul> -->
+    <div class="principal">
+      <div class="estabelecimentosMapa">
+        <div class="janelaPadrao estabelecimentosPadrao abas" id="sitesPanelView">
+          <div class="conteudo">
 	
-			<div class="janela menu"> 
-				<div class="cima"></div> 
-				<div class="meio" id="tabAreaId" style="min-height: 200px;"></div> 
-			  <div class="baixo"></div> 
-		  </div> 
-		</div> 
+    				<div class="cima"></div> 
+		    		<div class="meio" id="tabAreaId" style="min-height: 200px;">
+              <% @user.deals.each_with_index do |deal, index| %>
+                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+              <% end %>
+            </div> 
+		    	  <div class="baixo"></div> 
+		      </div>
+		    </div> 
+      </div>
+    </div>
 	  <!-- /janela CONTEÚDO --> 
 	</div> 
 	<!-- /principal --> 
 	<!-- lateral --> 
-  <div class="lateral"> 
+  <!--<div class="lateral"> --> 
 		<!-- janela ÚLTIMOS TÓPICOS --> 
-  	<div class="janela pequena"> 
+  	<!--<div class="janela pequena"> 
 		  <div class="barra"> 
 			  <h3>Tópicos que participou</h3> 
 		  </div> 
@@ -72,8 +68,8 @@
 			  <p class="semInteracao">Usuário ainda não interagiu com nenhum tópico</p> 
 			</div> 
 		  <div class="baixo"></div> 
-		</div> 
+		</div>  --> 
 		<!-- /janela ÚLTIMOS TÓPICOS --> 
-	</div> 
+	<!--</div> -->
 	<!-- /lateral --> 
 </div> 
