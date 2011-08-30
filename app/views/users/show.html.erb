@@ -11,7 +11,7 @@
 					<div class="foto consumidor photo"> 
 						<!--  <a href="consumidor-painel-editarperfil.jsp#editarPerfil"><span>Trocar foto</span></a>--> 
 					  <!-- bordas da foto --><span class="esqCima"></span><span class="dirCima"></span><span class="esqBaixo"></span><span class="dirBaixo"></span> 
-					  <img src="/portal/image/joaopaulolethier-0.jpg" alt="Imagem - João Paulo Lethier - Acessozero" /> 
+					  <%= image_tag @user.gravatar_url %>
 					</div>
 					<strong class="titulo">Um pouco sobre mim</strong> 
 					<div class="sobremim"> 

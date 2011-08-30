@@ -1,5 +1,5 @@
 module UsersHelper
-   def link_to_active(*args, &block)
+  def link_to_active(*args, &block)
     if block_given?
       options = args.first || {}
       html_options = args.second
