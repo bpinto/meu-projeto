@@ -11,3 +11,69 @@
 <% @user.deals.each_with_index do |deal, index| %>
   <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
 <% end %>
+
+<div id="corpo" class="vcard"> 
+	<!-- principal --> 
+	<div class="principal"> 
+		<!-- janela PERFIL --> 
+		<div class="janela media"> 
+			<div class="cima"></div> 
+				<div class="meio perfil"> 
+					<div class="titulo"> 
+					  <h1 class="fn">João Paulo Lethier</h1> 
+					</div> 
+					<div class="foto consumidor photo"> 
+						<!--  <a href="consumidor-painel-editarperfil.jsp#editarPerfil"><span>Trocar foto</span></a>--> 
+					  <!-- bordas da foto --><span class="esqCima"></span><span class="dirCima"></span><span class="esqBaixo"></span><span class="dirBaixo"></span> 
+					  <img src="/portal/image/joaopaulolethier-0.jpg" alt="Imagem - João Paulo Lethier - Acessozero" /> 
+					</div>
+					<strong class="titulo">Um pouco sobre mim</strong> 
+					<div class="sobremim"> 
+					  <p>Aluno de computação da uff em busca de ofertas e descontos de qualidade</p> 
+					</div> 
+					<ul class="interacoes"> 
+						<li class="pontosFortes"> 
+						  <a href="#strongPoints" onclick="return updateTokenOutsideMenu(this);"><strong>0</strong><span>Dicas</span></a> 
+						</li> 
+            <li class="avaliacoes"> 
+						  <a href="#evaluation" class="numero" onclick="return updateTokenOutsideMenu(this);"><strong>0</strong><span>Avaliações</span></a> 
+					  </li>																	
+				  </ul> 
+			  </div> 
+		  <div class="baixo"></div> 
+		</div> 
+		<!-- /janela PERFIL --> 
+						
+		<!-- janela CONTEÚDO --> 
+    <div class="media"> 
+			<ul id="menu" class="menuUl"> 
+				<li><a href="#strongPoints" onclick="return updateToken(this);">Dicas</a></li> 
+				<li><a href="#evaluation" onclick="return updateToken(this);">Avaliações</a></li> 
+			  <li><a href="#profile" onclick="return updateToken(this);">Informações</a></li> 
+			</ul> 
+	
+			<div class="janela menu"> 
+				<div class="cima"></div> 
+				<div class="meio" id="tabAreaId" style="min-height: 200px;"></div> 
+			  <div class="baixo"></div> 
+		  </div> 
+		</div> 
+	  <!-- /janela CONTEÚDO --> 
+	</div> 
+	<!-- /principal --> 
+	<!-- lateral --> 
+  <div class="lateral"> 
+		<!-- janela ÚLTIMOS TÓPICOS --> 
+  	<div class="janela pequena"> 
+		  <div class="barra"> 
+			  <h3>Tópicos que participou</h3> 
+		  </div> 
+			<div class="meio ultimosTopicos"> 
+			  <p class="semInteracao">Usuário ainda não interagiu com nenhum tópico</p> 
+			</div> 
+		  <div class="baixo"></div> 
+		</div> 
+		<!-- /janela ÚLTIMOS TÓPICOS --> 
+	</div> 
+	<!-- /lateral --> 
+</div> 
