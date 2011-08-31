@@ -64,29 +64,16 @@
         <!-- TODO: CATEGORIAS -->
         <div class="caminho">
           <div class="conteudo">
-          
-            <!-- logo -->
+
             <h1 class="logo">DealWit.Me</h1>
-            <!-- /logo -->
-            <!-- TODO: Busca -->
-            <form class="busca" action="/portal/search" method="get" onsubmit="if(document.getElementById('key').value == 'Procure aqui: pizza, sushi, bar, escova, massagem...') (document.getElementById('key').value = ''); if(document.getElementById('where').value == 'Ex.: bairro, rua...') (document.getElementById('where').value = '');">
+
+            <form action="<%= search_path %>" method="get" class="busca">
               <fieldset>
                 <legend>Buscar</legend>
-                <input id="key" name="key" type="text" value="Procure aqui: pizza, sushi, bar, escova, massagem..." onfocus="if(value=='Procure aqui: pizza, sushi, bar, escova, massagem...')(value='');" onblur="if(this.value=='')(value='Procure aqui: pizza, sushi, bar, escova, massagem...');">
-                <input type="hidden" value="" name="where" id="where">
+                <%= text_field_tag :search, params[:search]%>
                 <button id="buscar" type="submit">Buscar</button>
               </fieldset>
             </form>
-
-            <!-- TODO: Breadcrumb -->
-            <ul class="caminho comLocal">
-              <li><a href="/">Início</a><span>»</span></li>
-              <li><a href="/curitiba/estabelecimentos?s=1">Estabelecimentos</a><span>»</span></li>	
-              <li><a href="/curitiba/bares-e-casas-noturnas?s=1">Bares e Casas Noturnas</a><span>»</span></li>	
-              <li><a href="/curitiba/bares-e-casas-noturnas/aueraauara?s=1">Auera Auara</a><span>»</span></li>	
-              <li>Oferta</li>	
-            </ul>
-
           </div>
         </div>
 

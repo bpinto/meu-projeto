@@ -17,6 +17,7 @@ DealWitMe::Application.routes.draw do
   resources :deals
 
   match '/deals/today/:category', :to => "deals#today"
+  match '/deals', :to => 'deals#index', :as => :search
 
   root :to => "deals#today"
 

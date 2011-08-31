@@ -4,16 +4,16 @@ Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   end
 end
 
+Given /^I have (\d+) deals?$/i do |amount|
+  Factory.create :deal, :user => @current_user
+end
+
 Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   date = get_date(date_name)
 
   amount.to_i.times do
     Factory.create :deal, :created_at => date, :title => date_name
   end
-end
-
-Given /^I have (\d+) deals?$/i do |amount|
-  Factory.create :deal, :user => @current_user
 end
 
 Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
@@ -45,4 +45,8 @@ end
 
 Then /^deal should link to "([^"]*)"$/ do |text|
   page.find(:xpath, "//li[@class='botao']/a")[:href] == text
+end
+
+When /^I fill in the search field with "([^"]*)"$/ do |search|
+  fill_in "search", :with => search
 end

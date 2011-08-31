@@ -34,7 +34,7 @@ Given /^I am signed up as "(.*)\/(.*)"$/ do |email, password|
   And %{I am logout}
 end
 
-Given /^I am logout$/ do
+Given /^I am a guest$/ do
   visit('/users/sign_out')
 end
 

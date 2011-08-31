@@ -19,7 +19,7 @@ class Deal < ActiveRecord::Base
 
   CATEGORIES = [ CATEGORY_DRINK, CATEGORY_BEAUTY_AND_HEALTH, CATEGORY_PHONE_AND_CAMERA, CATEGORY_MUSIC_AND_MOVIE,CATEGORY_HOME_AND_APPLIANCE, CATEGORY_ELECTRONICS, CATEGORY_FITNESS, CATEGORY_COMPUTER, CATEGORY_BOOK, CATEGORY_CLOTHES, CATEGORY_TRAVEL, CATEGORY_RESTAURANT,CATEGORY_TOY, CATEGORY_CAR ]
 
-
+  #Pra que esse dicionário?
   CATEGORIES_DICTIONARY = {"drink" => CATEGORY_DRINK, "beauty_and_health" => CATEGORY_BEAUTY_AND_HEALTH, "phone_and_camera" => CATEGORY_PHONE_AND_CAMERA, "music_and_movie" => CATEGORY_MUSIC_AND_MOVIE, "home_and_appliance" => CATEGORY_HOME_AND_APPLIANCE, "electronics" => CATEGORY_ELECTRONICS, "fitness" => CATEGORY_FITNESS, "computer" => CATEGORY_COMPUTER, "book" => CATEGORY_BOOK, "clothes" => CATEGORY_CLOTHES, "travel" => CATEGORY_TRAVEL, "restaurant" => CATEGORY_RESTAURANT, "toy" => CATEGORY_TOY, "car" => CATEGORY_CAR}
 
   KIND_OFFER = 1
@@ -39,26 +39,41 @@ class Deal < ActiveRecord::Base
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true,  :unless => "on_sale?"
-  validates :real_price,  :numericality => true,  :unless => "on_sale?" 
-  validates :real_price,  :greater_than => :price, :if => "self.price? and self.real_price?"
+  validates :real_price,  :numericality => true,  :unless => "on_sale?"
+  validates :real_price,  :greater_than => :price, :if => "price? and real_price?"
 
   validates :title,       :presence => true
   validates :city_id,     :presence => true
 
-  after_validation :calculate_discount, :if => "self.real_price? and self.price? and not on_sale?"
+  after_validation :calculate_discount, :if => "real_price? and price? and not on_sale?"
 
   attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :real_price, :title
 
-  default_scope order("created_at desc")
+  #TODO: Remover o default_scope
+  default_scope order("deals.created_at desc")
+  # scope :recent, order("deals.created_at DESC")
 
   scope :today, where("deals.created_at >= ?", Date.today)
+  scope :active, where("deals.end_date >= ? OR deals.end_date is null", Date.today)
 
   def self.by_category(category)
-    where(:category => CATEGORIES_DICTIONARY[category])
+    where(:category => category)
   end
 
   def self.by_kind(kind)
     where(:kind => kind)
+  end
+
+  def self.by_description(description)
+    where("deals.description LIKE ?", "%#{description}%")
+  end
+
+  def self.by_title(title)
+    where("deals.title LIKE ?", "%#{title}%")
+  end
+
+  def self.search(search)
+    by_title(search).by_description(search)
   end
 
   def self.i18n_category(category)
@@ -90,5 +105,4 @@ class Deal < ActiveRecord::Base
   def on_sale?
     self.kind == KIND_ON_SALE
   end
-
 end
