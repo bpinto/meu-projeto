@@ -157,51 +157,20 @@ describe Deal do
           deal.valid?
         end
 
-        it "should withdraw the price from the real price" do
+        it "should calculate the percentage of discount" do
           deal.real_price = 2
           deal.price = 1.5
           deal.calculate_discount
 
-          deal.discount.should == 0.5
+          deal.discount.should == 25
         end
 
-        it "should not withdraw the price from the real price if there's no real price" do
+        it "should not calculate if there is no real_price" do
           deal.real_price = nil
           deal.discount = nil
           deal.calculate_discount
 
           deal.discount.should == nil
-        end
-      end
-
-      describe "#discount_to_percentage" do
-
-        it "should return 30 when there's a 30% discount" do
-          deal.real_price = 7.4
-          deal.discount = 2.22
-
-          deal.discount_to_percentage.should == 30
-        end
-
-        it "should return 30 when there's a 30.4% discount" do
-          deal.real_price = 7.3
-          deal.discount = 2.22
-
-          deal.discount_to_percentage.should == 30
-        end
-
-        it "should return 50 when there's a 50% discount" do
-          deal.real_price = 3.6
-          deal.discount = 1.8
-
-          deal.discount_to_percentage.should == 50
-        end
-
-        it "should return 100 when there's a 100% discount" do
-          deal.real_price = 1
-          deal.discount = 1
-
-          deal.discount_to_percentage.should == 100
         end
       end
     end  
@@ -230,16 +199,15 @@ describe Deal do
           deal.should_receive(:calculate_discount)
           deal.valid?
         end
-
-        it "should withdraw the price from the real price" do
+        it "should calculate the percentage of discount" do
           deal.real_price = 2
           deal.price = 1.5
           deal.calculate_discount
 
-          deal.discount.should == 0.5
+          deal.discount.should == 25
         end
 
-        it "should not withdraw the price from the real price if there's no real price" do
+        it "should not calculate if there is no real_price" do
           deal.real_price = nil
           deal.discount = nil
           deal.calculate_discount
@@ -247,40 +215,9 @@ describe Deal do
           deal.discount.should == nil
         end
       end
-
-      describe "#discount_to_percentage" do
-
-        it "should return 30 when there's a 30% discount" do
-          deal.real_price = 7.4
-          deal.discount = 2.22
-
-          deal.discount_to_percentage.should == 30
-        end
-
-        it "should return 30 when there's a 30.4% discount" do
-          deal.real_price = 7.3
-          deal.discount = 2.22
-
-          deal.discount_to_percentage.should == 30
-        end
-
-        it "should return 50 when there's a 50% discount" do
-          deal.real_price = 3.6
-          deal.discount = 1.8
-
-          deal.discount_to_percentage.should == 50
-        end
-
-        it "should return 100 when there's a 100% discount" do
-          deal.real_price = 1
-          deal.discount = 1
-
-          deal.discount_to_percentage.should == 100
-        end
-      end
     end
-
   end
+
   describe "Categories" do
     it "CATEGORIES should return all categories" do
       Deal::CATEGORIES.should =~ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
