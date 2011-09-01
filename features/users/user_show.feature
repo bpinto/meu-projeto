@@ -11,7 +11,7 @@ Feature: Show Users
       When I go to my_user's page
       Then I should see 1 deal
 
-    Scenario: Viewing my deals but not others'
+    Scenario: Viewing my deals but not others
       Given I have 1 deal
       And 1 other deal exist
       When I go to my_user's page

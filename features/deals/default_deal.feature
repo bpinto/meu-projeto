@@ -8,11 +8,6 @@ Feature: View default deal details
       And I am on today's deals page
       Then I should see "MacBook 99% OFF" within deal's title
 
-    Scenario: Viewing deal's address
-      Given 1 deal with address as "Shopping Mall" was registered today
-      And I am on today's deals page
-      Then I should see "Shopping Mall" within deal's address
-
     Scenario: Viewing deal's category
       Given 1 deal with category as "Computer" was registered today
       And I am on today's deals page
@@ -22,3 +17,8 @@ Feature: View default deal details
       Given 1 deal with link as "http://www.google.com" was registered today
       And I am on today's deals page
       Then deal should link to "http://www.google.com"
+
+    Scenario: Viewing deal's user
+      Given 1 deal from user with name "F_NAME" was registered today
+      And I am on today's deals page
+      Then I should see "F_NAME" within deal's user

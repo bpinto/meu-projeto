@@ -26,6 +26,14 @@ Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do 
   end
 end
 
+Given /^(\d+) deals? from user with name "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, value, date_name|
+  date = get_date(date_name)
+  user = Factory.create :confirmed_user, :name => value
+  amount.to_i.times do
+    Factory.create :deal, Hash[:user => user]
+  end
+end
+
 When /^I fill in the deal fields correctly$/ do
   deal = Factory.build :deal
   fill_in(get_field("deal", "company"), :with => deal.company)

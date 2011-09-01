@@ -31,6 +31,7 @@ module Fields
     "real_price" => "deal_real_price",
     "title" => "deal_title",
     "kind" => "deal_kind"
+    "user" => "deal_user",
   }
 end
 
