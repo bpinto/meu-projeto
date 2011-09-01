@@ -81,6 +81,14 @@ class Deal < ActiveRecord::Base
     by_title(search).by_description(search)
   end
 
+  def self.by_user_and_following(user)
+    users = [user]
+    user.following.each do |u|
+      users += [u]
+    end
+    where(:user_id => users)
+  end
+
   def self.i18n_category(category)
     I18n.t("models.deal.category.#{category}")
   end

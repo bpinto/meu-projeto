@@ -52,7 +52,7 @@
 	
     				<div class="cima"></div> 
 		    		<div class="meio" id="tabAreaId" style="min-height: 200px;">
-              <% @user.deals.each_with_index do |deal, index| %>
+              <% @deals.each_with_index do |deal, index| %>
                 <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
               <% end %>
             </div> 

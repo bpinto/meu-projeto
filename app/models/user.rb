@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     relationships.exists? :followed_id => another_user.id
   end
 
+  def self.by_username(username)
+    where(:username => username).first
+  end
+
   protected
 
   def self.find_for_database_authentication(warden_conditions)
