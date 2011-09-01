@@ -6,4 +6,5 @@ class Relationship < ActiveRecord::Base
 
   validates :followed_id, :presence => true, :uniqueness => { :scope => :follower_id }
   validates :follower_id, :presence => true, :not_equal => { :with => :followed_id, :message => "You cannot follow yourself" }
+
 end
