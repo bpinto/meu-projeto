@@ -1,0 +1,47 @@
+<div id="corpo">
+  <div class="janelaPadrao chapeu fundoCinza">
+    <h1>Ofertas Ativas</h1>
+  </div>
+
+  <div class="principal">
+    <div class="estabelecimentosMapa">
+      <div class="janelaPadrao estabelecimentosPadrao abas" id="sitesPanelView">
+        <div class="conteudo">
+          <div class="alerta alertaAviso" style="display: none; "></div>
+          <ul class="abasPadrao">
+            <li class="ofertas"><a tabindex="0" class="ativo" href="javascript:;">Ofertas quentes</a></li>
+            <li class="avaliacoes"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Mais bem avaliados no mês</a></li>
+            <li class="ordemAlfabetica"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Ordem alfabética</a></li>
+          </ul>
+
+          <div class="conteudo">
+            <div class="zero-PagingTable">
+              <div class="zero-PagingTableGrid">
+                <% @deals.each_with_index do |deal, index| %>
+                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: Colocar algo no menu lateral -->
+  <div class="lateral">
+    <div class="janelaPadrao estabelecimentosBairro">
+      <div class="barra">
+        <h3>Estabelecimentos por bairros</h3>
+      </div>
+      <div class="conteudo">
+        <ul>
+          <li><a href="?l=1067173">CAMPO LARGO</a></li>
+          <li><a href="?l=1073899">COLOMBO</a></li>
+          <li><a href="?l=1121836">PINHAIS</a></li>
+          <li><a href="?l=1130034">SÃO JOSÉ DOS PINHAIS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
