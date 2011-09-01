@@ -18,7 +18,7 @@
       <div class="desconto">
         <div class="desconto">
           <div class="bigTicket special discountTicket">
-            <strong><%= @deal.discount_to_percentage %><sup>%</sup></strong>
+            <strong><%= @deal.discount %><sup>%</sup></strong>
           </div>
 
           <div class="de">
@@ -34,7 +34,7 @@
           </div>
 
           <div class="comprar">
-            <%= link_to "Ir para o site", @deal.address, :class => "botao" %>
+            <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
           </div>
         </div>
       </div>
