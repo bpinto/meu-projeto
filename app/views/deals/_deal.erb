@@ -4,7 +4,7 @@
     <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}">Não informado</div>
     <strong class="titulo deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
-      <li class="deal_address"><strong>Endereço: </strong><%= deal.address %></li>
+      <li class="deal_address"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
       <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
       <li class="deal_company"><strong>Empresa: </strong><%= deal.company %></li>
       <li>
