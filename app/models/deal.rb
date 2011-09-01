@@ -82,10 +82,7 @@ class Deal < ActiveRecord::Base
   end
 
   def self.by_user_and_following(user)
-    users = [user]
-    user.following.each do |u|
-      users += [u]
-    end
+    users = [user] + user.following
     where(:user_id => users)
   end
 
