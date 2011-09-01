@@ -67,3 +67,10 @@ end
 Given /^I am not logged in$/ do
   visit('/users/sign_out') # ensure that at least
 end
+
+Given /^I follow a user with (email|username) "([^"]*)" who has (\d+) deal$/ do |property, value, amount|
+  user = Factory.create :confirmed_user, property => value
+  @current_user.follow!(user)
+  Factory.create :deal, :user => user
+end
+

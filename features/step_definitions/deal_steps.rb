@@ -8,6 +8,7 @@ Given /^I have (\d+) deals?$/i do |amount|
   Factory.create :deal, :user => @current_user
 end
 
+
 Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   date = get_date(date_name)
 
@@ -44,7 +45,7 @@ When /^I fill in the deal fields correctly$/ do
   fill_in(get_field("deal", "title") , :with => deal.title)
   select(Deal.i18n_category(deal.category), :from => get_field("deal", "category")) 
   select(Deal.i18n_kind(deal.kind), :from => get_field("deal", "kind"))
-  select(City::RIO_DE_JANEIRO, :from => get_field("deal", "city"))
+  select(City.first.id, :from => get_field("deal", "city"))
 end
 
 Then /^I should see (\d+) deals?$/i do |amount|

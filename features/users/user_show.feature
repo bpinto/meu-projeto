@@ -16,3 +16,9 @@ Feature: Show Users
       And 1 other deal exist
       When I go to my_user's page
       Then I should see 1 deal
+
+    Scenario: Viewing deals from me and users I follow
+      Given I have 1 deal
+      And I follow a user with username "another_user" who has 1 deal
+      When I go to my_user's page
+      Then I should see 2 deals
