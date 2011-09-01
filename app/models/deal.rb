@@ -54,6 +54,11 @@ class Deal < ActiveRecord::Base
   scope :today, where("deals.created_at >= ?", Date.today)
 
   def self.by_category(category)
+    where(:category => category)
+  end
+
+  #TODO: refatorar para utilizar a tradução para buscar por id
+  def self.by_category_string(category)
     where(:category => CATEGORIES_DICTIONARY[category])
   end
 

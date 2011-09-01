@@ -270,3 +270,14 @@
         '2': "Compras Coletivas"
         '3': "Liquidação"
       national_offer: "Oferta Nacional" 
+    
+    user:
+      followers: "Seguidores"
+      following: "Seguindo"
+      deals: "Ofertas"
+      
+  actions:
+    follow: "Seguir"
+    unfollow: "Deixar de seguir"
+
+  users: "usuários"

@@ -25,11 +25,8 @@ class DealsController < AuthorizedController
   private
 
   def find_todays_deals
-    if params[:category]
-      @deals = Deal.today.by_category(params[:category])
-    else
-      @deals = Deal.today
-    end
+    @deals = Deal.today
+    @deals = @deals.by_category_string(params[:category]) if params[:category]
   end
 
   def populate_cities_name

@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   #Lembrar de dar Reset Ability (CanCan)
   #def update
   #end
@@ -33,6 +36,7 @@ class UsersController < ApplicationController
   private
 
   def find_user_with_deals
+    #TODO: buscar também as deals dos usuários seguidos
     User.includes(:deals).where(:id => params[:id])
   end
 end

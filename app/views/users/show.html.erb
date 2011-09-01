@@ -6,23 +6,30 @@
 			<div class="cima"></div> 
 				<div class="meio perfil"> 
 					<div class="titulo"> 
-					  <h1 class="fn"><%= @user.name %></h1><br/>
+					  <h1 class="fn"><%= @user.name %></h1> 
+            <% if current_user == @user %>
+              <%= link_to "Editar meus dados", edit_user_registration_path %>
+            <% end %>
+            <br/>
 					</div> 
 					<div class="foto consumidor photo"> 
-						<!--  <a href="consumidor-painel-editarperfil.jsp#editarPerfil"><span>Trocar foto</span></a>--> 
-					  <!-- bordas da foto --><span class="esqCima"></span><span class="dirCima"></span><span class="esqBaixo"></span><span class="dirBaixo"></span> 
 					  <%= image_tag @user.gravatar_url %>
 					</div>
 					<strong class="titulo">Um pouco sobre mim</strong> 
 					<div class="sobremim"> 
+					  <p><%= @user.deals.count %> <%= I18n.t("models.user.deals") %></p><br/>
+					  <p><%= @user.followers.count %> <%= I18n.t("models.user.followers") %></p><br/>
+					  <p><%= I18n.t("models.user.following") %> <%= @user.following.count %> <%= I18n.t "users" %> </p><br/>
 					  <p>Email: <%= @user.email if @user.email %></p><br/>
 					</div> 
 					<ul class="interacoes"> 
             <li>
-					    <% if current_user.follow? @user %>
-                <%= link_to 'Unfollow', unfollow_user_path(@user.username) %>
-              <% else %>
-                <%= link_to 'Follow', follow_user_path(@user.username) %>
+              <% if current_user != @user %>
+					      <% if current_user.follow? @user %>
+                  <%= link_to 'Unfollow', unfollow_user_path(@user.username) %>
+                <% else %>
+                  <%= link_to 'Follow', follow_user_path(@user.username) %>
+                <% end %>
               <% end %>
             </li>
 				  </ul> 
