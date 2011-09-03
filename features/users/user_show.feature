@@ -22,3 +22,7 @@ Feature: Show Users
       And I follow a user with username "another_user" who has 1 deal
       When I go to my_user's page
       Then I should see 2 deals
+
+    Scenario: Viewing link to edit in my user's page
+      Given I am on my_user's page
+      Then I should see a link to "edit_user_registration" path

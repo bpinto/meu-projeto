@@ -74,3 +74,6 @@ Given /^I follow a user with (email|username) "([^"]*)" who has (\d+) deal$/ do 
   Factory.create :deal, :user => user
 end
 
+Then /^I should see a link to "([^"]*)" path$/ do |path_name|
+  page.find(:xpath, "//a")[:href] == path_name
+end
