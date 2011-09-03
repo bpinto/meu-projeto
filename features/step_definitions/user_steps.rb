@@ -6,6 +6,12 @@ Given /^one user with an (email|username) "([^"]*)" exists$/ do |property, value
   Factory.create :confirmed_user, property => value
 end
 
+Given /^one user with an (email|username) "([^"]*)" exists and I follow him$/ do |property, value|
+  user = Factory.create :confirmed_user, property => value
+  @current_user.follow!(user)
+end
+
+
 Given /^I am a user with an (email|username) "([^"]*)"$/ do |property, value|
   @current_user = Factory.create :confirmed_user, property => value
 
