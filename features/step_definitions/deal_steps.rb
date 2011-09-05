@@ -1,3 +1,5 @@
+#coding: UTF-8
+
 Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   amount.to_i.times do
     Factory.create :deal
@@ -48,14 +50,19 @@ When /^I fill in the deal fields correctly$/ do
   select(City.first.id, :from => get_field("deal", "city"))
 end
 
-Then /^I should see (\d+) deals?$/i do |amount|
+When /^I fill in the search field with "([^"]*)"$/ do |search|
+  fill_in "search", :with => search
+end
+
+Then /^I should see (\d+) deals?$/ do |amount|
   page.all(:xpath, "//div[@class='offer']").length.should == amount.to_i
 end
 
-Then /^deal should link to "([^"]*)"$/ do |text|
-  page.find(:xpath, "//li[@class='botao']/a")[:href] == text
+Then /^I should see (\d+) deals? with (\w+) "([^"]*)"$/ do |amount, attribute, value|
+  field = get_field("deal", attribute)
+  page.all(:xpath, "//div[@class='offer']//strong[contains(@class, '#{field}')]/a[contains(text(), '#{value}')]").length.should == amount.to_i
 end
 
-When /^I fill in the search field with "([^"]*)"$/ do |search|
-  fill_in "search", :with => search
+Then /^deal should link to "([^"]*)"$/ do |text|
+  page.find(:xpath, "//li[@class='botao']/a")[:href].should == text
 end

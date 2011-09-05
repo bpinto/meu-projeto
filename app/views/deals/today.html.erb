@@ -18,6 +18,10 @@
             <div class="zero-PagingTable">
               <div class="zero-PagingTableGrid">
 
+                <% @deals.each_with_index do |deal, index| %>
+                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+                <% end %>
+
                 <div>
                   <div class="estabelecimento oferta semDesconto">
                     <a class="foto" href="http://www.acessozero.com.br/curitiba/sorveterias/dolcefreddocidade/oferta-17340218&amp;s=sites"> <img src="http://www.acessozero.com.br/portal/image/dolcefreddocidade-sorveterias-curitiba-4-17340218-4.jpg" alt="Estabelecimento sem imagem"> </a>
@@ -36,9 +40,6 @@
                   </div>
                 </div>
 
-                <% @deals.each_with_index do |deal, index| %>
-                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-                <% end %>
               </div>
             </div>
           </div>

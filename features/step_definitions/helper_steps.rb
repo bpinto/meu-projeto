@@ -1,6 +1,5 @@
 Then /^stop$/ do
-  breakpoint
-  1
+  binding.pry
 end
 
 Then /^"(.*)" deve estar selecionad(?:a|o) com a opcao "(.*)"$/ do |campo, texto|
