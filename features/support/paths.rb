@@ -29,6 +29,9 @@ module NavigationHelpers
     when /^(.*)'s page/i
       user_path($1)
 
+    when /^(.*)'s edit page/i
+      edit_user_registration_path
+
     when /^(.*)'s follow page/i
       follow_user_path($1)
 

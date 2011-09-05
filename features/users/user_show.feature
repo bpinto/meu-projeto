@@ -25,17 +25,17 @@ Feature: Show Users
 
     Scenario: Viewing link to edit in my user's page
       Given I am on my_user's page
-      Then I should see a link to "edit_user_registration" path
+      Then I should see a link to edit my information on "my_user's edit page"
 
     Scenario: Viewing the Follow link on another user page
-      Given one user with an username "user_not_to_follow" exists
-      When I go to user_not_to_follow's page
-      Then I should see a link to "follow_user" path
+      Given one user with an username "unfollow_user" exists
+      When I go to unfollow_user's page
+      Then I should see a link to "unfollow_user's follow page"
 
     Scenario: Viewing the Unfollow link on another use page
-      Given one user with an username "user_to_follow" exists and I follow him
-      When I go to user_to_follow's page
-      Then I should see a link to "unfollow_user" path
+      Given one user with an username "followed_user" exists and I follow him
+      When I go to followed_user's page
+      Then I should see a link to "followed_user's unfollow page"
 
     @wip
     Scenario: Not viewing the follow link on my user page
