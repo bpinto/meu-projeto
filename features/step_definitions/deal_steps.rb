@@ -6,10 +6,16 @@ Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   end
 end
 
+Given /^(\d+) (active|inactive) deals? exists?$/i do |amount, status|
+  amount.to_i.times do
+    deal = Factory.build "#{status}_deal"
+    deal.save!(:validate => false) #Uma oferta inativa é inválida
+  end
+end
+
 Given /^I have (\d+) deals?$/i do |amount|
   Factory.create :deal, :user => @current_user
 end
-
 
 Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   date = get_date(date_name)
@@ -19,8 +25,11 @@ Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   end
 end
 
-Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
+Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
+
+  attribute = attribute.gsub(' ', '_')
+
   value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
   value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
 

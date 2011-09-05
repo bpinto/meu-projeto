@@ -70,6 +70,8 @@ class Deal < ActiveRecord::Base
   end
 
   def self.search(search)
+    #Postgres ignore case:
+    # where("deals.title ILIKE :search OR deals.description ILIKE :search", :search => "%#{search}%")
     where("deals.title LIKE :search OR deals.description LIKE :search", :search => "%#{search}%")
   end
 

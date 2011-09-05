@@ -27,17 +27,30 @@ Feature: New Deal
       Given 3 deals with title as "Título da Oferta" was registered today
       When I fill in the search field with "Título da Oferta"
       And I press "Buscar"
-      Then I should see 3 deal with title "Título da Oferta"
+      Then I should see 3 deals with title "Título da Oferta"
+
+    @wip
+    Scenario: Search should ignore case
+      Given 1 deal with title as "Título da Oferta" was registered today
+      When I fill in the search field with "oferta"
+      And I press "Buscar"
+      Then I should see 1 deal with title "Título da Oferta"
 
     Scenario: Search by a part of the title
       Given 1 deal with title as "Título da Oferta" was registered today
       When I fill in the search field with "Oferta"
       And I press "Buscar"
-      Then I should see 1 deal with title "Oferta"
+      Then I should see 1 deal with title "Título da Oferta"
 
     Scenario: Search by a part of the description
       Given 1 deal with description as "Descrição da Oferta" was registered today
       When I fill in the search field with "Oferta"
       And I press "Buscar"
       Then I should see 1 deal
-      #A descrição não aparece na página
+
+    @wip
+    Scenario: Search should show deals from all cities
+      Given 1 deal with title as "Título da Oferta" was registered today
+      When I fill in the search field with "Oferta"
+      And I press "Buscar"
+      Then I should see 2 deals

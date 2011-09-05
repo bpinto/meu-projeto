@@ -15,19 +15,26 @@ FactoryGirl.define do
     user
   end
 
-  factory :deal_on_sale, :parent => :deal do |f|
+  factory :deal_on_sale, :parent => :deal do
     kind Deal::KIND_ON_SALE
     discount 30
     price nil
     real_price nil
   end
 
-  factory :deal_offer, :parent => :deal do |f|
+  factory :deal_offer, :parent => :deal do
     kind Deal::KIND_OFFER
   end
- 
-  factory :daily_deal, :parent => :deal do |f|
+
+  factory :daily_deal, :parent => :deal do
     kind Deal::KIND_DAILY_DEAL
   end
 
+  factory :active_deal, :parent => :deal do
+    end_date Date.tomorrow
+  end
+
+  factory :inactive_deal, :parent => :deal do
+    end_date Date.yesterday
+  end
 end
