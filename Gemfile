@@ -19,8 +19,8 @@ group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails', '>= 1.1.beta1'
   gem 'mongrel', '1.2.0.pre2'
+  gem 'pry'
   gem 'rspec-rails', '>= 2.6.1'
-  gem 'ruby-debug19'
 end
 
 group :test do

@@ -1,13 +1,21 @@
+#coding: UTF-8
+
 Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   amount.to_i.times do
     Factory.create :deal
   end
 end
 
+Given /^(\d+) (active|inactive) deals? exists?$/i do |amount, status|
+  amount.to_i.times do
+    deal = Factory.build "#{status}_deal"
+    deal.save!(:validate => false) #Uma oferta inativa é inválida
+  end
+end
+
 Given /^I have (\d+) deals?$/i do |amount|
   Factory.create :deal, :user => @current_user
 end
-
 
 Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   date = get_date(date_name)
@@ -17,8 +25,11 @@ Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   end
 end
 
-Given /^(\d+) deals? with (\w+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
+Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
+
+  attribute = attribute.gsub(' ', '_')
+
   value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
   value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
 
@@ -48,14 +59,19 @@ When /^I fill in the deal fields correctly$/ do
   select(City.first.id, :from => get_field("deal", "city"))
 end
 
-Then /^I should see (\d+) deals?$/i do |amount|
+When /^I fill in the search field with "([^"]*)"$/ do |search|
+  fill_in "search", :with => search
+end
+
+Then /^I should see (\d+) deals?$/ do |amount|
   page.all(:xpath, "//div[@class='offer']").length.should == amount.to_i
+end
+
+Then /^I should see (\d+) deals? with (\w+) "([^"]*)"$/ do |amount, attribute, value|
+  field = get_field("deal", attribute)
+  page.all(:xpath, "//div[@class='offer']//strong[contains(@class, '#{field}')]/a[contains(text(), '#{value}')]").length.should == amount.to_i
 end
 
 Then /^deal should link to "([^"]*)"$/ do |text|
   page.find(:xpath, "//li[@class='botao']/a")[:href].should == text
-end
-
-When /^I fill in the search field with "([^"]*)"$/ do |search|
-  fill_in "search", :with => search
 end

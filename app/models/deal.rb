@@ -69,16 +69,10 @@ class Deal < ActiveRecord::Base
     where(:kind => kind)
   end
 
-  def self.by_description(description)
-    where("deals.description LIKE ?", "%#{description}%")
-  end
-
-  def self.by_title(title)
-    where("deals.title LIKE ?", "%#{title}%")
-  end
-
   def self.search(search)
-    by_title(search).by_description(search)
+    #Postgres ignore case:
+    # where("deals.title ILIKE :search OR deals.description ILIKE :search", :search => "%#{search}%")
+    where("deals.title LIKE :search OR deals.description LIKE :search", :search => "%#{search}%")
   end
 
   def self.by_user_and_following(user)

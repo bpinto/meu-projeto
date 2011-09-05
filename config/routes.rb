@@ -19,7 +19,7 @@ DealWitMe::Application.routes.draw do
   match '/deals/today/:category', :to => "deals#today"
   match '/deals', :to => 'deals#index', :as => :search
 
-  root :to => "deals#today"
+  root :to => "deals#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
