@@ -13,12 +13,17 @@ Feature: View default deal details
       And I am on today's deals page
       Then I should see "Informática" within deal's category
 
-    @wip
-    #TODO: fazer o teste para garantir que aponte para a página da oferta dentro da plataforma
-    Scenario: Viewing deal's link to deal's path
-      Given 1 deal with link as "http://www.google.com" was registered today
+    Scenario: Going to deal's page follow 'Saiba mais' button
+      Given 1 deal with title as "my deal" was registered today
       And I am on today's deals page
-      Then deal should link to "http://www.google.com"
+      When I follow "Saiba mais"
+      Then I should be on deal "my deal"'s page
+
+    Scenario: Going to deal's page follow deal's title
+      Given 1 deal with title as "my deal" was registered today
+      And I am on today's deals page
+      When I follow "my deal"
+      Then I should be on deal "my deal"'s page
 
     Scenario: Viewing deal's user
       Given 1 deal from user with name "F_NAME" was registered today
