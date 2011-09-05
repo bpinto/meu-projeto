@@ -81,5 +81,5 @@ Given /^I follow a user with (email|username) "([^"]*)" who has (\d+) deal$/ do 
 end
 
 Then /^I should see a link to "([^"]*)" path$/ do |path_name|
-  page.find(:xpath, "//a")[:href] == path_name
+  page.find(:xpath, "//a")[:href].should == path_name
 end

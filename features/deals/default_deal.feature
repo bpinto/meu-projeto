@@ -13,7 +13,9 @@ Feature: View default deal details
       And I am on today's deals page
       Then I should see "Informática" within deal's category
 
-    Scenario: Viewing deal's link
+    @wip
+    #TODO: fazer o teste para garantir que aponte para a página da oferta dentro da plataforma
+    Scenario: Viewing deal's link to deal's path
       Given 1 deal with link as "http://www.google.com" was registered today
       And I am on today's deals page
       Then deal should link to "http://www.google.com"

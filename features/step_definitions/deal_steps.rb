@@ -53,7 +53,7 @@ Then /^I should see (\d+) deals?$/i do |amount|
 end
 
 Then /^deal should link to "([^"]*)"$/ do |text|
-  page.find(:xpath, "//li[@class='botao']/a")[:href] == text
+  page.find(:xpath, "//li[@class='botao']/a")[:href].should == text
 end
 
 When /^I fill in the search field with "([^"]*)"$/ do |search|
