@@ -1,10 +1,10 @@
 Feature: New Deal
-  As a guest
-  I want to search for active deals
+  As a user
+  I want to search for active deals that belongs to my city range
   so I can browse them easier
 
     Background:
-      Given I am a guest
+      Given I am a user
 
     Scenario: Search without results should show a no deals found message
       When I fill in the search field with "Oferta não existente"

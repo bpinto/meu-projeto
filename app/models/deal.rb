@@ -75,8 +75,9 @@ class Deal < ActiveRecord::Base
     where("deals.title LIKE :search OR deals.description LIKE :search", :search => "%#{search}%")
   end
 
-  def self.by_user_and_following(user)
-    users = [user] + user.following
+  def self.by_username_and_following(username)
+    user_id = User.find_by_username(username).id
+    users = [user_id] + Relationship.followed_ids(user_id)
     where(:user_id => users)
   end
 

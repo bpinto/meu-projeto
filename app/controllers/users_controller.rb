@@ -36,8 +36,6 @@ class UsersController < ApplicationController
   private
 
   def find_user_with_deals
-    User.includes(:deals).where(:id => params[:id])
-    @deals = Deal.by_user_and_following(User.by_username(params[:id]))
+    @deals = Deal.by_username_and_following(params[:id])
   end
-
 end

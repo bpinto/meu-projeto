@@ -13,6 +13,13 @@ Given /^(\d+) (active|inactive) deals? exists?$/i do |amount, status|
   end
 end
 
+Given /^(\d+) (active|inactive) deals? from "([^"]*)" exists?$/i do |amount, status, city|
+  amount.to_i.times do
+    deal = Factory.build "#{status}_deal", :city => City.find_by_name(city)
+    deal.save!(:validate => false) #Uma oferta inativa é inválida
+  end
+end
+
 Given /^I have (\d+) deals?$/i do |amount|
   Factory.create :deal, :user => @current_user
 end
