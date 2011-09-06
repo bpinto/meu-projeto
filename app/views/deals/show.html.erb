@@ -4,7 +4,8 @@
   <div class="janelaPadrao paginaOferta">
     <!-- titulo -->
     <div class="titulo">
-      <h1><%= @deal.title %></h1>
+      <h1 class="deal_title"><%= @deal.title %></h1>
+      <span class="deal_category"><%= Deal.i18n_category(@deal.category) %></span>
     </div>
     <!-- titulo -->
 
@@ -12,26 +13,28 @@
     <div class="detalhes">
       <div class="foto">
         <!-- TODO: IMAGEM -->
-        <div><img src="http://www.acessozero.com.br/portal/image/frugpalladium-iogurterias-curitiba-0-17336014-7.jpg"></div>
+        <div><%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Estabelecimento sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
       </div>
 
       <div class="desconto">
         <div class="desconto">
           <div class="bigTicket special discountTicket">
-            <strong><%= @deal.discount %><sup>%</sup></strong>
+            <strong class="deal_discount"><%= @deal.discount %><sup>%</sup></strong>
           </div>
+          
+          <% if @deal.price? %>
+            <div class="de">
+              <span>de:</span>
+              <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
+              <strong class="deal_real_price"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
+            </div>
 
-          <div class="de">
-            <span>de:</span>
-            <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-            <strong><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
-          </div>
-
-          <div class="por ">
-            <span>por:</span>
-            <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-            <strong><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
-          </div>
+            <div class="por ">
+              <span>por:</span>
+              <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
+              <strong class="deal_price"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
+            </div>
+          <% end %>
 
           <div class="comprar">
             <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
@@ -52,10 +55,7 @@
         <div class="dica topicoPadrao topicoAvaliar">
           <div class="comentario">
             <div class="titulo">
-              <a href="/consumidor/tamyresantunes"><img src="/portal/image/tamyresantunes-1.jpg"></a>
-
-              <p>Até no frio a Frug dá uma opção bacana, frozen com Amarula ou com Contreau. Hmmm... uma delícia! </p>
-              <p class="usuario"><a href="/consumidor/tamyresantunes">Tamyres Antunes</a> em 30/06/2011</p>
+              Comentários entrarão aqui!!!
             </div>
           </div>
         </div>

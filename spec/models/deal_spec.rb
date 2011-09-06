@@ -184,14 +184,12 @@ describe Deal do
 
     describe "Validations" do
       it "should require a price if the kind is daily deal" do
-        deal.kind = Deal::KIND_DAILY_DEAL
         deal.price = nil
         deal.should_not be_valid
       end
 
       it "should be required when the kind is daily deal" do
         deal.real_price = nil
-        deal.kind = Deal::KIND_DAILY_DEAL
         deal.should_not be_valid
       end
       describe "#calculate_discount" do

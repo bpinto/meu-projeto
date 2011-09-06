@@ -45,6 +45,19 @@ Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ 
   end
 end
 
+Given /^(\d+) on sale deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
+  date = get_date(date_name)
+
+  attribute = attribute.gsub(' ', '_')
+
+  value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
+  value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
+
+  amount.to_i.times do
+    Factory.create :deal, Hash[attribute => value, :price => nil, :real_price => nil, :kind => Deal::KIND_ON_SALE]
+  end
+end
+
 Given /^(\d+) deals? from user with name "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, value, date_name|
   date = get_date(date_name)
   user = Factory.create :confirmed_user, :name => value

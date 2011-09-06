@@ -26,6 +26,7 @@ module Fields
     "city" => "deal_city_id",
     "company" => "deal_company",
     "description" => "deal_description",
+    "discount" => "deal_discount",
     "link" => "deal_link",
     "price" => "deal_price",
     "real_price" => "deal_real_price",
