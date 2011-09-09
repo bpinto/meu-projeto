@@ -15,10 +15,24 @@ Given /^I am a guest$/ do
   visit('/users/sign_out')
 end
 
+Given /^I am a user$/ do
+  @current_user = FactoryGirl.create :confirmed_user
+
+  And %{I go to the sign in page}
+  And %{I fill in "user_login" with "#{@current_user.email}"}
+  And %{I fill in "user_password" with "#{@current_user.password}"}
+  And %{I press "Sign in"}
+end
+
 Given /^I am a user from "([^"]*)" and "([^"]*)"$/ do |city, another_city|
   @current_user = FactoryGirl.create :confirmed_user
   @current_user.cities << City.find_by_name(city)
   @current_user.cities << City.find_by_name(another_city)
+
+  And %{I go to the sign in page}
+  And %{I fill in "user_login" with "#{@current_user.email}"}
+  And %{I fill in "user_password" with "#{@current_user.password}"}
+  And %{I press "Sign in"}
 end
 
 Given /^I am a user with an (email|username) "([^"]*)"$/ do |property, value|
@@ -32,6 +46,11 @@ end
 
 Given /^I am a user with an (email|username) "([^"]*)" and password "([^"]*)"$/ do |property, value, password|
   @current_user = FactoryGirl.create :confirmed_user, property => value, :password => password, :password_confirmation => password
+
+  And %{I go to the sign in page}
+  And %{I fill in "user_login" with "#{@current_user.email}"}
+  And %{I fill in "user_password" with "#{@current_user.password}"}
+  And %{I press "Sign in"}
 end
 
 Then /^I should be already signed in$/ do
