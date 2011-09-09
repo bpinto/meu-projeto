@@ -1,1 +1,1 @@
-rvm use ruby-1.9.2@dealwitme --create
+rvm use ruby-1.9.2-head@dealwitme --create
