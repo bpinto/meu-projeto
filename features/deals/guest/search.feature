@@ -47,9 +47,11 @@ Feature: New Deal
       And I press "Buscar"
       Then I should see 1 deal
 
-    @wip
     Scenario: Search should show deals from all cities
-      Given 1 deal with title as "Título da Oferta" was registered today
+      Given the city "Rio de Janeiro" exists
+      And the city "São Paulo" exists
+      And 1 active deal from "Rio de Janeiro" with title as "Título da Oferta" exists
+      And 1 active deal from "São Paulo" with title as "Título da Oferta" exists
       When I fill in the search field with "Oferta"
       And I press "Buscar"
       Then I should see 2 deals
