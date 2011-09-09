@@ -79,7 +79,7 @@ When /^I fill in the deal fields correctly$/ do
   fill_in(get_field("deal", "title") , :with => deal.title)
   select(Deal.i18n_category(deal.category), :from => get_field("deal", "category")) 
   select(Deal.i18n_kind(deal.kind), :from => get_field("deal", "kind"))
-  select(City.first.id, :from => get_field("deal", "city"))
+  select(City.first.name, :from => get_field("deal", "city"))
 end
 
 When /^I fill in the search field with "([^"]*)"$/ do |search|

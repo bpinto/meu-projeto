@@ -5,6 +5,7 @@ Feature: New Deal
 
     Background:
       Given I am a user with an username "username"
+      And the city "Rio de Janeiro" exists
 
     Scenario: Viewing new deal form
       When I follow "Cadastrar Oferta"
