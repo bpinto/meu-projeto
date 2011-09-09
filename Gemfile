@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+gem 'acts_as_commentable'
 gem 'cancan'
 gem 'coffee-script'
 gem 'devise', '>= 1.4.2'
