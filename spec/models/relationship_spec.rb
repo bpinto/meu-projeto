@@ -16,7 +16,7 @@ describe Relationship do
     end
 
     it "one should have only one relationship with another at most do" do
-      same_relationship = Factory.create :relationship
+      same_relationship = FactoryGirl.create :relationship
 
       relationship.follower = same_relationship.follower
       relationship.followed = same_relationship.followed

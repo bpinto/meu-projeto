@@ -58,14 +58,14 @@ describe User do
     end
 
     it "should reject duplicate email addresses" do
-      duplicated_email = Factory.create(:user).email
+      duplicated_email = FactoryGirl.create(:user).email
       user.email = duplicated_email
       user.should_not be_valid
     end
 
     it "should reject email addresses identical up to case" do
       email = "upcase@test.com"
-      Factory.create :user, :email => email
+      FactoryGirl.create :user, :email => email
       user.email = email.upcase
       user.should_not be_valid
     end
@@ -112,8 +112,8 @@ describe User do
   end
 
   describe "relationships" do
-    let(:user) { Factory.create :confirmed_user }
-    let(:another_user) { Factory.create :confirmed_user }
+    let(:user) { FactoryGirl.create :confirmed_user }
+    let(:another_user) { FactoryGirl.create :confirmed_user }
 
     it "shouldn't be able to follow himself" do
       lambda { user.follow! user }.should raise_error(ActiveRecord::RecordInvalid)
@@ -143,7 +143,7 @@ describe User do
 
     context "one user followed" do
       before(:each) do
-        @followed_user = Factory.create :confirmed_user
+        @followed_user = FactoryGirl.create :confirmed_user
         user.follow! @followed_user
 
         user.following.size.should == 1
@@ -164,8 +164,8 @@ describe User do
 
     context "two users followed" do
       before(:each) do
-        @first_followed_user = Factory.create :confirmed_user
-        @second_followed_user = Factory.create :confirmed_user
+        @first_followed_user = FactoryGirl.create :confirmed_user
+        @second_followed_user = FactoryGirl.create :confirmed_user
         user.follow! @first_followed_user
         user.follow! @second_followed_user
 
@@ -196,14 +196,14 @@ describe User do
     end
 
     it "should be unique" do
-      duplicated_username = Factory.create(:user).username
+      duplicated_username = FactoryGirl.create(:user).username
       user.username = duplicated_username
       user.should_not be_valid
     end
 
     it "should be case-insensitive" do
       username = "upcase_test"
-      Factory.create :user, :username => username
+      FactoryGirl.create :user, :username => username
       user.username = username.upcase
       user.should_not be_valid
     end

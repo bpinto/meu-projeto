@@ -28,7 +28,7 @@ describe Ability do
     end
 
     describe "users" do
-      let(:user) { Factory.create :user }
+      let(:user) { FactoryGirl.create :user }
       let(:ability) { Ability.new(user) }
 
       it_should_behave_like "All Users"
@@ -42,12 +42,12 @@ describe Ability do
       end
 
       it "should be able to manage theirs deals" do
-        own_deal = Factory.create :deal, :user => user
+        own_deal = FactoryGirl.create :deal, :user => user
         ability.should be_able_to(:manage, own_deal)
       end
 
       it "should not be able to manage other user's deals" do
-        others_deal = Factory.create :deal
+        others_deal = FactoryGirl.create :deal
         ability.should_not be_able_to(:manage, others_deal)
       end
 

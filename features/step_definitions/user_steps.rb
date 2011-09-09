@@ -3,11 +3,11 @@ Given /^no user exists with an (?:username|email) of "(.*)"$/ do |login|
 end
 
 Given /^one user with an (email|username) "([^"]*)" exists$/ do |property, value|
-  Factory.create :confirmed_user, property => value
+  FactoryGirl.create :confirmed_user, property => value
 end
 
 Given /^one user with an (email|username) "([^"]*)" exists and I follow him$/ do |property, value|
-  user = Factory.create :confirmed_user, property => value
+  user = FactoryGirl.create :confirmed_user, property => value
   @current_user.follow!(user)
 end
 
@@ -16,13 +16,13 @@ Given /^I am a guest$/ do
 end
 
 Given /^I am a user from "([^"]*)" and "([^"]*)"$/ do |city, another_city|
-  @current_user = Factory.create :confirmed_user
+  @current_user = FactoryGirl.create :confirmed_user
   @current_user.cities << City.find_by_name(city)
   @current_user.cities << City.find_by_name(another_city)
 end
 
 Given /^I am a user with an (email|username) "([^"]*)"$/ do |property, value|
-  @current_user = Factory.create :confirmed_user, property => value
+  @current_user = FactoryGirl.create :confirmed_user, property => value
 
   And %{I go to the sign in page}
   And %{I fill in "user_login" with "#{@current_user.email}"}
@@ -31,7 +31,7 @@ Given /^I am a user with an (email|username) "([^"]*)"$/ do |property, value|
 end
 
 Given /^I am a user with an (email|username) "([^"]*)" and password "([^"]*)"$/ do |property, value, password|
-  @current_user = Factory.create :confirmed_user, property => value, :password => password, :password_confirmation => password
+  @current_user = FactoryGirl.create :confirmed_user, property => value, :password => password, :password_confirmation => password
 end
 
 Then /^I should be already signed in$/ do
@@ -80,9 +80,9 @@ Given /^I am not logged in$/ do
 end
 
 Given /^I follow a user with (email|username) "([^"]*)" who has (\d+) deal$/ do |property, value, amount|
-  user = Factory.create :confirmed_user, property => value
+  user = FactoryGirl.create :confirmed_user, property => value
   @current_user.follow!(user)
-  Factory.create :deal, :user => user
+  FactoryGirl.create :deal, :user => user
 end
 
 Then /^I should see a link to edit my information on "([^"].*)"$/ do |page_name|

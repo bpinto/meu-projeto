@@ -2,7 +2,7 @@
 
 Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   amount.to_i.times do
-    Factory.create :deal
+    FactoryGirl.create :deal
   end
 end
 
@@ -21,14 +21,14 @@ Given /^(\d+) (active|inactive) deals? from "([^"]*)" exists?$/i do |amount, sta
 end
 
 Given /^I have (\d+) deals?$/i do |amount|
-  Factory.create :deal, :user => @current_user
+  FactoryGirl.create :deal, :user => @current_user
 end
 
 Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   date = get_date(date_name)
 
   amount.to_i.times do
-    Factory.create :deal, :created_at => date, :title => date_name
+    FactoryGirl.create :deal, :created_at => date, :title => date_name
   end
 end
 
@@ -41,7 +41,7 @@ Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ 
   value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
 
   amount.to_i.times do
-    Factory.create :deal, Hash[attribute => value]
+    FactoryGirl.create :deal, Hash[attribute => value]
   end
 end
 
@@ -54,15 +54,15 @@ Given /^(\d+) on sale deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered 
   value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
 
   amount.to_i.times do
-    Factory.create :deal, Hash[attribute => value, :price => nil, :real_price => nil, :kind => Deal::KIND_ON_SALE]
+    FactoryGirl.create :deal, Hash[attribute => value, :price => nil, :real_price => nil, :kind => Deal::KIND_ON_SALE]
   end
 end
 
 Given /^(\d+) deals? from user with name "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, value, date_name|
   date = get_date(date_name)
-  user = Factory.create :confirmed_user, :name => value
+  user = FactoryGirl.create :confirmed_user, :name => value
   amount.to_i.times do
-    Factory.create :deal, Hash[:user => user]
+    FactoryGirl.create :deal, Hash[:user => user]
   end
 end
 
