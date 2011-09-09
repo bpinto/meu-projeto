@@ -1,4 +1,7 @@
 #coding: UTF-8
+Given /^I have (\d+) deals?$/i do |amount|
+  FactoryGirl.create :deal, :user => @current_user
+end
 
 Given /^(\d+)(?:| other) deals? exists?$/i do |amount|
   amount.to_i.times do
@@ -21,19 +24,13 @@ Given /^(\d+) (active|inactive) deals? from "([^"]*)" exists?$/i do |amount, sta
 end
 
 Given /^(\d+) (active|inactive) deals? from "([^"]*)" with ([\w ]+) as "([^"]*)" exists?$/ do |amount, status, city, attribute, value|
+  value = normalize_value(attribute, value)
   attribute = attribute.gsub(' ', '_')
-
-  value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
-  value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
 
   amount.to_i.times do
     deal = FactoryGirl.build "#{status}_deal", :city => City.find_by_name(city), "#{attribute}" => value
     deal.save!(:validate => false) #Uma oferta inativa é inválida
   end
-end
-
-Given /^I have (\d+) deals?$/i do |amount|
-  FactoryGirl.create :deal, :user => @current_user
 end
 
 Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
@@ -46,27 +43,21 @@ end
 
 Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
-
+  value = normalize_value(attribute, value)
   attribute = attribute.gsub(' ', '_')
 
-  value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
-  value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
-
   amount.to_i.times do
-    FactoryGirl.create :deal, Hash[attribute => value]
+    FactoryGirl.create :deal, "#{attribute}" => value
   end
 end
 
 Given /^(\d+) on sale deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
-
+  value = normalize_value(attribute, value)
   attribute = attribute.gsub(' ', '_')
 
-  value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
-  value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
-
   amount.to_i.times do
-    FactoryGirl.create :deal, Hash[attribute => value, :price => nil, :real_price => nil, :kind => Deal::KIND_ON_SALE]
+    FactoryGirl.create :deal_on_sale, "#{attribute}" => value
   end
 end
 
@@ -106,4 +97,15 @@ end
 
 Then /^deal should link to "([^"]*)"$/ do |text|
   page.find(:xpath, "//li[@class='botao']/a")[:href].should == text
+end
+
+def normalize_value(attribute, value)
+  case attribute
+  when "category"
+    Deal.const_get("CATEGORY_#{value.upcase}")
+  when "kind"
+    Deal.const_get("KIND_#{value.upcase}")
+  else
+    value
+  end
 end
