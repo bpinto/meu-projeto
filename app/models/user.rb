@@ -2,16 +2,15 @@ class User < ActiveRecord::Base
   include  Gravtastic
 
   devise :confirmable, :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
-  gravtastic :size => 180,
-             :default => "mm"
+  gravtastic :size => 180, :default => "mm"
   has_paper_trail
 
   has_and_belongs_to_many :cities
   has_many :deals
-  has_many :relationships,          :foreign_key => "follower_id"#,      :dependent => :destroy
+  has_many :relationships,          :foreign_key => "follower_id"
   has_many :followers,              :through => :reverse_relationships, :source => :follower
   has_many :following,              :through => :relationships,         :source => :followed
-  has_many :reverse_relationships,  :foreign_key => "followed_id",      :class_name => "Relationship"#,      :dependent => :destroy
+  has_many :reverse_relationships,  :foreign_key => "followed_id",      :class_name => "Relationship"
 
   validates :username,  :presence => true,  :uniqueness => true,  :format => /^[a-zA-Z0-9_]{5,20}$/
 
