@@ -33,12 +33,12 @@ class DealsController < AuthorizedController
   private
 
   def find_todays_deals
-    @deals = Deal.today
+    @deals = Deal.today.page(:page => params[:page])
     @deals = @deals.by_category_string(params[:category]) if params[:category]
   end
 
   def find_active_deals
-    @deals = Deal.active
+    @deals = Deal.active.paginate(:page => params[:page])
     @deals = @deals.search(params[:search]) if params[:search]
     @deals = @deals.by_cities(user_cities_ids) if user_cities_ids
   end

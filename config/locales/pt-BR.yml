@@ -269,15 +269,20 @@
         '1': "Ofertas"
         '2': "Compras Coletivas"
         '3': "Liquidação"
-      national_offer: "Oferta Nacional" 
-    
+      national_offer: "Oferta Nacional"
+
     user:
       followers: "Seguidores"
       following: "Seguindo"
       deals: "Ofertas"
-      
+
   actions:
     follow: "Seguir"
     unfollow: "Deixar de seguir"
 
   users: "usuários"
+
+  will_paginate:
+    previous_label: "Página anterior"
+    next_label: "Próxima página"
+    page_gap: "&hellip;"

@@ -1,8 +1,9 @@
 # coding: utf-8
 class Deal < ActiveRecord::Base
+  acts_as_commentable
   has_paper_trail
 
-  acts_as_commentable
+  self.per_page = 10
 
   CATEGORY_DRINK = 1
   CATEGORY_BEAUTY_AND_HEALTH = 2

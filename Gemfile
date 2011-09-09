@@ -14,6 +14,7 @@ gem 'sass'
 gem 'therubyracer-heroku', '0.8.1.pre3'
 gem 'uglifier'
 gem 'validates_timeliness'
+gem 'will_paginate', '~> 3.0.0'
 
 group :development, :test do
   gem 'awesome_print'
