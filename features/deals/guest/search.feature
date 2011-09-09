@@ -29,10 +29,9 @@ Feature: New Deal
       And I press "Buscar"
       Then I should see 3 deals with title "Título da Oferta"
 
-    @wip
     Scenario: Search should ignore case
       Given 1 deal with title as "Título da Oferta" was registered today
-      When I fill in the search field with "oferta"
+      When I fill in the search field with "título da oferta"
       And I press "Buscar"
       Then I should see 1 deal with title "Título da Oferta"
 

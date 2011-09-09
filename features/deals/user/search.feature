@@ -31,7 +31,6 @@ Feature: New Deal
       And I press "Buscar"
       Then I should see 3 deals with title "Título da Oferta"
 
-    @wip
     Scenario: Search should ignore case
       Given 1 active deal from "Rio de Janeiro" with title as "Título da Oferta" exists
       When I fill in the search field with "título da oferta"
