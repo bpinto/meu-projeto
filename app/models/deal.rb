@@ -2,6 +2,8 @@
 class Deal < ActiveRecord::Base
   has_paper_trail
 
+  acts_as_commentable
+
   CATEGORY_DRINK = 1
   CATEGORY_BEAUTY_AND_HEALTH = 2
   CATEGORY_PHONE_AND_CAMERA = 3

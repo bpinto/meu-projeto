@@ -55,7 +55,13 @@
         <div class="dica topicoPadrao topicoAvaliar">
           <div class="comentario">
             <div class="titulo">
-              Comentários entrarão aqui!!!
+              <%= form_for([@deal,@comment]) do |f| %>
+                <%= f.text_area :comment %><br/>
+                <%= f.submit "Comentar" %>
+              <% end %>
+              <% @deal.comments.each do |comment| %>
+                <%= comment.comment %><br/>
+              <% end %>
             </div>
           </div>
         </div>

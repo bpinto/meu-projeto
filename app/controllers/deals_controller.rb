@@ -3,6 +3,7 @@ class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:index, :show, :today]
   prepend_before_filter :find_todays_deals, :only => :today
   prepend_before_filter :find_deals, :only => :index
+  prepend_before_filter :initialize_comment, :only => :show
   before_filter :populate_cities_name, :only => :new
 
   def index
@@ -43,5 +44,9 @@ class DealsController < AuthorizedController
 
   def populate_cities_name
     @cities_name = City.all.collect { |c| [c.name, c.id] }
+  end
+
+  def initialize_comment
+    @comment = Comment.new
   end
 end
