@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Relationship do
-  let(:relationship) { Factory.build :relationship }
+  let(:relationship) { FactoryGirl.build :relationship }
   subject { relationship }
 
   its(:save) { should be_true }

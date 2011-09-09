@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe City do
-  let(:city) { Factory.build :city }
+  let(:city) { FactoryGirl.build :city }
   subject { city }
 
   its(:save) { should be_true }

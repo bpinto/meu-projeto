@@ -68,6 +68,10 @@ class Deal < ActiveRecord::Base
     where(:category => CATEGORIES_DICTIONARY[category])
   end
 
+  def self.by_cities(cities_id)
+    where(:city_id => cities_id)
+  end
+
   def self.by_kind(kind)
     where(:kind => kind)
   end

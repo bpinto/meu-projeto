@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { Factory.build :user }
+  let(:user) { FactoryGirl.build :user }
   subject { user }
 
   its(:save) { should be_true }

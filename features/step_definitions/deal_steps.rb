@@ -8,14 +8,26 @@ end
 
 Given /^(\d+) (active|inactive) deals? exists?$/i do |amount, status|
   amount.to_i.times do
-    deal = Factory.build "#{status}_deal"
+    deal = FactoryGirl.build "#{status}_deal"
     deal.save!(:validate => false) #Uma oferta inativa é inválida
   end
 end
 
 Given /^(\d+) (active|inactive) deals? from "([^"]*)" exists?$/i do |amount, status, city|
   amount.to_i.times do
-    deal = Factory.build "#{status}_deal", :city => City.find_by_name(city)
+    deal = FactoryGirl.build "#{status}_deal", :city => City.find_by_name(city)
+    deal.save!(:validate => false) #Uma oferta inativa é inválida
+  end
+end
+
+Given /^(\d+) (active|inactive) deals? from "([^"]*)" with ([\w ]+) as "([^"]*)" exists?$/ do |amount, status, city, attribute, value|
+  attribute = attribute.gsub(' ', '_')
+
+  value = Deal.const_get("CATEGORY_#{value.upcase}") if attribute == "category"
+  value = Deal.const_get("KIND_#{value.upcase}") if attribute == "kind"
+
+  amount.to_i.times do
+    deal = FactoryGirl.build "#{status}_deal", :city => City.find_by_name(city), "#{attribute}" => value
     deal.save!(:validate => false) #Uma oferta inativa é inválida
   end
 end
@@ -67,7 +79,7 @@ Given /^(\d+) deals? from user with name "([^"]*)" (?:was|were) registered (\w*)
 end
 
 When /^I fill in the deal fields correctly$/ do
-  deal = Factory.build :deal
+  deal = FactoryGirl.build :deal
   fill_in(get_field("deal", "company"), :with => deal.company)
   fill_in(get_field("deal", "description"), :with => deal.description)
   fill_in(get_field("deal", "link"), :with => deal.link)

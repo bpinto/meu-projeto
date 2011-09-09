@@ -1,8 +1,8 @@
 # coding: UTF-8
 class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:index, :show, :today]
+  prepend_before_filter :find_active_deals, :only => :index
   prepend_before_filter :find_todays_deals, :only => :today
-  prepend_before_filter :find_deals, :only => :index
   prepend_before_filter :initialize_comment, :only => :show
   before_filter :populate_cities_name, :only => :new
 
@@ -37,9 +37,10 @@ class DealsController < AuthorizedController
     @deals = @deals.by_category_string(params[:category]) if params[:category]
   end
 
-  def find_deals
+  def find_active_deals
     @deals = Deal.active
     @deals = @deals.search(params[:search]) if params[:search]
+    @deals = @deals.by_cities(user_cities_ids) if user_cities_ids
   end
 
   def populate_cities_name

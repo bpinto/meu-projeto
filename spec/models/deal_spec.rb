@@ -103,7 +103,7 @@ describe Deal do
           deal.should_not be_valid
         end
       end
-   
+
       it "should require a title" do
         deal.title = nil
         deal.should_not be_valid
@@ -112,12 +112,12 @@ describe Deal do
   end
 
   describe "On Sale Deals" do
-    let(:deal) { Factory.build :deal_on_sale }
+    let(:deal) { FactoryGirl.build :deal_on_sale }
     subject { deal }
 
     it_should_behave_like "All Deals"
-    
-    describe "Validations" do  
+
+    describe "Validations" do
       it "should require a discount" do
         deal.discount = nil
         deal.should_not be_valid
@@ -136,7 +136,7 @@ describe Deal do
   end
 
   describe "Deals Offer" do
-    let(:deal) { Factory.build :deal_offer }
+    let(:deal) { FactoryGirl.build :deal_offer }
     subject { deal }
 
     it_should_behave_like "All Deals"
@@ -173,11 +173,11 @@ describe Deal do
           deal.discount.should == nil
         end
       end
-    end  
+    end
   end
 
   describe "Daily Deals" do
-    let(:deal) { Factory.build :daily_deal }
+    let(:deal) { FactoryGirl.build :daily_deal }
     subject { deal }
 
     it_should_behave_like "All Deals"
