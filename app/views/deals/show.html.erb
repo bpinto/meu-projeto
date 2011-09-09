@@ -43,57 +43,43 @@
       </div>
     </div>
     <!-- /detalhes -->
-
-    <!-- info -->
-    <div class="info">
-      <div class="barra">
-        <h2>Comentários</h2>
-      </div>
-
-      <!-- TODO: COMENTÁRIO -->
-      <div class="conteudo">
-        <div class="dica topicoPadrao topicoAvaliar">
-          <div class="comentario">
-            <div class="titulo">
-              <%= form_for([@deal,@comment]) do |f| %>
-                <%= f.text_area :comment %><br/>
-                <%= f.submit "Comentar" %>
-              <% end %>
-              <% @deal.comments.each do |comment| %>
-                <%= comment.comment %><br/>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <p></p>
-      </div>
-    </div>
-    <!-- /info -->
   </div>
   <!-- /pagina oferta -->
+
+
+    <!-- TODO: COMENTÁRIO -->
+    <div class="conteudo">
+      <!-- janela CONTEÚDO --> 
+  	  <div class="media"> 
+			  <div class="janela menu"> 
+				  <div class="cima"></div> 
+					<div class="meio" id="tabAreaId" style="min-height: 150px;"> 
+					  <div class="janelaResumo avaliacoes"> 
+						  <div class="barraCima"> 
+							  <h4>Comentários</h4> 
+                <div class="topico novo" >
+                  <div class="comentario" >
+                    <%= form_for([@deal,@comment]) do |f| %>
+                      <%= f.text_area :comment, :class => "TextArea" %><br/>
+                      <%= f.submit "Comentar" %>
+                    <% end %>
+                  </div>
+                </div>
+						  </div> 
+						  <div class="conteudo"> 
+                <% @deal.comments.each do |comment| %>
+                  <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
+                <% end %>
+							</div>  
+              <div class="barraBaixo"> 
+							  <!-- paginacao  -->
+							</div> 
+            </div> 
+  				</div> 
+ 				</div>
+			</div>
+  		<!-- /janela CONTEÚDO --> 
+    </div>
 </div>
 <!-- /PRINCIPAL -->
 
-<!-- LATERAL -->
-<div class="lateral">
-
-  <!-- compartilhar -->
-  <div class="janelaPadrao compartilhar">
-    <div class="barra">
-      <h3>Compartilhe</h3>
-    </div>
-
-    <!-- TODO: Compartilhamento -->
-    <div class="conteudo">
-      <ul class="social">
-        <li><a href="/portal/twitter/update?t=4&amp;tw=Frug+-+Shopping+Palladium%3A+um+frozen+yogurt+de+240ml+%2B+3+acompanhamentos+de+6+reais+por+3+reais&amp;u=http://www.acessozero.com.br/curitiba/iogurterias/frugpalladium/oferta-17336014" class="twitter" target="_blank" rel="nofollow" title="Compartilhe essa oferta com seus amigos pelo Twitter">Twitter</a></li>
-        <li><a href="http://promote.orkut.com/preview?nt=orkut.com&amp;du=http://www.acessozero.com.br/curitiba/iogurterias/frugpalladium/oferta-17336014" class="orkut" target="_blank" rel="nofollow" title="Compartilhe essa oferta com seus amigos pelo Orkut">Orkut</a></li>
-        <li><a href="http://www.facebook.com/share.php?u=http://www.acessozero.com.br/curitiba/iogurterias/frugpalladium/oferta-17336014" class="facebook" target="_blank" rel="nofollow" title="Compartilhe essa oferta com seus amigos pelo Facebook">Facebook</a></li>
-        <li><a href="/portal/benefit/share?u=17336014" class="email" rel="nofollow" title="Compartilhe essa oferta com seus amigos por e-mail">E-mail</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- compartilhar -->
-</div>
-<!-- /LATERAL -->

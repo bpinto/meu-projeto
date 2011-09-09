@@ -1,0 +1,337 @@
+/* AVALIACOES */
+div.avaliacoes { display: block !important; min-height: 300px; }
+
+	div.avaliacoes div.semConteudo { clear: both; padding: 30px 30px 0; overflow: hidden; }
+		div.avaliacoes div.semConteudo p { color: #666; display: block; font-size: 14px; line-height: 20px; margin-bottom: 20px; text-align: center; }
+			div.avaliacoes div.semConteudo p strong { color: #4D92AC; font-size: 18px; line-height: 23px; }
+
+	div.avaliacoes h3 { float: left; margin: 0 0 20px; }
+	div.avaliacoes div.barra h3 { float: none; margin: 0; }
+	
+	div.avaliacoes div.conteudo { padding-top: 15px; }
+		
+		div.avaliacoes div.conteudo div.comentario { border-color: #9CB571; }
+			div.avaliacoes div.conteudo div.comentario span.tipo { background: #9CB571; color: #fff; }
+			
+		div.avaliacoes div.satisfeito div.comentario { border-color: #9CB571; }
+			div.avaliacoes div.satisfeito div.comentario span.tipo { background: #9CB571; color: #fff; }
+		div.avaliacoes div.insatisfeito div.comentario { border-color: #CC0000; }
+			div.avaliacoes div.insatisfeito div.comentario span.tipo { background: #CC0000; color: #fff; }
+		div.avaliacoes div.conciliado div.comentario { border-color: #4C92AC; }
+			div.avaliacoes div.conciliado div.comentario span.tipo { background: #4C92AC; color: #fff; }
+	
+	/* paginacao */
+	div.avaliacoes div.conteudo ul.paginacao { display: block; height: 27px; overflow: visible; position: relative; margin: -16px 15px 15px 30px; z-index: 2; }
+		div.avaliacoes div.conteudo ul.paginacao li { color: #888; display: block; float: left; font: 11px/26px Verdana, Sans-Serif; }
+		div.avaliacoes div.conteudo ul.paginacao li:last-child { margin-left: 6px; }
+			div.avaliacoes div.conteudo ul.paginacao li a { background: #eee; border: 1px solid; border-color: #9CB571 #e5e5e5 #e5e5e5 #e5e5e5; color: #4C92AC; display: block; float: left; font: bold 15px/25px Arial, Helvetica, Sans-Serif; height: 25px; text-align: center; width: 25px; /**/ border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; }
+			div.avaliacoes div.conteudo ul.paginacao li a:hover,
+			div.avaliacoes div.conteudo ul.paginacao li a.ativo { background: #fff; border-color: #fff #9CB571 #9CB571 #9CB571; color: #333; text-decoration: none; }
+			
+	/* paginacao avaliacoes */
+	div.avaliacoes div.conteudo ul.avaliacoes { margin: -15px 15px 15px 30px; }
+		div.avaliacoes div.conteudo ul.avaliacoes li {}
+		div.avaliacoes div.conteudo ul.avaliacoes li:last-child {}
+			div.avaliacoes div.conteudo ul.avaliacoes li a { border-color: #e5e5e5; }
+			div.avaliacoes div.conteudo ul.avaliacoes li a:hover,
+			div.avaliacoes div.conteudo ul.avaliacoes li a.ativo { margin-top: -1px; }
+			
+			div.avaliacoes div.conteudo ul.avaliacoes li.insatisfeito a.ativo { border-color: #fff #CC0000 #CC0000 #CC0000; }
+			div.avaliacoes div.conteudo ul.avaliacoes li.conciliado a.ativo { border-color: #fff #4C92AC #4C92AC #4C92AC; }
+			
+	div.avaliacoes div.alerta { margin: 20px 15px 15px; }
+	
+	div.avaliacoes a.voltar { float: right; height: 20px; margin: 0 15px 0 0; }
+	div.avaliacoes a.voltar { background: none; padding: 0; }
+		div.avaliacoes a.voltar span { background: none; color: #789F00; height: 20px; line-height: 20px; padding: 0; text-shadow: none; }
+		div.avaliacoes a.voltar:hover span { color: #789F00; text-decoration: underline; }	
+	
+	div.info div.avaliacoes { min-height: 10px; }
+	div.avaliacoes div.avaliacao { padding-top: 20px; }
+		div.avaliacoes div.avaliacao div.comentario { position: relative; }
+			div.avaliacoes div.avaliacao div.comentario .tipo { background: #ddd; color: #666; display: inline-block; font: bold 10px/20px Arial, Helvetica, Sans-Serif; height: 20px; left: 15px; padding: 0 7px; position: absolute; text-transform: uppercase; top: -20px; /**/ border-radius: 3px 3px 0 0; -moz-border-radius: 3px 3px 0 0; -webkit-border-radius: 3px 3px 0 0; }
+			div.avaliacoes div.avaliacao div.comentario a.tipo:hover { text-decoration: underline; }
+			
+			/* variacoes */
+			div.avaliacoes div.insatisfacao div.comentario .tipo { background: #CC0000; color: #fff; }
+			div.avaliacoes div.conciliacao div.comentario .tipo { background: #4C92AC; color: #fff; }
+			
+	div.avaliacoes a.novo { float: right; margin: 0 15px 0 0; }
+	
+	div.avaliacoes div.novo {}
+		div.avaliacoes div.novo div.comentario label { display: block; font: normal normal bold 12px/12px Arial, Sans-Serif; padding: 15px 15px 0 25px; }
+		div.avaliacoes div.novo div.comentario label.cima { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat 0 0; overflow: hidden; }
+			div.avaliacoes div.novo div.comentario label.cima span.limite { padding: 0 !important; }
+			div.avaliacoes div.novo div.comentario label strong.texto { float: left; }
+			div.avaliacoes div.novo div.comentario p.instrucao { font-size: 11px; display: block; margin: 15px 15px 0 25px; }
+				div.avaliacoes div.novo div.comentario p.instrucao a { color: #4D92AC; display: block; font-weight: bold; margin-top: 15px; text-decoration: underline; font-size: 10px; }
+				div.avaliacoes div.novo div.comentario p.instrucao a:hover { text-decoration: none; }
+			div.avaliacoes div.comentario div.instrucao { background: #FAE5E5; border: 1px dashed #EB9999; clear: both; display: block; margin: 15px 15px 0 25px; overflow: hidden; padding: 15px 15px 0; }
+				div.avaliacoes div.comentario div.instrucao span.titulo { color: #333; font: italic bold 16px/16px Arial, Helvetica, Sans-Serif; }
+				div.avaliacoes div.comentario div.instrucao ol {}
+					div.avaliacoes div.comentario div.instrucao ol li:first-child { border: none; }
+					div.avaliacoes div.novo div.comentario div.instrucao ol li { border-top: 1px dashed #EB9999; display: block; list-style: none; overflow: hidden; padding: 15px 0; }
+						div.avaliacoes div.novo div.comentario div.instrucao ol li span { float: left; font: bold 20px/20px Arial, Helvetica, Sans-Serif; }
+						div.avaliacoes div.novo div.comentario div.instrucao ol li p { display: block; font: 11px/17px Verdana, Sans-Serif; margin: 0 15px 0 30px; }
+							div.avaliacoes div.novo div.comentario div.instrucao ol li p a { color: #789F00; font-weight: bold; text-decoration: underline; }
+				div.avaliacoes div.novo div.comentario div.instrucao a:hover { text-decoration: none; }
+			div.avaliacoes div.novo div.comentario span.limite { color: #999; float: right; font-size: 10px; font-weight: normal; padding: 10px 15px 0 0; }
+				div.avaliacoes div.novo div.comentario span.limite strong { color: #C00; font-size: 10px; }
+		div.avaliacoes div.novo div.comentario textarea { background: #eee; border: 1px solid; border-color: #CCC #DDD #DDD #CCC; font: normal normal normal 11px/17px Verdana, Sans-Serif; height: 105px; margin: 10px 15px 0 25px; padding: 7px; width: 400px; }
+		div.avaliacoes div.novo div.comentario p.humor { display: block; }
+			div.avaliacoes div.novo div.comentario a span.satisfeito,
+			div.avaliacoes div.novo div.comentario a span.insatisfeito { background: url(<%= asset_path 'icones.png' %>) no-repeat; color: #999; display: inline-block; font: normal normal normal 11px/27px Verdana, Sans-Serif; height: 27px; margin: 15px 25px 0 0; padding-left: 25px;  }						
+			div.avaliacoes div.novo div.comentario a span.satisfeito { background-position: -5px -812px; margin-left: 25px; }
+			div.avaliacoes div.novo div.comentario a:hover span.satisfeito,
+			div.avaliacoes div.novo div.comentario a.ativo span.satisfeito { background-position: -5px -842px; color: #789F00; }
+			div.avaliacoes div.novo div.comentario a span.insatisfeito { background-position: -5px -542px; margin-right: 150px; }
+			div.avaliacoes div.novo div.comentario a:hover span.insatisfeito,
+			div.avaliacoes div.novo div.comentario a.ativo span.insatisfeito { background-position: -5px -572px; color: #C00; }			
+			div.avaliacoes div.novo div.comentario p.aviso { background: #FFC; color: #C00; clear: both; display: block; font: italic normal normal 11px/17px Verdana, Sans-Serif; margin: 15px 15px 0 25px; padding: 10px; width: 395px; }
+			div.avaliacoes div.novo div.comentario a.salvar { margin: 15px 0 0 25px; }
+			div.avaliacoes div.novo div.comentario a.cancelar { margin: 15px 0 0 5px; }
+	
+	div.avaliacoes div.topico { margin: 0 0 15px 15px; }				
+		div.avaliacoes div.topico div.comentario { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -455px 0; width: 455px; }						
+			div.avaliacoes div.topico div.comentario p.texto { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat 0 0; padding-top: 12px; width: 415px; }																
+			div.avaliacoes div.topico div.comentario div.detalhes { background: none; overflow: visible; padding-bottom: 0; width: 415px; }
+				div.avaliacoes div.topico div.comentario div.respostas a.responder { margin-top: 10px; }
+		
+		div.avaliacoes div.dicasResponderAvaliacao { clear: both; display: block; overflow: hidden; }		
+				
+		div.avaliacoes div.observacoes { clear: both; display: block; margin: 0; padding-top: 15px; }
+		#consumidor div.avaliacoes div.resposta div.topico div.observacoes { margin-right: 15px; }
+			div.avaliacoes div.observacoes p { background: #fff; border: 1px dashed #ccc; color: #333; font: italic 10px/11px Verdana, Sans-Serif; padding: 7px; }
+				div.avaliacoes div.observacoes p strong { color: #700; font: italic bold 10px/11px Verdana, Sans-Serif; }
+				
+			div.avaliacoes div.novo div.comentario div.detalhes { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -910px bottom; padding-bottom: 15px; width: 415px; }
+			 	
+	div.avaliacoes div.autor {}
+		div.avaliacoes div.autor div.comentario { background-position: -1821px 0; }						
+			div.avaliacoes div.autor div.comentario p.texto { background-position: -1366px 0; }																
+			div.avaliacoes div.autor div.comentario div.detalhes { background-position: -2276px bottom; }
+	
+	/* outras acoes */
+	div.avaliacoes div.outrasAcoes { clear: both; display: block; overflow: hidden; /* tirar */ margin: 0 !important; }
+		div.avaliacoes div.outrasAcoes div.compartilhar,
+		div.avaliacoes div.outrasAcoes div.denunciar,
+		div.avaliacoes div.outrasAcoes div.excluir { margin: 15px 0 0; }
+		
+	/* resposta */
+	div.avaliacoes div.resposta div.respostas { display: block; }
+	div.avaliacoes div.topico div.comentario div.respostas { overflow: hidden; padding-bottom: 15px; }
+			div.avaliacoes div.topico div.comentario div.respostas a.responder { float: left; margin-left: 25px; }
+				
+		div.avaliacoes div.topico div.comentario div.topico { margin-top: 0 !important; }						
+				div.avaliacoes div.topico div.comentario div.topico div.comentario textarea { width: 310px; }
+			div.avaliacoes div.topico div.comentario div.topico a.botao { margin: 15px 0 0 60px; }
+			div.avaliacoes div.topico div.comentario div.topico a.cancelar { margin-left: 5px; }
+			div.avaliacoes div.topico div.comentario div.topico a.insatisfeito { background-position: 0 -120px; }
+				div.avaliacoes div.topico div.comentario div.topico a.insatisfeito span { background-position: right -150px; color: #440000; text-shadow: 1px 1px 1px #E9A4A4; }
+			div.avaliacoes div.topico div.comentario div.topico a.insatisfeito:hover { background-position: 0 -180px; }
+				div.avaliacoes div.topico div.comentario div.topico a.insatisfeito:hover span { background-position: right -210px; color: #000000; }
+			div.avaliacoes div.topico div.comentario div.topico a.conciliacao { margin-left: 15px; }
+			div.avaliacoes div.topico a.dicas { background: none; margin: 10px 0 0 0 !important; }
+			div.avaliacoes div.topico a.dicasAtivo { clear: both; margin-left: 25px !important; padding-left: 0 !important; }
+				div.avaliacoes div.topico a.dicas span { background: none; font-size: 11px; text-decoration: underline; }
+				div.avaliacoes div.topico a.dicas:hover span { text-decoration: none; }
+			
+			body#consumidor div.avaliacoes div.topico a.dicasAtivo { margin-left: 0 !important; }
+			
+			div.avaliacoes div.respostas div.topico a.dicasAtivo { margin-left: 0 !important; }
+				
+			div.avaliacoes ul.ocultarAvaliacao { clear: both; display: block; margin: 15px 15px 0 25px; }
+				div.avaliacoes ul.ocultarAvaliacao li { display: block; list-style: none; margin-top: 15px; overflow: hidden; }
+				div.avaliacoes ul.ocultarAvaliacao li:first-child { margin-top: 0; }
+					div.avaliacoes ul.ocultarAvaliacao li input { border: none !important; background: transparent !important; float: left; margin: 0; width: 10px; }
+					div.avaliacoes ul.ocultarAvaliacao li label { background: none !important; clear: none; display: block; float: left; margin-left: 10px; padding: 0 !important; width: 300px !important; }
+						div.avaliacoes ul.ocultarAvaliacao li label span { color: #999; display: block; font: 11px/12px Verdana, Sans-Serif; padding-top: 5px; }
+
+	/* usuario */					
+	div.avaliacoes div.topico div.comentario p.usuario { color: #888; display: block; font: 10px/15px Verdana, Sans-Serif; margin: 0 15px 15px 0; }
+		div.avaliacoes div.topico div.comentario p.usuario a { font: 11px/11px Verdana, Sans-Serif; }
+			div.avaliacoes div.topico div.comentario p.usuario a span { color: #789f00; font: 11px/11px Verdana, Sans-Serif; }
+	
+	/* acoes */
+	div.avaliacoes div.topico div.comentario div.acoesAvaliacao { bottom: -1px; height: 28px; position: relative; z-index: 2; }
+	div.avaliacoes div.topico div.comentario div.acoesAvaliacaoRespostas { height: auto; margin-top: 15px; position: static; }
+		
+		/* votacao avaliacoes */
+		div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes { display: block; float: left; }
+			div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li:before { content: ""; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li a { background: #eee url(<%= asset_path 'votacao-avaliacoes.png' %>) no-repeat; border: 1px solid #ccc; color: #999; display: block; float: left; font: bold 11px/24px Verdana, Sans-Serif; height: 24px; margin-right: 5px; padding: 0 8px 0 25px; /**/ -moz-border-radius: 3px; -webkit-border-radius:  3px; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li a:hover { border-color: #4C92AC; color: #4C92AC; text-decoration: none; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li.sim a { background-position: 0 -1px; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li.sim a.ativo { background-position: 0 -26px; border-color: #ddd; color: #ccc; cursor: default; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li.nao a { background-position: 3px -51px; content: ""; text-indent: -999em; width: 0; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li.nao a:hover { border-color: #B3786C; color: #56322B; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.votacaoAvaliacoes li.nao a.ativo { background-position: 3px -76px; border-color: #ddd; color: #ccc; cursor: default; }
+		
+		/* social */
+		div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social { display: block; float: left; padding: 3px; }
+		div.avaliacoes div.topico div.comentario div.acoesAvaliacaoRespostas ul.social { padding: 1px 0 0 5px; }
+			div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li { display: block; float: left; list-style: none; margin-left: 3px; overflow: hidden; }
+			div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li:before { content: ""; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li a { background: url(<%= asset_path 'social-dica.jpg' %>) no-repeat; display: block; float: left; height: 20px; padding: 0; text-indent: -999em; width: 20px; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li.twitter a { background-position: 0 0; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li.twitter a:hover { background-position: 0 -20px; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li.orkut a { background-position: -20px 0; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li.orkut a:hover { background-position: -20px -20px; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li.facebook a { background-position: -40px 0; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul.social li.facebook a:hover { background-position: -40px -20px; }
+				
+		/* acoes ul */
+		div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul { float: right; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li { display: block; float: left; font: 10px/23px Verdana, Sans-Serif; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li:before { content: "/"; color: #999; float: left; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li:first-child:before { content: ""; margin: 0; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li a { color: #4C92AC; display: block; float: left; font: 10px/23px Verdana, Sans-Serif; height: 23px; padding: 0 5px; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li a:hover { text-decoration: underline; }
+						div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li a strong { color: #4C92AC; font: bold 10px/23px Verdana, Sans-Serif; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.comentarios a { background: url(<%= asset_path 'icones.png' %>) no-repeat -9px -1082px; padding-left: 17px; }
+				div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.outrasAcoes { position: relative; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.outrasAcoes a { background: url(<%= asset_path 'seta.png' %>) no-repeat right 10px; padding-right: 15px; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.outrasAcoes ul { display: none; }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo { background: #eee; border: 1px solid #ddd; margin: -1px -7px 0 4px; border-bottom: 0; /**/ -moz-border-radius: 5px; -webkit-border-radius: 5px; -moz-box-shadow: 2px 2px #ddd; -webkit-box-shadow: 2px 2px #ddd; box-shadow: 2px 2px #ddd }
+					div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo:before { content: ""; margin: 0; }
+						div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo a { background-position: right -14px; margin-right: 6px; /**/ -moz-border-radius: 3px; -webkit-border-radius: 3px; /* tirar */ font-weight: normal !important;  }
+						div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo ul { background: #eee; border: 1px solid #ddd; border-top: 0; display: block; left: -1px; position: absolute; top: 23px; width: 100%; z-index: 3; /**/ -moz-border-radius: 5px; -webkit-border-radius: 5px; -moz-box-shadow: 2px 2px #ddd; -webkit-box-shadow: 2px 2px #ddd; box-shadow: 2px 2px #ddd; }
+							div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo ul li { float: none; }
+							div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo ul li:before { content: ""; margin: 0; }
+								div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo ul li a { background: none; border-top: 1px solid #ddd; color: #666; display: block; float: none; line-height: 21px; margin: 0; padding: 0 7px; }
+								div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo ul li a:hover { background-color: #fff; color: #4C92AC; }
+								div.avaliacoes div.topico div.comentario div.acoesAvaliacao ul li.ativo ul li:last-child a { /**/ -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; }
+								
+									
+	/* satisfacao */
+	div.avaliacoes div.topico {}
+			
+			div.avaliacoes div.topico div.comentario div.respostas { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -910px bottom; width: 455px; }
+				div.avaliacoes div.topico div.comentario div.respostas h6 { padding-top: 15px; }
+				div.avaliacoes div.topico div.comentario div.respostas div.comentario { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -8015px 0; width: 365px; }
+				div.avaliacoes div.topico div.comentario div.respostas div.comentario label,
+				div.avaliacoes div.topico div.comentario div.respostas div.comentario p.texto { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -7650px 0; width: 325px; }
+				div.avaliacoes div.topico div.comentario div.respostas div.comentario div.detalhes { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -8380px bottom; overflow: hidden; padding-bottom: 15px; width: 325px; }
+					div.avaliacoes div.topico div.comentario div.respostas div.comentario div.detalhes a.compartilhar { margin: 0; }
+				
+				div.avaliacoes div.topico div.comentario div.respostas div.novo { margin: 15px 0 0 25px; }
+					div.avaliacoes div.topico div.comentario div.respostas div.novo h6 { margin-bottom: 15px; }
+				
+	/* insatisfacao */
+	div.avaliacoes div.insatisfacao {}	
+								
+		div.avaliacoes div.insatisfacao div.comentario { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -3185px 0; }
+		
+			div.avaliacoes div.insatisfacao div.comentario h5 { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -2730px 0; width: 415px; }
+				div.avaliacoes div.insatisfacao div.comentario h5 a { color: #CC0000; }
+			
+			div.avaliacoes div.insatisfacao div.comentario p.texto { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -2730px 0; }
+			
+			div.avaliacoes div.insatisfacao div.comentario div.detalhes { background: none; }
+			
+			div.avaliacoes div.insatisfacao div.comentario div.respostas { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -3640px bottom; }
+				div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -4460px 0; width: 365px; }
+				div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario label,
+				div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario p.texto { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -4095px 0; width: 325px; }
+				div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario div.detalhes { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -4825px bottom; width: 325px; }
+			
+	/* conciliacao */
+	div.avaliacoes div.conciliacao {}	
+								
+		div.avaliacoes div.conciliacao div.comentario { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -5645px 0; }
+		
+			div.avaliacoes div.conciliacao div.comentario h5 { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -5190px 0; width: 415px; }
+				div.avaliacoes div.conciliacao div.comentario h5 a { color: #4D92AC; }
+			
+			div.avaliacoes div.conciliacao div.comentario p.texto { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -5190px 0; }
+			
+			div.avaliacoes div.conciliacao div.comentario div.detalhes { background: none; }
+			
+			div.avaliacoes div.conciliacao div.comentario div.respostas { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -6100px bottom; }
+				div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -6920px 0; width: 365px; }
+				div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario label,
+				div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario p.texto { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -6555px 0; width: 325px; }
+				div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario div.detalhes { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat -7285px bottom; width: 325px; }
+		
+			
+
+/* CONSUMIDOR */	
+body#consumidor div.avaliacoes div.topico a.usuario,
+body#consumidor div.avaliacoes div.topico a.estabelecimento { height: 70px; width: 85px; }				
+body#consumidor div.avaliacoes div.respostas div.topico a.usuario,
+body#consumidor div.avaliacoes div.respostas div.topico a.estabelecimento { height: 30px; width: 40px; }
+
+body#consumidor div.avaliacoes div.topico {}				
+	body#consumidor div.avaliacoes div.topico div.comentario { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) repeat-y -410px 0; width: 410px; }						
+		body#consumidor div.avaliacoes div.topico div.comentario h5 { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat 0 0; padding-left: 15px; width: 380px; }
+			body#consumidor div.avaliacoes div.topico div.comentario h5 a { font: italic bold 22px/22px "Myriad Pro",Arial,Sans-Serif; }
+		body#consumidor div.avaliacoes div.topico div.comentario p.texto { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -410px 0; padding-left: 15px; width: 380px; }																
+		body#consumidor div.avaliacoes div.topico div.comentario div.detalhes { background: none;  padding-left: 15px; width: 380px; }
+		body#consumidor div.avaliacoes div.topico div.comentario div.respostas { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -820px bottom; width: 380px; }
+			body#consumidor div.avaliacoes div.topico div.comentario div.respostas a.responder { margin-left: 0; }
+			
+body#consumidor div.avaliacoes div.autor {}
+	body#consumidor div.avaliacoes div.autor div.comentario { background-position: -1640px 0; }						
+		body#consumidor div.avaliacoes div.autor div.comentario h5 { background-position: -1230px 0; }
+		body#consumidor div.avaliacoes div.autor div.comentario p.texto { background-position: -1640px 0; }																
+		body#consumidor div.avaliacoes div.autor div.comentario div.detalhes { background-position: -2050px bottom; }
+			
+/* resposta */
+body#consumidor div.avaliacoes div.topico div.comentario div.respostas { overflow: hidden; padding: 0 15px 15px; }
+	body#consumidor div.avaliacoes div.topico div.comentario div.respostas h6 { padding-top: 15px; }
+	body#consumidor div.avaliacoes div.topico div.comentario div.respostas a.responder { float: left; }
+	
+	body#consumidor div.avaliacoes div.topico div.comentario div.respostas div.topico { margin-left: 0 !important; }
+			
+	body#consumidor div.avaliacoes div.topico div.comentario div.topico { width: 395px !important; }
+		body#consumidor div.avaliacoes div.topico div.comentario div.topico h6 { width: 380px !important; }
+		body#consumidor div.avaliacoes div.topico div.comentario div.topico div.comentario { width: 330px !important; }
+			body#consumidor div.avaliacoes div.topico div.comentario div.topico div.comentario label { padding-left: 25px; width: 290px; }
+			body#consumidor div.avaliacoes div.topico div.comentario div.topico div.comentario p.texto { padding-left: 25px; width: 290px !important; }					
+			body#consumidor div.avaliacoes div.topico div.comentario div.topico div.comentario textarea { width: 274px !important; }
+			body#consumidor div.avaliacoes div.topico div.comentario div.topico div.comentario div.detalhes {  padding-left: 25px; width: 290px !important; }
+
+/* satisfacao */
+body#consumidor div.avaliacoes div.topico {}
+		
+		body#consumidor div.avaliacoes div.topico div.comentario div.respostas { }
+			body#consumidor div.avaliacoes div.topico div.comentario div.respostas div.comentario { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) repeat-y -7230px 0; }
+			body#consumidor div.avaliacoes div.topico div.comentario div.respostas div.comentario label,
+			body#consumidor div.avaliacoes div.topico div.comentario div.respostas div.comentario p.texto { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -6900px 0; overflow: hidden; }
+			body#consumidor div.avaliacoes div.topico div.comentario div.respostas div.comentario div.detalhes { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -7560px bottom; }
+			
+/* insatisfacao */
+body#consumidor div.avaliacoes div.insatisfacao {}	
+							
+	body#consumidor div.avaliacoes div.insatisfacao div.comentario { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) repeat-y -2870px 0; }
+	
+		body#consumidor div.avaliacoes div.insatisfacao div.comentario h5 { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -2460px 0; }
+			body#consumidor div.avaliacoes div.insatisfacao div.comentario h5 a { color: #CC0000; }
+		
+		body#consumidor div.avaliacoes div.insatisfacao div.comentario p.texto { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -2870px 0; }
+		
+		body#consumidor div.avaliacoes div.insatisfacao div.comentario div.detalhes { background: none; }
+		
+		body#consumidor div.avaliacoes div.insatisfacao div.comentario div.respostas { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -3280px bottom; }
+			body#consumidor div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) repeat-y -4020px 0; }
+			body#consumidor div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario label,
+			body#consumidor div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario p.texto { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -3690px 0; }
+			body#consumidor div.avaliacoes div.insatisfacao div.comentario div.respostas div.comentario div.detalhes { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -4350px bottom; }
+		
+/* conciliacao */
+body#consumidor div.avaliacoes div.conciliacao {}	
+							
+	body#consumidor div.avaliacoes div.conciliacao div.comentario { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) repeat-y -5090px 0; }
+	
+		body#consumidor div.avaliacoes div.conciliacao div.comentario h5 { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -4680px 0; }
+			body#consumidor div.avaliacoes div.conciliacao div.comentario h5 a { color: #4D92AC; }
+		
+		body#consumidor div.avaliacoes div.conciliacao div.comentario p.texto { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -5090px 0; }
+		
+		body#consumidor div.avaliacoes div.conciliacao div.comentario div.detalhes { background: none; }
+		
+		body#consumidor div.avaliacoes div.conciliacao div.comentario div.respostas { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -5500px bottom; }
+			body#consumidor div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) repeat-y -6240px 0; }
+			body#consumidor div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario label,
+			body#consumidor div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario p.texto { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -5910px 0; }
+			body#consumidor div.avaliacoes div.conciliacao div.comentario div.respostas div.comentario div.detalhes { background: url(<%= asset_path 'topico-consumidor-avaliacoes.png' %>) no-repeat -6570px bottom; }
