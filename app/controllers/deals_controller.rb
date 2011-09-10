@@ -3,7 +3,6 @@ class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:index, :show, :today]
   prepend_before_filter :find_active_deals, :only => :index
   prepend_before_filter :find_todays_deals, :only => :today
-  prepend_before_filter :initialize_comment, :only => :show
   before_filter :populate_cities_name, :only => :new
 
   def index
@@ -25,6 +24,7 @@ class DealsController < AuthorizedController
   end
 
   def show
+    @comment = Deal.comments.build
   end
 
   def today
@@ -40,14 +40,12 @@ class DealsController < AuthorizedController
   def find_active_deals
     @deals = Deal.active.paginate(:page => params[:page])
     @deals = @deals.search(params[:search]) if params[:search]
-    @deals = @deals.by_cities(user_cities_ids) if user_cities_ids
+    #bruno, mudei isso pois o array de cidades estava vazio e por isso nao aparecia nenhuma oferta ativa na página de ofertas ativas nem na busca, pois o array [] tem valor true
+    @deals = @deals.by_cities(user_cities_ids) if user_cities_ids && !user_cities_ids.empty?
   end
 
   def populate_cities_name
     @cities_name = City.all.collect { |c| [c.name, c.id] }
   end
 
-  def initialize_comment
-    @comment = Comment.new
-  end
 end
