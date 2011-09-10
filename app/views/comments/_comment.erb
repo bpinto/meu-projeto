@@ -4,11 +4,11 @@
 		  <span class="value-title" title="MTS Performance"></span> 
 			</span> 
 		</span> 
-    <%= link_to(image_tag(comment.user.gravatar_url(:size => 39)), user_path(comment.user), :class => "usuario") %>
+    <%= link_to(image_tag(comment.user.gravatar_url(:size => 39)), user_path(comment.user.username), :class => "usuario") %>
     <div class="comentario"> 
       <p class="description texto"><%= comment.comment %></p> 
       <div class="detalhes">
-        <p class="usuario"><span class="reviewer"><%= link_to(comment.user.username, user_path(comment.user)) %></span></p> 
+        <p class="usuario"><span class="reviewer"><%= link_to(comment.user.username, user_path(comment.user.username)) %></span> em <%= l comment.created_at.to_date %></p> 
 			</div>																		
       <div class="respostas"> 
       </div> 
