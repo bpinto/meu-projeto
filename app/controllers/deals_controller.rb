@@ -24,7 +24,7 @@ class DealsController < AuthorizedController
   end
 
   def show
-    @comment = Deal.comments.build
+    @comment = Comment.new
   end
 
   def today
