@@ -1,12 +1,23 @@
-<h2>Resend confirmation instructions</h2>
+<div class="principal">
+  <div class="janela media">
+    <div class="cima"></div>
+    <div class="meio criarPerfil" id="userCreateAreaId">
+      <div>
+        <!-- TODO: Imagem -->
+        <h1>DealWit.me</h1>
+        <!-- TODO: Facebook / Google -->
+        <h3>Reenviar e-mail de confirmação</h3>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+        <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+          <p><%= f.label :email %><br />
+          <%= f.email_field :email %></p>
 
-  <p><%= f.submit "Resend confirmation instructions" %></p>
-<% end %>
+          <p><%= f.submit "Reenviar" %></p>
+        <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+        <%= render :partial => "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
