@@ -18,6 +18,7 @@ pt-BR:
       timeout: 'A sua sessão expirou, por favor faça login novamente para poder continuar.'
       inactive: 'A sua conta ainda não foi ativada.'
     sessions:
+      sign_in: 'Entrar'
       signed_in: 'Fez login com sucesso.'
       signed_out: 'Fez logout com sucesso.'
     passwords:
@@ -37,8 +38,26 @@ pt-BR:
       unlocked: 'A sua conta foi desbloqueada com sucesso. Agora está conectado.'
     mailer:
       confirmation_instructions:
-        subject: 'Instruções de confirmação'
+        confirm: "Confirmar minha conta"
+        subject: "Instruções para confirmação"
+        you_can_confirm: "Você pode confirmar a sua conta através do link abaixo:"
+      hello: "Olá %{username}!"
       reset_password_instructions:
-        subject: 'Instruções de reinicialização de senha'
+        change: "Alterar minha senha"
+        ignore: "Se você não fez esta solicitação, por favor ignore este email."
+        someone_requested: "Recebemos um pedido para alterar a sua senha, e você pode fazer isso através do link abaixo."
+        subject: "Instruções para redefinir senha"
+        wont_change: "Sua senha permanecerá a mesma até que você acesse o link acima e a altere."
       unlock_instructions:
-        subject: 'Instruções de desbloqueio'
+        account_locked: "Sua conta foi bloqueada devido a uma quantidade excessiva de tentativas de entrar."
+        click_to_unlock: "Clique no link abaixo para desbloquear a sua conta:"
+        subject: "Instruções de desbloqueio"
+        unlock: "Desbloquear minha conta"
+      welcome: "Bem-vindo(a) %{username}!"
+    shared:
+      links:
+        forgot_your_password: "Esqueceu sua senha?"
+        receive_confirmation: "Não recebeu instruções de confirmação?"
+        receive_unlock: "Não recebeu instruções de desbloqueio?"
+        sign_in: "Entrar"
+        sign_up: "Cadastre-se"
