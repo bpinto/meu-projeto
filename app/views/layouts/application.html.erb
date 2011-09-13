@@ -22,11 +22,11 @@
 
     <!--  TODO: FAVICON -->
     <link rel="icon" href="http://localhost:3000/favicon.ico" />
-    <link rel="shortcut icon" href="http://www.acessozero.com.br/imagens/favicon.png" />
+    <link rel="shortcut icon" href="http://www.dealwit.me/imagens/favicon.png" />
     <!--  /FAVICON -->
 
     <!-- TODO: CANONICAL -->
-    <link rel="canonical" href="http://www.acessozero.com.br/" />
+    <link rel="canonical" href="http://www.dealwit.me/" />
     <!-- /CANONICAL -->
 
     <!-- TODO: SCRIPTS -->
@@ -123,24 +123,26 @@
       <div id="rodape">
         <div class="interna menuBottom">
           <ul class="first">
-            <li class="title">Sobre a acessozero</li>
+            <li class="title">Sobre DealWit.Me</li>
             <li><a href="/portal/whoarewe">Quem somos</a></li>
-            <li><a href="/portal/whereweoperate">Onde estamos</a></li>
-            <li><a href="/consumidores">Consumidores</a></li>
-            <li><a href="/portal/pressroom">Sala de imprensa</a></li>
-            <li><a href="/curitiba/estabelecimentos">Estabelecimentos</a></li>
-            <li><a href="/portal/workwithus">Trabalhe conosco</a></li>
+            <li><a href="/portal/workwithus">Fale conosco</a></li>
           </ul>
 
           <ul class="second">
-            <li class="title">Os Mais Buscados</li>
-            <li><a href="/curitiba/pizzarias">Pizzarias</a></li>
-            <li><a href="/curitiba/academias">Academias</a></li>
-            <li><a href="/curitiba/clinicas-estetica">Clínicas de estética</a></li>
-            <li><a href="/curitiba/japoneses">Japoneses</a></li>
-            <li><a href="/curitiba/saloes-beleza">Salões de Beleza </a></li>
-            <li><a href="/curitiba/docerias">Docerias</a></li>
-            <li><a href="/curitiba/pet-shops">Pet shops</a></li>
+            <li class="title">Categorias</li>
+            <li><a href="/deals/today/drink"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
+            <li><a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
+            <li><a href="/deals/today/phone_and_camera"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
+            <li><a href="/deals/today/music_and_movie"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
+            <li><a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
+            <li><a href="/deals/today/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+            <li><a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
+            <li><a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
+            <li><a href="/deals/today/book"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
+            <li><a href="/deals/today/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
+            <li><a href="/deals/today/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
+            <li><a href="/deals/today/toy"><%= Deal.i18n_category(Deal::CATEGORY_TOY) %></a></li>
+            <li><a href="/deals/today/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
           </ul>
 
           <ul class="third">
