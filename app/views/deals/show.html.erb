@@ -2,6 +2,15 @@
 <div class="principal">
   <!-- pagina oferta -->
   <div class="janelaPadrao paginaOferta">
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style ">
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+      <a class="addthis_button_tweet"></a>
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+      <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e6fcafd7ed570a3"></script>
+    <!-- AddThis Button END -->
     <!-- titulo -->
     <div class="titulo">
       <h1 class="deal_title"><%= @deal.title %></h1>
@@ -15,7 +24,6 @@
         <!-- TODO: IMAGEM -->
         <div><%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Estabelecimento sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
       </div>
-
       <div class="desconto">
         <div class="desconto">
           <div class="bigTicket special discountTicket">
