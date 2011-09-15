@@ -81,7 +81,7 @@
           <div class="conteudo">
             <ul class="menu">
 
-              <li class="drink"><a href="/deals/today/drink" title="Visualizar a categoria Bebidas"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
+              <li class="drink"><%= sprite_tag("categorias/drink") %><a href="/deals/today/drink" title="Visualizar a categoria Bebidas"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
               <li class="beauty-health"><a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
               <li class="phone-camera"><a href="/deals/today/phone_and_camera" title="Visualizar a categoria Celulares e Câmeras"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
               <li class="music-movie"><a href="/deals/today/music_and_movie" title="Visualizar a categoria Música e Filmes"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
