@@ -25,13 +25,7 @@
     <link rel="shortcut icon" href="http://www.dealwit.me/imagens/favicon.png" />
     <!--  /FAVICON -->
 
-    <!-- TODO: CANONICAL -->
-    <link rel="canonical" href="http://www.dealwit.me/" />
-    <!-- /CANONICAL -->
-
     <!-- TODO: SCRIPTS -->
-    <%# <script type="text/javascript" language="javascript" src="/acessozero_ui/acessozero_ui.nocache.js"></script>%>
-    <script type="text/javascript" language="javascript" src="http://www.acessozero.com.br/js/script.js"></script>
     <%= javascript_include_tag "application" %>
     <!-- /SCRIPTS -->
 
@@ -128,7 +122,7 @@
           </ul>
 
           <ul class="second">
-            <li class="title">Categorias - 1</li>
+            <li class="title">Categorias</li>
             <li><a href="/deals/today/drink"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
             <li><a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
             <li><a href="/deals/today/phone_and_camera"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
@@ -138,7 +132,7 @@
           </ul>
 
           <ul class="third">
-            <li class="title">Categorias - 2</li>
+            <li class="title">Categorias</li>
             <li><a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
             <li><a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
             <li><a href="/deals/today/book"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
