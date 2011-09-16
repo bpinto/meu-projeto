@@ -155,9 +155,8 @@
 
           <ul class="fifth">
             <li class="title">Contato</li>
-            <li><a href="/portal/talkwithus">Fale conosco</a></li>
-            <li><a href="/acessozero#forum">Envie um feedback</a></li>
-            <li><a href="http://www.dealwit.us/">Siga nosso Blog</a></li><br/>
+            <li><a href="http://dealwitme.uservoice.com/" target="_blank">Fale conosco</a></li>
+            <li><a href="http://www.dealwit.us/" target="_blank">Siga nosso Blog</a></li><br/>
             <% if user_signed_in? %>
                 <!-- TODO: Menu logado -->
                 <li><%= link_to_active "Meu Perfil", user_path(current_user.username), :class => "specialLink" %></li>
