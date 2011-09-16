@@ -25,13 +25,7 @@
     <link rel="shortcut icon" href="http://www.dealwit.me/imagens/favicon.png" />
     <!--  /FAVICON -->
 
-    <!-- TODO: CANONICAL -->
-    <link rel="canonical" href="http://www.dealwit.me/" />
-    <!-- /CANONICAL -->
-
     <!-- TODO: SCRIPTS -->
-    <%# <script type="text/javascript" language="javascript" src="/acessozero_ui/acessozero_ui.nocache.js"></script>%>
-    <script type="text/javascript" language="javascript" src="http://www.acessozero.com.br/js/script.js"></script>
     <%= javascript_include_tag "application" %>
     <!-- /SCRIPTS -->
 
@@ -124,11 +118,11 @@
         <div class="interna menuBottom">
           <ul class="first">
             <li class="title">Sobre DealWit.Me</li>
-            <li><a href="/portal/whoarewe">Quem somos</a></li>
+            <li><a href="/pages/whoarewe">Quem somos</a></li>
           </ul>
 
           <ul class="second">
-            <li class="title">Categorias - 1</li>
+            <li class="title">Categorias</li>
             <li><a href="/deals/today/drink"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
             <li><a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
             <li><a href="/deals/today/phone_and_camera"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
@@ -138,7 +132,7 @@
           </ul>
 
           <ul class="third">
-            <li class="title">Categorias - 2</li>
+            <li class="title">Categorias</li>
             <li><a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
             <li><a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
             <li><a href="/deals/today/book"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
@@ -150,7 +144,7 @@
 
           <ul class="fourth">
             <li class="title">Informações</li>
-            <li><a href="/portal/help">Ajuda</a></li>
+            <li><a href="/pages/help">Ajuda</a></li>
           </ul>
 
           <ul class="fifth">
@@ -174,7 +168,7 @@
           <div class="interna">
             <ul>
               <li class="title">Conheça também:</li>
-              <li class="first"><a href="http://www.facebook.com/pages/DealWitMe/185842298135367" class="facebook" rel="nofollow" target="_blank" title="Facebook">Facebook</a></li>
+              <li class="first"><a href="http://www.facebook.com/DealWit.Me" class="facebook" rel="nofollow" target="_blank" title="Facebook">Facebook</a></li>
               <li><a href="http://www.twitter.com/dealwitme" class="twitter" rel="nofollow" target="_blank" title="Twitter">Twitter</a></li>
             </ul>
           </div>
