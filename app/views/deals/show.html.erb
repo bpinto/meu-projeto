@@ -64,12 +64,12 @@
 					<div class="meio" id="tabAreaId" style="min-height: 150px;"> 
 					  <div class="janelaResumo avaliacoes"> 
 						  <div class="barraCima"> 
-							  <h4>Comentários</h4> 
+							  <h4><%= I18n.t("comments") %></h4> 
                 <div class="topico novo" >
                   <div class="comentario" >
                     <%= form_for([@deal,@comment]) do |f| %>
                       <%= f.text_area :comment, :class => "TextArea" %><br/>
-                      <%= f.submit "Comentar" %>
+                      <%= f.submit I18n.t("actions.comment") %>
                     <% end %>
                   </div>
                 </div>

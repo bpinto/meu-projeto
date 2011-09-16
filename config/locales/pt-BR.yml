@@ -231,7 +231,17 @@
         password_confirmation: "Confirmação da Senha"
         username: "Usuário"
       deal:
+        category: "Categoria"
+        city: "Cidade"
+        company: "Empresa"
+        description: "Descrição"
+        discount: "Desconto"
         end_date: "Data de Validade"
+        kind: "Tipo"
+        link: "Link"
+        price: "Preço Promocional"
+        real_price: "Preço Real"
+        title: "Título"
 
     errors:
       template:
@@ -279,8 +289,11 @@
   actions:
     follow: "Seguir"
     unfollow: "Deixar de seguir"
+    share: "Compartilhar"
+    comment: "Comentar"
 
   users: "usuários"
+  comments: "Comentários"
 
   will_paginate:
     previous_label: "Página anterior"

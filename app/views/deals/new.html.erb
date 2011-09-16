@@ -62,8 +62,8 @@
           </ol>
 
           <!-- TODO: Transformar o botão igual ao link -->
-          <a tabindex="11" class="perfil" href="javascript:;">Cadastrar Oferta</a>
-          <%= f.submit "Compartilhar Oferta" %>
+          <a tabindex="11" class="perfil" href="javascript:;"><%= I18n.t("actions.share") %></a>
+          <%= f.submit I18n.t("actions.share") %>
         <% end %>
       </div>
     </div>
