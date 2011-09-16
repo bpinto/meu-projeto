@@ -13,7 +13,7 @@
           <p><%= f.label :email %><br />
           <%= f.email_field :email %></p>
 
-          <p><%= f.submit "Reenviar" %></p>
+          <p><%= f.submit I18n.t("actions.send_confirmation") %></p>
         <% end %>
 
         <%= render :partial => "devise/shared/links" %>

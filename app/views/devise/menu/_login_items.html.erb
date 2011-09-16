@@ -2,14 +2,14 @@
   <ul class="navUsuario">
     <li>Olá <%= current_user.name %></li>
     <!-- TODO: Menu logado -->
-    <li><%= link_to_active "Meu Perfil", user_path(current_user.username) %></li>
-    <li><%= link_to_active "Cadastrar Oferta", new_deal_path %></li>
-    <li><%= link_to 'Sair', destroy_user_session_path %></li>
+    <li><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></li>
+    <li><%= link_to_active I18n.t("actions.share_an_offer"), new_deal_path %></li>
+    <li><%= link_to I18n.t("actions.logout"), destroy_user_session_path %></li>
   </ul>
 <% else %>
   <ul class="navUsuario">
     <li>Olá, seja bem-vindo</li>
-    <li><%= link_to 'Crie seu perfil', new_user_registration_path %></li>
-    <li><%= link_to 'Entrar', new_user_session_path %></li>
+    <li><%= link_to I18n.t("actions.sign_up"), new_user_registration_path %></li>
+    <li><%= link_to I18n.t("actions.sign_in"), new_user_session_path %></li>
   </ul>
 <% end %>

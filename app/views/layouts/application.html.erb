@@ -46,8 +46,8 @@
 				<div class="administracao">
 					<div class="interna">
 						<ul class="navGlobal">
-              <li><%= link_to_active "Início", root_path %></li>
-              <li><%= link_to_active 'Ofertas do Dia', deals_today_path %></li>
+              <li><%= link_to_active I18n.t("actions.home"), root_path %></li>
+              <li><%= link_to_active I18n.t("actions.todays_offers"), deals_today_path %></li>
               <li><%= link_to 'Blog', 'http://www.dealwit.us', :target => '_blank' %></li>
 						</ul>
 
@@ -118,7 +118,7 @@
         <div class="interna menuBottom">
           <ul class="first">
             <li class="title">Sobre DealWit.Me</li>
-            <li><a href="/pages/whoarewe">Quem somos</a></li>
+            <li><a href="/pages/whoarewe"><%= I18n.t("actions.who_are_we") %></a></li>
           </ul>
 
           <ul class="second">
@@ -144,22 +144,22 @@
 
           <ul class="fourth">
             <li class="title">Informações</li>
-            <li><a href="/pages/help">Ajuda</a></li>
+            <li><a href="/pages/help"><%= I18n.t("actions.help") %></a></li>
           </ul>
 
           <ul class="fifth">
             <li class="title">Contato</li>
-            <li><a href="http://dealwitme.uservoice.com/" target="_blank">Fale conosco</a></li>
-            <li><a href="http://www.dealwit.us/" target="_blank">Siga nosso Blog</a></li><br/>
+            <li><a href="http://dealwitme.uservoice.com/" target="_blank"><%= I18n.t("actions.talk_with_us") %></a></li>
+            <li><a href="http://www.dealwit.us/" target="_blank"><%= I18n.t("actions.follow_our_blog") %></a></li><br/>
             <% if user_signed_in? %>
                 <!-- TODO: Menu logado -->
-                <li><%= link_to_active "Meu Perfil", user_path(current_user.username), :class => "specialLink" %></li>
-                <li><%= link_to_active "Cadastrar Oferta", new_deal_path, :class => "specialLink" %></li>
-                <li><%= link_to 'Sair', destroy_user_session_path, :class => "specialLink" %></li>
+                <li><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username), :class => "specialLink" %></li>
+                <li><%= link_to_active I18n.t("actions.share_an_offer"), new_deal_path, :class => "specialLink" %></li>
+                <li><%= link_to I18n.t("actions.logout"), destroy_user_session_path, :class => "specialLink" %></li>
               </ul>
             <% else %>
-                <li><%= link_to 'Crie seu perfil', new_user_registration_path, :class => "specialLink" %></li>
-                <li><%= link_to 'Entrar', new_user_session_path, :class => "specialLink" %></li>
+                <li><%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => "specialLink" %></li>
+                <li><%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => "specialLink" %></li>
             <% end %>
           </ul>
         </div>

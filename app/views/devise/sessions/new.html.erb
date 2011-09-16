@@ -29,7 +29,7 @@
 
         <!-- TODO: Transformar o botão igual ao link -->
         <a tabindex="11" class="perfil" href="javascript:;">Entrar</a>
-        <%= f.submit "Sign in" %>
+        <%= f.submit I18n.t("actions.sign_in") %>
       <% end %>
 
       <%= render :partial => "devise/shared/links" %>
