@@ -7,3 +7,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+    $('#help dd').hide();
+
+    $('#help dt a').click(function(){
+      if ($($('#help dt a')[0]).hasClass("ativo")) {
+        $(this).removeClass('ativo');
+      } else {
+        $(this).addClass('ativo');
+      }
+
+      $(this).parent().next('dd').slideToggle('slow');
+    });
+ });
