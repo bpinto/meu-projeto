@@ -29,10 +29,9 @@ class Ability
 
     can :today, Deal
     can :read, User
+    can :read, Deal
 
-    if user.guest?
-      can :read, Deal
-    else
+    unless user.guest?
       can :manage, Deal, :user_id => user.id
       can [:follow, :unfollow], User
     end

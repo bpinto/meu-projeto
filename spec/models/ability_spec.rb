@@ -3,6 +3,10 @@ require "cancan/matchers"
 
 describe Ability do
   shared_examples_for "All Users" do
+    it "should be able to see all deals" do
+      ability.should be_able_to(:read, Deal)
+    end
+
     it "should be able to see todays' deals" do
       ability.should be_able_to(:today, Deal)
     end
@@ -17,10 +21,6 @@ describe Ability do
       let(:ability) { Ability.new(User.new) }
 
       it_should_behave_like "All Users"
-
-      it "should be able to read all deals" do
-        ability.should be_able_to(:read, Deal)
-      end
 
       it "should not be able to manage any deal" do
         ability.should_not be_able_to(:manage, Deal)
