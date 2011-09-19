@@ -17,12 +17,12 @@
 
             <li>
               <%= f.label :price %>
-              <%= f.text_field :price %>
+              <%= f.text_field :price_mask, :class => "money" %>
             </li>
 
             <li>
               <%= f.label :real_price %>
-              <%= f.text_field :real_price %>
+              <%= f.text_field :real_price_mask, :class => "money" %>
             </li>
 
             <li>
@@ -74,3 +74,9 @@
 <div class="lateral">
     <div class="baixo"></div>
 </div>
+
+<script>
+$(function(){
+    $(".money").maskMoney({symbol:"R$ ", decimal:",", thousands:"."});
+})
+</script>

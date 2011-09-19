@@ -49,9 +49,14 @@ class Deal < ActiveRecord::Base
   validates :title,       :presence => true
   validates :city_id,     :presence => true
 
+  validates :price_mask,  :presence => true
+
   after_validation :calculate_discount, :if => "real_price? and price? and not on_sale?"
 
-  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :real_price, :title
+  before_validation :prices_to_number, :if => "not on_sale?"
+  
+  attr_accessor :price_mask, :real_price_mask
+  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :price_mask, :real_price, :real_price_mask, :title
 
   #TODO: Remover o default_scope
   default_scope order("deals.created_at desc")
@@ -111,9 +116,18 @@ class Deal < ActiveRecord::Base
     (self.discount = ((self.real_price - self.price)/self.real_price * 100).to_i) if self.real_price?
   end
 
+  def prices_to_number
+    self.price = to_number(self.price_mask)
+    self.real_price = to_number(self.real_price_mask)
+  end
+
   private
 
   def on_sale?
     self.kind == KIND_ON_SALE
+  end
+
+  def to_number(mask)
+    return mask.gsub(/[^\d]/,'').to_f/100
   end
 end
