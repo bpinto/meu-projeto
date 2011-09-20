@@ -16,13 +16,13 @@ Feature: View default deal details
       Then I should see "Informática" within deal's category
   
     Scenario: Viewing deal's price
-      Given 1 deal with price as "1.20" was registered today
+      Given 1 deal with price_mask as "1,20" was registered today
       And I am on today's deals page
       When I follow "Saiba mais"
       Then I should see "R$1,20" within deal's price
 
     Scenario: Viewing deal's real price
-      Given 1 deal with real_price as "1.20" was registered today
+      Given 1 deal with real_price_mask as "1,20" was registered today
       And I am on today's deals page
       When I follow "Saiba mais"
       Then I should see "R$1,20" within deal's real_price

@@ -29,7 +29,9 @@ module Fields
     "discount" => "deal_discount",
     "link" => "deal_link",
     "price" => "deal_price",
+    "price_mask" => "deal_price_mask",
     "real_price" => "deal_real_price",
+    "real_price_mask" => "deal_real_price_mask",
     "title" => "deal_title",
     "kind" => "deal_kind",
     "user" => "deal_user"

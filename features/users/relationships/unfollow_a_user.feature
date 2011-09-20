@@ -10,13 +10,13 @@ Feature: Unfollow a user
     Scenario: Unfollow a followed userr
       Given I am following the user "user_to_unfollow"
       And I am on user_to_unfollow's page
-      When I follow "Unfollow"
+      When I follow "Deixar de seguir"
       Then I should see "Stopped following: 'user_to_unfollow'"
 
     Scenario: Unfollow a user already unfollowed
       Given I am not following the user "user_to_unfollow"
       And I am on user_to_unfollow's page
-      Then I should not see "Unfollow"
+      Then I should not see "Deixar de seguir"
 
     Scenario: Unfollow a user already unfollowed - by url
       Given I am not following the user "user_to_unfollow"

@@ -9,13 +9,13 @@ Feature: Follow a user
 
     Scenario: Follow a unfollowed user
       Given I am on user_to_follow's page
-      When I follow "Follow"
+      When I follow "Seguir"
       Then I should see "Started following: 'user_to_follow'"
 
     Scenario: Follow a user already followed
       Given I am following the user "user_to_follow"
       And I am on user_to_follow's page
-      Then I should not see "Follow"
+      Then I should not see "Seguir"
 
     Scenario: Follow a user already followed - by url
       Given I am following the user "user_to_follow"

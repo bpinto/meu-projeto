@@ -80,7 +80,6 @@ GEM
     gherkin (2.4.18)
       json (>= 1.4.6)
     gravtastic (3.2.6)
-    growl (1.0.3)
     guard (0.6.3)
       thor (~> 0.14.6)
     guard-rspec (0.4.4)
@@ -105,6 +104,8 @@ GEM
       addressable (~> 2.2.6)
     letter_opener (0.0.2)
       launchy
+    libnotify (0.5.7)
+      ffi (= 1.0.9)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -152,7 +153,8 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2)
-    rb-fsevent (0.4.3.1)
+    rb-inotify (0.8.6)
+      ffi (>= 0.5.0)
     rdoc (3.9.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -221,7 +223,6 @@ DEPENDENCIES
   devise (>= 1.4.2)
   factory_girl_rails (>= 1.1.beta1)
   gravtastic
-  growl
   guard
   guard-rspec
   guard-spork
@@ -230,12 +231,13 @@ DEPENDENCIES
   json
   launchy (>= 0.4.0)
   letter_opener
+  libnotify
   mongrel (= 1.2.0.pre2)
   paper_trail
   pg
   pry
   rails (= 3.1.0)
-  rb-fsevent
+  rb-inotify
   rspec-rails (>= 2.6.1)
   sass
   shoulda-matchers

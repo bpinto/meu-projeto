@@ -86,26 +86,29 @@ describe Deal do
         end
       end
 
-      describe "#real_price" do
-        it "should be greater than price" do
-          deal.real_price = 2
-          deal.price = 1
-           deal.should be_valid
-        end
-        it "shouldn't be equal to price" do
-          deal.real_price = 1
-          deal.price = 1
-          deal.should_not be_valid
-        end
-        it "shouldn't be smaller than price" do
-          deal.real_price = 1
-          deal.price = 2
-          deal.should_not be_valid
-        end
-      end
-
       it "should require a title" do
         deal.title = nil
+        deal.should_not be_valid
+      end
+    end
+  end
+
+  shared_examples_for "Not On Sale Deals" do
+
+    describe "#real_price" do
+      it "should be greater than price" do
+        deal.real_price_mask = "2,00"
+        deal.price = "1,00"
+        deal.should be_valid
+      end
+      it "shouldn't be equal to price" do
+        deal.real_price_mask = "1,00"
+        deal.price_mask = "1,00"
+        deal.should_not be_valid
+      end
+      it "shouldn't be smaller than price" do
+        deal.real_price_mask = "1,00"
+        deal.price_mask = "2,00"
         deal.should_not be_valid
       end
     end
@@ -124,12 +127,12 @@ describe Deal do
       end
 
       it "should not require a price" do
-        deal.price = nil
+        deal.price_mask = nil
         deal.should be_valid
       end
 
       it "should not require a real price" do
-        deal.real_price = nil
+        deal.real_price_mask = nil
         deal.should be_valid
       end
     end
@@ -140,15 +143,16 @@ describe Deal do
     subject { deal }
 
     it_should_behave_like "All Deals"
+    it_should_behave_like "Not On Sale Deals"
 
     describe "Validations" do
       it "should require a price" do
-        deal.price = nil
+        deal.price_mask = nil
         deal.should_not be_valid
       end
 
       it "should require a real price" do
-        deal.real_price = nil
+        deal.real_price_mask = nil
         deal.should_not be_valid
       end
       describe "#calculate_discount" do
@@ -181,15 +185,16 @@ describe Deal do
     subject { deal }
 
     it_should_behave_like "All Deals"
+    it_should_behave_like "Not On Sale Deals"
 
     describe "Validations" do
       it "should require a price if the kind is daily deal" do
-        deal.price = nil
+        deal.price_mask = nil
         deal.should_not be_valid
       end
 
       it "should be required when the kind is daily deal" do
-        deal.real_price = nil
+        deal.real_price_mask = nil
         deal.should_not be_valid
       end
       describe "#calculate_discount" do
