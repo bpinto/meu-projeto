@@ -49,7 +49,9 @@ class Deal < ActiveRecord::Base
   validates :title,       :presence => true
   validates :city_id,     :presence => true
 
-  validates :price_mask,  :presence => true
+  # VALIDAÇÕES PARA A MÁSCARA DE PREÇO
+  validates :price_mask,  :presence => true,      :unless => "on_sale?"
+  validates :real_price_mask,  :presence => true, :unless => "on_sale?"
 
   after_validation :calculate_discount, :if => "real_price? and price? and not on_sale?"
 

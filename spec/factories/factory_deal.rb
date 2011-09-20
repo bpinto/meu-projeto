@@ -7,8 +7,8 @@ FactoryGirl.define do
     description "F_DESCRIPTION"
     kind Deal::KIND_OFFER
     f.link "http://F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
-    price 0.99
-    real_price 1.99
+    price_mask "0,99"
+    real_price_mask "1,99"
     title "F_TITLE"
 
     city
@@ -18,8 +18,8 @@ FactoryGirl.define do
   factory :deal_on_sale, :parent => :deal do
     kind Deal::KIND_ON_SALE
     discount 30
-    price nil
-    real_price nil
+    price_mask nil
+    real_price_mask nil
   end
 
   factory :deal_offer, :parent => :deal do
