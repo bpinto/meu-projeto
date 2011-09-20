@@ -119,8 +119,8 @@ class Deal < ActiveRecord::Base
   end
 
   def prices_to_number
-    self.price = to_number(self.price_mask)
-    self.real_price = to_number(self.real_price_mask)
+    self.price = to_number(self.price_mask) if self.price_mask
+    self.real_price = to_number(self.real_price_mask) if self.real_price_mask
   end
 
   private
