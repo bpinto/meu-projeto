@@ -43,15 +43,15 @@ pt-BR:
         message: 'Você pode confirmar a sua conta através do link abaixo:'
         confirm: 'Confirmar minha conta'
       reset_password_instructions:
-        subject: "Instruções para redefinir senha"
+        subject: 'Instruções para redefinir senha'
         message: 'Recebemos um pedido para alterar a sua senha, e você pode fazer isso através do link abaixo.'                  
-        reset: "Alterar minha senha"
-        ignore: "Se você não fez esta solicitação, por favor ignore este email."
+        reset: 'Alterar minha senha'
+        ignore: 'Se você não fez esta solicitação, por favor ignore este email.'
         wont_change: "Sua senha permanecerá a mesma até que você acesse o link acima e a altere."
       unlock_instructions:
-        subject: "Instruções de desbloqueio"
-        message: "Sua conta foi bloqueada devido a uma quantidade excessiva de tentativas de login."
-        click_to_unlock: "Clique no link abaixo para desbloquear a sua conta:"
-        unlock: "Desbloquear minha conta"
-      hello: "Olá "
-      welcome: "Bem vindo ao DealWit.Me, "
+        subject: 'Instruções de desbloqueio'
+        message: 'Sua conta foi bloqueada devido a uma quantidade excessiva de tentativas de login.'
+        click_to_unlock: 'Clique no link abaixo para desbloquear a sua conta:'
+        unlock: 'Desbloquear minha conta'
+      hello: 'Olá'
+      welcome: 'Bem vindo ao DealWit.Me,'

@@ -42,20 +42,20 @@ en:
       success: 'Successfully authorized from %{kind} account.'
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
-      hello: 'Hello'
       confirmation_instructions:
         subject: 'Confirmation instructions'
-        welcome: 'Welcome to DealWit.Me,'
         message: 'You can confirm your account through the link below:'
         confirm: 'Confirm your account'
       reset_password_instructions:
         subject: 'Reset password instructions'
         message: 'Someone has requested a link to change your password, and you can do this through the link below.'
         reset: 'Change my password'
-        ignore: 'If you didn't request this, please ignore this email.'
-        wont_change: 'Your password won't change until you access the link above and create a new one.'
+        ignore: "If you didn't request this, please ignore this email."
+        wont_change: "Your password won't change until you access the link above and create a new one."
       unlock_instructions:
         subject: 'Unlock Instructions'
         message: 'Your account has been locked due to an excessive amount of unsuccessful sign in attempts.'
         click_to_unlock: "Click the link below to unlock your account:"
         unlock: 'Unlock my account'
+      hello: 'Hello'
+      welcome: 'Welcome to DealWit.Me,'
