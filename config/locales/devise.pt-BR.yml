@@ -39,26 +39,19 @@ pt-BR:
       unlocked: 'A sua conta foi desbloqueada com sucesso. Agora está conectado.'
     mailer:
       confirmation_instructions:
-        confirm: "Confirmar minha conta"
-        subject: "Instruções para confirmação"
-        you_can_confirm: "Você pode confirmar a sua conta através do link abaixo:"
-      hello: "Olá %{username}!"
+        subject: 'Instruções para confirmação'
+        message: 'Você pode confirmar a sua conta através do link abaixo:'
+        confirm: 'Confirmar minha conta'
       reset_password_instructions:
-        change: "Alterar minha senha"
-        ignore: "Se você não fez esta solicitação, por favor ignore este email."
-        someone_requested: "Recebemos um pedido para alterar a sua senha, e você pode fazer isso através do link abaixo."
         subject: "Instruções para redefinir senha"
+        message: 'Recebemos um pedido para alterar a sua senha, e você pode fazer isso através do link abaixo.'                  
+        reset: "Alterar minha senha"
+        ignore: "Se você não fez esta solicitação, por favor ignore este email."
         wont_change: "Sua senha permanecerá a mesma até que você acesse o link acima e a altere."
       unlock_instructions:
-        account_locked: "Sua conta foi bloqueada devido a uma quantidade excessiva de tentativas de entrar."
-        click_to_unlock: "Clique no link abaixo para desbloquear a sua conta:"
         subject: "Instruções de desbloqueio"
+        message: "Sua conta foi bloqueada devido a uma quantidade excessiva de tentativas de login."
+        click_to_unlock: "Clique no link abaixo para desbloquear a sua conta:"
         unlock: "Desbloquear minha conta"
-      welcome: "Bem-vindo(a) %{username}!"
-    shared:
-      links:
-        forgot_your_password: "Esqueceu sua senha?"
-        receive_confirmation: "Não recebeu instruções de confirmação?"
-        receive_unlock: "Não recebeu instruções de desbloqueio?"
-        sign_in: "Entrar"
-        sign_up: "Cadastre-se"
+      hello: "Olá "
+      welcome: "Bem vindo ao DealWit.Me, "
