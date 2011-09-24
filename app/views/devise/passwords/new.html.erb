@@ -12,7 +12,7 @@
           <%= devise_error_messages! %>
 
           <p><%= f.label :email %><br />
-          <%= f.email_field :email %></p>
+          <%= f.text_field :email %></p>
 
           <p><%= f.submit I18n.t("actions.send_new_password") %></p>
         <% end %>

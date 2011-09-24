@@ -38,6 +38,10 @@ module NavigationHelpers
     when /^(.*)'s unfollow page/i
       unfollow_user_path($1)
 
+    when /recover email page/i
+      new_user_password_path
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
