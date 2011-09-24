@@ -6,6 +6,8 @@ module Fields
       field_id = Fields::DEAL[field]
     when "user"
       field_id = Fields::USER[field]
+    when "comment"
+      field_id = Fields::COMMENT[field]
     end
 
     field_id ? field_id : "#{field} not found on #{__FILE__}"
@@ -35,6 +37,10 @@ module Fields
     "title" => "deal_title",
     "kind" => "deal_kind",
     "user" => "deal_user"
+  }
+
+  COMMENT = {
+    "comment" => "comment_comment"
   }
 end
 

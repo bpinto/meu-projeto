@@ -31,4 +31,4 @@ Feature: View default deal details
       Given 1 on sale deal with discount as "30" was registered today
       And I am on today's deals page
       When I follow "Saiba mais"
-      Then I should see "30" within deal's discount
+      Then I should see "30" within deal's discount            

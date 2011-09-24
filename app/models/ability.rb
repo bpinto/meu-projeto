@@ -30,10 +30,12 @@ class Ability
     can :today, Deal
     can :read, User
     can :read, Deal
+    can :read, Comment
 
     unless user.guest?
       can :manage, Deal, :user_id => user.id
       can [:follow, :unfollow], User
+      can :manage, Comment
     end
   end
 end
