@@ -10,7 +10,6 @@ Feature: Adding deal's comments
       When I follow "Saiba mais"
 
     Scenario: Adding a comment
-      Then show me the page
       Given I fill in comment's comment with "exemplo"
       And I press "Comentar"
       Then I should see 1 comment
