@@ -11,6 +11,12 @@
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <ol>
             <li>
+              <div class="foto consumidor photo"> 
+                <%= image_tag @user.gravatar_url %>
+              </div>
+              <a href="http://gravatar.com/emails/" target="_blank" > <%= I18n.t('actions.edit_picture') %></a>
+            </li>
+            <li>
               <%= f.label :email %>
               <%= f.text_field :email %>
             </li>
