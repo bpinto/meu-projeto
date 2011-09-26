@@ -4,6 +4,10 @@ DealWitMe::Application.routes.draw do
 
   get "pages/help"
 
+  get "pages/privacypolicy"
+
+  get "pages/termsofuse"
+
   #TODO: Melhorar as rotas do devise:
   #http://bunwich.blogspot.com/2011/07/make-rails-devise-routes-look-better.html
   #get \"users\/show\"

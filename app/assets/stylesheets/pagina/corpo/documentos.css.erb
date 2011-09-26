@@ -1,0 +1,52 @@
+div#cabecalho { min-height: 90px; }
+
+/* DOCUMENTOS */
+div.doc {}
+
+  div.doc h3 { margin: 15px 30px 20px; }
+    
+  div.doc p { display: block; font: 12px/18px Verdana, Sans-Serif; margin: 0 30px 15px; }
+    div.doc p a { color: #789F00; }
+    div.doc p a:hover { text-decoration: underline; }
+  div.doc ul { display: block; margin: 0 30px 15px 45px; }
+    div.doc ul li { margin-top: 15px; }
+
+  div.doc a.rss { background: url(<%= asset_path 'icones.png' %>) no-repeat -7px -787px; display: inline-block; font-size: 13px; margin-left: 15px; padding-left: 25px; }
+    div.doc a.rss:hover { color: #EE8722; }
+    
+  div.doc ul.abas li a { padding-left: 10px !important; }
+  
+  div.doc div.release { border-top: 1px solid #E5E5E5; margin: 15px 15px 0; overflow: hidden; padding-top: 15px; }
+  div.doc div.primeiro { border: none; padding-top: 0; }
+  
+    div.doc div.release div.data { float: left; width: 50px; }
+      div.doc div.release span.dia { color: #C00; display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; }
+      div.doc div.release span.mes { color: #C00; display: block; font: bold 12px/12px Arial, Helvetica, Sans-Serif; }
+      
+    div.doc div.release div.conteudo { float: left; margin-right: 15px; width: 620px; }
+      div.doc div.release div.conteudo h5 { margin-bottom: 10px; }
+      div.doc div.release div.conteudo p { color: #888; font: normal normal normal 11px/17px Verdana, Sans-Serif; margin: 0; }
+      
+    div.doc div.release div.download { float: left; width: 80px; }
+      div.doc div.release div.download a.botao { margin-bottom: 5px; }
+        div.doc div.release div.download a.botao span { font-size: 11px !important; margin-top: 0 !important; }
+      div.doc div.release div.download span { display: block; font-size: 9px; margin-top: 5px; }
+      
+  div.doc div.visual { clear: both; margin: 15px 0 0 15px; overflow: hidden; }
+  
+    div.doc div.visual div.logo { float: left; margin: 15px 15px 0 0; width: 180px; }
+      div.doc div.visual div.logo div.imagem { background: #E5E5E5; height: 100px; margin-bottom: 10px; width: 180px; }
+        div.doc div.visual div.logo div.imagem img { margin: auto; max-height: 100px; max-width: 180px; }
+        
+      div.doc div.visual div.download { float: left; width: 180px; }
+        div.doc div.visual div.download a.botao { margin-bottom: 5px; }
+          div.doc div.visual div.download a.botao span { font-size: 11px !important; margin-top: 0 !important; }
+        div.doc div.visual div.download span { clear: both; display: block; font-size: 9px; margin-top: 5px; }
+
+/*privacypolicy*/
+.doc .privacypolicy {text-align: justify;}
+.doc .privacypolicy p {font-size: 12px;}
+.doc .privacypolicy strong {color: black; font-size: 12px; }
+.doc .privacypolicy .title strong {color: black; font-size: 16px; }
+.doc .privacypolicy .subtitle strong {color: black; font-size: 14px; }
+.doc .privacypolicy .item p {padding:0 0 0 30px;}

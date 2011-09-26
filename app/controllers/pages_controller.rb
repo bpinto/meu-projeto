@@ -6,4 +6,9 @@ class PagesController < ApplicationController
   def help
   end
 
+  def privacypolicy
+  end
+
+  def termsofuse
+  end
 end
