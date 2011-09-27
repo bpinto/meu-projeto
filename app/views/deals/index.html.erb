@@ -1,60 +1,29 @@
-<div id="corpo">
-  <div class="janelaPadrao chapeu fundoCinza">
-    <h1>Ofertas Ativas</h1>
-  </div>
+<div class="janelaPadrao chapeu fundoCinza">
+  <h1>Ofertas Ativas</h1>
+</div>
+<div class="principal">
+  <div class="estabelecimentosMapa">
+    <div class="janelaPadrao estabelecimentosPadrao abas" id="sitesPanelView">
+      <div class="conteudo">
+        <div class="alerta alertaAviso" style="display: none; "></div>
+        <ul class="abasPadrao">
+          <li class="ofertas"><a tabindex="0" class="ativo" href="javascript:;">Ofertas quentes</a></li>
+          <li class="avaliacoes"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Mais bem avaliados no mês</a></li>
+          <li class="ordemAlfabetica"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Ordem alfabética</a></li>
+        </ul>
 
-  <div class="principal">
-    <div class="estabelecimentosMapa">
-      <div class="janelaPadrao estabelecimentosPadrao abas" id="sitesPanelView">
         <div class="conteudo">
-          <div class="alerta alertaAviso" style="display: none; "></div>
-          <ul class="abasPadrao">
-            <li class="ofertas"><a tabindex="0" class="ativo" href="javascript:;">Ofertas quentes</a></li>
-            <li class="avaliacoes"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Mais bem avaliados no mês</a></li>
-            <li class="ordemAlfabetica"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Ordem alfabética</a></li>
-          </ul>
-
-          <div class="conteudo">
-            <div class="zero-PagingTable">
-              <div class="zero-PagingTableGrid">
-                <% @deals.each_with_index do |deal, index| %>
-                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-                <% end %>
-
-                <%= will_paginate @deals %>
-              </div>
+          <div class="zero-PagingTable">
+            <div class="zero-PagingTableGrid">
+              <% @deals.each_with_index do |deal, index| %>
+                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+              <% end %>
+              <%= will_paginate @deals %>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- TODO: Colocar algo no menu lateral -->
-  <div class="lateral">
-    <div class="janelaPadrao estabelecimentosBairro">
-      <div class="barra">
-        <% if user_signed_in? %>
-          <h3>Painel do Usuário</h3>
-        <% else %>
-          <h3>O Que é o DealWit.Me?</h3>
-        <% end %>
-      </div>
-      <div class="conteudo">
-        <% if user_signed_in? %>
-          <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user)) %></p><br/>
-          <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
-          <p><%= link_to "Editar meus dados", edit_user_registration_path %></p>
-        <% else %>
-          <p>Um lugar onde podemos compartilhar ofertas e opiniões com nossos amigos.</p>
-          <br/>
-          <p>O objetivo do DealWit.Me é facilitar o acesso e a busca por ofertas ue se encontram espalhadas na rede, permitindo uma interação maior entre os usuários e as ofertas.</p>
-          <br/>
-          <p><%= link_to 'Crie seu perfil', new_user_registration_path %> e comece já a compartilhar ofertas com seus amigos.</p>
-          <br/>
-          <p>Leia mais sobre quem somos no link <a href="/pages/whoarewe">Quem Somos</a>.</p>
-        <% end %>
-      </div>
-    </div>
-  </div>
 </div>
+

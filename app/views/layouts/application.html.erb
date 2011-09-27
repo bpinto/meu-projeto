@@ -101,8 +101,38 @@
             <div class="alerta alertaCerto" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
         <%- end -%>
-
-        <%= yield %>
+        
+        <div id="corpo" >
+          <%= yield %>
+          <%- if controller_name != 'sessions' %>
+            <div class="lateral">
+              <div class="janelaPadrao estabelecimentosBairro">
+                <div class="barra">
+                  <% if user_signed_in? %>
+                    <h3>Painel do Usuário</h3>
+                  <% else %>
+                    <h3>O Que é o DealWit.Me?</h3>
+                  <% end %>
+                </div>
+                <div class="conteudo">
+                  <% if user_signed_in? %>
+                    <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user)) %></p><br/>
+                    <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
+                    <p><%= link_to "Editar meus dados", edit_user_registration_path %></p>
+                  <% else %>
+                    <p>Um lugar onde podemos compartilhar ofertas e opiniões com nossos amigos.</p>
+                    <br/>
+                    <p>O objetivo do DealWit.Me é facilitar o acesso e a busca por ofertas ue se encontram espalhadas na rede, permitindo uma interação maior entre os usuários e as ofertas.</p>
+                    <br/>
+                    <p><%= link_to 'Crie seu perfil', new_user_registration_path %> e comece já a compartilhar ofertas com seus amigos.</p>
+                    <br/>
+                    <p>Leia mais sobre quem somos no link <a href="/pages/whoarewe">Quem Somos</a>.</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <%- end %>
+        </div>
       </div>
 
       <!--  RODAPÉ -->
