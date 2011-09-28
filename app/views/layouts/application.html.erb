@@ -104,7 +104,7 @@
         
         <div id="corpo" >
           <%= yield %>
-          <%- if controller_name != 'sessions' %>
+          <%- if controller_name != 'sessions' && controller_name != 'pages' %>
             <div class="lateral">
               <div class="janelaPadrao estabelecimentosBairro">
                 <div class="barra">
