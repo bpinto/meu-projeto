@@ -14,11 +14,13 @@ class DealsController < AuthorizedController
 
   def create
     @deal.user = current_user
+
     if @deal.save
       redirect_to root_path, :notice => "Oferta criada com sucesso!"
     else
-      flash.now[:error] = "Foram encontrados erros ao criar a oferta."
       populate_cities_name
+
+      flash.now[:error] = "Foram encontrados erros ao criar a oferta."
       render :new
     end
   end
@@ -40,12 +42,10 @@ class DealsController < AuthorizedController
   def find_active_deals
     @deals = Deal.active.paginate(:page => params[:page])
     @deals = @deals.search(params[:search]) if params[:search]
-    #bruno, mudei isso pois o array de cidades estava vazio e por isso nao aparecia nenhuma oferta ativa na página de ofertas ativas nem na busca, pois o array [] tem valor true
-    @deals = @deals.by_cities(user_cities_ids) if user_cities_ids && !user_cities_ids.empty?
+    @deals = @deals.by_cities(user_cities_ids) if user_cities_ids.try(:any?)
   end
 
   def populate_cities_name
     @cities_name = City.all.collect { |c| [c.name, c.id] }
   end
-
 end
