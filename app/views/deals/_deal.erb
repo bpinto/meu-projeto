@@ -1,7 +1,7 @@
 <div class="offer">
   <div class="estabelecimento oferta semDesconto">
     <%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Estabelecimento sem imagem", :title => deal.title), deal_path(deal), :class => "foto") %>
-    <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}">Não informado</div>
+    <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}" style="float: right" >Não informado</div>
     <strong class="titulo deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
       <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
