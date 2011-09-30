@@ -5,7 +5,7 @@
       <!-- TODO: Imagem -->
       <h1>Acessozero</h1>
       <!-- TODO: Facebook / Google -->
-      <h3>Preencha os campos abaixo ou identifique-se utilizando o<a tabindex="0" class="gwt-Anchor" title="Criar perfil utilizando o Facebook "><img src="../imagens/facebook_criarperfil.png"></a></h3>
+      <h3>Preencha os campos abaixo</h3>
 
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <ol>
@@ -28,8 +28,8 @@
         </ol>
 
         <!-- TODO: Transformar o botão igual ao link -->
-        <a tabindex="11" class="perfil" href="javascript:;">Entrar</a>
-        <%= f.submit I18n.t("actions.sign_in") %>
+        <!--a tabindex="11" class="perfil" href="javascript:;">Entrar</a>-->
+        <div class="button"><%= f.submit I18n.t("actions.sign_in") %></div>
       <% end %>
 
       <%= render :partial => "devise/shared/links" %>

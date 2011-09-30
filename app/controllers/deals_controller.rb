@@ -14,7 +14,6 @@ class DealsController < AuthorizedController
 
   def create
     @deal.user = current_user
-
     if @deal.save
       redirect_to root_path, :notice => "Oferta criada com sucesso!"
     else
