@@ -24,8 +24,8 @@
 .titlePageBox { background: #fff; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; padding: 15px; margin: 0 0 10px 0; }
 	
 /* Buttons - ( width must be defined in especific stylesheet; span's width 10px larger than it's parent.  )*/
-.smallButton { background: transparent url(<%= asset_path 'small-button.png' %> no-repeat; display: block; height: 40px; }
-.smallButton span{ background: transparent url(<%= asset_path 'small-button.png' %> no-repeat 56px -42px; display: block; color: #FFFFFF; display: block; font-weight: bold; line-height: 31px; text-align: center; text-shadow: 1px 1px 1px #006600; height: 40px; }
+.smallButton { background: transparent url(<%= asset_path 'small-button.png' %>) no-repeat; display: block; height: 40px; }
+.smallButton span{ background: transparent url(<%= asset_path 'small-button.png' %>) no-repeat 56px -42px; display: block; color: #FFFFFF; display: block; font-weight: bold; line-height: 31px; text-align: center; text-shadow: 1px 1px 1px #006600; height: 40px; }
 .smallButton:hover,
 .smallButton:focus { background-position: 0 -81px;  text-decoration: none; }
 .smallButton:hover span, 
@@ -35,34 +35,34 @@
 	.leftSidemenu { float: left; width: 110px; margin-top: 55px; overflow: hidden; }
 	.leftSidemenu li { list-style: none; }
 	
-		.leftSidemenu li:first-child a { background: url(<%= asset_path 'menu.png' %> no-repeat 0 0; }
-		.leftSidemenu li a { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -35px; color: #333; display: block; font: normal normal bold 11px/12px Verdana, Sans-Serif; height: 22px; padding: 6px 6px 7px; text-shadow: -1px 1px 0 #FFF; }
+		.leftSidemenu li:first-child a { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 0; }
+		.leftSidemenu li a { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -35px; color: #333; display: block; font: normal normal bold 11px/12px Verdana, Sans-Serif; height: 22px; padding: 6px 6px 7px; text-shadow: -1px 1px 0 #FFF; }
 			.leftSidemenu li a span { color: #999; display: block; font: normal normal normal 10px/11px Verdana, Sans-Serif; }
-		.leftSidemenu li:last-child a { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -70px; }
+		.leftSidemenu li:last-child a { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -70px; }
 	
 		.leftSidemenu li:first-child a:hover,
 		.leftSidemenu li:first-child a:focus,
-		.leftSidemenu li:first-child a.ativo { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -105px; text-decoration: none; }
+		.leftSidemenu li:first-child a.ativo { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -105px; text-decoration: none; }
 		.leftSidemenu li a:hover,
-		.leftSidemenu li a.ativo { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -140px; color: #016E92; display: block; font: normal normal bold 11px/12px Verdana, Sans-Serif; text-decoration: none; }
+		.leftSidemenu li a.ativo { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -140px; color: #016E92; display: block; font: normal normal bold 11px/12px Verdana, Sans-Serif; text-decoration: none; }
 		.leftSidemenu li:last-child a:hover,
 		.leftSidemenu li:last-child a:focus,
-		.leftSidemenu li:last-child a.ativo { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -175px;  text-decoration: none; }
+		.leftSidemenu li:last-child a.ativo { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -175px;  text-decoration: none; }
 	
 	/* Big menu */
 	.leftSidemenu.big { width: 180px; }
-		.leftSidemenu.big li:first-child a { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -210px; }
-		.leftSidemenu.big li a { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -245px; }
-		.leftSidemenu.big li:last-child a { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -280px; }
+		.leftSidemenu.big li:first-child a { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -210px; }
+		.leftSidemenu.big li a { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -245px; }
+		.leftSidemenu.big li:last-child a { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -280px; }
 		.leftSidemenu.big li:first-child a:hover,
 		.leftSidemenu.big li:first-child a:focus,
-		.leftSidemenu.big li:first-child a.ativo { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -315px; text-decoration: none; }
+		.leftSidemenu.big li:first-child a.ativo { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -315px; text-decoration: none; }
 		.leftSidemenu.big li a:hover,
 		.leftSidemenu.big li a:focus,
-		.leftSidemenu.big li a.ativo { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -350px; color: #016E92; display: block; font: normal normal bold 11px/12px Verdana, Sans-Serif;  text-decoration: none;}
+		.leftSidemenu.big li a.ativo { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -350px; color: #016E92; display: block; font: normal normal bold 11px/12px Verdana, Sans-Serif;  text-decoration: none;}
 		.leftSidemenu.big li:last-child a:hover,
 		.leftSidemenu.big li:last-child a:focus,
-		.leftSidemenu.big li:last-child a.ativo { background: url(<%= asset_path 'menu.png' %> no-repeat 0 -385px;  text-decoration: none; }
+		.leftSidemenu.big li:last-child a.ativo { background: url(<%= asset_path 'menu.png' %>) no-repeat 0 -385px;  text-decoration: none; }
 		
 /* Este cÃ³digo jÃ¡ estÃ¡ PRONTO para abas SEM imagens, somente com CSS3. Basta anular o antigo e habilitar este
 .leftSidemenu { float: left; width: 110px; margin-top: 55px; overflow: hidden; }
@@ -80,10 +80,10 @@
 /* tabs */
 .tabs { display: block; border-bottom: 1px solid #E5E5E5; clear: both; height: 35px; margin: 0; }
 	.tabs li { display: inline; }						
-		.tabs a { background: url(<%= asset_path 'abas.png' %> no-repeat; bottom: -1px; display: block; float: left; height: 35px; margin-right: 1px; padding-left: 35px; position: relative; }
+		.tabs a { background: url(<%= asset_path 'abas.png' %>) no-repeat; bottom: -1px; display: block; float: left; height: 35px; margin-right: 1px; padding-left: 35px; position: relative; }
 		.tabs a:hover,
 		.tabs a.ativo { background-position: 0 -70px; text-decoration: none; }
-			.tabs a span { background: url(<%= asset_path 'abas.png' %> no-repeat right -35px; color: #BBB; display: block; font: normal normal bold 12px/33px Verdana, Sans-Serif; height: 35px; padding-right: 10px; }
+			.tabs a span { background: url(<%= asset_path 'abas.png' %>) no-repeat right -35px; color: #BBB; display: block; font: normal normal bold 12px/33px Verdana, Sans-Serif; height: 35px; padding-right: 10px; }
 			.tabs a:hover span,
 			.tabs a.ativo span { background-position: right -105px !important; color: #016E92; }
 			
@@ -257,7 +257,7 @@
 	.discountTicket.special *{ color: #7B5800; }
 	.discountTicket.horizontal { background: transparent url(<%= asset_path 'ticket_horizontal.png' %>) no-repeat; }
 	.discountTicket.horizontal *{ color: #516117; }
-	.discountTicket strong{ display: block; letter-spacing: -3px; text-align: center; }
+	.discountTicket strong{ display: inline; letter-spacing: -3px; text-align: center; }
 	.discountTicket strong sup { font-size: 10px; }
 	
 	/* styles for HORIZONTAL tickets */
@@ -304,4 +304,4 @@
 
 		
 /* LOGO DealWit.Me */
-.defaultLogoAz{ text-indent: -9999px; width: 255px; height: 55px; display: block; background:transparent url(<%= asset_path 'logo-interna.png' %> no-repeat; }
+.defaultLogoAz{ text-indent: -9999px; width: 255px; height: 55px; display: block; background:transparent url(<%= asset_path 'logo-interna.png' %>) no-repeat; }

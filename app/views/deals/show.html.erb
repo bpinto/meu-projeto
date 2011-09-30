@@ -22,31 +22,28 @@
     <div class="detalhes">
       <div class="foto">
         <!-- TODO: IMAGEM -->
-        <div><%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Estabelecimento sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
+        <div><%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Oferta sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
       </div>
       <div class="desconto">
-        <div class="desconto">
-          <div class="bigTicket special discountTicket">
-            <strong class="deal_discount"><%= @deal.discount %><sup>%</sup></strong>
+        <div class="bigTicket special discountTicket">
+          <strong class="deal_discount"><%= @deal.discount %><sup>%</sup></strong>
+        </div>
+        
+        <% if @deal.price? %>
+          <div class="de">
+            <span>de:</span>
+            <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
+            <strong class="deal_real_price"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
           </div>
-          
-          <% if @deal.price? %>
-            <div class="de">
-              <span>de:</span>
-              <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-              <strong class="deal_real_price"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
-            </div>
-
-            <div class="por ">
-              <span>por:</span>
-              <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-              <strong class="deal_price"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
-            </div>
-          <% end %>
-
-          <div class="comprar">
-            <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
+          <div class="por ">
+            <span>por:</span>
+            <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
+            <strong class="deal_price"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
           </div>
+        <% end %>
+
+        <div class="comprar">
+          <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
         </div>
       </div>
     </div>
