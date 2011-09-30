@@ -38,7 +38,7 @@ describe User do
   describe "email" do
     it "should be required" do
       user.email = ""
-      user.should_not be_valid
+      user.should_not be valid
     end
 
     it "should accept valid email addresses" do
