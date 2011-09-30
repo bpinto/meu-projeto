@@ -116,7 +116,7 @@
                 </div>
                 <div class="conteudo">
                   <% if user_signed_in? %>
-                    <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user)) %></p><br/>
+                    <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username)) %></p><br/>
                     <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
                     <p><%= link_to "Editar meus dados", edit_user_registration_path %></p>
                   <% else %>
