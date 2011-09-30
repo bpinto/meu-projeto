@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_filter :authenticate
+
   protect_from_forgery
 
   def user_cities_ids
@@ -9,5 +11,13 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "dealwitme" && password == "123dealwitme"
+    end
   end
 end
