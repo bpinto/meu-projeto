@@ -7,8 +7,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 #
-puts 'SETTING UP DEFAULT USER LOGIN'
-FactoryGirl.create :confirmed_user, :username => 'bruno', :password => '123qwe', :password_confirmation => '123qwe'
+#puts 'SETTING UP DEFAULT USER LOGIN'
+#FactoryGirl.create :confirmed_user, :username => 'bruno', :password => '123qwe', :password_confirmation => '123qwe'
 
 puts 'INSERTING BRASIL CITIES'
 brasil_cities = [
