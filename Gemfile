@@ -34,7 +34,7 @@ gem 'will_paginate', '~> 3.0.0'
 #  gem 'guard'
 #  gem 'guard-rspec'
 #  gem 'guard-spork'
-# gem 'shoulda-matchers'
+#  gem 'shoulda-matchers'
 #
 #  if `uname -a`.include? 'Darwin' #Mac OSX
 #    gem 'rb-fsevent'
