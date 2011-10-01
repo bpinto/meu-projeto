@@ -22,7 +22,7 @@
     <div class="detalhes">
       <div class="foto">
         <!-- TODO: IMAGEM -->
-        <div><%= link_to(image_tag('http://dealwit.me/images/3551-19051120356canvasmenor3.logo.png', :alt => "Oferta sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
+        <div><%= link_to(image_tag(asset_path('semImagem.jpg'), :alt => "Oferta sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
       </div>
       <div class="desconto">
         <div class="bigTicket special discountTicket">
@@ -48,6 +48,14 @@
       </div>
     </div>
     <!-- /detalhes -->
+    <div class="info">
+      <div class="barra">
+        <h2>Descrição da Oferta</h2>
+      </div>
+      <div class="conteudo">
+        <p><%= @deal.description %></p>
+      </div>
+    </div>
   </div>
   <!-- /pagina oferta -->
 
