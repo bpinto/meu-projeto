@@ -14,6 +14,11 @@
               <%= f.label :title %>
               <%= f.text_field :title %>
             </li>
+            
+            <li>
+              <%= f.label :kind %>
+              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => ''} %>
+            </li>
 
             <li>
               <%= f.label :price %>
@@ -25,6 +30,7 @@
               <%= f.text_field :real_price_mask, :class => "money" %>
             </li>
 
+            <!-- TODO: colocar javascript para ue desconto só apareça quando for do tipo liquidacao -->
             <li>
               <%= f.label :discount %>
               <%= f.text_field :discount %>
@@ -36,13 +42,13 @@
             </li>
 
             <li>
-              <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => ''} %>
+              <%= f.label :description %>
+              <%= f.text_area :description %>
             </li>
 
             <li>
-              <%= f.label :description %>
-              <%= f.text_area :description %>
+              <%= f.label :end_date %>
+              <%= f.date_field :end_date %>
             </li>
 
             <li>
