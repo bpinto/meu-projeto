@@ -171,8 +171,8 @@
             <li><a href="http://www.dealwit.us/" target="_blank"><%= I18n.t("actions.follow_our_blog") %></a></li><br/>
             <% if user_signed_in? %>
                 <!-- TODO: Menu logado -->
-                <li><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username), :class => "specialLink" %></li>
-                <li><%= link_to_active I18n.t("actions.share_an_offer"), new_deal_path, :class => "specialLink" %></li>
+                <li><%= link_to I18n.t("actions.my_profile"), user_path(current_user.username), :class => "specialLink" %></li>
+                <li><%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => "specialLink" %></li>
                 <li><%= link_to I18n.t("actions.logout"), destroy_user_session_path, :class => "specialLink" %></li>
               </ul>
             <% else %>

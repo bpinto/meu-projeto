@@ -34,6 +34,10 @@
             <li>
               <%= f.label :discount %>
               <%= f.text_field :discount %>
+              <br/><br/>
+              <div class="formTips">
+                (Somente números)
+              </div>
             </li>
 
             <li>
@@ -48,12 +52,19 @@
 
             <li>
               <%= f.label :end_date %>
-              <%= f.date_field :end_date %>
+              <%= f.text_field :end_date %>
+              <br/><br/>
+              <div class="formTips">
+                (Informe a data no formato dd/mm/aaaa)
+              </div>
             </li>
 
             <li>
               <%= f.label :link %>
-              <%= f.text_field :link %>
+              <%= f.text_field :link %><br/><br/>
+              <div class="formTips">
+                (O link deve ser no formato http:// ou https://)
+              </div>
             </li>
 
             <li>
