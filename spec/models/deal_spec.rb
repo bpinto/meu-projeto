@@ -30,6 +30,11 @@ describe Deal do
         deal.should_not be_valid
       end
 
+      it "should require a user" do
+        deal.user = nil
+        deal.should_not be_valid
+      end
+
       it "should require a city" do
         deal.city = nil
         deal.should_not be_valid
