@@ -32,4 +32,25 @@ describe City do
       city.should_not be_valid
     end
   end
+
+  describe "hash of states" do
+    it "should return { a => [a, id]}" do
+      city = City.create!(:name => "a", :state =>"a", :country=>"a")
+      City.hash_by_states.should == {"a" => [["a", city.id]]}
+    end
+
+    it "should return { a => [a, id], b => [a, id]}" do
+      city_a = City.create!(:name => "a", :state =>"a", :country=>"a")
+      city_b = City.create!(:name => "a", :state =>"b", :country=>"a")
+      City.hash_by_states.should == {"a" => [["a", city_a.id]], "b" => [["a", city_b.id]]}
+    end
+
+
+    it "should return { a => [[a, id]], b => [[a, id],[b,id]]}" do
+      city_b = City.create!(:name => "a", :state =>"b", :country=>"a")
+      city_a = City.create!(:name => "a", :state =>"a", :country=>"a")
+      city_c = City.create!(:name => "b", :state =>"b", :country=>"a")
+      City.hash_by_states.should == {"a" => [["a", city_a.id]], "b" => [["a", city_b.id],["b", city_c.id]]}
+    end
+  end
 end

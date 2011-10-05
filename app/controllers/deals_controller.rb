@@ -45,6 +45,7 @@ class DealsController < AuthorizedController
   end
 
   def populate_cities_name
-    @cities_name = City.all.collect { |c| [c.name, c.id] }
+    @cities_state_hash = City.hash_by_states
+    @cities_name = City.order_by_state#.collect { |c| [c.name, c.id] }
   end
 end
