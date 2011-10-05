@@ -16,11 +16,15 @@
         <div class="conteudo">
           <div class="zero-PagingTable">
             <div class="zero-PagingTableGrid">
-              <% @deals.each_with_index do |deal, index| %>
-                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-              <% end %>
+              <% if @deals.empty? %>
+                <h4> Não há ofertas cadastradas hoje ainda, seja o primeiro a compartilhar uma oferta com seus amigos!</h4>
+              <% else %>
+                <% @deals.each_with_index do |deal, index| %>
+                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+                <% end %>
 
-              <%= will_paginate @deals %>
+                <%= will_paginate @deals %>
+              <% end %>
             </div>
           </div>
         </div>

@@ -81,11 +81,17 @@
                   <% end %>
                 </div>
 						  </div> 
-						  <div class="conteudo"> 
-                <% @deal.comments.each do |comment| %>
-                  <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
-                <% end %>
-							</div>  
+              <% if not @deal.comments.empty? %>
+		  				  <div class="conteudo"> 
+                  <% @deal.comments.each do |comment| %>
+                    <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
+                  <% end %>
+  							</div>  
+              <% else %>
+                <div class="semConteudo">
+                  <h4>Não há comentários cadastrados para essa oferta ainda. Seja o primeiro a dar sua opinião escrevendo seu comentário no campo acima.</h4>
+                </div>
+              <% end %>
               <div class="barraBaixo"> 
 							  <!-- paginacao  -->
 							</div> 
