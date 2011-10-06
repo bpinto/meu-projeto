@@ -74,7 +74,7 @@
 
             <li>
               <%= f.label :city %>
-              <%= f.select :city_id, @cities_name, {:include_blank => ''} %>
+              <!--<%= f.select :city_id, @cities_name, {:include_blank => ''} %>-->
               <%= f.select(:city_id, grouped_options_for_select(@cities_state_hash), {:include_blank => ''}) %>
             </li>
           </ol>
