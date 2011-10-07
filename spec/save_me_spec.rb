@@ -8,6 +8,7 @@ describe SaveMe do
   describe "#deals" do
     it "a" do
       City.create name: "Rio de Janeiro", state: "Rio de Janeiro", country: "Brasil"
+      Factory.create :user, :username => "DealWitMe"
       saveme.deals
     end
   end

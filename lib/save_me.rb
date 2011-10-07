@@ -5,7 +5,10 @@ require 'open-uri'
 class SaveMe
   attr_reader :doc
 
+  DIRECTORY_PATH = "tmp/crawler"
+
   XPATH_LINKS = '//div[@class="offer"]/div[@class="offer_text"]/a'
+
   XPATH_ADDRESS = '//p[@class="endereco_local"]'
   XPATH_COMPANY = '//p[@class="nome_local"]'
   XPATH_DESCRIPTION = '//div[@class="detalhes_middle"]//p'
@@ -30,9 +33,18 @@ class SaveMe
   }
 
   def initialize
-    html = open("#{URL}#{DAILY_DEALS}rio-de-janeiro/")
-    @doc = Nokogiri::HTML(html.read)
-    @doc.encoding = 'utf-8'
+    @user_id = User.find_by_username("DealWitMe").id
+    @doc = open_page("#{URL}#{DAILY_DEALS}rio_de_janeiro/")
+
+    Dir.mkdir(DIRECTORY_PATH) unless File.directory? DIRECTORY_PATH
+    @filename = "tmp/crawler/#{Time.now.strftime("%Y-%m-%d_%H-%M")}.txt"
+  end
+
+  #Open the link with 'utf-8' encoding.
+  def open_page(link)
+    page = Nokogiri::HTML(open(link).read) #Nokogiri bug: You need to use .read method in order to use encoding.
+    page.encoding = 'utf-8'
+    page
   end
 
   def links_to_crawl
@@ -52,11 +64,8 @@ class SaveMe
     city_id = City.find_by_name("Rio de Janeiro").id
 
     links_to_crawl.each do |link|
+      page = open_page("#{URL}#{link}")
       deal_hash = {}
-
-      html = open("#{URL}#{link}")
-      page = Nokogiri::HTML(html.read)
-      page.encoding = 'utf-8'
 
       deal_hash[:address] = try_catch { page.xpath(XPATH_ADDRESS).children.first.text.scan(/.+\n/).first.strip }
 
@@ -75,9 +84,13 @@ class SaveMe
       deal_hash[:price_mask] = try_catch { page.xpath(XPATH_PRICE).first.text.strip }
       deal_hash[:real_price_mask] = try_catch { page.xpath(XPATH_REAL_PRICE).first.text.strip }
       deal_hash[:title] = try_catch { page.xpath(XPATH_TITLE).text }
+      deal_hash[:user_id] = @user_id
 
       deal = Deal.new deal_hash
-      binding.pry
+
+      unless deal.save
+        File.open(@filename, 'a') {|f| f.write(deal.errors.inspect) }
+      end
     end
   end
 end
