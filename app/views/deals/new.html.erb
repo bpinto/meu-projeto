@@ -52,7 +52,7 @@
 
             <li>
               <%= f.label :end_date %>
-              <%= f.text_field :end_date %>
+              <%= f.text_field :end_date, :class => "datepicker" %>
               <br/><br/>
               <div class="formTips">
                 (Informe a data no formato dd/mm/aaaa)
@@ -81,7 +81,9 @@
 
           <!-- TODO: Transformar o botão igual ao link -->
           <!--a tabindex="11" class="perfil" href="javascript:;"><%= I18n.t("actions.share") %></a-->
-          <%= f.submit I18n.t("actions.share") %>
+          <div class="button">
+            <%= f.submit I18n.t("actions.share") %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -91,6 +93,9 @@
 				
 <script>
 $(function(){
-    $(".money").maskMoney({symbol:"R$ ", decimal:",", thousands:"."});
-})
+    $(".money").maskMoney({symbol:"R$ ", decimal:",", thousands:"."})
+    $( ".datepicker" ).datepicker({
+      showButtonPanel: true, dateFormat: 'dd/mm/yy'
+    });
+});
 </script>
