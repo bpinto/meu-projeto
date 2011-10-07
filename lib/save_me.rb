@@ -1,8 +1,6 @@
 # encoding: UTF-8
 # require 'anemone'
-require 'nokogiri'
 require 'open-uri'
-require 'pry' #Debugger
 
 class SaveMe
   attr_reader :doc
@@ -35,6 +33,10 @@ class SaveMe
     html = open("#{URL}#{DAILY_DEALS}rio-de-janeiro/")
     @doc = Nokogiri::HTML(html.read)
     @doc.encoding = 'utf-8'
+  end
+
+  def links_to_crawl
+    @doc.xpath(XPATH_LINKS).collect { |link| link[:href] }
   end
 
   def try_catch(&block)
@@ -77,9 +79,5 @@ class SaveMe
       deal = Deal.new deal_hash
       binding.pry
     end
-  end
-
-  def links_to_crawl
-    @doc.xpath(XPATH_LINKS).collect { |link| link[:href] }
   end
 end
