@@ -2,7 +2,7 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :deal do |f|
-    category Deal::CATEGORY_DRINK
+    category Deal::CATEGORY_RESTAURANT
     company "F_COMPANY"
     description "F_DESCRIPTION"
     kind Deal::KIND_OFFER
