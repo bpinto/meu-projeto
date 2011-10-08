@@ -82,7 +82,7 @@
           <!-- TODO: Transformar o botão igual ao link -->
           <!--a tabindex="11" class="perfil" href="javascript:;"><%= I18n.t("actions.share") %></a-->
           <div class="button">
-            <%= f.submit I18n.t("actions.share") %>
+            <%= f.submit I18n.t("actions.share"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
           </div>
         <% end %>
       </div>

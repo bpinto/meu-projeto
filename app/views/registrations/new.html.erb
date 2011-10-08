@@ -56,7 +56,7 @@
 
           <!-- TODO: Transformar o botão igual ao link -->
           <!--<a tabindex="11" class="perfil" href="javascript:;">Criar perfil</a>-->
-          <div class="button"><%= f.submit "Criar perfil" %></div>
+          <div class="button"><%= f.submit "Criar perfil", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
         <% end %>
       </div>
     </div>

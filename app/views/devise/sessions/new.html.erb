@@ -29,7 +29,9 @@
 
         <!-- TODO: Transformar o botão igual ao link -->
         <!--a tabindex="11" class="perfil" href="javascript:;">Entrar</a>-->
-        <div class="button"><%= f.submit I18n.t("actions.sign_in") %></div>
+        <div class="button">
+          <%= f.submit I18n.t("actions.sign_in"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
+        </div>
       <% end %>
 
       <%= render :partial => "devise/shared/links" %>

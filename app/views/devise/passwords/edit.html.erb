@@ -10,7 +10,9 @@
   <p><%= f.label :password_confirmation, "Confirm new password" %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.submit "Change my password" %></p>
+  <div class="button">
+    <p><%= f.submit "Change my password", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></p>
+  </div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

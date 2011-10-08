@@ -14,7 +14,9 @@
           <p><%= f.label :email %><br />
           <%= f.text_field :email %></p>
 
-          <p><%= f.submit I18n.t("actions.send_new_password") %></p>
+          <div class="button">
+            <p><%= f.submit I18n.t("actions.send_new_password"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></p>
+          </div>
         <% end %>
 
         <%= render :partial => "devise/shared/links" %>

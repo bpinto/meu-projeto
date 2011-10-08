@@ -6,7 +6,9 @@
   <p><%= f.label :email %><br />
   <%= f.email_field :email %></p>
 
-  <p><%= f.submit "Resend unlock instructions" %></p>
+  <div class="button">
+    <p><%= f.submit "Resend unlock instructions", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></p>
+  </div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
