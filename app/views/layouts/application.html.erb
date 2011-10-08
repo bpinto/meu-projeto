@@ -62,20 +62,18 @@
         <div class="categorias">
           <div class="conteudo">
             <ul class="menu">
-              <li class="drink"><a href="/deals/today/drink" title="Visualizar a categoria Bebidas"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
+              <li class="restaurant"><a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
               <li class="beauty-health"><a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-              <li class="phone-camera"><a href="/deals/today/phone_and_camera" title="Visualizar a categoria Celulares e Câmeras"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
-              <li class="music-movie"><a href="/deals/today/music_and_movie" title="Visualizar a categoria Música e Filmes"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
+              <li class="electronics"><a href="/deals/today/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+              <li class="culture"><a href="/deals/today/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
               <li class="home"><a href="/deals/today/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
-              <li class="electronics"><a href="/deals/today/electronics" title="Visualizar a categoria Profissionais autônomos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
               <li class="fitness"><a href="/deals/today/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
               <li class="computer"><a href="/deals/today/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-              <li class="book"><a href="/deals/today/book" title="Visualizar a categoria Livros"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
               <li class="clothes"><a href="/deals/today/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
               <li class="travel"><a href="/deals/today/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-              <li class="restaurant"><a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
-              <li class="toy"><a href="/deals/today/toy" title="Visualizar a categoria Brinquedos"><%= Deal.i18n_category(Deal::CATEGORY_TOY) %></a></li>
-              <li class="car"><a href="/deals/today/car" title="Visualizar a categoria Artigos e Peças automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
+              <li class="kids"><a href="/deals/today/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
+              <li class="car"><a href="/deals/today/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
+              <li class="others"><a href="/deals/today/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
             </ul>
           </div>
         </div>
@@ -142,23 +140,22 @@
 
           <ul class="second">
             <li class="title">Categorias</li>
-            <li><a href="/deals/today/drink"><%= Deal.i18n_category(Deal::CATEGORY_DRINK) %></a></li>
+            <li><a href="/deals/today/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
             <li><a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-            <li><a href="/deals/today/phone_and_camera"><%= Deal.i18n_category(Deal::CATEGORY_PHONE_AND_CAMERA) %></a></li>
-            <li><a href="/deals/today/music_and_movie"><%= Deal.i18n_category(Deal::CATEGORY_MUSIC_AND_MOVIE) %></a></li>
-            <li><a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
             <li><a href="/deals/today/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+            <li><a href="/deals/today/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
+            <li><a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
+            <li><a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
           </ul>
 
           <ul class="third">
             <li class="title">Categorias</li>
-            <li><a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
             <li><a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-            <li><a href="/deals/today/book"><%= Deal.i18n_category(Deal::CATEGORY_BOOK) %></a></li>
             <li><a href="/deals/today/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
             <li><a href="/deals/today/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-            <li><a href="/deals/today/toy"><%= Deal.i18n_category(Deal::CATEGORY_TOY) %></a></li>
+            <li><a href="/deals/today/infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
             <li><a href="/deals/today/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
+            <LI><a href="/deals/today/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
           </ul>
 
           <ul class="fourth">
