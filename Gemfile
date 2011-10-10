@@ -12,7 +12,6 @@ gem 'paper_trail'
 gem 'pg', :require => 'pg'
 gem 'rails', '3.1.0'
 gem 'sass'
-gem 'therubyracer-heroku', '0.8.1.pre3'
 gem 'thin'
 gem 'uglifier'
 gem 'validates_timeliness'
@@ -25,6 +24,7 @@ group :development, :test do
   gem 'mongrel', '1.2.0.pre2'
   gem 'pry'
   gem 'rspec-rails', '>= 2.6.1'
+  gem 'therubyracer' unless `uname -a`.include? 'Darwin' #Não Mac OSX
 end
 
 group :test do

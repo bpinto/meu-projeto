@@ -54,6 +54,7 @@ module DealWitMe
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    config.assets.compile = true
+    # On config/application.rb forcing your application to not access the DB or load models when precompiling your assets.
+    config.assets.initialize_on_precompile = false
   end
 end
