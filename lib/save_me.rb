@@ -21,15 +21,15 @@ class SaveMe
   DAILY_DEALS = "/compra-coletiva/"
 
   CATEGORIES = {
-    "bares-e-baladas" => Deal::CATEGORY_DRINK,
-    "cursos-e-aulas" => Deal::CATEGORY_BOOK,
+    "bares-e-baladas" => Deal::CATEGORY_RESTAURANT,
+    "cursos-e-aulas" => Deal::CATEGORY_CULTURE,
     "entretenimento" => Deal::CATEGORY_FITNESS,
     "esporte" => Deal::CATEGORY_FITNESS,
     "hoteis-e-viagens" => Deal::CATEGORY_TRAVEL,
     "produtos" => nil,
     "restaurantes" => Deal::CATEGORY_RESTAURANT,
     "saude-e-beleza" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
-    "servicos-locais" => nil
+    "servicos-locais" => Deal::CATEGORY_OTHER
   }
 
   def initialize
