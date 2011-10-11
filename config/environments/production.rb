@@ -20,10 +20,6 @@ DealWitMe::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # Compress both stylesheets and JavaScripts
-  config.assets.js_compressor  = :uglifier
-  config.assets.css_compressor = :scss
-
   # Specifies the header that your server uses for sending files
   # (comment out if your front-end server doesn't support this)
   config.action_dispatch.x_sendfile_header = "X-Sendfile" # Use 'X-Accel-Redirect' for nginx
