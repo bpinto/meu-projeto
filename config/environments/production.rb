@@ -62,9 +62,10 @@ DealWitMe::Application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :authentication => :plain,
-    :domain => ENV['GMAIL_SMTP_USER'],
-    :user_name => ENV['GMAIL_SMTP_USER'],
-    :password => ENV['GMAIL_SMTP_PASSWORD'],
+    :domain => 'dealwit.me', #ENV['GMAIL_SMTP_USER'],
+    :user_name => 'dealwitme@dealwit.me', #ENV['GMAIL_SMTP_USER'],
+    :password => '123dealwitme', #ENV['GMAIL_SMTP_PASSWORD'],
+    :enable_starttls_auto => true
   }
 
 end
