@@ -34,10 +34,9 @@
             <li>
               <%= f.label :discount %>
               <%= f.text_field :discount %>
-              <br/><br/>
-              <div class="formTips">
-                (Somente números)
-              </div>
+              <span class="limite">
+                Somente números
+              </span>
             </li>
 
             <li>
@@ -53,18 +52,17 @@
             <li>
               <%= f.label :end_date %>
               <%= f.text_field :end_date, :class => "datepicker" %>
-              <br/><br/>
-              <div class="formTips">
-                (Informe a data no formato dd/mm/aaaa)
-              </div>
+              <span class="limite">
+                Informe a data no formato dd/mm/aaaa
+              </span>
             </li>
 
             <li>
               <%= f.label :link %>
-              <%= f.text_field :link %><br/><br/>
-              <div class="formTips">
-                (O link deve ser no formato http:// ou https://)
-              </div>
+              <%= f.text_field :link %>
+              <span class="limite">
+                O link deve ser no formato http:// ou https://
+              </span>
             </li>
 
             <li>

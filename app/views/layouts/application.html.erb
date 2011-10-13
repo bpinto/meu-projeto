@@ -108,7 +108,8 @@
                   <% if user_signed_in? %>
                     <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username)) %></p><br/>
                     <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
-                    <p><%= link_to "Editar meus dados", edit_user_registration_path %></p>
+                    <p><%= link_to "Editar meus dados", edit_user_registration_path %></p><br/>
+                    <!--<p><%= link_to I18n.t("actions.share_an_offer"), new_deal_path %></p>-->
                   <% else %>
                     <p>Um lugar onde podemos compartilhar ofertas e opiniões com nossos amigos.</p>
                     <br/>
@@ -116,7 +117,7 @@
                     <br/>
                     <p><%= link_to 'Crie seu perfil', new_user_registration_path %> e comece já a compartilhar ofertas com seus amigos.</p>
                     <br/>
-                    <p>Leia mais sobre quem somos no link <a href="/pages/whoarewe">Quem Somos</a>.</p>
+                    <p>Leia mais sobre <a href="/pages/whoarewe">Quem Somos</a>.</p>
                   <% end %>
                 </div>
               </div>
