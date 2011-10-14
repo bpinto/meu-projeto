@@ -59,7 +59,7 @@ class Deal < ActiveRecord::Base
   before_validation :prices_to_number, :if => "not on_sale?"
 
   attr_accessor :price_mask, :real_price_mask
-  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :price_mask, :real_price, :real_price_mask, :title
+  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :price_mask, :real_price, :real_price_mask, :title, :user_id
 
   #TODO: Remover o default_scope
   default_scope order("deals.created_at desc")

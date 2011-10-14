@@ -23,6 +23,7 @@ gem 'will_paginate', '~> 3.0.0'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'factory_girl_rails', '>= 1.1.beta1'
   gem 'letter_opener'
   gem 'pry'
   gem 'therubyracer'
@@ -32,7 +33,6 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'database_cleaner', '>= 0.6.7'
-  gem 'factory_girl_rails', '>= 1.1.beta1'
   gem 'launchy'
   gem 'rspec-rails', '>= 2.6.1'
   gem 'shoulda-matchers'
