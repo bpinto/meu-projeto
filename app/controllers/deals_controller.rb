@@ -32,7 +32,8 @@ class DealsController < AuthorizedController
   end
 
   def unvote
-
+    current_user.unvote!(@deal)
+    redirect_to deal_path(@deal), :notice => "Voto apagado com sucesso!"
   end
 
   def upvote

@@ -27,6 +27,7 @@ DealWitMe::Application.routes.draw do
     member do
       get 'upvote'
       get 'downvote'
+      get 'unvote'
     end
   end
 
