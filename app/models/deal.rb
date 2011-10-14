@@ -1,6 +1,9 @@
 # coding: utf-8
 class Deal < ActiveRecord::Base
   acts_as_commentable
+
+  make_voteable
+
   has_paper_trail
 
   self.per_page = 10

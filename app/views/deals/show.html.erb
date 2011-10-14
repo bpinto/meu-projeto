@@ -45,6 +45,15 @@
         <div class="comprar">
           <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
         </div>
+        <div class="votes">
+          <div class="like">
+            <%= link_to 'Gostei!', upvote_deal_path(@deal), :class => "like" %>
+            <span><%= @deal.up_votes %> gostaram dessa oferta!</span>
+          </div>
+          <div class="dislike"> 
+            <%= link_to 'Não gostei!', downvote_deal_path(@deal), :class => "dislike" %>
+          </div>
+        </div>
       </div>
     </div>
     <!-- /detalhes -->
