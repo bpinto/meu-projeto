@@ -6,9 +6,9 @@
   apdex_t: 0.5
   ssl: false
   monitor_mode: true
-  license_key: <%= ENV["NEW_RELIC_LICENSE_KEY"] %>
+  license_key: "1e03af17edfaf7a9ab97286bd92dfb56d6283443"
   developer_mode: false
-  app_name: <%= ENV["NEW_RELIC_APP_NAME"] %>
+  app_name: "DealWit.Me"
   transaction_tracer:
     record_sql: obfuscated
     enabled: true
