@@ -22,17 +22,19 @@
 					  <p><%= I18n.t("models.user.following") %> <%= @user.following.count %> <%= I18n.t "users" %> </p><br/>
 					  <p>Email: <%= @user.email if @user.email %></p><br/>
 					</div> 
-					<ul class="interacoes"> 
-            <li>
-              <% if current_user != @user %>
-					      <% if current_user.follow? @user %>
-                  <%= link_to I18n.t("actions.unfollow"), unfollow_user_path(@user.username) %>
-                <% else %>
-                  <%= link_to I18n.t("actions.follow"), follow_user_path(@user.username) %>
+          <% if user_signed_in? %>
+  					<ul class="interacoes"> 
+              <li>
+                <% if current_user != @user %>
+  					      <% if current_user.follow? @user %>
+                    <%= link_to I18n.t("actions.unfollow"), unfollow_user_path(@user.username) %>
+                  <% else %>
+                    <%= link_to I18n.t("actions.follow"), follow_user_path(@user.username) %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </li>
-				  </ul> 
+              </li>
+  				  </ul> 
+          <% end %>
 			  </div> 
 		  <div class="baixo"></div> 
 		</div> 

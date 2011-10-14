@@ -100,6 +100,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    make_voteable (0.1.1)
+      activerecord (~> 3.0)
     method_source (0.6.6)
       ruby_parser (~> 2.0.5)
     mime-types (1.16)
@@ -219,6 +221,7 @@ DEPENDENCIES
   json
   launchy
   letter_opener
+  make_voteable
   newrelic_rpm
   nokogiri
   paper_trail

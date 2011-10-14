@@ -45,6 +45,26 @@
         <div class="comprar">
           <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
         </div>
+        <% if user_signed_in? %>
+          <div class="votes">
+            <div class="like">
+              <% if current_user.up_voted? @deal %>
+                <%= link_to 'Gostei!(Desfazer)', unvote_deal_path(@deal), :class => "like" %>
+              <% else %>
+                <%= link_to 'Gostei!', upvote_deal_path(@deal), :class => "like" %>
+              <% end %>
+              <!--<span><%= @deal.up_votes %> gostaram dessa oferta!</span>-->
+            </div>
+            <div class="dislike"> 
+              <% if current_user.down_voted? @deal %>
+                <%= link_to 'Não Gostei!(Desfazer)', unvote_deal_path(@deal), :class => "dislike" %>
+              <% else %>
+                <%= link_to 'Não gostei!', downvote_deal_path(@deal), :class => "dislike" %>
+              <% end %>
+              <!--<span><%= @deal.down_votes %> não gostaram dessa oferta!</span>-->
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <!-- /detalhes -->

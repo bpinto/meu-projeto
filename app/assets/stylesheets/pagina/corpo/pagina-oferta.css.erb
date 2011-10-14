@@ -313,3 +313,14 @@ div.paginaOferta { padding: 15px 15px 0; position: relative; }
 	.continuar .defaultButton.aguarde:focus span{ border: none; }
 	*+html .continuar .defaultButton { width: 90px; padding: 10px 20px; }
 	.continuar .defaultButton:hover, .continuar .defaultButton:focus { text-decoration: none; margin: 1px -1px -1px 0 }
+
+
+  div.paginaOferta div.detalhes div.desconto div.votes {}
+
+  div.paginaOferta div.detalhes div.desconto div.votes div.like { background: url(<%= asset_path 'like.png' %>) no-repeat; height:30px;}
+
+  div.paginaOferta div.detalhes div.desconto div.votes div.like a.like {margin: 0 0 0 30px;}
+
+  div.paginaOferta div.detalhes div.desconto div.votes div.dislike { background: url(<%= asset_path 'dislike.png' %>) no-repeat; height:30px;}
+
+  div.paginaOferta div.detalhes div.desconto div.votes div.dislike a.dislike {margin: 0 0 0 30px;}

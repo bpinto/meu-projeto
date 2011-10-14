@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include  Gravtastic
 
+  make_voter
+
   devise :confirmable, :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
   gravtastic :size => 180, :default => "mm"
   has_paper_trail

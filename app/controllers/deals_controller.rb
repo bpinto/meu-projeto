@@ -31,6 +31,27 @@ class DealsController < AuthorizedController
   def today
   end
 
+  def unvote
+    current_user.unvote!(@deal)
+    redirect_to deal_path(@deal), :notice => "Voto apagado com sucesso!"
+  end
+
+  def upvote
+    current_user.up_vote(@deal)
+    redirect_to deal_path(@deal), :notice => "Voto computado com sucesso!"
+  rescue MakeVoteable::Exceptions::AlreadyVotedError
+    redirect_to deal_path(@deal), :error => "Voto já computado anteriormente."
+  end
+
+  def downvote
+    deal = Deal.find(params[:id])
+    current_user.down_vote(deal)
+    deal.down_votes += 1
+    redirect_to deal_path(deal), :notice => "Voto computado com sucesso!"
+  rescue MakeVoteable::Exceptions::AlreadyVotedError
+    redirect_to deal_path(deal), :error => "Voto já computado anteriormente."
+  end
+
   private
 
   def find_todays_deals

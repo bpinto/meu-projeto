@@ -24,6 +24,11 @@ DealWitMe::Application.routes.draw do
 
   resources :deals do
     resources :comments
+    member do
+      get 'upvote'
+      get 'downvote'
+      get 'unvote'
+    end
   end
 
   match '/deals/today/:category', :to => "deals#today"
