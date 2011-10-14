@@ -1,8 +1,9 @@
 # coding: utf-8
 class Deal < ActiveRecord::Base
-  acts_as_commentable
-
+  
   make_voteable
+
+  acts_as_commentable
 
   has_paper_trail
 
