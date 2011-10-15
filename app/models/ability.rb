@@ -36,6 +36,7 @@ class Ability
       can :manage, Deal, :user_id => user.id
       can [:follow, :unfollow], User
       can :manage, Comment
+      can [:upvote, :downvote, :unvote], Deal
     end
   end
 end
