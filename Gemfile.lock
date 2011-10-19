@@ -119,7 +119,7 @@ GEM
       method_source (~> 0.6.5)
       ruby_parser (~> 2.0.5)
       slop (~> 2.1.0)
-    rack (1.3.4)
+    rack (1.3.5)
     rack-cache (1.1)
       rack (>= 0.4)
     rack-mount (0.8.3)
