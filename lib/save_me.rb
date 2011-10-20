@@ -5,7 +5,7 @@ require 'open-uri'
 class SaveMe
   attr_reader :doc
 
-  DIRECTORY_PATH = "tmp/crawler"
+  DIRECTORY_PATH = "tmp/crawler/"
 
   XPATH_LINKS = '//div[@class="offer"]/div[@class="offer_text"]/a'
 
@@ -33,15 +33,27 @@ class SaveMe
   }
 
   def initialize
-    @user_id = User.find_by_username("DealWitMe").id
-    @doc = open_page("#{URL}#{DAILY_DEALS}rio_de_janeiro/")
+    @user_id = get_user_id
+    @filename = create_log_file
+    @doc = open_page("#{URL}#{DAILY_DEALS}rio-de-janeiro/")
+  end
 
+  def get_user_id(username = "dealwitme")
+    user = User.find_by_username(username)
+    raise Exception, "User '#{username}' not found" unless user
+    user.id
+  end
+
+  def create_log_file
     Dir.mkdir(DIRECTORY_PATH) unless File.directory? DIRECTORY_PATH
-    @filename = "tmp/crawler/#{Time.now.strftime("%Y-%m-%d_%H-%M")}.txt"
+    filename = "#{DIRECTORY_PATH}#{Time.now.strftime("%Y-%m-%d_%H-%M")}.txt"
+    puts "Creating file '#{filename}'"
+    filename
   end
 
   #Open the link with 'utf-8' encoding.
   def open_page(link)
+    puts "Opening page '#{link}'"
     page = Nokogiri::HTML(open(link).read) #Nokogiri bug: You need to use .read method in order to use encoding.
     page.encoding = 'utf-8'
     page
@@ -60,7 +72,7 @@ class SaveMe
     end
   end
 
-  def deals
+  def create_deals
     city_id = City.find_by_name("Rio de Janeiro").id
 
     links_to_crawl.each do |link|
@@ -87,9 +99,16 @@ class SaveMe
       deal_hash[:user_id] = @user_id
 
       deal = Deal.new deal_hash
+      binding.pry
 
-      unless deal.save
-        File.open(@filename, 'a') {|f| f.write(deal.errors.inspect) }
+      if Deal.exists? :title => deal.title, :company => deal.company, :end_date => deal.end_date
+        File.open(@filename, 'a') {|f| f.write("Deal '#{deal_hash[:title]}' already exists.'\n") }
+      else
+        if deal.save
+          File.open(@filename, 'a') {|f| f.write("Deal '#{deal_hash[:title]}' created.'\n") }
+        else
+          File.open(@filename, 'a') {|f| f.write("#{deal.errors.inspect}\n") }
+        end
       end
     end
   end
