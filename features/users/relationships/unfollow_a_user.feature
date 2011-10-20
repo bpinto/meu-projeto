@@ -11,7 +11,7 @@ Feature: Unfollow a user
       Given I am following the user "user_to_unfollow"
       And I am on user_to_unfollow's page
       When I follow "Deixar de seguir"
-      Then I should see "Deisando de seguir: 'user_to_unfollow'!"
+      Then I should see "Deixando de seguir: 'user_to_unfollow'!"
 
     Scenario: Unfollow a user already unfollowed
       Given I am not following the user "user_to_unfollow"
