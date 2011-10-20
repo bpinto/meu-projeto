@@ -18,18 +18,18 @@ class UsersController < ApplicationController
   def follow
     unless current_user.follow? @user
       current_user.follow! @user
-      redirect_to user_path(@user.username), :notice => "Started following: '#{@user.username}'"
+      redirect_to user_path(@user.username), :notice => I18n.t('models.user.started_following', :username => @user.username)
     else
-      redirect_to user_path(@user.username), :alert => "You already follow: '#{@user.username}'"
+      redirect_to user_path(@user.username), :alert => I18n.t('models.user.already_following', :username => @user.username)
     end
   end
 
   def unfollow
     if current_user.follow? @user
       current_user.unfollow! @user
-      redirect_to user_path(@user.username), :notice => "Stopped following: '#{@user.username}'"
+      redirect_to user_path(@user.username), :notice => I18n.t('models.user.stopped_following', :username => @user.username)
     else
-      redirect_to user_path(@user.username), :alert => "You do not follow: '#{@user.username}'"
+      redirect_to user_path(@user.username), :alert => I18n.t('models.user.not_following', :username => @user.username)
     end
   end
 

@@ -283,6 +283,10 @@
       followers: "Seguidores"
       following: "Seguindo"
       deals: "Ofertas"
+      started_following: "Seguindo: '%{username}'!"
+      already_following: "Você já está seguindo: '%{username}'!"
+      stopped_following: "Deixando de seguir: '%{username}'!"
+      not_following: "Você não está seguindo: '%{username}'!"
 
   actions:
     comment: "Comentar"
