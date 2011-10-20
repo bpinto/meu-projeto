@@ -10,7 +10,7 @@ Feature: Follow a user
     Scenario: Follow a unfollowed user
       Given I am on user_to_follow's page
       When I follow "Seguir"
-      Then I should see "Started following: 'user_to_follow'"
+      Then I should see "Seguindo: 'user_to_follow'"
 
     Scenario: Follow a user already followed
       Given I am following the user "user_to_follow"
@@ -20,4 +20,4 @@ Feature: Follow a user
     Scenario: Follow a user already followed - by url
       Given I am following the user "user_to_follow"
       And I go to user_to_follow's follow page
-      Then I should see "You already follow: 'user_to_follow'"
+      Then I should see "Você já está seguindo: 'user_to_follow'"
