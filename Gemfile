@@ -26,6 +26,7 @@ group :development, :test do
   gem 'factory_girl_rails', '>= 1.1.beta1'
   gem 'letter_opener'
   gem 'pry'
+  gem "rspec-rails", "~> 2.6"
   gem 'therubyracer'
 end
 
@@ -34,6 +35,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner', '>= 0.6.7'
   gem 'launchy'
-  gem 'rspec-rails', '>= 2.6.1'
   gem 'shoulda-matchers'
 end
