@@ -17,17 +17,17 @@
             
             <li>
               <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => ''} %>
-            </li>
-
-            <li>
-              <%= f.label :price %>
-              <%= f.text_field :price_mask, :class => "money" %>
+              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'} %>
             </li>
 
             <li>
               <%= f.label :real_price %>
               <%= f.text_field :real_price_mask, :class => "money" %>
+            </li>
+
+            <li>
+              <%= f.label :price %>
+              <%= f.text_field :price_mask, :class => "money" %>
             </li>
 
             <!-- TODO: colocar javascript para ue desconto só apareça quando for do tipo liquidacao -->
@@ -41,7 +41,7 @@
 
             <li>
               <%= f.label :category %>
-              <%= f.select :category, Deal.i18n_categories, {:include_blank => ''} %>
+              <%= f.select :category, Deal.i18n_categories, {:include_blank => 'Selecione'} %>
             </li>
 
             <li>
@@ -73,7 +73,7 @@
             <li>
               <%= f.label :city %>
               <!--<%= f.select :city_id, @cities_name, {:include_blank => ''} %>-->
-              <%= f.select(:city_id, unsorted_grouped_options_for_select(@cities_state_hash), {:include_blank => ''}) %>
+              <%= f.select(:city_id, unsorted_grouped_options_for_select(@cities_state_hash), {:include_blank => 'Selecione'}) %>
             </li>
           </ol>
 
