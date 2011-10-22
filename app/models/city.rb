@@ -16,7 +16,7 @@ class City < ActiveRecord::Base
     hash_of_states = {}
     cities = City.order_by_state.without_national_offer
     national = City.get_national_offer
-    hash_of_states = {"Oferta Nacional" => [[national[0].name, national[0].id]]}
+    hash_of_states = {"Oferta Nacional" => [[national[0].name, national[0].id]]} if national[0]
     last_state = cities[0].state
     cities_of_last_state = []
     cities.each do |c|
