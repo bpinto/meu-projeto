@@ -77,17 +77,17 @@
       </div>
 
       <!--  CORPO -->
-      <div id="corpo">
+      <div id="body">
          <!-- TODO: FLASH -->
         <%- flash.each do |name, msg| -%>
           <% if name == :error %>
-            <div class="alerta alertaErrado" style="opacity: 1; "><p><%= msg %></p></div>
+            <div class="alert errorAlert" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
           <% if name == :alert %>
-            <div class="alerta alertaAviso" style="opacity: 1; "><p><%= msg %></p></div>
+            <div class="alert warnAlert" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
           <% if name == :notice %>
-            <div class="alerta alertaCerto" style="opacity: 1; "><p><%= msg %></p></div>
+            <div class="alert successAlert" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
         <%- end -%>
     

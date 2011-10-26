@@ -1,29 +1,20 @@
-<div class="janelaPadrao chapeu fundoCinza">
+<div class="defaultWindow title greyBackground">
   <h1>Ofertas Ativas</h1>
 </div>
-<div class="principal">
-  <div class="estabelecimentosMapa">
-    <div class="janelaPadrao estabelecimentosPadrao" id="sitesPanelView">
-      <div class="conteudo fundoCinza">
-        <div class="alerta alertaAviso" style="display: none; "></div>
-        <!--<ul class="abasPadrao">
-          <li class="ofertas"><a tabindex="0" class="ativo" href="javascript:;">Ofertas quentes</a></li>
-          <li class="avaliacoes"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Mais bem avaliados no mês</a></li>
-          <li class="ordemAlfabetica"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Ordem alfabética</a></li>
-        </ul>-->
-
-        <div class="conteudo">
-          <div class="zero-PagingTable">
-            <div class="zero-PagingTableGrid">
-              <% if @deals.empty? %>
-                <h4> Não há ofertas cadastradas ainda, seja o primeiro a compartilhar uma oferta com seus amigos!</h4>
-              <% else %>  
-                <% @deals.each_with_index do |deal, index| %>
-                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-                <% end %>
-                <%= will_paginate @deals %>
+<div class="main">
+  <div class="dealsMap">
+    <div class="defaultWindow greyBackground" id="dealsList">
+      <div class="content">
+        <div class="zero-PagingTable">
+          <div class="zero-PagingTableGrid">
+            <% if @deals.empty? %>
+              <h4> Não há ofertas cadastradas ainda, seja o primeiro a compartilhar uma oferta com seus amigos!</h4>
+            <% else %>  
+              <% @deals.each_with_index do |deal, index| %>
+                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
               <% end %>
-            </div>
+              <%= will_paginate @deals %>
+            <% end %>
           </div>
         </div>
       </div>
