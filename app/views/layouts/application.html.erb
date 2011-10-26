@@ -90,47 +90,45 @@
             <div class="alerta alertaCerto" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
         <%- end -%>
-        
-        <div id="corpo" >
-          <%= yield %>
-          <%- if controller_name != 'sessions' && controller_name != 'pages' %>
-            <div class="lateral">
-              <div class="janelaPadrao estabelecimentosBairro">
-                <div class="barra">
-                  <% if user_signed_in? %>
-                    <h3>Painel do Usuário</h3>
-                  <% else %>
-                    <h3>O Que é o DealWit.Me?</h3>
-                  <% end %>
-                </div>
-                <div class="conteudo">
-                  <% if user_signed_in? %>
-                    <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username)) %></p><br/>
-                    <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
-                    <p><%= link_to "Editar meus dados", edit_user_registration_path %></p><br/>
-                    <!--<p><%= link_to I18n.t("actions.share_an_offer"), new_deal_path %></p>-->
-                  <% else %>
-                    <p>Um lugar onde podemos compartilhar ofertas e opiniões com nossos amigos.</p>
-                    <br/>
-                    <p>O objetivo do DealWit.Me é facilitar o acesso e a busca por ofertas ue se encontram espalhadas na rede, permitindo uma interação maior entre os usuários e as ofertas.</p>
-                    <br/>
-                    <p><%= link_to 'Crie seu perfil', new_user_registration_path %> e comece já a compartilhar ofertas com seus amigos.</p>
-                    <br/>
-                    <p>Leia mais sobre <a href="/pages/whoarewe">Quem Somos</a>.</p>
-                  <% end %>
-                </div>
+    
+        <%= yield %>
+        <%- if controller_name != 'sessions' && controller_name != 'pages' %>
+          <div class="lateral">
+            <div class="janelaPadrao estabelecimentosBairro">
+              <div class="barra">
+                <% if user_signed_in? %>
+                  <h3>Painel do Usuário</h3>
+                <% else %>
+                  <h3>O Que é o DealWit.Me?</h3>
+                <% end %>
               </div>
-              <div class="banner">
-                <%= image_tag asset_path('banner.jpg') %>
+              <div class="conteudo">
+                <% if user_signed_in? %>
+                  <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username)) %></p><br/>
+                  <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
+                  <p><%= link_to "Editar meus dados", edit_user_registration_path %></p><br/>
+                  <!--<p><%= link_to I18n.t("actions.share_an_offer"), new_deal_path %></p>-->
+                <% else %>
+                  <p>Um lugar onde podemos compartilhar ofertas e opiniões com nossos amigos.</p>
+                  <br/>
+                  <p>O objetivo do DealWit.Me é facilitar o acesso e a busca por ofertas ue se encontram espalhadas na rede, permitindo uma interação maior entre os usuários e as ofertas.</p>
+                  <br/>
+                  <p><%= link_to 'Crie seu perfil', new_user_registration_path %> e comece já a compartilhar ofertas com seus amigos.</p>
+                  <br/>
+                  <p>Leia mais sobre <a href="/pages/whoarewe">Quem Somos</a>.</p>
+                <% end %>
               </div>
             </div>
-          <%- end %>
-        </div>
+            <div class="banner">
+              <%= image_tag asset_path('banner.jpg') %>
+            </div>
+          </div>
+        <%- end %>
       </div>
 
       <!--  RODAPÉ -->
-      <div id="rodape">
-        <div class="interna menuBottom">
+      <div id="footer">
+        <div class="intern bottomMenu">
           <ul class="first">
             <li class="title">Sobre DealWit.Me</li>
             <li><a href="/pages/whoarewe"><%= I18n.t("actions.who_are_we") %></a></li>
@@ -179,7 +177,7 @@
         </div>
 
         <div class="socialMenu">
-          <div class="interna">
+          <div class="intern">
             <ul>
               <li class="title">Conheça também:</li>
               <li class="first"><a href="http://www.facebook.com/DealWit.Me" class="facebook" rel="nofollow" target="_blank" title="Facebook">Facebook</a></li>
@@ -189,7 +187,7 @@
         </div>
 
         <div class="copyright">
-          <ul class="interna">
+          <ul class="intern">
             <li>&copy;2011 dealwitme</li>
             <li><a href="/pages/termsofuse"><%= I18n.t('actions.terms_of_use') %></a></li>
             <li><a href="/pages/privacypolicy"><%= I18n.t('actions.privacy_policy') %></a></li>
