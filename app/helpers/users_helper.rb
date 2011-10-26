@@ -9,7 +9,7 @@ module UsersHelper
       options = args[1] || {}
       html_options = args[2]
       link_to_unless_current(name, options, html_options) do
-        link_to(name, options, html_options.try(:merge, :class => :ativo) || {:class => :ativo})
+        link_to(name, options, html_options.try(:merge, :class => :active) || {:class => :active})
       end
     end
   end

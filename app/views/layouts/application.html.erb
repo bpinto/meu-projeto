@@ -26,12 +26,12 @@
   </head>
 
   <body id="inicio">
-    <div id="pagina">
-      <div id="cabecalho">
+    <div id="page">
+      <div id="header">
         <!-- TODO: Menu -->
-				<div class="administracao">
-					<div class="interna">
-						<ul class="navGlobal">
+				<div class="admin">
+					<div class="intern">
+						<ul class="globalNavigation">
               <li><%= link_to_active I18n.t("actions.home"), root_path %></li>
               <li><%= link_to_active I18n.t("actions.todays_offers"), deals_today_path %></li>
               <li><%= link_to 'Blog', 'http://www.dealwit.us', :target => '_blank' %></li>
@@ -42,22 +42,22 @@
 				</div>
 
         <!-- TODO: CATEGORIAS -->
-        <div class="caminho">
-          <div class="conteudo">
+        <div class="logo">
+          <div class="content">
             <%= link_to "DealWit.Me", root_path, :class => "logo" %>
 
-            <form action="<%= search_path %>" method="get" class="busca">
+            <form action="<%= search_path %>" method="get" class="search">
               <fieldset>
                 <legend>Buscar</legend>
                 <%= text_field_tag :search, params[:search]%>
-                <button id="buscar" type="submit">Buscar</button>
+                <button id="search" type="submit">Buscar</button>
               </fieldset>
             </form>
           </div>
         </div>
 
-        <div class="categorias">
-          <div class="conteudo">
+        <div class="categories">
+          <div class="content">
             <ul class="menu">
               <li class="restaurant"><a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
               <li class="beauty-health"><a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
