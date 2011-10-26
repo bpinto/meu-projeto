@@ -8,10 +8,20 @@ div.main { float: left; width: 645px; }
 
 div.defaultWindow { clear: both; display: block; margin-bottom: 15px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; }
 
-div.defaultWindow div.alert { margin: 20px 20px 15px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
-
 div.defaultWindow::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
 div.alert { background: #E5F0F4; border: 2px solid #99C5D3; clear: both; display: block; margin: 20px 0 15px; padding: 15px; position: relative; }
+
+div.alert { margin: 20px 20px 15px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+
+div.errorAlert { background: #FAE5E5; border: 2px solid #EB9999; }
+div.errorAlert a.close { background-position: 0 -25px; }
+div.errorAlert a.close:hover { background-position: -25px -25px; }
+div.errorAlert p { color: #C00 !important; }
+div.successAlert { background: #F1F5E5; border: 2px solid #C9D999; }
+div.successAlert a.close { background-position: 0 -50px; }
+div.successAlert a.close:hover { background-position: -25px -50px; }
+div.successAlert p { color: #789F00 !important; }
+
 
 .greyBackground { background: #EEE; }
