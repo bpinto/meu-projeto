@@ -1,3 +1,24 @@
 div.main div.dealsMap { display: block; min-height: 375px; position: relative; }
 
 div.main div.dealsMap div.content { padding: 20px 5px 15px; }
+
+div.main div.dealsMap div.content div.content { padding: 0 }
+
+div.dealsList { background-color: #EEE;}
+
+div.dealsList div.deal { position: relative; width: 570px; background: white; border: 1px solid #DDD; display: block; min-height: 95px; margin: 0 15px 15px; padding: 15px 15px 0; position: relative; -moz-border-radius: 5px; -webkit-border-radius: 5px; -moz-box-shadow: 1px 1px 0 #fff; }
+
+div.dealsList div.deal::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+div.defaultDeal .dealPicture { background: white; border: 1px solid #CCC; display: block; float: left; height: 70px; overflow: hidden; margin: 0 15px 15px 0; overflow: hidden; padding: 5px; width: 85px; -moz-box-shadow: 1px 1px 3px #ddd; }
+
+div.defaultDeal .dealTitle { font: italic bold 18px/20px Arial, Helvetica, Sans-Serif; display: block; margin: 0 0 10px; }
+
+div.defaultDeal .dealTitle * { font: italic bold 18px/20px Arial, Helvetica, Sans-Serif; }
+div.defaultDeal .dealTitle a { text-decoration: none; }
+
+div.defaultDeal div.deal ul {display: block; margin-bottom: 5px; margin-left: 110px }
+
+div.defaultDeal div.deal ul li a,
+div.defaultDeal div.deal ul li strong { font: bold 10px/10px Verdana, Sans-Serif; }
+div.defaultDeal div.deal ul li a { text-decoration: none; }
