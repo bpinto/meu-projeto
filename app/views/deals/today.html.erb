@@ -1,18 +1,11 @@
-<div class="defaultWindow greyBackground">
+<div class="defaultWindow title greyBackground">
   <h1>Ofertas do Dia</h1>
 </div>
-<div class="principal">
-  <div class="estabelecimentosMapa">
-    <div class="janelaPadrao estabelecimentosPadrao" id="sitesPanelView">
-      <div class="conteudo fundoCinza">
-        <div class="alerta alertaAviso" style="display: none; "></div>
-        <!--<ul class="abasPadrao">
-          <li class="ofertas"><a tabindex="0" class="ativo" href="javascript:;">Ofertas quentes</a></li>
-          <li class="avaliacoes"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Mais bem avaliados no mês</a></li>
-          <li class="ordemAlfabetica"><a tabindex="0" class="gwt-Anchor" href="javascript:;">Ordem alfabética</a></li>
-        </ul>-->
-
-        <div class="conteudo">
+<div class="main">
+  <div class="dealsMap">
+    <div class="defaultWindow greyBackground dealsList" id="dealsList">
+      <div class="content">
+        <div class="content defaultDeal">
           <div class="zero-PagingTable">
             <div class="zero-PagingTableGrid">
               <% if @deals.empty? %>
@@ -21,7 +14,6 @@
                 <% @deals.each_with_index do |deal, index| %>
                   <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
                 <% end %>
-
                 <%= will_paginate @deals %>
               <% end %>
             </div>

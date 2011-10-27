@@ -10,17 +10,17 @@
     </div>
     <strong class="dealTitle"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
-      <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
-      <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
-      <li class="deal_company"><strong>Empresa: </strong><%= deal.company %></li>
+      <li class="dealUser"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
+      <li class="dealCategory"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
+      <li class="deaCompany"><strong>Empresa: </strong><%= deal.company %></li>
       <li>
-        <ul class="desconto">
+        <ul class="discount">
           <% if (deal.real_price && deal.price) %>
-            <li class="precoOriginal"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
-            <li class="precoOferta"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
+            <li class="dealRealPrice"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
+            <li class="dealPromoPrice"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
           <% end %>
-          <li class="desconto"><span>Desconto</span><strong><%= deal.discount %>%</strong></li> 
-          <li class="botao"><%= link_to 'Saiba mais', deal_path(deal), :class => "botao"%></li>
+          <li class="dealDiscount"><span>Desconto</span><strong><%= deal.discount %>%</strong></li> 
+          <li class="button"><%= link_to 'Saiba mais', deal_path(deal), :class => "button"%></li>
         </ul>
       </li>
     </ul>
