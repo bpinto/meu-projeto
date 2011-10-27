@@ -1,7 +1,7 @@
-<div class="principal">
-  <div class="janela media">
-    <div class="cima"></div>
-    <div class="meio criarPerfil" id="userCreateAreaId">
+<div class="main">
+  <div class="window mediumWindow">
+    <div class="up"></div>
+    <div class="middle newProfile" id="userCreateAreaId">
       <div>
         <!-- TODO: Imagem -->
         <h1>DealWit.me</h1>
@@ -47,7 +47,7 @@
 
             <!-- TODO: TERMOS -->
             <li>
-              <span class="concordar">
+              <span class="agree">
                 <%= check_box_tag(:terms_privacy, :terms_privacy) %>
                 <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
               </span>
@@ -60,7 +60,7 @@
         <% end %>
       </div>
     </div>
-    <div class="baixo"></div>
+    <div class="down"></div>
   </div>
 </div>
 				

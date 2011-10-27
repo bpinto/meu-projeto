@@ -1,7 +1,7 @@
-<div class="principal">
-  <div class="janela media">
-    <div class="cima"></div>
-    <div class="meio criarPerfil" id="userCreateAreaId">
+<div class="main">
+  <div class="window mediumWindow">
+    <div class="up"></div>
+    <div class="middle newProfile" id="userCreateAreaId">
       <div>
         <!-- TODO: Imagem -->
         <h1>DealWit.me</h1>
@@ -10,10 +10,12 @@
 
         <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
           <%= devise_error_messages! %>
-
-          <p><%= f.label :email %><br />
-          <%= f.text_field :email %></p>
-
+          <ol>
+            <li>
+              <%= f.label :email %>
+              <%= f.text_field :email %>
+            </li>
+          </ol>
           <div class="button">
             <p><%= f.submit I18n.t("actions.send_new_password"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></p>
           </div>
@@ -22,5 +24,6 @@
         <%= render :partial => "devise/shared/links" %>
       </div>
     </div>
+    <div class="down"></div>
   </div>
 </div>

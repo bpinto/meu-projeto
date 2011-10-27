@@ -27,5 +27,19 @@ div.errorAlert p { color: #C00 !important; }
 div.successAlert { background: #F1F5E5; border: 2px solid #C9D999; }
 div.successAlert p { color: #789F00 !important; }
 
+.window { margin: 0 auto 10px; }
+.window .up { background: url(<%= asset_path 'janela.png' %>) no-repeat; display: block; height: 20px; }
+.window .down { background: url(<%= asset_path 'janela.png' %>) no-repeat; display: block; height: 20px; }
+.window .middle { background: white; display: table; width: 100%; height: auto; }
+.window .middle::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+.bigWindow { width: 975px; }
+.bigWindow .up { background-position: 0 0; }
+.bigWindow .down { background-position: -975px 0; }
+
+.mediumWindow { width: 645px;}
+.mediumWindow .up { background-position: -3540px 0; }
+.mediumWindow .down { background-position: -4185px 0; }
+
 .greyBackground { background: #EEE; }
 .whiteBackground { background: #FFF; }
