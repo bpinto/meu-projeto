@@ -1,0 +1,32 @@
+.window { margin: 0 auto 10px; }
+.window .middle { background: white; display: table; width: 100%; height: auto; }
+
+.window .up { background: url(<%= asset_path 'janela.png' %>) no-repeat; display: block; height: 20px; }
+.window .down { background: url(<%= asset_path 'janela.png' %>) no-repeat; display: block; height: 20px; }
+
+.window .middle::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+.bigWindow { width: 975px; }
+.bigWindow .up { background-position: 0 0; }
+.bigWindow .down { background-position: -975px 0; }
+.bigWindow .menu { float: left; width: 795px; }
+.bigWindow .menu .up { background-position: -1950px 0; }
+.bigWindow .menu .down { background-position: -2745px 0; }
+
+div.doc p { display: block; font: 12px/18px Verdana, Sans-Serif; margin: 0 30px 15px; }
+
+/*privacypolicy*/
+.doc .privacypolicy {text-align: justify;}
+.doc .privacypolicy p {font-size: 12px;}
+.doc .privacypolicy strong {color: black; font-size: 12px; }
+.doc .privacypolicy .title strong {color: black; font-size: 16px; }
+.doc .privacypolicy .subtitle strong {color: black; font-size: 14px; }
+.doc .privacypolicy .item p {padding:0 0 0 30px;}
+
+/*termsofuse*/
+.doc .termsOfUse {text-align: justify;}
+.doc .termsOfUse p {font-size: 12px;}
+.doc .termsOfUse strong {color: black; font-size: 12px; }
+.doc .termsOfUse .title strong {color: black; font-size: 16px; }
+.doc .termsOfUse .subtitle strong {color: black; font-size: 14px; }
+.doc .termsOfUse .item p {padding:0 0 0 30px;}
