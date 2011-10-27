@@ -93,18 +93,18 @@
     
         <%= yield %>
         <%- if controller_name != 'sessions' && controller_name != 'pages' %>
-          <div class="lateral">
-            <div class="janelaPadrao estabelecimentosBairro">
-              <div class="barra">
+          <div class="side">
+            <div class="defaultWindow whiteBackground">
+              <div class="title">
                 <% if user_signed_in? %>
                   <h3>Painel do Usuário</h3>
                 <% else %>
                   <h3>O Que é o DealWit.Me?</h3>
                 <% end %>
               </div>
-              <div class="conteudo">
+              <div class="content">
                 <% if user_signed_in? %>
-                  <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username)) %></p><br/>
+                  <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username), :class => :userPicture) %></p><br/>
                   <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
                   <p><%= link_to "Editar meus dados", edit_user_registration_path %></p><br/>
                   <!--<p><%= link_to I18n.t("actions.share_an_offer"), new_deal_path %></p>-->
