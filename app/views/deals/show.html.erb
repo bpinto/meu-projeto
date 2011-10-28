@@ -1,7 +1,7 @@
 <!-- PRINCIPAL -->
-<div class="principal">
+<div class="main">
   <!-- pagina oferta -->
-  <div class="janelaPadrao paginaOferta">
+  <div class="defaulWindow dealPage">
     <!-- AddThis Button BEGIN -->
     <div class="addthis_toolbox addthis_default_style ">
       <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
@@ -12,38 +12,38 @@
     <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e6fcafd7ed570a3"></script>
     <!-- AddThis Button END -->
     <!-- titulo -->
-    <div class="titulo">
-      <h1 class="deal_title"><%= @deal.title %></h1>
-      <span class="deal_category"><%= Deal.i18n_category(@deal.category) %></span>
+    <div class="title">
+      <h1 class="dealTitle"><%= @deal.title %></h1>
+      <span class="dealCategory"><%= Deal.i18n_category(@deal.category) %></span>
     </div>
     <!-- titulo -->
 
     <!-- detalhes -->
-    <div class="detalhes">
-      <div class="foto">
+    <div class="details">
+      <div class="dealPicture">
         <!-- TODO: IMAGEM -->
         <div><%= link_to(image_tag(asset_path('semImagem.jpg'), :alt => "Oferta sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
       </div>
-      <div class="desconto">
+      <div class="discount">
         <div class="bigTicket special discountTicket">
-          <strong class="deal_discount"><%= @deal.discount %><sup>%</sup></strong>
+          <strong class="dealDiscount"><%= @deal.discount %><sup>%</sup></strong>
         </div>
         
         <% if @deal.price? %>
-          <div class="de">
+          <div class="from">
             <span>de:</span>
             <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-            <strong class="deal_real_price"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
+            <strong class="dealRealPrice"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
           </div>
-          <div class="por ">
+          <div class="for ">
             <span>por:</span>
             <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-            <strong class="deal_price"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
+            <strong class="dealPromoPrice"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
           </div>
         <% end %>
 
-        <div class="comprar">
-          <%= link_to "Ir para o site", @deal.link, :class => "botao" %>
+        <div class="goToWebsite">
+          <%= link_to "Ir para o site", @deal.link, :class => "button" %>
         </div>
         <% if user_signed_in? %>
           <div class="votes">
@@ -69,57 +69,55 @@
     </div>
     <!-- /detalhes -->
     <div class="info">
-      <div class="barra">
+      <div class="title">
         <h2>Descrição da Oferta</h2>
       </div>
-      <div class="conteudo">
+      <div class="content">
         <p><%= @deal.description %></p>
       </div>
     </div>
   </div>
   <!-- /pagina oferta -->
 
-
     <!-- TODO: COMENTÁRIO -->
-    <div class="conteudo">
+    <div class="content">
       <!-- janela CONTEÚDO --> 
-  	  <div class="media"> 
-			  <div class="janela menu"> 
-				  <div class="cima"></div> 
-					<div class="meio" id="tabAreaId" style="min-height: 150px;"> 
-					  <div class="janelaResumo avaliacoes"> 
-						  <div class="barraCima"> 
-							  <h4><%= I18n.t("comments") %></h4> 
-                <div class="topico novo" >
+      <div class="window"> 
+        <div class="mediumWindow"> 
+          <div class="up"></div> 
+          <div class="middle profile" id="tabAreaId" style="min-height: 150px;"> 
+            <div class="briefWindow opinions"> 
+              <div class="upBar"> 
+                <h4><%= I18n.t("comments") %></h4> 
+                <div class="topic newTopic" >
                   <% if can? :manage, @comment %>
-                    <div class="comentario" >
+                    <div class="newComment" >
                       <%= form_for([@deal,@comment]) do |f| %>
                         <%= f.text_area :comment, :class => "TextArea" %><br/>
-                        <%= f.submit I18n.t("actions.comment") %>
+                        <%= f.submit I18n.t("actions.comment"), :class => :button %>
                       <% end %>
                     </div>
                   <% end %>
                 </div>
-						  </div> 
+              </div> 
               <% if not @deal.comments.empty? %>
-		  				  <div class="conteudo"> 
+                <div class="content"> 
                   <% @deal.comments.each do |comment| %>
                     <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
                   <% end %>
-  							</div>  
+                </div>  
               <% else %>
-                <div class="semConteudo">
+                <div class="withoutContent">
                   <h4>Não há comentários cadastrados para essa oferta ainda. Seja o primeiro a dar sua opinião escrevendo seu comentário no campo acima.</h4>
                 </div>
               <% end %>
-              <div class="barraBaixo"> 
-							  <!-- paginacao  -->
-							</div> 
+              <div class="downBar"><!-- paginacao  --></div> 
             </div> 
-  				</div> 
- 				</div>
-			</div>
-  		<!-- /janela CONTEÚDO --> 
+          </div>
+          <div class="down"></div>
+        </div>
+      </div>
+      <!-- /janela CONTEÚDO --> 
     </div>
 </div>
 <!-- /PRINCIPAL -->

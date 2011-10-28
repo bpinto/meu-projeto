@@ -1,17 +1,10 @@
-<div class="hreview topico avaliacao resposta satisfacao"> 
-  <span class="item"> 
-	  <span class="fn"> 
-		  <span class="value-title" title="MTS Performance"></span> 
-			</span> 
-		</span> 
-    <%= link_to(image_tag(comment.user.gravatar_url(:size => 39)), user_path(comment.user.username), :class => "usuario") %>
-    <div class="comentario"> 
-      <p class="description texto"><%= comment.comment %></p> 
-      <div class="detalhes">
-        <p class="usuario"><span class="reviewer"><%= link_to(comment.user.username, user_path(comment.user.username)) %></span> em <%= l comment.created_at.to_date %></p> 
-			</div>																		
-      <div class="respostas"> 
-      </div> 
-		</div> 
-	</div> 
-</div> 
+<div class="hreview topic opinion answer happiness">
+  <%= link_to(image_tag(comment.user.gravatar_url(:size => 39)), user_path(comment.user.username), :class => "user") %>
+  <div class="comment">
+    <p class="description text"><%= comment.comment %></p>
+    <div class="details">
+      <p class="user"><span class="reviewer"><%= link_to(comment.user.username, user_path(comment.user.username)) %></span> em <%= l comment.created_at.to_date %></p> 
+	  </div>
+    <div class="answers"></div>
+	</div>
+</div>

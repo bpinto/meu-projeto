@@ -34,6 +34,14 @@ div.successAlert p { color: #789F00 !important; }
 .window .down { background: url(<%= asset_path 'janela.png' %>) no-repeat; display: block; height: 20px; }
 .window .middle { background: white; display: table; width: 100%; height: auto; }
 .window .middle::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.window .topic { clear: both; display: table; width: 510px; }
+.window .topic .newComment { display: block; float: left; width: 375px; }
+.window .topic .comment { display: block; float: left; width: 375px; }
+.window .topic .comment p.text { clear: both; color: #888; display: block; font: normal normal normal 11px/17px Verdana, Sans-Serif; padding: 10px 15px 7px 25px; table-layout: fixed; width: 335px; word-wrap: break-word; }
+.window .topic .comment .details { display: block; clear: both; overflow: hidden; padding: 10px 15px 15px 25px; }
+.window .topic .comment .details span { color: #AAA; font: normal normal normal 10px/15px Verdana, Sans-Serif; }
+.window .answer .comment { background-position: -2706px 0; width: 455px; }
+.window .answer .comment .details { background-position: -2706px bottom; }
 
 .bigWindow { width: 975px; }
 .bigWindow .up { background-position: 0 0; }
@@ -42,6 +50,9 @@ div.successAlert p { color: #789F00 !important; }
 .mediumWindow { width: 645px;}
 .mediumWindow .up { background-position: -3540px 0; }
 .mediumWindow .down { background-position: -4185px 0; }
+.mediumWindow .menu { float: left; }
 
 .greyBackground { background: #EEE; }
 .whiteBackground { background: #FFF; }
+
+img { border: none; display: block; }
