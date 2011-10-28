@@ -1,22 +1,21 @@
-<div class="vcard"> 
-	<!-- principal --> 
-	<div class="principal"> 
+  <!-- principal --> 
+	<div class="main"> 
 		<!-- janela PERFIL --> 
-		<div class="janela media"> 
-			<div class="cima"></div> 
-				<div class="meio perfil"> 
-					<div class="titulo"> 
+		<div class="window mediumWindow"> 
+			<div class="up"></div> 
+				<div class="middle profile"> 
+					<div class="title"> 
 					  <h1 class="fn"><%= @user.name %></h1> 
             <% if current_user == @user %>
               <%= link_to "Editar meus dados", edit_user_registration_path %>
             <% end %>
             <br/>
 					</div> 
-					<div class="foto consumidor photo"> 
+					<div class="userPicture"> 
 					  <%= image_tag @user.gravatar_url %>
 					</div>
-					<strong class="titulo">Um pouco sobre mim</strong> 
-					<div class="sobremim"> 
+					<strong class="title">Um pouco sobre mim</strong> 
+					<div class="aboutMe"> 
 					  <p><%= @user.deals.count %> <%= I18n.t("models.user.deals") %></p><br/>
 					  <p><%= @user.followers.count %> <%= I18n.t("models.user.followers") %></p><br/>
 					  <p><%= I18n.t("models.user.following") %> <%= @user.following.count %> <%= I18n.t "users" %> </p><br/>
@@ -36,49 +35,25 @@
   				  </ul> 
           <% end %>
 			  </div> 
-		  <div class="baixo"></div> 
-		</div> 
-		<!-- /janela PERFIL --> 
-						
-		<!-- janela CONTEÚDO --> 
-    <!--<div class="media"> 
-			<ul id="menu" class="menuUl"> 
-				<li><a href="#strongPoints" onclick="return updateToken(this);">Minhas Ofertas Compartilhadas</a></li> 
-				<li><a href="#evaluation" onclick="return updateToken(this);">Meus Dados</a></li> 
-			  <li><a href="#profile" onclick="return updateToken(this);">Informações</a></li> 
-			</ul> -->
-    <div class="principal">
-      <div class="estabelecimentosMapa">
-        <div class="janelaPadrao estabelecimentosPadrao abas" id="sitesPanelView">
-          <div class="conteudo">
-	
-    				<div class="cima"></div> 
-		    		<div class="meio" id="tabAreaId" style="min-height: 200px;">
-              <% @deals.each_with_index do |deal, index| %>
-                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-              <% end %>
+		  <div class="down"></div> 
+		</div>
+
+    <div class="main">
+      <div class="dealsMap">
+        <div class="defaultWindow greyBackground dealsList" id="sitesPanelView">
+          <div class="content">
+	          <div class="content defaultDeal">
+    				  <div class="up"></div> 
+		    		  <div class="middle" id="tabAreaId" style="min-height: 200px;">
+                <% @deals.each_with_index do |deal, index| %>
+                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+                <% end %>
+              </div>
             </div> 
-		    	  <div class="baixo"></div> 
+		    	  <div class="down"></div> 
 		      </div>
 		    </div> 
       </div>
     </div>
 	  <!-- /janela CONTEÚDO --> 
 	</div> 
-	<!-- /principal --> 
-	<!-- lateral --> 
-  <!--<div class="lateral"> -->
-		<!-- janela ÚLTIMOS TÓPICOS --> 
-  	<!--<div class="janela pequena"> 
-		  <div class="barra"> 
-			  <h3>Tópicos que participou</h3> 
-		  </div> 
-			<div class="meio ultimosTopicos"> 
-			  <p class="semInteracao">Usuário ainda não interagiu com nenhum tópico</p> 
-			</div> 
-		  <div class="baixo"></div> 
-		</div>  -->
-		<!-- /janela ÚLTIMOS TÓPICOS --> 
-	<!--</div> -->
-	<!-- /lateral --> 
-</div> 

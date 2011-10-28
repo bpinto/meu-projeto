@@ -1,10 +1,9 @@
-<div class="principal">
-  <div class="janela media">
-    <div class="cima"></div>
-    <div class="meio criarPerfil" id="newDealPage">
+<div class="main">
+  <div class="window mediumWindow">
+    <div class="up"></div>
+    <div class="middle newProfile" id="newDealPage">
       <div>
-        <!-- TODO: Imagem -->
-        <h1>DealWit.Me - Deals#new</h1>
+        <h1>DealWit.Me</h1>
         <!-- TODO: Facebook / Google -->
         <h3>Compartilhe uma oferta preenchendo os campos abaixo e clicando em salvar</h3>
 
@@ -34,7 +33,7 @@
             <li>
               <%= f.label :discount %>
               <%= f.text_field :discount %>
-              <span class="limite">
+              <span class="tips">
                 Somente números
               </span>
             </li>
@@ -52,7 +51,7 @@
             <li>
               <%= f.label :end_date %>
               <%= f.text_field :end_date, :class => "datepicker" %>
-              <span class="limite">
+              <span class="tips">
                 Informe a data no formato dd/mm/aaaa
               </span>
             </li>
@@ -60,7 +59,7 @@
             <li>
               <%= f.label :link %>
               <%= f.text_field :link %>
-              <span class="limite">
+              <span class="tips">
                 O link deve ser no formato http:// ou https://
               </span>
             </li>
@@ -85,7 +84,7 @@
         <% end %>
       </div>
     </div>
-    <div class="baixo"></div>
+    <div class="down"></div>
   </div>
 </div>
 				
