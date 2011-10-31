@@ -13,24 +13,24 @@
               <%= f.label :title %>
               <%= f.text_field :title %>
             </li>
-            
-            <li>
-              <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'} %>
-            </li>
 
             <li>
+              <%= f.label :kind %>
+              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'}, {'data-switcher' => "1:#li_deal_price,#li_deal_real_price||2:#li_deal_discount||3:#li_deal_price,#li_deal_real_price"} %>
+            </li>
+
+            <li id="li_deal_real_price">
               <%= f.label :real_price %>
               <%= f.text_field :real_price_mask, :class => "money" %>
             </li>
 
-            <li>
+            <li id="li_deal_price">
               <%= f.label :price %>
               <%= f.text_field :price_mask, :class => "money" %>
             </li>
 
             <!-- TODO: colocar javascript para ue desconto só apareça quando for do tipo liquidacao -->
-            <li>
+            <li id="li_deal_discount">
               <%= f.label :discount %>
               <%= f.text_field :discount %>
               <span class="tips">
@@ -87,7 +87,7 @@
     <div class="down"></div>
   </div>
 </div>
-				
+
 <script>
 $(function(){
     $(".money").maskMoney({symbol:"R$ ", decimal:",", thousands:"."})
