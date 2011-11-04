@@ -40,7 +40,7 @@ class Deal < ActiveRecord::Base
   validates :company,     :presence => true
   validates :description, :presence => true
   validates :discount,    :presence => true,      :if => "on_sale?"
-  validates :end_date,    :timeliness => {:after => :now},  :allow_nil => true
+  validates :end_date,    :date => {:after_or_equal_to => Date.today},  :allow_nil => true
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true,  :unless => "on_sale?"
@@ -65,7 +65,8 @@ class Deal < ActiveRecord::Base
   default_scope order("deals.created_at desc")
   # scope :recent, order("deals.created_at DESC")
 
-  scope :today, where("deals.created_at >= ?", Date.today)
+  #TODO: Bruno, estava com >= aqui na primeira query, acredito que seja um erro nao? deveria ser somente =, ou nao?
+  scope :today, where("deals.created_at = ?", Date.today)
   scope :active, where("deals.end_date >= ? OR deals.end_date is null", Date.today)
 
   def self.by_category(category)

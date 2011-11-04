@@ -51,13 +51,18 @@ describe Deal do
       end
 
       describe "#end_date" do
-        it "should not be before or equal to now" do
-          deal.end_date = Time.now
+        it "should not be before today" do
+          deal.end_date = Date.today - 1
           deal.should_not be_valid
         end
 
-        it "should be after now" do
-          deal.end_date = Time.now + 1
+        it "could be equal to today" do
+          deal.end_date = Date.today
+          deal.should be_valid
+        end
+
+        it "could be after today" do
+          deal.end_date = Date.today + 1
           deal.should be_valid
         end
       end
