@@ -92,7 +92,7 @@
 $(function(){
     $(".money").maskMoney({symbol:"R$ ", decimal:",", thousands:"."})
     $( ".datepicker" ).datepicker({
-      showButtonPanel: true, dateFormat: 'dd/mm/yy'
+      showButtonPanel: true, dateFormat: 'dd/mm/yy', minDate: new Date()
     });
 });
 </script>
