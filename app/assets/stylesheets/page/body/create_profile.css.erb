@@ -1,4 +1,3 @@
-
 div.newProfile h1 { background: url(<%= asset_path 'logo-interna.png' %>) no-repeat; display: block; height: 40px; margin: 30px 50px; overflow: hidden; text-indent: -999em; width: 290px; }
 
 div.newProfile h3 { color: black; font-size: 16px; line-height: 25px; margin: 20px 50px; }
@@ -7,9 +6,17 @@ div.newProfile ol { padding: 5px 50px; }
 
 div.newProfile ol li { list-style: none; margin-bottom: 15px; overflow: hidden; }
 
+div.newProfile ol li div.field_with_errors label { color: red; }
+
+div.newProfile ol li div.field_with_errors input,
+div.newProfile ol li div.field_with_errors textarea,
+div.newProfile ol li div.field_with_errors select { border-color: red; margin-right: 5px; }
+
 div.newProfile ol li label { font: normal normal bold 12px/12px Verdana, Sans-Serif; display: block; float: left; padding: 7px 0; width: 150px; }
 
 div.newProfile ol li input { background: #EEE; border: 1px solid; float: left; padding: 6px; border-color: #CCC #DDD #DDD #CCC; }
+
+div.newProfile ol li textarea { background: #EEE; border: 1px solid; float: left; padding: 6px; border-color: #CCC #DDD #DDD #CCC; }
 
 div.newProfile ol li select { background: #EEE; border: 1px solid; float: left; margin-right: 15px; padding: 5px; width: 150px; border-color: #CCC #DDD #DDD #CCC; }
 

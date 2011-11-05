@@ -233,6 +233,7 @@
       deal:
         category: "Categoria"
         city: "Cidade"
+        city_id: "Cidade"
         company: "Empresa"
         description: "Descrição"
         discount: "Desconto"
