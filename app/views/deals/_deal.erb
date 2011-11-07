@@ -1,12 +1,15 @@
 <div class="offer">
   <div class="deal">
     <%= link_to(image_tag(asset_path('semImagem.jpg'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "dealPicture") %>
-    <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}" style="float: right" >
-      <% if deal.end_date? %>
-        <%= l deal.end_date.to_date %>
-      <% else %>
-        Não informado
-      <% end %>
+    <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}" >
+      <div class="dealDate">
+        <strong>Válida até:</strong>
+        <% if deal.end_date? %>
+          <%= l deal.end_date.to_date %>
+        <% else %>
+          Não informado
+        <% end %>
+      </div>
     </div>
     <strong class="dealTitle"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
