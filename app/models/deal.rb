@@ -65,8 +65,6 @@ class Deal < ActiveRecord::Base
   default_scope order("deals.created_at desc")
   # scope :recent, order("deals.created_at DESC")
 
-  #TODO: Bruno, estava com >= aqui na primeira query, acredito que seja um erro nao? deveria ser somente =, ou nao?
-  #quando mudei pra somente =, parou de mostrar as ofertas do dia, ficando sempre com uma lista vazia na página de ofertas do dia, nao erntendi o pq
   scope :today, where("deals.created_at >= ?", Date.today)
   scope :active, where("deals.end_date >= ? OR deals.end_date is null", Date.today)
 

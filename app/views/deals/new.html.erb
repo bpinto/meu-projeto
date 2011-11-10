@@ -15,7 +15,7 @@
 
             <li>
               <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'}, {'data-switcher' => "1:#li_deal_price,#li_deal_real_price||2:#li_deal_discount||3:#li_deal_price,#li_deal_real_price"} %>
+              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'}, {'data-switcher' => "1:#li_deal_price,#li_deal_real_price||2:#li_deal_price,#li_deal_real_price||3:#li_deal_discount"} %>
             </li>
 
             <li id="li_deal_real_price">
