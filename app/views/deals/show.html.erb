@@ -26,7 +26,7 @@
       </div>
       <div class="discount">
         <div class="bigTicket special discountTicket">
-          <strong class="dealDiscount"><%= @deal.discount %><sup>%</sup></strong>
+          <strong class="dealDiscount"><%= @deal.discount.to_i %>%</strong>
         </div>
         
         <% if @deal.price? %>
