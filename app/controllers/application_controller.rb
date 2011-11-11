@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate
+#  before_filter :authenticate
 
   protect_from_forgery
 
@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def authenticate
-    return true unless Rails.env == "production"
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "dealwitme" && password == "123dealwitme"
-    end
-  end
+#  def authenticate
+#    return true unless Rails.env == "production"
+#    authenticate_or_request_with_http_basic do |username, password|
+#      username == "dealwitme" && password == "123dealwitme"
+#    end
+#  end
 end
