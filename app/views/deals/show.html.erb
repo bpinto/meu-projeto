@@ -59,9 +59,9 @@
               <% end %>
               <div class="likes">
                 <% if @deal.up_votes <= 1 %>
-                  <span><%= @deal.up_votes %> pessoa gostou dessa oferta!</span>
+                  <span><%= @deal.up_votes %> gostou!</span>
                 <% else %>
-                  <span><%= @deal.up_votes %> pessoas gostaram dessa oferta!</span>
+                  <span><%= @deal.up_votes %> gostaram!</span>
                 <% end %>
               </div>
             </div>
@@ -73,9 +73,9 @@
               <% end %>
               <div class="dislikes">
                 <% if @deal.down_votes <= 1 %>
-                  <span><%= @deal.down_votes %> pessoa não gostou dessa oferta!</span>
+                  <span><%= @deal.down_votes %> não gostou!</span>
                 <% else %>
-                  <span><%= @deal.down_votes %> pessoas não gostaram dessa oferta!</span>
+                  <span><%= @deal.down_votes %> não gostaram!</span>
                 <% end %>
               </div>
             </div>

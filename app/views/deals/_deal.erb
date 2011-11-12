@@ -19,16 +19,16 @@
       <li class="dealCity"><strong>Válida para: </strong><%= deal.city.name %></li>
       <li class="likes">
         <% if deal.up_votes <= 1 %>
-          <strong><%= deal.up_votes %> gostou</strong> dessa oferta!
+          <strong><%= deal.up_votes %> gostou!</strong>
         <% else %>
-          <strong><%= deal.up_votes %> gostaram</strong> dessa oferta!
+          <strong><%= deal.up_votes %> gostaram!</strong>
         <% end %>
       </li>
       <li class="dislikes">
         <% if deal.down_votes <= 1 %>
-          <strong><%= deal.down_votes %> não gostou</strong> dessa oferta!
+          <strong><%= deal.down_votes %> não gostou!</strong>
         <% else %>
-          <strong><%= deal.down_votes %> não gostaram</strong> dessa oferta!
+          <strong><%= deal.down_votes %> não gostaram!</strong>
         <% end %>
       </li>
       <li>
