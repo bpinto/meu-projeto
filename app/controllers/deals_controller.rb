@@ -44,12 +44,10 @@ class DealsController < AuthorizedController
   end
 
   def downvote
-    deal = Deal.find(params[:id])
-    current_user.down_vote(deal)
-    deal.down_votes += 1
-    redirect_to deal_path(deal), :notice => "Voto computado com sucesso!"
+    current_user.down_vote(@deal)
+    redirect_to deal_path(@deal), :notice => "Voto computado com sucesso!"
   rescue MakeVoteable::Exceptions::AlreadyVotedError
-    redirect_to deal_path(deal), :error => "Voto já computado anteriormente."
+    redirect_to deal_path(@deal), :error => "Voto já computado anteriormente."
   end
 
   private

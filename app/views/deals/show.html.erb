@@ -14,6 +14,7 @@
     <!-- titulo -->
     <div class="title">
       <h1 class="dealTitle"><%= @deal.title %></h1>
+      <strong>Compartilhada por: </strong><%= link_to @deal.user.username, user_path(@deal.user.username) %>
     </div>
     <!-- titulo -->
 
@@ -45,8 +46,8 @@
           <%= link_to "Ir para o site", @deal.link, :class => "button" %>
         </div>
         <div class="dealInfo">
-          <strong>Em: </strong><span class="dealCategory"><%= Deal.i18n_category(@deal.category) %></span><br/>
-          <strong>Válida para: </strong><spam class="dealCity"><%= @deal.city.name %></spam>
+          <li><strong>Em: </strong><span class="dealCategory"><%= Deal.i18n_category(@deal.category) %></span></li>
+          <li><strong>Válida para: </strong><spam class="dealCity"><%= @deal.city.name %></spam></li>
         </div>
         <% if user_signed_in? %>
           <div class="votes">
@@ -56,7 +57,13 @@
               <% else %>
                 <%= link_to 'Gostei!', upvote_deal_path(@deal), :class => "like" %>
               <% end %>
-              <!--<span><%= @deal.up_votes %> gostaram dessa oferta!</span>-->
+              <div class="likes">
+                <% if @deal.up_votes <= 1 %>
+                  <span><%= @deal.up_votes %> pessoa gostou dessa oferta!</span>
+                <% else %>
+                  <span><%= @deal.up_votes %> pessoas gostaram dessa oferta!</span>
+                <% end %>
+              </div>
             </div>
             <div class="dislike"> 
               <% if current_user.down_voted? @deal %>
@@ -64,7 +71,13 @@
               <% else %>
                 <%= link_to 'Não gostei!', downvote_deal_path(@deal), :class => "dislike" %>
               <% end %>
-              <!--<span><%= @deal.down_votes %> não gostaram dessa oferta!</span>-->
+              <div class="dislikes">
+                <% if @deal.down_votes <= 1 %>
+                  <span><%= @deal.down_votes %> pessoa não gostou dessa oferta!</span>
+                <% else %>
+                  <span><%= @deal.down_votes %> pessoas não gostaram dessa oferta!</span>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
