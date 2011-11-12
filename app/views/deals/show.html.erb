@@ -14,7 +14,6 @@
     <!-- titulo -->
     <div class="title">
       <h1 class="dealTitle"><%= @deal.title %></h1>
-      <span class="dealCategory"><%= Deal.i18n_category(@deal.category) %></span>
     </div>
     <!-- titulo -->
 
@@ -44,6 +43,10 @@
 
         <div class="goToWebsite">
           <%= link_to "Ir para o site", @deal.link, :class => "button" %>
+        </div>
+        <div class="dealInfo">
+          <strong>Em: </strong><span class="dealCategory"><%= Deal.i18n_category(@deal.category) %></span><br/>
+          <strong>Válida para: </strong><spam class="dealCity"><%= @deal.city.name %></spam>
         </div>
         <% if user_signed_in? %>
           <div class="votes">

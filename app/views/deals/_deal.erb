@@ -16,6 +16,7 @@
       <li class="dealUser"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
       <li class="dealCategory"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
       <li class="deaCompany"><strong>Empresa: </strong><%= deal.company %></li>
+      <li class="dealCity"><strong>Válida para: </strong><%= deal.city.name %></li>
       <li>
         <ul class="discount">
           <% if (deal.real_price && deal.price) %>
