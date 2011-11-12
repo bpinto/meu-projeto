@@ -17,6 +17,20 @@
       <li class="dealCategory"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
       <li class="deaCompany"><strong>Empresa: </strong><%= deal.company %></li>
       <li class="dealCity"><strong>Válida para: </strong><%= deal.city.name %></li>
+      <li class="likes">
+        <% if deal.up_votes <= 1 %>
+          <strong><%= deal.up_votes %> gostou</strong> dessa oferta!
+        <% else %>
+          <strong><%= deal.up_votes %> gostaram</strong> dessa oferta!
+        <% end %>
+      </li>
+      <li class="dislikes">
+        <% if deal.down_votes <= 1 %>
+          <strong><%= deal.down_votes %> não gostou</strong> dessa oferta!
+        <% else %>
+          <strong><%= deal.down_votes %> não gostaram</strong> dessa oferta!
+        <% end %>
+      </li>
       <li>
         <ul class="discount">
           <% if (deal.real_price && deal.price) %>
