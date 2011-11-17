@@ -22,7 +22,7 @@
     <div class="details">
       <div class="dealPicture">
         <!-- TODO: IMAGEM -->
-        <div><%= link_to(image_tag(asset_path('semImagem.jpg'), :alt => "Oferta sem imagem", :title => @deal.title), deal_path(@deal), :class => "foto") %></div>
+        <div><%= link_to(image_tag(asset_path('no_picture_big.png'), :alt => "Oferta sem imagem", :title => @deal.title, :size => '10px'), deal_path(@deal), :class => "foto") %></div>
       </div>
       <div class="discount">
         <div class="bigTicket special discountTicket">

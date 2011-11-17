@@ -3,7 +3,7 @@ module DealsHelper
   def single_default_deal(deal, index)
     html = <<-EOS
       <div class="offer">
-        #{link_to(image_tag(asset_path 'semImagem.jpg', :alt => deal.title, :title => deal.title, :class => "offer_img", :width => '200', :height => '150'), deal.link, :rel => "nofollow", :target => '_blank')}
+        #{link_to(image_tag(asset_path 'no_picture.png', :alt => deal.title, :title => deal.title, :class => "offer_img", :width => '200', :height => '150'), deal.link, :rel => "nofollow", :target => '_blank')}
         <div class="offer_text">
           <div class="offer_desc">
             <h2 class="deal_title">#{link_to(deal.title, deal.link, :rel => "nofollow", :target => '_blank')}</h2>
