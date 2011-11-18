@@ -59,18 +59,90 @@
         <div class="categories">
           <div class="content">
             <ul class="menu">
-              <li class="restaurant"><a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
-              <li class="beauty-health"><a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-              <li class="electronics"><a href="/deals/today/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
-              <li class="culture"><a href="/deals/today/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
-              <li class="home"><a href="/deals/today/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
-              <li class="fitness"><a href="/deals/today/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
-              <li class="computer"><a href="/deals/today/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-              <li class="clothes"><a href="/deals/today/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
-              <li class="travel"><a href="/deals/today/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-              <li class="kids"><a href="/deals/today/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
-              <li class="car"><a href="/deals/today/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
-              <li class="others"><a href="/deals/today/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
+              <li class="restaurant">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
+                <% else %>
+                  <a href="/deals/active/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
+                <% end %>
+              </li>
+              <li class="beauty-health">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
+                <% else %>
+                  <a href="/deals/active/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
+                <% end %>
+                </li>
+              <li class="electronics">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
+                <% else %>
+                  <a href="/deals/active/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
+                <% end %>
+              </li>
+              <li class="culture">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
+                <% else %>
+                  <a href="/deals/active/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
+                <% end %>
+              </li>
+              <li class="home">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
+                <% else %>
+                  <a href="/deals/active/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
+                <% end %>
+              </li>
+              <li class="fitness">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
+                <% else %>
+                  <a href="/deals/active/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
+                <% end %>
+              </li>
+              <li class="computer">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
+                <% else %>
+                  <a href="/deals/active/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
+                <% end %>
+              </li>
+              <li class="clothes">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
+                <% else %>
+                  <a href="/deals/active/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
+                <% end %>
+              </li>
+              <li class="travel">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
+                <% else %>
+                  <a href="/deals/active/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
+                <% end %>
+              </li>
+              <li class="kids">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
+                <% else %>
+                  <a href="/deals/active/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
+                <% end %>
+              </li>
+              <li class="car">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
+                <% else %>
+                  <a href="/deals/active/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
+                <% end %>
+              </li>
+              <li class="others">
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
+                <% else %>
+                  <a href="/deals/active/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
@@ -145,22 +217,93 @@
 
           <ul class="second">
             <li class="title">Categorias</li>
-            <li><a href="/deals/today/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
-            <li><a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-            <li><a href="/deals/today/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
-            <li><a href="/deals/today/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
-            <li><a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
-            <li><a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
+              <% else %>
+                <a href="/deals/active/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
+              <% else %>
+                <a href="/deals/active/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
+              <% else %>
+                <a href="/deals/active/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
+              <% else %>
+                <a href="/deals/active/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
+              <% else %>
+                <a href="/deals/active/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
+              <% else %>
+                <a href="/deals/active/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
+              <% end %>
+            </li>
           </ul>
 
           <ul class="third">
             <li class="title">Categorias</li>
-            <li><a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-            <li><a href="/deals/today/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
-            <li><a href="/deals/today/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-            <li><a href="/deals/today/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
-            <li><a href="/deals/today/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
-            <LI><a href="/deals/today/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
+              <% else %>
+                <a href="/deals/active/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
+              <% else %>
+                <a href="/deals/active/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
+              <% end %>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
+              <% else %>
+                <a href="/deals/active/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
+              <% else %>
+                <a href="/deals/active/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
+              <% else %>
+                <a href="/deals/active/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
+              <% end %>
+            </li>
+            <li>
+              <% if controller_name == 'deals' && action_name ==  'today' %>
+                <a href="/deals/today/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
+              <% else %>
+                <a href="/deals/active/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
+              <% end %>
+            </li>
           </ul>
 
           <ul class="fourth">

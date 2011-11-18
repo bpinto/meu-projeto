@@ -33,6 +33,7 @@ DealWitMe::Application.routes.draw do
 
   match '/deals/today/:category', :to => "deals#today"
   match '/deals', :to => 'deals#index', :as => :search
+  match '/deals/active/:category', :to => "deals#index"
 
   root :to => "deals#index"
 
