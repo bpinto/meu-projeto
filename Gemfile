@@ -19,7 +19,6 @@ gem 'rails', '3.1.1'
 gem 'sass'
 gem 'uglifier'
 gem 'unicorn'
-gem 'validates_timeliness'
 gem 'will_paginate', '~> 3.0.0'
 
 group :development, :test do

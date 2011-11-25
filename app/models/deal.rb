@@ -67,6 +67,7 @@ class Deal < ActiveRecord::Base
 
   scope :today, where("deals.created_at >= ?", Date.today)
   scope :active, where("deals.end_date >= ? OR deals.end_date is null", Date.today)
+  
 
   def self.by_category(category)
     where(:category => category)

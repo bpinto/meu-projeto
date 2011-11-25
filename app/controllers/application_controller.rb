@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def fill_deals_lists
+    deals = Deal.active
+    @best_deals = deals.best_deals
+    @newest_deals = deals.active.newest_deals
+    @most_comment_deals = deals.active.most_comment
+  end
+
 #  def authenticate
 #    return true unless Rails.env == "production"
 #    authenticate_or_request_with_http_basic do |username, password|
