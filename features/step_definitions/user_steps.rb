@@ -18,10 +18,10 @@ end
 Given /^I am a user$/ do
   @current_user = FactoryGirl.create :confirmed_user
 
-  And %{I go to the sign in page}
-  And %{I fill in "user_login" with "#{@current_user.email}"}
-  And %{I fill in "user_password" with "#{@current_user.password}"}
-  And %{I press "Entrar"}
+  step %{I go to the sign in page}
+  step %{I fill in "user_login" with "#{@current_user.email}"}
+  step %{I fill in "user_password" with "#{@current_user.password}"}
+  step %{I press "Entrar"}
 end
 
 Given /^I am a user from "([^"]*)" and "([^"]*)"$/ do |city, another_city|
@@ -29,55 +29,55 @@ Given /^I am a user from "([^"]*)" and "([^"]*)"$/ do |city, another_city|
   @current_user.cities << City.find_by_name(city)
   @current_user.cities << City.find_by_name(another_city)
 
-  And %{I go to the sign in page}
-  And %{I fill in "user_login" with "#{@current_user.email}"}
-  And %{I fill in "user_password" with "#{@current_user.password}"}
-  And %{I press "Entrar"}
+  step %{I go to the sign in page}
+  step %{I fill in "user_login" with "#{@current_user.email}"}
+  step %{I fill in "user_password" with "#{@current_user.password}"}
+  step %{I press "Entrar"}
 end
 
 Given /^I am a user with an (email|username) "([^"]*)"$/ do |property, value|
   @current_user = FactoryGirl.create :confirmed_user, property => value
 
-  And %{I go to the sign in page}
-  And %{I fill in "user_login" with "#{@current_user.email}"}
-  And %{I fill in "user_password" with "#{@current_user.password}"}
-  And %{I press "Entrar"}
+  step %{I go to the sign in page}
+  step %{I fill in "user_login" with "#{@current_user.email}"}
+  step %{I fill in "user_password" with "#{@current_user.password}"}
+  step %{I press "Entrar"}
 end
 
 Given /^I am a user with an (email|username) "([^"]*)" and password "([^"]*)"$/ do |property, value, password|
   @current_user = FactoryGirl.create :confirmed_user, property => value, :password => password, :password_confirmation => password
 
-  And %{I go to the sign in page}
-  And %{I fill in "user_login" with "#{@current_user.email}"}
-  And %{I fill in "user_password" with "#{@current_user.password}"}
-  And %{I press "Entrar"}
+  step %{I go to the sign in page}
+  step %{I fill in "user_login" with "#{@current_user.email}"}
+  step %{I fill in "user_password" with "#{@current_user.password}"}
+  step %{I press "Entrar"}
 end
 
 Then /^I should be already signed in$/ do
-  And %{I should see "Sair"}
+  step %{I should see "Sair"}
 end
 
 Given /^I am signed up as "(.*)\/(.*)"$/ do |email, password|
-  Given %{I am not logged in}
-  When %{I go to the sign up page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I fill in "Password confirmation" with "#{password}"}
-  And %{I press "Cadastre-se"}
-  Then %{I should see "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."}
-  And %{I am logout}
+  step %{I am not logged in}
+  step %{I go to the sign up page}
+  step %{I fill in "Email" with "#{email}"}
+  step %{I fill in "Password" with "#{password}"}
+  step %{I fill in "Password confirmation" with "#{password}"}
+  step %{I press "Cadastre-se"}
+  step %{I should see "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."}
+  step %{I am logout}
 end
 
 When /^I sign in as "(.*)\/(.*)"$/ do |login, password|
-  Given %{I am not logged in}
-  When %{I go to the sign in page}
-  And %{I fill in user's login with "#{login}"}
-  And %{I fill in user's password with "#{password}"}
-  And %{I press "Entrar"}
+  step %{I am not logged in}
+  step %{I go to the sign in page}
+  step %{I fill in user's login with "#{login}"}
+  step %{I fill in user's password with "#{password}"}
+  step %{I press "Entrar"}
 end
 
 Then /^I should be signed in$/ do
-  Then %{I should see "Fez login com sucesso."}
+  step %{I should see "Fez login com sucesso."}
 end
 
 Then /^I sign out$/ do
@@ -85,13 +85,13 @@ Then /^I sign out$/ do
 end
 
 When /^I return next time$/ do
-  And %{I go to the home page}
+  step %{I go to the home page}
 end
 
 Then /^I should be signed out$/ do
-  And %{I should see "Crie seu Perfil"}
-  And %{I should see "Entrar"}
-  And %{I should not see "Sair"}
+  step %{I should see "Crie seu Perfil"}
+  step %{I should see "Entrar"}
+  step %{I should not see "Sair"}
 end
 
 Given /^I am not logged in$/ do
