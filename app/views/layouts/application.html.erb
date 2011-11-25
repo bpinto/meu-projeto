@@ -166,42 +166,29 @@
         <%= yield %>
         <%- if controller_name != 'sessions' && controller_name != 'pages' %>
           <div class="side">
-            <div class="buttonPanel">
-              <% if user_signed_in? %>
-                <%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => :shareButton %>
-                <%= link_to I18n.t("actions.my_profile"), user_path(current_user.username), :class => :profileButton %>
-              <% else %>
-                <%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => :signupButton %>
-                <%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => :signinButton %>
-              <% end %>
+            <div class="defaultWindow whiteBackground">
+              <div class="title">
+                <h3>Melhores Ofertas</h3>
+              </div>
+              <div class="content">
+                Lista das 5 ofertas mais bem votadas
+              </div>
             </div>
             <div class="defaultWindow whiteBackground">
               <div class="title">
-                <% if user_signed_in? %>
-                  <h3>Painel do Usuário</h3>
-                <% else %>
-                  <h3>O Que é o DealWit.Me?</h3>
-                <% end %>
+                <h3>Ofertas Mais Comentadas</h3>
               </div>
               <div class="content">
-                <% if user_signed_in? %>
-                  <p><%= link_to(image_tag(current_user.gravatar_url(:size => 70)),user_path(current_user.username), :class => :userPicture) %></p><br/>
-                  <p><%= link_to_active I18n.t("actions.my_profile"), user_path(current_user.username) %></p><br/>
-                  <p><%= link_to "Editar meus dados", edit_user_registration_path %></p><br/>
-                  <!--<p><%= link_to I18n.t("actions.share_an_offer"), new_deal_path %></p>-->
-                <% else %>
-                  <p>Um lugar onde podemos compartilhar ofertas e opiniões com nossos amigos.</p>
-                  <br/>
-                  <p>O objetivo do DealWit.Me é facilitar o acesso e a busca por ofertas que se encontram espalhadas na rede, permitindo uma interação maior entre os usuários e as ofertas.</p>
-                  <br/>
-                  <p><%= link_to 'Crie seu perfil', new_user_registration_path %> e comece já a compartilhar ofertas com seus amigos.</p>
-                  <br/>
-                  <p>Leia mais sobre <a href="/pages/whoarewe">Quem Somos</a>.</p>
-                <% end %>
+                Lista de ofertas ativas mais comentadas
               </div>
             </div>
-            <div class="banner">
-              <%= image_tag asset_path('banner.jpg') %>
+            <div class="defaultWindow whiteBackground">
+              <div class="title">
+                <h3>Últimas Ofertas Compartilhadas</h3>
+              </div>
+              <div class="content">
+                Lista das ultimas 5 ofertas mais recentes
+              </div>
             </div>
           </div>
         <%- end %>

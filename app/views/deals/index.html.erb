@@ -24,3 +24,30 @@
   </div>
 </div>
 
+<div class="side">
+  <div class="buttonPanel">
+    <% if user_signed_in? %>
+      <%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => :shareButton %>
+      <%= link_to I18n.t("actions.my_profile"), user_path(current_user.username), :class => :profileButton %>
+    <% else %>
+      <%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => :signupButton %>
+      <%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => :signinButton %>
+    <% end %>
+  </div>
+  <div class="defaultWindow whiteBackground">
+    <div class="title">
+      <h3>Opções de Busca</h3>
+    </div>
+    <div class="content">
+      <form action="<%= search_path %>" method="get" class="search">
+        <fieldset>
+          <legend>Buscar</legend>
+          <%= text_field_tag :search, params[:search]%>
+          <button id="search" type="submit">Buscar</button>
+        </fieldset>
+      </form>
+      Inserir os filtros aqui
+    </div>
+  </div>
+</div>
+
