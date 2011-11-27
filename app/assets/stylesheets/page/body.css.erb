@@ -3,7 +3,7 @@ div#body { display: block; margin: 0 auto 10px; width: 975px; }
 div#body::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
 div#body div.title h1 { display: block; }
-div#body div.pageTitle h1 { display: block; padding: 15px 20px; }
+div#body div.page_title h1 { display: block; padding: 15px 20px; }
 
 div.main { float: left; width: 645px; }
 
@@ -11,23 +11,23 @@ div.main a { color: #039; }
 
 div.side { float: right; width: 315px; }
 
-div.defaultWindow { clear: both; display: block; margin-bottom: 15px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; }
+div.default_window { clear: both; display: block; margin-bottom: 15px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; }
 
-div.defaultWindow a { color: #039; text-decoration: underline; }
-div.defaulWindow a:hover { text-decoration: none; }
+div.default_window a { color: #039; text-decoration: underline; }
+div.default_window a:hover { text-decoration: none; }
 
-div.defaultWindow::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+div.default_window::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
 div.alert { background: #E5F0F4; border: 2px solid #99C5D3; clear: both; display: block; margin: 20px 0 15px; padding: 15px; position: relative; }
 
 div.alert p { background: none !important; color: #4D92AC !important; font: italic bold 16px/16px Arial, Helvetica, Sans-Serif !important; margin: 0 !important; padding: 0 !important; }
 
-div.errorAlert { background: #FAE5E5; border: 2px solid #EB9999; }
-div.errorAlert a.close { background-position: 0 -25px; }
-div.errorAlert a.close:hover { background-position: -25px -25px; }
-div.errorAlert p { color: #C00 !important; }
-div.successAlert { background: #F1F5E5; border: 2px solid #C9D999; }
-div.successAlert p { color: #789F00 !important; }
+div.error_alert { background: #FAE5E5; border: 2px solid #EB9999; }
+div.error_alert a.close { background-position: 0 -25px; }
+div.error_alert a.close:hover { background-position: -25px -25px; }
+div.error_alert p { color: #C00 !important; }
+div.success_alert { background: #F1F5E5; border: 2px solid #C9D999; }
+div.success_alert p { color: #789F00 !important; }
 
 .window { margin: 0 auto 10px; }
 .window .up { background: url(<%= asset_path 'janela.png' %>) no-repeat; display: block; height: 20px; }
@@ -35,7 +35,7 @@ div.successAlert p { color: #789F00 !important; }
 .window .middle { background: white; display: table; width: 100%; height: auto; }
 .window .middle::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .window .topic { clear: both; display: table; width: 510px; }
-.window .topic .newComment { display: block; float: left; width: 375px; }
+.window .topic .new_comment { display: block; float: left; width: 375px; }
 .window .topic .comment { display: block; float: left; width: 375px; }
 .window .topic .comment p.text { clear: both; color: #888; display: block; font: normal normal normal 11px/17px Verdana, Sans-Serif; padding: 10px 15px 7px 25px; table-layout: fixed; width: 335px; word-wrap: break-word; }
 .window .topic .comment .details { display: block; clear: both; overflow: hidden; padding: 10px 15px 15px 25px; }
@@ -47,17 +47,17 @@ div.successAlert p { color: #789F00 !important; }
 .bigWindow .up { background-position: 0 0; }
 .bigWindow .down { background-position: -975px 0; }
 
-.mediumWindow { width: 645px;}
-.mediumWindow .up { background-position: -3540px 0; }
-.mediumWindow .down { background-position: -4185px 0; }
-.mediumWindow .menu { float: left; }
+.medium_window { width: 645px;}
+.medium_window .up { background-position: -3540px 0; }
+.medium_window .down { background-position: -4185px 0; }
+.medium_window .menu { float: left; }
 
-.greyBackground { background: #EEE; }
-.whiteBackground { background: #FFF; }
+.grey_background { background: #EEE; }
+.white_background { background: #FFF; }
 
 img { border: none; display: block; }
 
-div.deviseLinks {  }
+div.devise_links {  }
 
-div.deviseLinks a { text-decoration: underline; margin: 0px 0px 15px 20px; }
-div.deviseLinks a:hover { text-decoration: none; margin: 0px 0px 15px 20px;}
+div.devise_links a { text-decoration: underline; margin: 0px 0px 15px 20px; }
+div.devise_links a:hover { text-decoration: none; margin: 0px 0px 15px 20px; }

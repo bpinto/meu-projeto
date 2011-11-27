@@ -13,41 +13,41 @@
     <!-- AddThis Button END -->
     <!-- titulo -->
     <div class="title">
-      <h1 class="dealTitle"><%= @deal.title %></h1>
+      <h1 class="deal_title"><%= @deal.title %></h1>
       <strong>Compartilhada por: </strong><%= link_to @deal.user.username, user_path(@deal.user.username) %>
     </div>
     <!-- titulo -->
 
     <!-- detalhes -->
     <div class="details">
-      <div class="dealPicture">
+      <div class="deal_picture">
         <!-- TODO: IMAGEM -->
         <div><%= link_to(image_tag(asset_path('no_picture_big.png'), :alt => "Oferta sem imagem", :title => @deal.title, :size => '10px'), deal_path(@deal), :class => "foto") %></div>
       </div>
       <div class="discount">
         <div class="bigTicket special discountTicket">
-          <strong class="dealDiscount"><%= @deal.discount.to_i %>%</strong>
+          <strong class="deal_discount"><%= @deal.discount.to_i %>%</strong>
         </div>
         
         <% if @deal.price? %>
           <div class="from">
             <span>de:</span>
             <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-            <strong class="dealRealPrice"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
+            <strong class="deal_real_price"><%= number_to_currency @deal.real_price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
           </div>
           <div class="for ">
             <span>por:</span>
             <!-- TODO: Refazer essa parte abaixo quando o layout for revisto -->
-            <strong class="dealPromoPrice"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
+            <strong class="deal_price"><%= number_to_currency @deal.price, :format => "<span>%u</span>%n", :separator => ",<span>"%></span></strong>
           </div>
         <% end %>
 
-        <div class="goToWebsite">
+        <div class="go_to_website">
           <%= link_to "Ir para o site", @deal.link, :class => "button" %>
         </div>
         <div class="dealInfo">
-          <li><strong>Em: </strong><span class="dealCategory"><%= Deal.i18n_category(@deal.category) %></span></li>
-          <li><strong>Válida para: </strong><spam class="dealCity"><%= @deal.city.name %></spam></li>
+          <li><strong>Em: </strong><span class="deal_category"><%= Deal.i18n_category(@deal.category) %></span></li>
+          <li><strong>Válida para: </strong><spam class="deal_city"><%= @deal.city.name %></spam></li>
         </div>
         <% if user_signed_in? %>
           <div class="votes">
@@ -99,7 +99,7 @@
     <div class="content">
       <!-- janela CONTEÚDO --> 
       <div class="window"> 
-        <div class="mediumWindow"> 
+        <div class="medium_window"> 
           <div class="up"></div> 
           <div class="middle profile" id="tabAreaId" style="min-height: 150px;"> 
             <div class="briefWindow opinions"> 
@@ -107,7 +107,7 @@
                 <h4><%= I18n.t("comments") %></h4> 
                 <div class="topic newTopic" >
                   <% if can? :manage, @comment %>
-                    <div class="newComment" >
+                    <div class="new_comment" >
                       <%= form_for([@deal,@comment]) do |f| %>
                         <%= f.text_area :comment, :class => "TextArea" %><br/>
                         <%= f.submit I18n.t("actions.comment"), :class => :button %>

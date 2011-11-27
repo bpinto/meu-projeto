@@ -152,20 +152,20 @@
          <!-- TODO: FLASH -->
         <%- flash.each do |name, msg| -%>
           <% if name == :error %>
-            <div class="alert errorAlert" style="opacity: 1; "><p><%= msg %></p></div>
+            <div class="alert error_alert" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
           <% if name == :alert %>
             <div class="alert warnAlert" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
           <% if name == :notice %>
-            <div class="alert successAlert" style="opacity: 1; "><p><%= msg %></p></div>
+            <div class="alert success_alert" style="opacity: 1; "><p><%= msg %></p></div>
           <% end %>
         <%- end -%>
     
         <%= yield %>
         <%- if controller_name != 'sessions' && controller_name != 'pages' %>
           <div class="side">
-            <div class="defaultWindow whiteBackground">
+            <div class="default_window white_background">
               <div class="title">
                 <h3>Melhores Ofertas</h3>
               </div>
@@ -173,7 +173,7 @@
                 Lista das 5 ofertas mais bem votadas
               </div>
             </div>
-            <div class="defaultWindow whiteBackground">
+            <div class="default_window white_background">
               <div class="title">
                 <h3>Ofertas Mais Comentadas</h3>
               </div>
@@ -181,7 +181,7 @@
                 Lista de ofertas ativas mais comentadas
               </div>
             </div>
-            <div class="defaultWindow whiteBackground">
+            <div class="default_window white_background">
               <div class="title">
                 <h3>Últimas Ofertas Compartilhadas</h3>
               </div>

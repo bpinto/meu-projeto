@@ -7,7 +7,7 @@ Feature: Recover password
       Given I am not logged in
       And I am on recover email page
       And I press "Enviar nova senha"
-      Then I should see "Email não pode ficar em branco"
+      Then I should see "*Não pode ficar em branco"
 
     Scenario: E-mail not registered
       Given I am not logged in
