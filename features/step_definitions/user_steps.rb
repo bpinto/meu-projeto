@@ -105,9 +105,9 @@ Given /^I follow a user with (email|username) "([^"]*)" who has (\d+) deal$/ do 
 end
 
 Then /^I should see a link to edit my information on "([^"].*)"$/ do |page_name|
-  page.find(:xpath, "//div[@class='titulo']//a")[:href].should == path_to(page_name)
+  page.find(:xpath, "//div[@class='title']//a")[:href].should == path_to(page_name)
 end
 
 Then /^I should see a link to "([^"].*)"$/ do |page_name|
-  page.find(:xpath, "//ul[@class='interacoes']//a")[:href].should == path_to(page_name)
+  page.find(:xpath, "//div[@class='interactions']//a")[:href].should == path_to(page_name)
 end

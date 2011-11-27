@@ -23,7 +23,7 @@ Feature: Criar perfil
       And I fill in user's password confirmation with "please"
       And I check "terms_privacy"
       And I press "Criar perfil"
-      Then I should see "Email não é válido"
+      Then I should see "*Não é válido"
 
     Scenario: User signs up without password
       Given I am not logged in
@@ -33,7 +33,7 @@ Feature: Criar perfil
       And I fill in user's password confirmation with "please"
       And I check "terms_privacy"
       And I press "Criar perfil"
-      Then I should see "Senha não pode ficar em branco"
+      Then I should see "*Não pode ficar em branco"
 
     Scenario: User signs up without password confirmation
       Given I am not logged in
@@ -43,7 +43,7 @@ Feature: Criar perfil
       And I fill in user's password confirmation with ""
       And I check "terms_privacy"
       And I press "Criar perfil"
-      Then I should see "Senha não está de acordo com a confirmação"
+      Then I should see "*Não está de acordo com a confirmação"
 
     Scenario: User signs up with password and password confirmation that doesn't match
       Given I am not logged in
@@ -53,7 +53,7 @@ Feature: Criar perfil
       And I fill in user's password confirmation with "please1"
       And I check "terms_privacy"
       And I press "Criar perfil"
-      Then I should see "Senha não está de acordo com a confirmação"
+      Then I should see "*Não está de acordo com a confirmação"
 
     Scenario: User signs up without agreed with Terms and Conditions
       Given I am not logged in

@@ -92,7 +92,7 @@ end
 
 Then /^I should see (\d+) deals? with (\w+) "([^"]*)"$/ do |amount, attribute, value|
   field = get_field("deal", attribute)
-  page.all(:xpath, "//div[@class='offer']//strong[contains(@class, '#{field}')]/a[contains(text(), '#{value}')]").length.should == amount.to_i
+  page.all(:xpath, "//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
 end
 
 Then /^deal should link to "([^"]*)"$/ do |text|

@@ -40,7 +40,7 @@ Feature: New Deal
     Scenario: Search by a part of the title
       Given 1 active deal from "Rio de Janeiro" with title as "Título da Oferta" exists
       When I fill in the search field with "Oferta"
-      And I press "Buscar"
+      And I press "search"
       Then I should see 1 deal with title "Título da Oferta"
 
     Scenario: Search by a part of the description

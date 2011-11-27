@@ -1,6 +1,6 @@
 <div class="offer">
   <div class="deal">
-    <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "dealPicture") %>
+    <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
     <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}" >
       <div class="dealDate">
         <strong>Válida até:</strong>
@@ -11,12 +11,12 @@
         <% end %>
       </div>
     </div>
-    <strong class="dealTitle"><%= link_to deal.title, deal_path(deal) %></strong>
+    <strong class="deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
-      <li class="dealUser"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
-      <li class="dealCategory"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
-      <li class="deaCompany"><strong>Empresa: </strong><%= deal.company %></li>
-      <li class="dealCity"><strong>Válida para: </strong><%= deal.city.name %></li>
+      <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
+      <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
+      <li class="deal_company"><strong>Empresa: </strong><%= deal.company %></li>
+      <li class="deal_city"><strong>Válida para: </strong><%= deal.city.name %></li>
       <li class="likes">
         <% if deal.up_votes <= 1 %>
           <strong><%= deal.up_votes %> gostou!</strong>
@@ -34,10 +34,10 @@
       <li>
         <ul class="discount">
           <% if (deal.real_price && deal.price) %>
-            <li class="dealRealPrice"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
-            <li class="dealPromoPrice"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
+            <li class="deal_real_price"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
+            <li class="deal_price"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
           <% end %>
-          <li class="dealDiscount"><span>Desconto</span><strong><%= deal.discount.to_i %>%</strong></li> 
+          <li class="deal_discount"><span>Desconto</span><strong><%= deal.discount.to_i %>%</strong></li> 
           <li class="button"><%= link_to 'Saiba mais', deal_path(deal), :class => "button"%></li>
         </ul>
       </li>
