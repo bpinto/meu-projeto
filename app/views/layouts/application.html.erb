@@ -170,7 +170,11 @@
                 <h3>Melhores Ofertas</h3>
               </div>
               <div class="content">
-                Lista das 5 ofertas mais bem votadas
+                <div class="small_deal">
+                  <% @best_deals.each do |deal| %>
+                    <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+                  <% end %>
+                </div>
               </div>
             </div>
             <div class="default_window white_background">
@@ -178,7 +182,11 @@
                 <h3>Ofertas Mais Comentadas</h3>
               </div>
               <div class="content">
-                Lista de ofertas ativas mais comentadas
+                <div class="small_deal">
+                  <% @most_comment_deals.each do |deal| %>
+                    <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+                  <% end %>
+                </div>
               </div>
             </div>
             <div class="default_window white_background">
@@ -186,7 +194,11 @@
                 <h3>Últimas Ofertas Compartilhadas</h3>
               </div>
               <div class="content">
-                Lista das ultimas 5 ofertas mais recentes
+                <div class="small_deal">
+                  <% @newest_deals.each do |deal| %>
+                    <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

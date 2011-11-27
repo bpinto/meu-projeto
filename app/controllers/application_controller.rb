@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 #  before_filter :authenticate
+  before_filter :fill_deals_lists
 
   protect_from_forgery
 
@@ -16,10 +17,10 @@ class ApplicationController < ActionController::Base
   private
 
   def fill_deals_lists
-    deals = Deal.active
-    @best_deals = deals.best_deals
-    @newest_deals = deals.active.newest_deals
-    @most_comment_deals = deals.active.most_comment
+    deals = Deal.active.limit(3)
+    @best_deals = deals#.best_deals
+    @newest_deals = deals#.active.newest_deals
+    @most_comment_deals = deals#.active.most_comment
   end
 
 #  def authenticate

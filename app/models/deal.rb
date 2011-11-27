@@ -112,6 +112,10 @@ class Deal < ActiveRecord::Base
     Deal::KINDS.collect {|id| [Deal.i18n_kind(id), id]}
   end
 
+  def average
+    ((self.up_votes * 100)/self.votings.length).to_i if self.votings.length != 0
+  end
+
   def discount_to_percentage
     ((self.discount / self.real_price) * 100).to_i if self.real_price?
   end
