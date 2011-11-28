@@ -87,12 +87,12 @@ When /^I fill in the search field with "([^"]*)"$/ do |search|
 end
 
 Then /^I should see (\d+) deals?$/ do |amount|
-  page.all(:xpath, "//div[@class='offer']").length.should == amount.to_i
+  page.all(:xpath, "//div[@class='main']//div[@class='offer']").length.should == amount.to_i
 end
 
 Then /^I should see (\d+) deals? with (\w+) "([^"]*)"$/ do |amount, attribute, value|
   field = get_field("deal", attribute)
-  page.all(:xpath, "//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
+  page.all(:xpath, "//div[@class='main']//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
 end
 
 Then /^deal should link to "([^"]*)"$/ do |text|

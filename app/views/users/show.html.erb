@@ -1,62 +1,62 @@
-  <!-- principal --> 
-	<div class="main"> 
-		<!-- janela PERFIL --> 
-		<div class="window medium_window"> 
-			<div class="up"></div> 
-				<div class="middle profile"> 
-					<div class="title"> 
-					  <h1 class="fn"><%= @user.name %></h1> 
-            <% if current_user == @user %>
-              <%= link_to "Editar meus dados", edit_user_registration_path %>
-            <% end %>
-            <br/>
-					</div> 
-					<div class="userPicture"> 
-					  <%= image_tag @user.gravatar_url %>
-					</div>
-					<strong class="title">Um pouco sobre mim</strong> 
-					<div class="aboutMe"> 
-					  <p><%= @user.deals.count %> <%= I18n.t("models.user.shared_deals") %></p><br/>
-					  <p><%= @user.followers.count %> <%= I18n.t("models.user.followers") %></p><br/>
-					  <p><%= I18n.t("models.user.following") %> <%= @user.following.count %> <%= I18n.t "users" %> </p><br/>
-					  <p>Email: <%= @user.email if @user.email %></p><br/>
-					</div> 
-          <% if user_signed_in? && current_user != @user %>
-  					<div class="interactions"> 
-              <% if current_user.follow? @user %>
-                <div class="unfollow">
-                  <%= link_to I18n.t("actions.unfollow"), unfollow_user_path(@user.username), :class => :unfollow %>
-                </div>
-              <% else %>
-                <div class="follow">
-                  <%= link_to I18n.t("actions.follow"), follow_user_path(@user.username), :class => :follow %>
-                </div>
+<!-- principal --> 
+<div class="main"> 
+  <div class="main">
+    <div class="dealsMap">
+      <div class="default_window grey_background dealsList" id="sitesPanelView">
+        <div class="content">
+          <div class="content defaultDeal">
+  				  <div class="up"></div> 
+	    		  <div class="middle" id="tabAreaId" style="min-height: 200px;">
+              <% @deals.each_with_index do |deal, index| %>
+                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
               <% end %>
-              </li>
-  				  </div> 
-          <% end %>
-			  </div> 
-		  <div class="down"></div> 
-		</div>
-
-    <div class="main">
-      <div class="dealsMap">
-        <div class="default_window grey_background dealsList" id="sitesPanelView">
-          <div class="content">
-	          <div class="content defaultDeal">
-    				  <div class="up"></div> 
-		    		  <div class="middle" id="tabAreaId" style="min-height: 200px;">
-                <% @deals.each_with_index do |deal, index| %>
-                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-                <% end %>
-              </div>
-            </div> 
-		    	  <div class="down"></div> 
-		      </div>
-		    </div> 
-      </div>
+            </div>
+          </div> 
+	    	  <div class="down"></div> 
+	      </div>
+	    </div> 
     </div>
-	  <!-- /janela CONTEÚDO --> 
-	</div>
+  </div>
+  <!-- /janela CONTEÚDO --> 
+</div>
 
-  
+<div class="side">
+  <div class="default_window white_background">
+    <div class="title">
+      <h3><%= @user.name %></h3>
+    </div>
+    <div class="content">
+      <div class="profile">
+        <div class="userPicture"> 
+          <%= image_tag @user.gravatar_url %>
+        </div>
+        <div class="edit_user">
+          <% if current_user == @user %>
+            <%= link_to "Editar meus dados", edit_user_registration_path %>
+          <% end %>
+        </div>
+        <strong class="title">Um pouco sobre mim</strong> 
+        <div class="aboutMe"> 
+          <p><%= @user.deals.count %> <%= I18n.t("models.user.shared_deals") %></p><br/>
+          <p><%= @user.followers.count %> <%= I18n.t("models.user.followers") %></p><br/>
+          <p><%= I18n.t("models.user.following") %> <%= @user.following.count %> <%= I18n.t "users" %> </p><br/>
+          <p>Email: <%= @user.email if @user.email %></p><br/>
+        </div> 
+        <% if user_signed_in? && current_user != @user %>
+          <div class="interactions"> 
+            <% if current_user.follow? @user %>
+              <div class="unfollow">
+                <%= link_to I18n.t("actions.unfollow"), unfollow_user_path(@user.username), :class => :unfollow %>
+              </div>
+            <% else %>
+              <div class="follow">
+                <%= link_to I18n.t("actions.follow"), follow_user_path(@user.username), :class => :follow %>
+              </div>
+            <% end %>
+            </li>
+          </div> 
+        <% end %>
+      </div> 
+    </div>
+  </div>
+</div>
