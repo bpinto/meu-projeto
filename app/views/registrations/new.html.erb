@@ -2,61 +2,61 @@
   <div class="window medium_window">
     <div class="up"></div>
     <div class="middle newProfile" id="userCreateAreaId">
-        <!-- TODO: Imagem -->
-        <h1>DealWit.me</h1>
-        <!-- TODO: Facebook / Google -->
-        <h3>Crie seu perfil preenchendo os campos abaixo e comece a compartilhar ofertas com seus amigos</h3>
+      <!-- TODO: Imagem -->
+      <h1>DealWit.me</h1>
+      <!-- TODO: Facebook / Google -->
+      <h3>Crie seu perfil preenchendo os campos abaixo e comece a compartilhar ofertas com seus amigos</h3>
 
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-          <ol>
-            <li>
-              <%= f.label :email %>
-              <%= f.text_field :email %>
-            </li>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <ol>
+          <li>
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </li>
 
-            <li>
-              <%= f.label :username %>
-              <%= f.text_field :username %>
-              <span class="limite">Mínimo <strong>5</strong> e máximo <strong>20</strong> caracteres.</span>
-            </li>
+          <li>
+            <%= f.label :username %>
+            <%= f.text_field :username %>
+            <span class="limite">Mínimo <strong>5</strong> e máximo <strong>20</strong> caracteres.</span>
+          </li>
 
-            <li>
-              <%= f.label :name %>
-              <%= f.text_field :name %>
-            </li>
+          <li>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </li>
 
-            <li>
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-              <span class="limite">Mínimo <strong>6</strong> caracteres</span>
-            </li>
+          <li>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+            <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+          </li>
 
-            <li>
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
-            </li>
+          <li>
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation %>
+          </li>
 
-            <!-- TODO: RECAPTCHA>
-            <li>
-              <label>Digite as letras:</label>
-              <img src="../simpleCaptcha" class="captcha">
-              <input type="text" tabindex="10" class="captcha" maxlength="10">
-            </li>
-            <-->
+          <!-- TODO: RECAPTCHA>
+          <li>
+            <label>Digite as letras:</label>
+            <img src="../simpleCaptcha" class="captcha">
+            <input type="text" tabindex="10" class="captcha" maxlength="10">
+          </li>
+          <-->
 
-            <!-- TODO: TERMOS -->
-            <li>
-              <span class="agree">
-                <%= check_box_tag(:terms_privacy, :terms_privacy) %>
-                <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
-              </span>
-            </li>
-          </ol>
+          <!-- TODO: TERMOS -->
+          <li>
+            <span class="agree">
+              <%= check_box_tag(:terms_privacy, :terms_privacy) %>
+              <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
+            </span>
+          </li>
+        </ol>
 
-          <!-- TODO: Transformar o botão igual ao link -->
-          <!--<a tabindex="11" class="perfil" href="javascript:;">Criar perfil</a>-->
-          <div class="button"><%= f.submit "Criar perfil", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
-        <% end %>
+        <!-- TODO: Transformar o botão igual ao link -->
+        <!--<a tabindex="11" class="perfil" href="javascript:;">Criar perfil</a>-->
+        <div class="button"><%= f.submit "Criar perfil", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
+      <% end %>
     </div>
     <div class="down"></div>
   </div>
