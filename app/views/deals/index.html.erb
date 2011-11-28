@@ -10,7 +10,7 @@
             <div class="zero-PagingTableGrid">
               <% if @deals.empty? %>
                 <h4> Não há ofertas cadastradas ainda, seja o primeiro a compartilhar uma oferta com seus amigos!</h4>
-              <% else %>  
+              <% else %>
                 <% @deals.each_with_index do |deal, index| %>
                   <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
                 <% end %>
@@ -45,8 +45,9 @@
           <%= text_field_tag :search, params[:search]%>
           <button id="search" type="submit">Buscar</button>
         </fieldset>
+
+        <%= select_tag "search_order", search_options %>
       </form>
-      Inserir os filtros aqui
     </div>
   </div>
 </div>

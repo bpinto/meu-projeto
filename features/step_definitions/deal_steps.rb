@@ -24,8 +24,7 @@ Given /^(\d+) (active|inactive) deals? from "([^"]*)" exists?$/i do |amount, sta
 end
 
 Given /^(\d+) (active|inactive) deals? from "([^"]*)" with ([\w ]+) as "([^"]*)" exists?$/ do |amount, status, city, attribute, value|
-  value = normalize_value(attribute, value)
-  attribute = attribute.gsub(' ', '_')
+  params = fix_params(attribute, value)
 
   amount.to_i.times do
     deal = FactoryGirl.build "#{status}_deal", :city => City.find_by_name(city), "#{attribute}" => value
@@ -43,21 +42,19 @@ end
 
 Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
-  value = normalize_value(attribute, value)
-  attribute = attribute.gsub(' ', '_')
+  params = fix_params(attribute, value)
 
   amount.to_i.times do
-    FactoryGirl.create :deal, "#{attribute}" => value
+    FactoryGirl.create :deal, params
   end
 end
 
 Given /^(\d+) on sale deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
-  value = normalize_value(attribute, value)
-  attribute = attribute.gsub(' ', '_')
+  params = fix_params(attribute, value)
 
   amount.to_i.times do
-    FactoryGirl.create :deal_on_sale, "#{attribute}" => value
+    FactoryGirl.create :deal_on_sale, params
   end
 end
 
@@ -99,13 +96,30 @@ Then /^deal should link to "([^"]*)"$/ do |text|
   page.find(:xpath, "//li[@class='botao']/a")[:href].should == text
 end
 
-def normalize_value(attribute, value)
-  case attribute
-  when "category"
-    Deal.const_get("CATEGORY_#{value.upcase}")
-  when "kind"
-    Deal.const_get("KIND_#{value.upcase}")
+
+def fix_params(attribute, value)
+  hash = {}
+
+  value = case attribute
+          when "category"
+            Deal.const_get("CATEGORY_#{value.upcase}")
+          when "kind"
+            Deal.const_get("KIND_#{value.upcase}")
+          else
+            value
+          end
+
+  if attribute == "price"
+    attribute = "price_mask"
+    hash["real_price_mask"] = (BigDecimal.new(value) + 1).to_s
+  elsif attribute == "discount"
+    real_price = 100.to_f
+    price = real_price * (100 - value.to_f) / 100
+    hash["real_price_mask"] = real_price.to_s
+    hash["price_mask"] = price.to_s
   else
-    value
+    attribute = attribute.gsub(' ', '_')
   end
+
+  hash.merge attribute.to_s => value
 end

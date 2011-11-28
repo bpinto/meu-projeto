@@ -61,9 +61,10 @@ class Deal < ActiveRecord::Base
   attr_accessor :price_mask, :real_price_mask
   attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :price_mask, :real_price, :real_price_mask, :title, :user_id
 
-  #TODO: Remover o default_scope
-  default_scope order("deals.created_at desc")
-  # scope :recent, order("deals.created_at DESC")
+  scope :recent, order("deals.created_at DESC")
+  scope :lowest_price, order("deals.price ASC")
+  scope :highest_price, order("deals.price DESC")
+  scope :highest_discount, order("deals.discount DESC")
 
   scope :today, where("deals.created_at >= ?", Date.today)
   scope :active, where("deals.end_date >= ? OR deals.end_date is null", Date.today)

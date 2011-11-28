@@ -59,6 +59,7 @@ class DealsController < AuthorizedController
 
   def find_active_deals
     @deals = Deal.active.paginate(:page => params[:page])
+    @deals = search_order(@deals, params)
     @deals = @deals.by_category_string(params[:category]) if params[:category]
     @deals = @deals.search(params[:search]) if params[:search]
     @deals = @deals.by_cities(user_cities_ids) if user_cities_ids.try(:any?)
@@ -67,5 +68,20 @@ class DealsController < AuthorizedController
   def populate_cities_name
     @cities_state_hash = City.hash_by_states
     @cities_name = City.order_by_state#.collect { |c| [c.name, c.id] }
+  end
+
+  def search_order(scope, params)
+    case params[:search_order]
+    when "most_recent"
+      scope.recent
+    when "lowest_price"
+      scope.lowest_price
+    when "highest_price"
+      scope.highest_price
+    when "highest_discount"
+      scope.highest_discount
+    else
+      scope
+    end
   end
 end

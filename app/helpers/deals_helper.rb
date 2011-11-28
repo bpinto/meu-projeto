@@ -82,4 +82,14 @@ module DealsHelper
       end
     end
   end
+
+  def search_options
+    html = <<-EOS
+      <option value='most_recent'>Mais Recente</option>
+      <option value='lowest_price'>Menor Preço</option>
+      <option value='highest_price'>Maior Preço</option>
+      <option value='highest_discount'>Maior Desconto</option>
+    EOS
+    html.html_safe
+  end
 end

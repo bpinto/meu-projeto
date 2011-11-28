@@ -2,6 +2,10 @@ Then /^stop$/ do
   binding.pry
 end
 
+Then /^I should see "([^"]*)" before "([^"]*)"$/ do |first, last|
+  page.find(:xpath, "//*[contains(text(), '#{first}')]/following::*[contains(text(), '#{last}')]")
+end
+
 Then /^"(.*)" deve estar selecionad(?:a|o) com a opcao "(.*)"$/ do |campo, texto|
   find_field(campo).all(:css, "option[@selected]").first.text.should == texto
 end
@@ -24,9 +28,9 @@ When /^I fill in (.*)'s (.*) with "(.*)"$/ do |klass_name, field_name, value|
   fill_in(field, :with => value)
 end
 
-When /^eu seleciono o (.*) (?:do|da|de) (.*) com "(.*)"$/ do |nome_do_campo, nome_da_classe, valor|
-  campo = pegar_campo(nome_da_classe, nome_do_campo)
-  select(valor, :from => campo)
+When /^I select (.*)'s (.*) with "(.*)"$/ do |klass_name, field_name, value|
+  field = get_field(klass_name, field_name)
+  select(value, :from => field)
 end
 
 When /^eu escolho o (.*) como (.*)$/ do |nome_da_classe, nome_do_campo|

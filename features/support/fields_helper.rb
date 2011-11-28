@@ -8,6 +8,8 @@ module Fields
       field_id = Fields::USER[field]
     when "comment"
       field_id = Fields::COMMENT[field]
+    when "search"
+      field_id = Fields::SEARCH[field]
     end
 
     field_id ? field_id : "#{field} not found on #{__FILE__}"
@@ -41,6 +43,10 @@ module Fields
 
   COMMENT = {
     "comment" => "comment_comment"
+  }
+
+  SEARCH = {
+    "order" => "search_order"
   }
 end
 
