@@ -8,7 +8,7 @@ Feature: View active deals
       And I am on the homepage
       Then I should see 2 deals
 
-    Scenario: Viewing active deals but not inactive
+    Scenario: Viewing today's deals but not yesterday's
       Given 2 active deals exists
       And 1 inactive deal exist
       And I am on the homepage
