@@ -17,10 +17,10 @@ class ApplicationController < ActionController::Base
   private
 
   def fill_deals_lists
-    deals = Deal.active.limit(3)
-    @best_deals = deals#.best_deals
-    @newest_deals = deals#.active.newest_deals
-    @most_comment_deals = deals#.active.most_comment
+    deals = Deal.active
+    @best_deals = deals.voted.best_deals.limit(3)
+    @newest_deals = deals.recent.limit(3)
+    @most_comment_deals = deals.most_commented.limit(3)
   end
 
 #  def authenticate
