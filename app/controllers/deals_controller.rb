@@ -1,8 +1,7 @@
 # coding: UTF-8
 class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:index, :show, :today]
-  prepend_before_filter :find_active_deals, :only => :index
-  prepend_before_filter :find_todays_deals, :only => :today
+  prepend_before_filter :find_deals, :only => [:index, :today]
   before_filter :populate_cities_name, :only => :new
 
   def index
@@ -29,6 +28,7 @@ class DealsController < AuthorizedController
   end
 
   def today
+    flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
   end
 
   def unvote
@@ -52,17 +52,19 @@ class DealsController < AuthorizedController
 
   private
 
-  def find_todays_deals
-    @deals = Deal.today.paginate(:page => params[:page])
-    @deals = @deals.by_category_string(params[:category]) if params[:category]
-  end
-
-  def find_active_deals
-    @deals = Deal.active.paginate(:page => params[:page])
+  def find_deals
+    @deals = Deal.paginate(:page => params[:page])
     @deals = search_order(@deals, params)
     @deals = @deals.by_category_string(params[:category]) if params[:category]
     @deals = @deals.search(params[:search]) if params[:search]
     @deals = @deals.by_cities(user_cities_ids) if user_cities_ids.try(:any?)
+
+    case action_name
+    when "index"
+      @deals = @deals.active
+    when "today"
+      @deals = @deals.today
+    end
   end
 
   def populate_cities_name

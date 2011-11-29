@@ -5,11 +5,11 @@ Feature: New Deal
 
     Background:
       Given I am a guest
-      And I am on active's deals page
+      And I am on today's deals page
 
     Scenario: Search result page should remain active deals page
       When I press "Buscar"
-      Then I should be on active's deals page
+      Then I should be on today's deals page
 
     Scenario: Search without results should show a no deals found message
       When I fill in the search field with "Oferta não existente"
