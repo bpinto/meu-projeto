@@ -28,6 +28,7 @@ class DealsController < AuthorizedController
   end
 
   def today
+    flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
   end
 
   def unvote

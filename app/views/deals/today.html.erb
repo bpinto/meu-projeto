@@ -39,14 +39,15 @@
       <h3>Opções de Busca</h3>
     </div>
     <div class="content">
-      <form action="<%= search_path %>" method="get" class="search">
+      <form action="<%= deals_today_path %>" method="get" class="search">
         <fieldset>
           <legend>Buscar</legend>
           <%= text_field_tag :search, params[:search]%>
           <button id="search" type="submit">Buscar</button>
         </fieldset>
+
+        <%= select_tag "search_order", search_options %>
       </form>
-      Inserir os filtros aqui
     </div>
   </div>
 </div>

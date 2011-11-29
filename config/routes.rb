@@ -1,11 +1,9 @@
 DealWitMe::Application.routes.draw do
 
+  #TODO: Alterar as rotas, deveriam ser páginas estáticas
   get "pages/whoarewe"
-
   get "pages/help"
-
   get "pages/privacypolicy"
-
   get "pages/termsofuse"
 
   #TODO: Melhorar as rotas do devise:
@@ -24,6 +22,7 @@ DealWitMe::Application.routes.draw do
 
   resources :deals do
     resources :comments
+
     member do
       get 'upvote'
       get 'downvote'
@@ -32,7 +31,6 @@ DealWitMe::Application.routes.draw do
   end
 
   match '/deals/today/:category', :to => "deals#today"
-  match '/deals', :to => 'deals#index', :as => :search
   match '/deals/active/:category', :to => "deals#index"
 
   root :to => "deals#index"
