@@ -49,6 +49,15 @@ Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ 
   end
 end
 
+Given /^(\d+) deals? from "([^"]*)" (?:was|were) registered (\w*)$/i do |amount, city, date_name|
+  date = get_date(date_name)
+
+  amount.to_i.times do
+    deal = FactoryGirl.build :deal, :city => City.find_by_name(city), :created_at => date
+    deal.save!(:validate => false) #Uma oferta inativa é inválida
+  end
+end
+
 Given /^(\d+) on sale deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
   params = fix_params(attribute, value)
