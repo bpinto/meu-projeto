@@ -83,7 +83,7 @@ class DealsController < AuthorizedController
     when "highest_discount"
       scope.highest_discount
     else
-      scope
+      scope.recent
     end
   end
 end
