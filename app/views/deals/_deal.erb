@@ -1,6 +1,14 @@
 <div class="offer">
   <div class="deal">
-    <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
+    <div class="deal_left">
+      <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
+      <!--<% if user_signed_in? %>
+        <div class="votes">
+          <%= link_to "Gostei!", upvote_deal_path(deal), :class => "like" %>
+          <%= link_to "Não Gostei!", downvote_deal_path(deal), :class => "dislike" %>
+        </div>
+      <% end %>-->
+    </div>
     <strong class="deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
       <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>

@@ -10,6 +10,8 @@ div.dealsList div.deal { position: relative; width: 570px; background: white; bo
 
 div.dealsList div.deal::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
+div.defaultDeal div.deal_left { float: left; }
+
 div.defaultDeal .deal_picture { background: white; border: 1px solid #CCC; display: block; float: left; height: 70px; overflow: hidden; margin: 0 15px 15px 0; overflow: hidden; padding: 5px; width: 85px; -moz-box-shadow: 1px 1px 3px #ddd; }
 
 div.defaultDeal .deal_title { font: bold 18px/20px Arial, Helvetica, Sans-Serif; display: block; margin: 5px 0 10px; }
@@ -24,10 +26,10 @@ div.defaultDeal div.deal ul li a,
 div.defaultDeal div.deal ul li strong { font: bold 10px/10px Verdana, Sans-Serif; }
 div.defaultDeal div.deal ul li a { text-decoration: none; }
 
-div.defaultDeal div.deal div.button { float: left; padding: 15px 0 10px 0; }
+div.defaultDeal div.deal div.button { float: right; padding: 15px 0 10px 0; }
 div.defaultDeal div.deal div.button a.button { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -120px; border: 1px solid #834512; color: #834512; font: 12px/12px Verdana, Sans-Serif; padding: 6px; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 
-div.defaultDeal div.deal ul.discount { display: block; overflow: hidden; margin: 0 0 10px 0; padding: 0; width: 530px; }
+div.defaultDeal div.deal ul.discount { display: block; overflow: hidden; margin: 0 0 10px 5px; padding: 0; width: 530px; }
 div.defaultDeal div.deal ul.discount li { display: block; float: left; width: auto; }
 div.defaultDeal div.deal ul.discount li span { color: #999; display: block; font-size: 10px; }
 div.defaultDeal div.deal ul.discount li strong { display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; margin-top: 5px; }
@@ -45,3 +47,9 @@ div.defaultDeal div.deal ul.discount li.deal_date { border-left: 1px solid #DDD;
 
 div.defaultDeal div.deal ul.discount li.deal_real_price strong { color: #D69999; text-decoration: line-through; }
 div.defaultDeal div.deal ul.discount li.deal_price strong { color: #3C6; }
+
+div.defaultDeal div.deal div.votes { margin: auto; position: relative; z-index: 10; padding-bottom: 5px; min-height: 40px; }
+
+div.defaultDeal div.deal div.votes a.like { background: url(<%= asset_path 'like.png' %>) no-repeat transparent; height: 30px; text-indent: -999em; padding-bottom: 5px; }
+
+div.defaultDeal div.deal div.votes a.dislike { background: url(<%= asset_path 'dislike.png' %>) no-repeat; height: 30px; text-indent: -999em; padding-bottom: 5px; width: 5px; }
