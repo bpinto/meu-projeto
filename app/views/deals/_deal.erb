@@ -9,7 +9,7 @@
         </div>
       <% end %>-->
     </div>
-    <strong class="deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
+    <strong class="deal_title"><%= link_to truncate_title(deal.title), deal_path(deal), :title => deal.title %></strong>
     <ul>
       <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
       <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>

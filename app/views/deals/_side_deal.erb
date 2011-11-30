@@ -3,7 +3,7 @@
     <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
     <div>
       <div class="dealDate">
-        <strong>Válida até:</strong>
+        <!--<strong>Válida até:</strong>-->
         <% if deal.end_date? %>
           <%= l deal.end_date.to_date %>
         <% else %>
@@ -11,7 +11,7 @@
         <% end %>
       </div>
     </div>
-    <strong class="deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
+    <strong class="deal_title"><%= link_to truncate_side_title(deal.title), deal_path(deal), :title => deal.title %></strong>
     <ul>
       <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
       <li class="average">

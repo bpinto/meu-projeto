@@ -92,4 +92,13 @@ module DealsHelper
     EOS
     html.html_safe
   end
+
+  def truncate_title(title)
+    truncate(title, :length => 48)
+  end
+
+  def truncate_side_title(title)
+    truncate(title, :length => 35)
+  end
+
 end
