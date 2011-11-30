@@ -39,7 +39,7 @@
       <h3>Opções de Busca</h3>
     </div>
     <div class="content">
-      <form action="<%= deals_path %>" method="get" class="search">
+      <form id="search_form" action="<%= deals_path %>" method="get" class="search">
         <fieldset>
           <legend>Buscar</legend>
           <%= text_field_tag :search, params[:search]%>
