@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   def fill_deals_lists
     deals = Deal.active
+    deals = deals.by_cities(user_cities_ids) if user_cities_ids.try(:any?)
     @best_deals = deals.voted.best_deals.limit(3)
     @newest_deals = deals.recent.limit(3)
     @most_comment_deals = deals.most_commented.limit(3)
