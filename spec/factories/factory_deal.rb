@@ -10,6 +10,8 @@ FactoryGirl.define do
     price_mask "0,99"
     real_price_mask "1,99"
     title "F_TITLE"
+    up_votes = 0
+    down_votes = 0
 
     city
     user

@@ -40,6 +40,30 @@ Given /^(\d+) deals? (?:was|were) registered (\w+)$/ do |amount, date_name|
   end
 end
 
+Given /^(\d+) deal with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*) with (\d+) comments?$/ do |amount, attribute, value, date_name, amount_of_comments|
+  date = get_date(date_name)
+  params = fix_params(attribute, value)
+
+  amount.to_i.times do
+    deal = FactoryGirl.create :deal, params
+    amount_of_comments.to_i.times do
+      comment = deal.comments.build(:comment => "comment")
+      comment.save
+    end
+  end
+end
+
+Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*) with (\d+) up votes? and (\d+) down votes?$/ do |amount, attribute, value, date_name, amount_up_votes, amount_down_votes|
+  date = get_date(date_name)
+  params = fix_params(attribute, value)
+  amount.to_i.times do
+    deal = FactoryGirl.create :deal, params
+    deal.up_votes = amount_up_votes
+    deal.down_votes = amount_down_votes
+    deal.save
+  end
+end
+
 Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*)$/ do |amount, attribute, value, date_name|
   date = get_date(date_name)
   params = fix_params(attribute, value)
@@ -109,6 +133,11 @@ end
 Then /^I should see (\d+) deals? with (\w+) "([^"]*)"$/ do |amount, attribute, value|
   field = get_field("deal", attribute)
   page.all(:xpath, "//div[@class='main']//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
+end
+
+Then /^I should see (\d+) side deal with (\w+) "([^"]*)" in (\w+) list$/ do |amount, attribute, value, list_class|
+  field = get_field("deal", attribute)
+  page.all(:xpath, "//div[@class='side']//div[@class='#{list_class}']//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
 end
 
 Then /^deal should link to "([^"]*)"$/ do |text|
