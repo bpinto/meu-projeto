@@ -17,30 +17,31 @@ div.defaultDeal .deal_title { font: bold 18px/20px Arial, Helvetica, Sans-Serif;
 div.defaultDeal .deal_title * { font: bold 18px/20px Arial, Helvetica, Sans-Serif; }
 div.defaultDeal .deal_title a { text-decoration: none; }
 
-div.defaultDeal .dealDate { float: right; margin-top: -11px; }
-
-div.defaultDeal div.deal ul {display: block; margin-bottom: 5px; margin-left: 110px }
-div.defaultDeal div.deal li { width: 430px; color: #888; display: block; font: 10px/15px Verdana, Sans-Serif; list-style: none; margin-bottom: 5px; }
+div.defaultDeal div.deal ul {display: block; margin-bottom: 5px; margin-left: 0; float: left; }
+div.defaultDeal div.deal li { width: 230px; color: #888; display: block; font: 10px/15px Verdana, Sans-Serif; list-style: none; margin-bottom: 5px; }
 
 div.defaultDeal div.deal ul li a,
 div.defaultDeal div.deal ul li strong { font: bold 10px/10px Verdana, Sans-Serif; }
-div.defaultDeal div.deal ul li.average strong.positive { font: bold 10px/10px Verdana, Sans-Serif; color: green; }
-div.defaultDeal div.deal ul li.average strong.negative { font: bold 10px/10px Verdana, Sans-Serif; color: red; }
-div.defaultDeal div.deal ul li.average strong.none { font: bold 10px/10px Verdana, Sans-Serif; }
 div.defaultDeal div.deal ul li a { text-decoration: none; }
 
-div.defaultDeal div.deal ul li ul.discount { display: block; overflow: hidden; margin: 0 0 10px 0; padding: 0; width: 410px; }
-div.defaultDeal div.deal ul li ul.discount li { display: block; float: left; width: auto; }
-div.defaultDeal div.deal ul li ul.discount li span { color: #999; display: block; font-size: 10px; }
-div.defaultDeal div.deal ul li ul.discount li strong { display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; margin-top: 5px; }
+div.defaultDeal div.deal div.button { float: left; padding: 15px 0 10px 0; }
+div.defaultDeal div.deal div.button a.button { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -120px; border: 1px solid #834512; color: #834512; font: 12px/12px Verdana, Sans-Serif; padding: 6px; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 
-div.defaultDeal div.deal ul li ul.discount li.deal_real_price { border-right: 1px solid #DDD; margin-right: 15px; padding-right: 15px; }
+div.defaultDeal div.deal ul.discount { display: block; overflow: hidden; margin: 0 0 10px 0; padding: 0; width: 530px; }
+div.defaultDeal div.deal ul.discount li { display: block; float: left; width: auto; }
+div.defaultDeal div.deal ul.discount li span { color: #999; display: block; font-size: 10px; }
+div.defaultDeal div.deal ul.discount li strong { display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; margin-top: 5px; }
 
-div.defaultDeal div.deal ul li ul.discount li.deal_discount { border-left: 1px solid #DDD; margin-left: 15px; padding-left: 15px; }
+div.defaultDeal div.deal ul.discount li.average { border-right: 1px solid #DDD; margin-right: 15px; padding-right: 15px; }
+div.defaultDeal div.deal ul.discount li.average strong.positive { color: green; }
+div.defaultDeal div.deal ul.discount li.average strong.negative { color: red; }
+div.defaultDeal div.deal ul.discount li.average strong.none { }
 
-div.defaultDeal div.deal ul li ul.discount li.button { float: right; padding: 13px 0 10px 0; }
+div.defaultDeal div.deal ul.discount li.deal_real_price { border-right: 1px solid #DDD; margin-right: 15px; padding-right: 15px; }
 
-div.defaultDeal div.deal ul li ul.discount li.deal_real_price strong { color: #D69999; text-decoration: line-through; }
-div.defaultDeal div.deal ul li ul.discount li.deal_price strong { color: #3C6; }
+div.defaultDeal div.deal ul.discount li.deal_discount { border-left: 1px solid #DDD; margin-left: 15px; padding-left: 15px; }
 
-div.defaultDeal div.deal ul li ul.discount li.button a.button { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -120px; border: 1px solid #834512; color: #834512; font: 12px/12px Verdana, Sans-Serif; padding: 6px; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+div.defaultDeal div.deal ul.discount li.deal_date { border-left: 1px solid #DDD; margin-left: 15px; padding-left: 15px; }
+
+div.defaultDeal div.deal ul.discount li.deal_real_price strong { color: #D69999; text-decoration: line-through; }
+div.defaultDeal div.deal ul.discount li.deal_price strong { color: #3C6; }

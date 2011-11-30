@@ -1,40 +1,43 @@
 <div class="offer">
   <div class="deal">
     <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
-    <div class="offer_time contador#{index}" data-time="#{deal.end_date.try(:to_s, :deal)}" >
-      <div class="dealDate">
-        <strong>Válida até:</strong>
-        <% if deal.end_date? %>
-          <%= l deal.end_date.to_date %>
-        <% else %>
-          Não informado
-        <% end %>
-      </div>
-    </div>
     <strong class="deal_title"><%= link_to deal.title, deal_path(deal) %></strong>
     <ul>
       <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
       <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
       <li class="deal_company"><strong>Empresa: </strong><%= deal.company %></li>
       <li class="deal_city"><strong>Válida para: </strong><%= deal.city.name %></li>
+    </ul>
+    <div class="button">
+      <%= link_to 'Saiba mais', deal_path(deal), :class => "button"%>
+    </div>
+    <ul class="discount">
       <li class="average">
+        <span>Avaliação</span>
         <% if deal.average %>
           <% if deal.average >= 50 %>
             <strong class="positive"><%= deal.average %>%</strong>
           <% else %>
             <strong class="negative"><%= deal.average %>%</strong>
           <% end %>
+        <% else %>
+          <strong class="none">-</strong>
         <% end %>
       </li>
-      <li>
-        <ul class="discount">
-          <% if (deal.real_price && deal.price) %>
-            <li class="deal_real_price"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
-            <li class="deal_price"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
+      <% if (deal.real_price && deal.price) %>
+        <li class="deal_real_price"><span>Preço original</span><strong><%= number_to_currency deal.real_price %></strong></li>
+        <li class="deal_price"><span>Preço oferta</span><strong><%= number_to_currency deal.price %></strong></li>
+      <% end %>
+      <li class="deal_discount"><span>Desconto</span><strong><%= deal.discount.to_i %>%</strong></li>
+      <li class="deal_date">
+        <span>Válida até</span>
+        <strong>
+          <% if deal.end_date? %>
+            <%= l deal.end_date.to_date %>
+          <% else %>
+            -
           <% end %>
-          <li class="deal_discount"><span>Desconto</span><strong><%= deal.discount.to_i %>%</strong></li> 
-          <li class="button"><%= link_to 'Saiba mais', deal_path(deal), :class => "button"%></li>
-        </ul>
+        </strong>
       </li>
     </ul>
   </div>
