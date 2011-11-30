@@ -375,8 +375,8 @@ describe Deal do
           Deal.i18n_category(Deal::CATEGORY_COMPUTER).should == 'Informática'
         end
 
-        specify "CLOTHES: should be equal 'Roupas e Calçados'" do
-          Deal.i18n_category(Deal::CATEGORY_CLOTHES).should == 'Roupas e Calçados'
+        specify "CLOTHES: should be equal 'Vestuário'" do
+          Deal.i18n_category(Deal::CATEGORY_CLOTHES).should == 'Vestuário'
         end
 
         specify "TRAVEL: should be equal 'Viagens'" do
