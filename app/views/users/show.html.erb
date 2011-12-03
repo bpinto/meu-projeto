@@ -6,7 +6,7 @@
         <div class="content">
           <div class="content defaultDeal">
   				  <div class="up"></div> 
-	    		  <div class="middle" id="tabAreaId" style="min-height: 200px;">
+	    		  <div class="middle" id="tabAreaId" style="min-height: 50px;">
               <% @deals.each_with_index do |deal, index| %>
                 <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
               <% end %>
