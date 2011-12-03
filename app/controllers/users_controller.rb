@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def find_users
     @users = User.paginate(:page => params[:page])
-    @users = @users.search(params[:search]) if params[:search]
+    @users = @users.search(params[:search].gsub(" ", "%")) if params[:search]
   end
 
 end
