@@ -133,11 +133,6 @@ Then /^I should see (\d+) deals? with (\w+) "([^"]*)"$/ do |amount, attribute, v
   page.all(:xpath, "//div[@class='main']//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
 end
 
-Then /^I should see (\d+) side deal with (\w+) "([^"]*)" in (\w+) list$/ do |amount, attribute, value, list_class|
-  field = get_field("deal", attribute)
-  page.all(:xpath, "//div[@class='side']//div[@class='#{list_class}']//div[@class='deal']//strong[@class='#{field}']/a[contains(text(), '#{value}')]").length.should == amount.to_i
-end
-
 Then /^deal should link to "([^"]*)"$/ do |text|
   page.find(:xpath, "//li[@class='botao']/a")[:href].should == text
 end

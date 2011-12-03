@@ -17,6 +17,15 @@ module HtmlSelectorsHelpers
     when "the new deal form"
       "#new_deal"
 
+    when "the newest list"
+      "div.newest"
+
+    when "the most commented list"
+      "div.most_commented"
+
+    when "the top list"
+      "div.best"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
