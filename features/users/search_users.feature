@@ -31,12 +31,14 @@ Feature: Search Users
     Then I should see a profile link to "username's page"
 
   Scenario: Search without results should show a no users found message
+    Given I am on users page
     When I fill in the users search field with "Usuario Inexistente"
     And I press "Buscar"
     Then I should see "Não foi encontrado nenhum usuário"
 
   Scenario: Search with results should not show a no deals found message
     Given one user with a name "name" exists
+    And I am on users page
     When I fill in the users search field with "name"
     And I press "Buscar"
     Then I should not see "Não foi encontrado nenhum usuário"
