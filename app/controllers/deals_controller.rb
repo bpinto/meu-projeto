@@ -2,7 +2,7 @@
 class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:index, :show, :today]
   prepend_before_filter :find_deals, :only => [:index, :today]
-  before_filter :populate_cities_name, :only => :new
+  before_filter :populate_cities_name, :only => [:new, :share]
 
   def index
     flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
@@ -32,10 +32,9 @@ class DealsController < AuthorizedController
   end
 
   def share
-    deal = Share.create_deal params[:share]
+    @deal = Share.create_deal params[:share]
 
-    binding.pry
-    redirect_to new_deal_path, deal
+    render :new
   end
 
   def unvote

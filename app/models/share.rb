@@ -29,7 +29,12 @@ class Share
 
   def self.create_deal(link)
     @deal = Deal.new :link => link
-    populate_deal(@deal)
+
+    begin
+      populate_deal(@deal)
+    rescue Errno::ENOENT => wrong_link_exception
+      @deal = Deal.new
+    end
 
     @deal
   end
