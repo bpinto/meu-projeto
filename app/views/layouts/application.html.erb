@@ -45,6 +45,13 @@
         <div class="logo">
           <div class="content">
             <%= link_to "DealWit.Me", root_path, :class => "logo" %>
+            <form action="<%= share_deals_path %>" method="get" class="share_offer_url">
+              <fieldset>
+                <legend>Compartilhar</legend>
+                <%= text_field_tag :share, params[:share]%>
+                <button id="share" type="submit">Compartilhar</button>
+              </fieldset>
+            </form>
           </div>
         </div>
 
