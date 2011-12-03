@@ -32,6 +32,10 @@ class DealsController < AuthorizedController
   end
 
   def share
+    deal = Share.create_deal params[:share]
+
+    binding.pry
+    redirect_to new_deal_path, deal
   end
 
   def unvote

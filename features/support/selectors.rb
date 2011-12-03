@@ -14,6 +14,9 @@ module HtmlSelectorsHelpers
     when /^(\w+)'s (\w+)$/
       ".#{get_field($1, $2)}"
 
+    when "the new deal form"
+      "#new_deal"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
