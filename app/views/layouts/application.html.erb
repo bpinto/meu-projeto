@@ -49,7 +49,7 @@
             <form action="<%= share_deals_path %>" method="get" class="share_offer_url">
               <fieldset>
                 <legend>Compartilhar</legend>
-                <%= text_field_tag :share, params[:share]%>
+                <%= text_field_tag :share, params[:share], :title => "Compartilhe uma oferta" %>
                 <button id="share" type="submit">Compartilhar</button>
               </fieldset>
             </form>
@@ -378,5 +378,9 @@
     </script>
     <!-- Google Analytics -->
     
+    <script>
+      $('#share').coolinput('Copie a url da oferta aqui para compartilhar!');
+    </script>
+
   </body>
 </html>
