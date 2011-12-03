@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     where(:username => username).first
   end
 
+  def self.search(search)
+    where("users.name ILIKE :search OR users.username ILIKE :search", :search => "%#{search}%")
+  end
+
   protected
 
   def self.find_for_database_authentication(warden_conditions)

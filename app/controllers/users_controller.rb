@@ -1,3 +1,4 @@
+# coding: UTF-8
 class UsersController < ApplicationController
   before_filter :find_user_with_deals, :only => :show
   prepend_before_filter :find_users, :only => :index
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    flash.now[:notice] = "Não foi encontrado nenhum usuário" if @users.empty? && params[:search]
   end
 
   #Lembrar de dar Reset Ability (CanCan)
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
 
   def find_users
     @users = User.paginate(:page => params[:page])
+    @users = @users.search(params[:search]) if params[:search]
   end
-  
+
 end
