@@ -1,4 +1,4 @@
-Feature: New Deal
+Feature: Search Deal as Guest
   As a guest
   I want to search for active deals
   so I can browse them easier

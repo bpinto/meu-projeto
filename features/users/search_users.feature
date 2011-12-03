@@ -16,16 +16,27 @@ Feature: Search Users
     Then I should see a link to "followed_user's unfollow page"
 
   Scenario: Viewing user's name
-      Given one user with a name "name" exists
-      And I am on users page
-      Then I should see "name" within user's name
+    Given one user with a name "name" exists
+    And I am on users page
+    Then I should see "name" within user's name
 
   Scenario: Viewing user's username
-      Given one user with an username "username" exists
-      And I am on users page
-      Then I should see "username" within user's username
+    Given one user with an username "username" exists
+    And I am on users page
+    Then I should see "username" within user's username
 
   Scenario: Viewing link to user's profile
-      Given one user with an username "username" exists
-      And I am on users page
-      Then I should see a profile link to "username's page"
+    Given one user with an username "username" exists
+    And I am on users page
+    Then I should see a profile link to "username's page"
+
+  Scenario: Search without results should show a no users found message
+    When I fill in the users search field with "Usuario Inexistente"
+    And I press "Buscar"
+    Then I should see "Não foi encontrado nenhum usuário"
+
+  Scenario: Search with results should not show a no deals found message
+    Given one user with a name "name" exists
+    When I fill in the users search field with "name"
+    And I press "Buscar"
+    Then I should not see "Não foi encontrado nenhum usuário"

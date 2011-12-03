@@ -115,3 +115,7 @@ end
 Then /^I should see a profile link to "([^"].*)"$/ do |page_name|
   page.find(:xpath, "//strong[@class='user_name']//a")[:href].should == path_to(page_name)
 end
+
+When /^I fill in the users search field with "([^"]*)"$/ do |search|
+  fill_in "search", :with => search
+end
