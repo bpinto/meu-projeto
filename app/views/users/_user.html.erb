@@ -5,6 +5,9 @@
   <strong class="user_name"><%= link_to user.name, user_path(user.username), :title => user.name %></strong>
   <ul>
     <li class="user_username"><strong>Username: </strong><%= user.username %></li>
+    <li class="user_deals"><strong><%= user.deals.length %> </strong> ofertas compartilhadas!</li>
+    <li class="user_following">Seguindo <strong><%= user.following.length %> </strong> usuários!</li>
+    <li class="user_followers"><strong><%= user.followers.length %> </strong> seguidores!</li>
   </ul>
   <div class="button">
     <%= link_to 'Visualizar Perfil', user_path(user.username), :class => "button"%>
