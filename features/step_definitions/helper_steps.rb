@@ -6,8 +6,9 @@ Then /^I should see "([^"]*)" before "([^"]*)"$/ do |first, last|
   page.find(:xpath, "//*[contains(text(), '#{first}')]/following::*[contains(text(), '#{last}')]")
 end
 
-Then /^"(.*)" deve estar selecionad(?:a|o) com a opcao "(.*)"$/ do |campo, texto|
-  find_field(campo).all(:css, "option[@selected]").first.text.should == texto
+Then /^(.*)'s (.*) should be selected with "(.*)"$/ do |klass_name, field_name, value|
+  field = get_field(klass_name, field_name)
+  find_field(field).all(:css, "option[@selected]").first.text.should == value
 end
 
 When /^(.*) (na linha do .*)$/ do |step, campo|

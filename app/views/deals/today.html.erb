@@ -46,7 +46,7 @@
           <button id="search" type="submit">Buscar</button>
         </fieldset>
 
-        <%= select_tag "search_order", search_options %>
+        <%= select_tag "search_order", search_options(params[:search_order]) %>
       </form>
     </div>
   </div>
