@@ -2,11 +2,11 @@ Given /^no user exists with an (?:username|email) of "(.*)"$/ do |login|
   User.find_record(login).should be_nil
 end
 
-Given /^one user with an (email|username) "([^"]*)" exists$/ do |property, value|
+Given /^one user with an? (email|username|name) "([^"]*)" exists$/ do |property, value|
   FactoryGirl.create :confirmed_user, property => value
 end
 
-Given /^one user with an (email|username) "([^"]*)" exists and I follow him$/ do |property, value|
+Given /^one user with an? (email|username|name) "([^"]*)" exists and I follow him$/ do |property, value|
   user = FactoryGirl.create :confirmed_user, property => value
   @current_user.follow!(user)
 end
@@ -110,4 +110,8 @@ end
 
 Then /^I should see a link to "([^"].*)"$/ do |page_name|
   page.find(:xpath, "//div[@class='interactions']//a")[:href].should == path_to(page_name)
+end
+
+Then /^I should see a profile link to "([^"].*)"$/ do |page_name|
+  page.find(:xpath, "//strong[@class='user_name']//a")[:href].should == path_to(page_name)
 end

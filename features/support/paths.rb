@@ -26,6 +26,9 @@ module NavigationHelpers
     when /active's deals page/
       deals_path
 
+    when /users page/
+      users_path
+
     when /deal "([^"]*)"'s page/i
       deal_path(Deal.find_by_title($1))
 

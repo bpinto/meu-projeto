@@ -28,7 +28,7 @@
     <div class="content">
       <div class="profile">
         <div class="userPicture"> 
-          <%= image_tag @user.gravatar_url %>
+          <%= image_tag(@user.gravatar_url, :alt => @user.username, :title => @user.username) %>
         </div>
         <div class="edit_user">
           <% if current_user == @user %>

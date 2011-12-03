@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :find_user_with_deals, :only => :show
+  prepend_before_filter :find_users, :only => :index
   # before_filter :authenticate_user!
 
   check_authorization
@@ -9,6 +10,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def index
   end
 
   #Lembrar de dar Reset Ability (CanCan)
@@ -38,4 +42,9 @@ class UsersController < ApplicationController
   def find_user_with_deals
     @deals = Deal.by_username_and_following(params[:id])
   end
+
+  def find_users
+    @users = User.paginate(:page => params[:page])
+  end
+  
 end

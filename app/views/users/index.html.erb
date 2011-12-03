@@ -1,0 +1,50 @@
+<div class="default_window page_title grey_background">
+  <h1>Usuários Encontrados</h1>
+</div>
+<div class="main">
+  <div class="users_map">
+    <div class="default_window grey_background users_list" id="users_list">
+      <div class="content">
+        <div class="content default_user">
+          <div class="zero-PagingTable">
+            <div class="zero-PagingTableGrid">
+              <% @users.each_with_index do |user, index| %>
+                <%= render :partial => 'users/user', :locals => {:user => user, :index => index} %>
+              <% end %>
+              <%= will_paginate @users %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="side">
+  <div class="buttonPanel">
+    <% if user_signed_in? %>
+      <%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => :shareButton %>
+      <%= link_to I18n.t("actions.my_profile"), user_path(current_user.username), :class => :profileButton %>
+    <% else %>
+      <%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => :signupButton %>
+      <%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => :signinButton %>
+    <% end %>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Opções de Busca</h3>
+    </div>
+    <div class="content">
+      <form id="search_form" action="<%= users_path %>" method="get" class="search">
+        <fieldset>
+          <legend>Buscar</legend>
+          <%= text_field_tag :search, params[:search]%>
+          <button id="search" type="submit">Buscar</button>
+        </fieldset>
+
+        <% select_tag "search_order", search_options %>
+      </form>
+    </div>
+  </div>
+</div>
+

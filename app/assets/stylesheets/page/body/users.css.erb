@@ -1,0 +1,32 @@
+div.main div.users_map { display: block; min-height: 375px; position: relative; }
+
+div.main div.users_map div.content { padding: 20px 5px 15px; }
+
+div.main div.users_map div.content div.content { padding: 0 }
+
+div.users_list { background-color: #EEE;}
+
+div.users_list div.user { position: relative; width: 570px; background: white; border: 1px solid #DDD; display: block; min-height: 95px; margin: 0 15px 15px; padding: 15px 15px 0; position: relative; -moz-border-radius: 5px; -webkit-border-radius: 5px; -moz-box-shadow: 1px 1px 0 #fff; }
+
+div.users_list div.user::after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+div.default_user div.left_panel { float: left; }
+
+div.default_user .user_picture { background: white; border: 1px solid #CCC; display: block; float: left; height: 180px; overflow: hidden; margin: 0 15px 15px 0; overflow: hidden; padding: 5px; width: 180px; -moz-box-shadow: 1px 1px 3px #ddd; }
+
+div.default_user .user_name { font: bold 18px/20px Arial, Helvetica, Sans-Serif; display: block; margin: 5px 0 10px; }
+
+div.default_user .user_name * { font: bold 18px/20px Arial, Helvetica, Sans-Serif; }
+div.default_user .user_name a { text-decoration: none; }
+
+div.default_user div.user ul {display: block; margin-bottom: 5px; margin-left: 0; float: left; }
+div.default_user div.user li { width: 230px; color: #888; display: block; font: 10px/15px Verdana, Sans-Serif; list-style: none; margin-bottom: 5px; }
+
+div.default_user div.user ul li a,
+div.default_user div.user ul li strong { font: bold 10px/10px Verdana, Sans-Serif; }
+div.default_user div.user ul li a { text-decoration: none; }
+
+div.default_user div.user div.button { float: right; padding: 15px 0 10px 0; }
+div.default_user div.user div.button a.button { background: url(<%= asset_path 'fundos-padrao.jpg' %>) repeat-x 0 -120px; border: 1px solid #834512; color: #834512; font: 12px/12px Verdana, Sans-Serif; padding: 6px; text-decoration: none; text-shadow: 1px 1px 0 #F8D48A; -moz-box-shadow: inset 1px 1px 0 #FEEB99; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+
+div.default_user div.user div.interactions { display: block; overflow: hidden; margin: 0 0 10px 5px; padding: 0; width: 530px; }

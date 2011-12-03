@@ -56,11 +56,9 @@ end
 Given /^(\d+) deals? with ([\w ]+) as "([^"]*)" (?:was|were) registered (\w*) with (\d+) up votes? and (\d+) down votes?$/ do |amount, attribute, value, date_name, amount_up_votes, amount_down_votes|
   date = get_date(date_name)
   params = fix_params(attribute, value)
+  params.merge :up_votes => amount_up_votes, :down_votes => amount_down_votes
   amount.to_i.times do
     deal = FactoryGirl.create :deal, params
-    deal.up_votes = amount_up_votes
-    deal.down_votes = amount_down_votes
-    deal.save
   end
 end
 
