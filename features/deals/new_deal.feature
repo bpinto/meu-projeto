@@ -14,7 +14,7 @@ Feature: New Deal
     Scenario: Creating a new deal successfully
       Given I am on the new deal page
       When I fill in the deal fields correctly
-      And I press "Compartilhar"
+      And I press "Compartilhar" within the new deal form
       Then I should see "Oferta criada com sucesso!"
       And go to the home page
 
@@ -22,6 +22,6 @@ Feature: New Deal
       Given I am on the new deal page
       When I fill in the deal fields correctly
       And I fill in deal's link with ""
-      And I press "Compartilhar"
+      And I press "Compartilhar" within the new deal form
       Then I should see "Foram encontrados erros ao criar a oferta."
       And go to the home page

@@ -23,6 +23,10 @@ DealWitMe::Application.routes.draw do
   resources :deals do
     resources :comments
 
+    collection do
+      get 'share'
+    end
+
     member do
       get 'upvote'
       get 'downvote'

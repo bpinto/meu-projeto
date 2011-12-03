@@ -31,6 +31,13 @@ class DealsController < AuthorizedController
     flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
   end
 
+  def share
+    deal = Share.create_deal params[:share]
+
+    binding.pry
+    redirect_to new_deal_path, deal
+  end
+
   def unvote
     current_user.unvote!(@deal)
     redirect_to deal_path(@deal), :notice => "Voto apagado com sucesso!"
