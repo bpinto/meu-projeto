@@ -14,11 +14,8 @@ module ApplicationHelper
   end
 
   def title
-    puts "-"*80
-    puts @title
-    puts "-"*80
     if not @title.nil?
-      @title + " - DealWit.Me"
+      @title + " | DealWit.Me"
     else
       "DealWit.Me"
     end

@@ -7,6 +7,7 @@ class DealsController < AuthorizedController
 
   def index
     flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
+    @title = Deal.i18n_category(Deal::CATEGORIES_DICTIONARY[params[:category]]) if params[:category]
   end
 
   def new
@@ -26,10 +27,12 @@ class DealsController < AuthorizedController
 
   def show
     @comment = Comment.new
+    @title = @deal.title
   end
 
   def today
     flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
+    @title = Deal.i18n_category(Deal::CATEGORIES_DICTIONARY[params[:category]]) if params[:category]
   end
 
   def share

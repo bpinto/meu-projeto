@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource :find_by => :username
 
   def show
+    @title = @user.username
   end
 
   def edit
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 
   def index
     flash.now[:notice] = "Não foi encontrado nenhum usuário" if @users.empty? && params[:search]
+    @title = "Buscar Usuários"
   end
 
   #Lembrar de dar Reset Ability (CanCan)
