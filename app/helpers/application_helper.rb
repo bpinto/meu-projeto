@@ -12,4 +12,16 @@ module ApplicationHelper
 
     body.html_safe
   end
+
+  def title
+    puts "-"*80
+    puts @title
+    puts "-"*80
+    if not @title.nil?
+      @title + " - DealWit.Me"
+    else
+      "DealWit.Me"
+    end
+  end
+
 end

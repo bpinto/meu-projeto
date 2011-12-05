@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  def title=(title)
+    puts "-"*90
+    puts "title = " + title
+    @title = title
+    puts "-"*90
+    puts "@title = " + @title
+    puts "-"*90
+  end
+
   private
 
   def fill_deals_lists

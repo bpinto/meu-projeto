@@ -2,6 +2,7 @@
 class DealsController < AuthorizedController
   skip_before_filter :authenticate_user!, :only => [:index, :show, :today]
   prepend_before_filter :find_deals, :only => [:index, :today]
+  before_filter :define_title, :only => :show
   before_filter :populate_cities_name, :only => [:new, :share]
 
   def index
@@ -91,5 +92,9 @@ class DealsController < AuthorizedController
     else
       scope.recent
     end
+  end
+
+  def define_title
+    title = @deal.title
   end
 end
