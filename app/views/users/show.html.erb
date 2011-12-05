@@ -40,7 +40,9 @@
           <p><%= @user.deals.count %> <%= I18n.t("models.user.shared_deals") %></p><br/>
           <p><%= @user.followers.count %> <%= I18n.t("models.user.followers") %></p><br/>
           <p><%= I18n.t("models.user.following") %> <%= @user.following.count %> <%= I18n.t "users" %> </p><br/>
-          <p>Email: <%= @user.email if @user.email %></p><br/>
+          <% if (user_signed_in? && (current_user == @user || @user.follow?(current_user))) %>
+            <p>Email: <%= @user.email if @user.email %></p><br/>
+          <% end %>
         </div> 
         <% if user_signed_in? && current_user != @user %>
           <div class="interactions"> 

@@ -32,6 +32,7 @@ class DealsController < AuthorizedController
 
   def today
     flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
+    @title = "Ofertas do dia"
     @title = Deal.i18n_category(Deal::CATEGORIES_DICTIONARY[params[:category]]) if params[:category]
   end
 
