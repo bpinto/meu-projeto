@@ -50,5 +50,6 @@ class Share
     page = open_page(deal.link)
 
     deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
+    
   end
 end
