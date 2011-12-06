@@ -42,6 +42,7 @@ class DealsController < AuthorizedController
     render :new
   rescue Errno::ETIMEDOUT
     flash.now[:alert] = "Não foi possível ler as informações da oferta no site indicado."
+    @deal = Deal.new :link => params[:share]
     render :new
   end
 
