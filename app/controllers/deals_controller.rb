@@ -40,7 +40,7 @@ class DealsController < AuthorizedController
     @deal = Share.create_deal params[:share]
 
     render :new
-  rescue Timeout::Error
+  rescue Errno::ETIMEDOUT
     flash.now[:alert] = "Não foi possível ler as informações da oferta no site indicado."
     render :new
   end
