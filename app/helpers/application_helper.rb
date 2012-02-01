@@ -15,9 +15,9 @@ module ApplicationHelper
 
   def title
     if not @title.nil?
-      @title + " | DealWit.Me"
+      @title + " | DealWit.Me - Compartilhe Boas Ofertas"
     else
-      "DealWit.Me"
+      "DealWit.Me - Compartilhe Boas Ofertas"
     end
   end
 
