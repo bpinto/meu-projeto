@@ -11,4 +11,20 @@ class RegistrationsController < Devise::RegistrationsController
       super
     end
   end
+
+  private
+  
+  def build_resource(*args)
+    super
+    if session["devise.facebook_data"]
+      @user = User.apply_omniauth(session["devise.facebook_data"])
+      @user.valid?
+      if params[:user]
+        @user.name = params[:user][:name]
+        @user.email = params[:user][:email]
+        @user.username = params[:user][:username]
+        @user.confirmed_at = Date.today
+      end
+    end
+  end
 end

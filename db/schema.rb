@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021175441) do
+ActiveRecord::Schema.define(:version => 20120202205026) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -91,6 +91,9 @@ ActiveRecord::Schema.define(:version => 20111021175441) do
     t.string   "username",                                              :null => false
     t.integer  "up_votes",                              :default => 0,  :null => false
     t.integer  "down_votes",                            :default => 0,  :null => false
+    t.integer  "uid"
+    t.string   "provider"
+    t.string   "avatar_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

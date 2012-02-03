@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   make_voter
 
-  devise :confirmable, :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
+  devise :confirmable, :database_authenticatable, :omniauthable, :recoverable, :registerable, :rememberable, :trackable, :validatable
   gravtastic :size => 180, :default => "mm"
   has_paper_trail
 
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   validates :username,  :presence => true,  :uniqueness => true,  :format => /^[a-zA-Z0-9_]{5,20}$/
 
-  attr_accessible :email, :login, :name, :password, :password_confirmation, :remember_me, :username
+  attr_accessible :avatar_url, :email, :login, :name, :password, :password_confirmation, :remember_me, :username, :provider, :uid
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
@@ -45,6 +45,23 @@ class User < ActiveRecord::Base
     where("users.name ILIKE :search OR users.username ILIKE :search", :search => "%#{search}%")
   end
 
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token.info
+    if user = User.where(:email => data.email).first
+      user.update_attributes!(:name => data.name, :avatar_url => data.image)
+      user
+    end
+  end
+
+  def self.apply_omniauth(data)
+    user_info = data.info
+    User.new(:email => user_info.email, :name => user_info.name, :username => user_info.nickname, :provider => "facebook", :uid => data.uid, :avatar_url => user_info.image, :confirmed_at => Date.today)
+  end
+
+  def password_required?
+    (provider.nil? || !password.blank?) && super
+  end
+  
   protected
 
   def self.find_for_database_authentication(warden_conditions)

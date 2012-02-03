@@ -25,15 +25,24 @@
             <%= f.text_field :name %>
           </li>
 
-          <li>
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-            <span class="limite">Mínimo <strong>6</strong> caracteres</span>
-          </li>
+          <% if @user.password_required? %>
+            <li>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+              <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+            </li>
+
+            <li>
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation %>
+            </li>
+          <% end %>
 
           <li>
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation %>
+            <span class="agree">
+              <%= check_box_tag(:terms_privacy, :terms_privacy) %>
+              <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
+            </span>
           </li>
 
           <!-- TODO: RECAPTCHA>
@@ -43,18 +52,9 @@
             <input type="text" tabindex="10" class="captcha" maxlength="10">
           </li>
           <-->
-
-          <!-- TODO: TERMOS -->
-          <li>
-            <span class="agree">
-              <%= check_box_tag(:terms_privacy, :terms_privacy) %>
-              <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
-            </span>
-          </li>
+          
         </ol>
 
-        <!-- TODO: Transformar o botão igual ao link -->
-        <!--<a tabindex="11" class="perfil" href="javascript:;">Criar perfil</a>-->
         <div class="button"><%= f.submit "Criar perfil", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
       <% end %>
     </div>
