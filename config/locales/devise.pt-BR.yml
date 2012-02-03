@@ -55,3 +55,9 @@ pt-BR:
         unlock: 'Desbloquear minha conta'
       hello: 'Olá'
       welcome: 'Bem vindo ao DealWit.Me,'
+    omniauth_callbacks:
+      user:
+        failure: 'Conta não vinculada ao facebook.'
+        create: 'Conta associada ao facebook com sucesso.'
+        login: 'Login efetuado com sucesso.'
+        errors: 'Para confirmar seu cadastro, corrija os erros abaixo.'

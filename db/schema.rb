@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20120202205026) do
     t.string   "username",                                              :null => false
     t.integer  "up_votes",                              :default => 0,  :null => false
     t.integer  "down_votes",                            :default => 0,  :null => false
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "provider"
     t.string   "avatar_url"
   end

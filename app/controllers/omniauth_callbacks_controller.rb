@@ -9,15 +9,16 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user
     else
       data = request.env["omniauth.auth"]
-      user = User.apply_omniauth(data)
-      if user.save
-        flash[:notice] = I18n.t "devise.omniauth_callbacks.create"
-        sign_in_and_redirect(:user, user)
-      else
+      #user = User.apply_omniauth(data)
+      #if user.save
+        #TODO: Ver internacionalizacao, colocar a traducao para funcionar
+        #flash[:notice] = I18n.t "devise.omniauth_callbacks.create"
+        flash[:notice] = "Confira seus dados e clique em confirmar"
+      #else
         session["devise.facebook_data"] = data
-        flash[:alert] = I18n.t "devise.omniauth_callbacks.errors"
+      #  flash[:alert] = I18n.t "devise.omniauth_callbacks.errors"
         redirect_to new_user_registration_url
-      end
+      #end
     end
   end
 end

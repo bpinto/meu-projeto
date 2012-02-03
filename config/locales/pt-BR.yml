@@ -323,8 +323,3 @@
     previous_label: "Página anterior"
     next_label: "Próxima página"
     page_gap: "&hellip;"
-  devise:
-    omniauth_callbacks:
-      create: 'Conta associada ao facebook com sucesso.'
-      login: 'Login efetuado com sucesso.'
-      errors: 'Para confirmar seu cadastro, corrija os erros abaixo.'
