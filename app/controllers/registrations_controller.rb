@@ -1,5 +1,6 @@
 #coding: UTF-8
 class RegistrationsController < Devise::RegistrationsController
+  skip_before_filter :delete_facebook_data, :only => [:new, :create]
 
   def create
     if not params[:terms_privacy]

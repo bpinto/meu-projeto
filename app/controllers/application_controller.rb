@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 #  before_filter :authenticate
-  before_filter :fill_deals_lists
+  before_filter :fill_deals_lists, :delete_facebook_data
 
   protect_from_forgery
 
@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
     @most_comment_deals = deals.most_commented.limit(3)
   end
 
+  def delete_facebook_data
+    if session["devise.facebook_data"]
+      session["devise.facebook_data"] = nil
+    end
+  end
 #  def authenticate
 #    return true unless Rails.env == "production"
 #    authenticate_or_request_with_http_basic do |username, password|
