@@ -1,12 +1,12 @@
-<div class="principal">
-  <div class="janela media">
-    <div class="cima"></div>
-    <div class="meio criarPerfil" id="userCreateAreaId">
+<div class="main">
+  <div class="window medium_window">
+    <div class="up"></div>
+    <div class="middle newProfile" id="userCreateAreaId">
       <div>
         <!-- TODO: Imagem -->
         <h1>DealWit.me</h1>
         <!-- TODO: Facebook / Google -->
-        <h3>Edite sua informações</h3>
+        <h3>Edite suas informações</h3>
 
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <ol>
@@ -53,14 +53,14 @@
           </ol>
 
           <!-- TODO: Transformar o botão igual ao link -->
-          <a tabindex="11" class="perfil" href="javascript:;">Atualizar</a>
-          <p><%= f.submit "Update" %></p>
+          <!--<a tabindex="11" class="perfil" href="javascript:;">Atualizar</a>-->
+          <div class="button"><%= f.submit "Atualizar", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
         <% end %>
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-        <%= link_to "Back", :back %>        
+        <p>Unhappy? <%= link_to "Cancelar minha conta", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+        <%= link_to "Voltar", :back %>        
       </div>
     </div>
-    <div class="baixo">
+    <div class="down">
     </div>
   </div>
 </div>
