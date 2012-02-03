@@ -32,21 +32,23 @@
               <%= f.text_field :name %>
             </li>
 
-            <li>
-              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-              <%= f.password_field :password %>
-              <span class="limite">Mínimo <strong>6</strong> caracteres</span>
-            </li>
+            <% if @user.password_required? %>
+              <li>
+                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+                <%= f.password_field :password %>
+                <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+              </li>
 
-            <li>
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
-            </li>
+              <li>
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %>
+              </li>
 
-            <li>
-              <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-              <%= f.password_field :current_password %>
-            </li>
+              <li>
+                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                <%= f.password_field :current_password %>
+              </li>
+            <% end %>
 
           </ol>
 
