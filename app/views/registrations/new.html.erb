@@ -6,6 +6,7 @@
       <h1>DealWit.me</h1>
       <!-- TODO: Facebook / Google -->
       <h3>Crie seu perfil preenchendo os campos abaixo e comece a compartilhar ofertas com seus amigos</h3>
+      <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %>
 
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <ol>
