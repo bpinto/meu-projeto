@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
 
   def self.apply_omniauth(data)
     user_info = data.info
-    User.new(:email => user_info.email, :name => user_info.name, :username => user_info.nickname, :provider => "facebook", :uid => data.uid, :avatar_url => user_info.image, :confirmed_at => Date.today, :access_token => data.credentials.access_token)
+    User.new(:email => user_info.email, :name => user_info.name, :username => user_info.nickname, :provider => "facebook", :uid => data.uid, :avatar_url => user_info.image, :confirmed_at => Date.today, :access_token => data.credentials.token)
   end
 
   def password_required?

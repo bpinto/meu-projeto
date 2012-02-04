@@ -10,11 +10,10 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with_navigational(resource) { render :new }
     else
       super
-      #TODO: AN ACTIVE ACCESS TOKEN
-      #if current_user.provider?
-      #  me = FbGraph::User.me(current_user.access_token)
-      #  me.feed!( :message => current_user.name + " está usando o DealWit.Me para buscar e compartilhar ofertas!", :link => "http://dealwit.me", :description => "O DealWit.Me é uma plataforma social online voltada para a agregação de informações a respeito de ofertas em produtos e serviços, que permite a interação dos usuários através de ferramentas de relacionamento e compartilhamento, de modo a facilitar as decisões dos consumidores.")
-      #end
+      if ((not current_user.nil?) && current_user.provider?)
+        me = FbGraph::User.me(current_user.access_token)
+        me.feed!( :message => current_user.name + " está usando o DealWit.Me para buscar e compartilhar ofertas!", :link => "http://dealwit.me", :description => "O DealWit.Me é uma plataforma social online voltada para a agregação de informações a respeito de ofertas em produtos e serviços, que permite a interação dos usuários através de ferramentas de relacionamento e compartilhamento, de modo a facilitar as decisões dos consumidores.")
+      end
     end
   end
 
