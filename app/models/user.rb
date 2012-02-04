@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   validates :username,  :presence => true,  :uniqueness => true,  :format => /^[a-zA-Z0-9_]{5,20}$/
 
-  attr_accessible :avatar_url, :email, :login, :name, :password, :password_confirmation, :remember_me, :username, :provider, :uid
+  attr_accessible :access_token, :avatar_url, :email, :login, :name, :password, :password_confirmation, :remember_me, :username, :provider, :uid
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
@@ -48,14 +48,14 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
     if user = User.where(:email => data.email).first
-      user.update_attributes!(:name => data.name, :avatar_url => data.image)
+      user.update_attributes!(:name => data.name, :avatar_url => data.image, :access_token => access_token.credentials.token)
       user
     end
   end
 
   def self.apply_omniauth(data)
     user_info = data.info
-    User.new(:email => user_info.email, :name => user_info.name, :username => user_info.nickname, :provider => "facebook", :uid => data.uid, :avatar_url => user_info.image, :confirmed_at => Date.today)
+    User.new(:email => user_info.email, :name => user_info.name, :username => user_info.nickname, :provider => "facebook", :uid => data.uid, :avatar_url => user_info.image, :confirmed_at => Date.today, :access_token => data.credentials.access_token)
   end
 
   def password_required?

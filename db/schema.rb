@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202205026) do
+ActiveRecord::Schema.define(:version => 20120204022701) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120202205026) do
     t.string   "uid"
     t.string   "provider"
     t.string   "avatar_url"
+    t.string   "access_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -5,7 +5,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
 
     if @user
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.login", :kind => "Facebook"
+      #TODO: Ver internacionalizacao, colocar a traducao para funcionar
+      #flash[:notice] = I18n.t "devise.omniauth_callbacks.login", :kind => "Facebook"
+      flash[:notice] = "Login efetuado com sucesso."
       sign_in_and_redirect @user
     else
       data = request.env["omniauth.auth"]
@@ -13,7 +15,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       #if user.save
         #TODO: Ver internacionalizacao, colocar a traducao para funcionar
         #flash[:notice] = I18n.t "devise.omniauth_callbacks.create"
-        flash[:notice] = "Confira seus dados e clique em confirmar"
+        flash[:notice] = "Confira seus dados e clique em confirmar."
       #else
         session["devise.facebook_data"] = data
       #  flash[:alert] = I18n.t "devise.omniauth_callbacks.errors"
