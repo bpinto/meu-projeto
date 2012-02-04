@@ -16,8 +16,10 @@ class DealsController < AuthorizedController
   def create
     @deal.user = current_user
     if @deal.save
-      me = FbGraph::User.me(current_user.access_token)
-      me.feed!( :message => current_user.name + " acabou de compartilhar uma oferta no DealWit.Me", :link => deal_url(@deal), :description => @deal.description)
+      if current_user.provider?
+        me = FbGraph::User.me(current_user.access_token)
+        me.feed!( :message => current_user.name + " acabou de compartilhar uma oferta no DealWit.Me", :link => deal_url(@deal), :description => @deal.description)
+      end
       redirect_to root_path, :notice => "Oferta criada com sucesso!"
     else
       populate_cities_name
