@@ -4,7 +4,7 @@
   <div class="middle newProfile">
       <h1>DealWit.Me</h1>
       <!-- TODO: Facebook / Google -->
-      <h3>Preencha os campos abaixo ou <%= link_to "Entre com sua conta do Facebook", user_omniauth_authorize_path(:facebook) %></h3>
+      <h3>Preencha os campos abaixo ou <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %></h3>
 
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <ol>
