@@ -27,6 +27,9 @@ describe User do
     it { should allow_mass_assignment_of(:uid) }
     it { should allow_mass_assignment_of(:avatar_url) }
     it { should allow_mass_assignment_of(:access_token) }
+    it { should allow_mass_assignment_of(:facebook_follow_user) }
+    it { should allow_mass_assignment_of(:facebook_vote_offer) }
+    it { should allow_mass_assignment_of(:facebook_share_offer) }
   end
 
   describe "#guest?" do
@@ -233,6 +236,6 @@ describe User do
     it "should be all true if is a new user" do
       (user.facebook_share_offer && user.facebook_follow_user && user.facebook_vote_offer).should be_true
     end
-    
+
   end
 end

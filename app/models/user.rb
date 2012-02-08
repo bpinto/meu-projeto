@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   validates :username,  :presence => true,  :uniqueness => true,  :format => /^[a-zA-Z0-9_]{5,20}$/
 
-  attr_accessible :access_token, :avatar_url, :email, :login, :name, :password, :password_confirmation, :provider, :remember_me, :uid, :username
+  attr_accessible :access_token, :avatar_url, :facebook_follow_user, :facebook_vote_offer, :facebook_share_offer, :email, :login, :name, :password, :password_confirmation, :provider, :remember_me, :uid, :username
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
