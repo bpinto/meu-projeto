@@ -23,6 +23,10 @@ describe User do
     it { should allow_mass_assignment_of(:password_confirmation) }
     it { should allow_mass_assignment_of(:remember_me) }
     it { should allow_mass_assignment_of(:username) }
+    it { should allow_mass_assignment_of(:provider) }
+    it { should allow_mass_assignment_of(:uid) }
+    it { should allow_mass_assignment_of(:avatar_url) }
+    it { should allow_mass_assignment_of(:access_token) }
   end
 
   describe "#guest?" do
@@ -222,5 +226,13 @@ describe User do
       user.username = "with_underscore"
       user.should be_valid
     end
+  end
+
+  describe "facebook options" do
+
+    it "should be all true if is a new user" do
+      (user.facebook_share_offer && user.facebook_follow_user && user.facebook_vote_offer).should be_true
+    end
+    
   end
 end
