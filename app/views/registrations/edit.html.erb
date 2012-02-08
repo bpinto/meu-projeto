@@ -10,45 +10,68 @@
 
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <ol>
-            <li>
-              <div class="foto consumidor photo"> 
-                <%= image_tag @user.gravatar_url %>
-              </div>
-              <a href="http://gravatar.com/emails/" target="_blank" > <%= I18n.t('actions.edit_picture') %></a>
-            </li>
-            <li>
-              <%= f.label :email %>
-              <%= f.text_field :email %>
-            </li>
-
-            <li>
-              <%= f.label :username %>
-              <%= f.text_field :username %>
-              <span class="limite">Limite <strong>20</strong> caracteres</span>
-            </li>
-
-            <li>
-              <%= f.label :name %>
-              <%= f.text_field :name %>
-            </li>
-
-            <% if @user.password_required? %>
+            <div ="user_data"
               <li>
-                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-                <%= f.password_field :password %>
-                <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+                <div class="user_picture"> 
+                  <%= image_tag @user.gravatar_url %>
+                </div>
+                <div class = "edit_user_picture">
+                  <a href="http://gravatar.com/emails/" target="_blank" > <%= I18n.t('actions.edit_picture') %></a>
+                </div>
+              </li>
+              <li>
+                <%= f.label :email %>
+                <% if resource.provider? %>
+                  <%= resource.email %>
+                <% else %>
+                  <%= f.text_field :email %>
+                <% end %>
               </li>
 
               <li>
-                <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation %>
+                <%= f.label :username %>
+                <%= f.text_field :username %>
+                <span class="limite">Limite <strong>20</strong> caracteres</span>
               </li>
 
               <li>
-                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-                <%= f.password_field :current_password %>
+                <%= f.label :name %>
+                <%= f.text_field :name %>
               </li>
-            <% end %>
+
+              <% if @user.password_required? %>
+                <li>
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+                  <%= f.password_field :password %>
+                  <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+                </li>
+
+                <li>
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation %>
+                </li>
+
+                <li>
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                  <%= f.password_field :current_password %>
+                </li>
+              <% end %>
+            </div>
+
+            <div class="facebook_permissions">
+              <li>
+                <%= f.label :facebook_share_offer %>
+                <%= f.check_box :facebook_share_offer %>
+              </li>
+              <li>
+                <%= f.label :facebook_vote_offer %>
+                <%= f.check_box :facebook_vote_offer %>
+              </li>
+              <li>
+                <%= f.label :facebook_follow_user %>
+                <%= f.check_box :facebook_follow_user %>
+              </li>
+            </div>
 
           </ol>
 
@@ -56,7 +79,7 @@
           <!--<a tabindex="11" class="perfil" href="javascript:;">Atualizar</a>-->
           <div class="button"><%= f.submit "Atualizar", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
         <% end %>
-        <p><%= link_to "Cancelar minha conta", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+        <p><%= link_to "Cancelar minha conta", registration_path(resource_name), :confirm => "Tem certeza?", :method => :delete %>.</p>
         <%= link_to "Voltar", :back %>        
       </div>
     </div>

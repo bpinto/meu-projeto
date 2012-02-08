@@ -12,9 +12,6 @@ class UsersController < ApplicationController
     @title = @user.username
   end
 
-  def edit
-  end
-
   def index
     flash.now[:notice] = "Não foi encontrado nenhum usuário" if @users.empty? && params[:search]
     @title = "Buscar Usuários"
