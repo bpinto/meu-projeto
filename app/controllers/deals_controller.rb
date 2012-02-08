@@ -16,7 +16,7 @@ class DealsController < AuthorizedController
   def create
     @deal.user = current_user
     if @deal.save
-      if current_user.provider?
+      if current_user.provider? && current_user.facebook_share_offer
         me = FbGraph::User.me(current_user.access_token)
         me.feed!( :message => current_user.name + " acabou de compartilhar uma oferta no DealWit.Me", :link => deal_url(@deal), :description => @deal.description)
       end
@@ -57,6 +57,10 @@ class DealsController < AuthorizedController
 
   def upvote
     current_user.up_vote(@deal)
+    if current_user.provider? && current_user.facebook_vote_offer
+      me = FbGraph::User.me(current_user.access_token)
+      me.feed!(:message => current_user.name + " gostou de uma oferta no DealWit.Me", :link => deal_url(@deal), :description => @deal.description)
+    end
     redirect_to deal_path(@deal), :notice => "Voto computado com sucesso!"
   rescue MakeVoteable::Exceptions::AlreadyVotedError
     redirect_to deal_path(@deal), :error => "Voto já computado anteriormente."
@@ -64,6 +68,10 @@ class DealsController < AuthorizedController
 
   def downvote
     current_user.down_vote(@deal)
+    if current_user.provider? && current_user.facebook_vote_offer
+      me = FbGraph::User.me(current_user.access_token)
+      me.feed!(:message => current_user.name + " não gostou de uma oferta no DealWit.Me", :link => deal_url(@deal), :description => @deal.description)
+    end
     redirect_to deal_path(@deal), :notice => "Voto computado com sucesso!"
   rescue MakeVoteable::Exceptions::AlreadyVotedError
     redirect_to deal_path(@deal), :error => "Voto já computado anteriormente."

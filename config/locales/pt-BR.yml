@@ -225,14 +225,15 @@
   activerecord:
     attributes:
       user:
+        current_password: "Senha atual"
+        facebook_share_offer: "Publicar no facebook ao compartilhar oferta"
+        facebook_vote_offer: "Publicar no facebook ao votar em uma oferta"
+        facebook_follow_user: "Publicar no facebook ao seguir um usuário"
         login: "Nome do usuário ou email"
         name: "Nome"
         password: "Senha"
         password_confirmation: "Confirmação da Senha"
         username: "Usuário"
-        facebook_share_offer: "Publicar no facebook ao compartilhar oferta"
-        facebook_vote_offer: "Publicar no facebook ao votar em uma oferta"
-        facebook_follow_user: "Publicar no facebook ao seguir um usuário"
       deal:
         category: "Categoria"
         city: "Cidade"

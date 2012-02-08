@@ -41,7 +41,7 @@
 
               <% if @user.password_required? %>
                 <li>
-                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+                  <%= f.label :password %> <i>(deixe em branco se não quiser alterar)</i>
                   <%= f.password_field :password %>
                   <span class="limite">Mínimo <strong>6</strong> caracteres</span>
                 </li>
@@ -52,7 +52,7 @@
                 </li>
 
                 <li>
-                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                  <%= f.label :current_password %> <i>(para confirmar as alterações, é preciso informar sua senha atual)</i>
                   <%= f.password_field :current_password %>
                 </li>
               <% end %>
