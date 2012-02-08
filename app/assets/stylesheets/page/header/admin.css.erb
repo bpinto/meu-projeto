@@ -23,3 +23,8 @@ div.admin div.intern { margin: auto; width: 975px; }
     ul.userNavigation li a:hover { color: #FFCC66; text-decoration: underline !important; }
 
     ul.userNavigation li a.active { color: #FC6; font-weight: bold; }
+
+    ul.userNavigation a.facebook_login_button { background: url(<%= asset_path 'login-facebook.png' %>) no-repeat scroll 0 0 transparent; display: block; float: right; height: 22px; overflow: hidden; text-indent: -9999px; width: 154px; margin: 0; }
+
+
+    ul.userNavigation a.facebook_login_button:hover { background: url(<%= asset_path 'login-facebook-hover.png' %>) no-repeat; }
