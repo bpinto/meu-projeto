@@ -39,7 +39,7 @@
                 <%= f.text_field :name %>
               </li>
 
-              <% if @user.password_required? %>
+              <% if resource.password_required? %>
                 <li>
                   <%= f.label :password %> <i>(deixe em branco se não quiser alterar)</i>
                   <%= f.password_field :password %>
@@ -57,21 +57,22 @@
                 </li>
               <% end %>
             </div>
-
-            <div class="facebook_permissions">
-              <li>
-                <%= f.label :facebook_share_offer %>
-                <%= f.check_box :facebook_share_offer %>
-              </li>
-              <li>
-                <%= f.label :facebook_vote_offer %>
-                <%= f.check_box :facebook_vote_offer %>
-              </li>
-              <li>
-                <%= f.label :facebook_follow_user %>
-                <%= f.check_box :facebook_follow_user %>
-              </li>
-            </div>
+            <% if resource.provider %>
+              <div class="facebook_permissions">
+                <li>
+                  <%= f.label :facebook_share_offer %>
+                  <%= f.check_box :facebook_share_offer %>
+                </li>
+                <li>
+                  <%= f.label :facebook_vote_offer %>
+                  <%= f.check_box :facebook_vote_offer %>
+                </li>
+                <li>
+                  <%= f.label :facebook_follow_user %>
+                  <%= f.check_box :facebook_follow_user %>
+                </li>
+              </div>
+            <% end %>
 
           </ol>
 
