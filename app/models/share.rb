@@ -17,6 +17,7 @@ class Share
 
   AMERICANAS = "americanas.com"
   PONTO_FRIO = "pontofrio.com"
+  SUBMARINO = "submarino.com"
 
   AMERICANAS_CATEGORIES = {
     "ELETRODOMÉSTICOS" => Deal::CATEGORY_HOME_AND_APPLIANCE,
@@ -35,7 +36,8 @@ class Share
     "BRINQUEDOS" => Deal::CATEGORY_KIDS,
     "BEBÊS" => Deal::CATEGORY_KIDS,
     "ESPORTE E LAZER" => Deal::CATEGORY_FITNESS,
-    "AUTOMOTIVO" => Deal::CATEGORY_CAR 
+    "AUTOMOTIVO" => Deal::CATEGORY_CAR
+  }
 
   PONTO_FRIO_CATEGORIES = {
     "Automotivo" => Deal::CATEGORY_CAR,
@@ -82,11 +84,10 @@ class Share
     begin
       if @deal.link.match(AMERICANAS)
         populate_americanas_deal(@deal)
-<<<<<<< HEAD
-=======
       elsif @deal.link.match(PONTO_FRIO)
         populate_pontofrio_deal(@deal)
->>>>>>> pontofrio
+      elsif @deal.link.match(SUBMARINO)
+        populate_submarino_deal(@deal)
       else
         populate_deal(@deal)
       end
@@ -126,8 +127,6 @@ class Share
     #  deal.kind = Deal::KIND_ON_SALE
     #end
   end
-<<<<<<< HEAD
-=======
 
   def self.populate_pontofrio_deal(deal)
     page = open_page(deal.link)
@@ -144,5 +143,20 @@ class Share
     #  deal.kind = Deal::KIND_ON_SALE
     #end
   end
->>>>>>> pontofrio
+
+  def self.populate_submarino_deal(deal)
+    page = open_page(deal.link)
+
+    deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
+    deal.price_mask = page.at_css(".for").try(:text).try(:strip)[7..-1].try(:strip)
+    deal.real_price_mask = page.at_css(".from").try(:text).try(:strip)[6..-1].try(:strip)
+    deal.description = page.at_css(".ficheTechnique").try(:text).try(:strip)[0,1200]
+    #deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
+    deal.company = "Submarino"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+  end
 end
