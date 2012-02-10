@@ -15,6 +15,56 @@ class Share
   XPATH_REAL_PRICE = []
   XPATH_TITLE = 'title'
 
+  AMERICANAS = "americanas.com"
+  PONTO_FRIO = "pontofrio.com"
+
+  AMERICANAS_CATEGORIES = {
+    "AUTOMOTIVO" => Deal::CATEGORY_CAR,
+    "BEBÊS" => Deal::CATEGORY_KIDS,
+    "BELEZA E SAÚDE" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "BRINQUEDOS" => Deal::CATEGORY_KIDS,
+    "CAMA, MESA E BANHO" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "CÂMERAS E FILMADORAS" => Deal::CATEGORY_ELECTRONICS,
+    "CELULARES E TELEFONES" => Deal::CATEGORY_ELECTRONICS,
+    "DVDS E BLU-RAY" => Deal::CATEGORY_CULTURE,
+    "ELETRODOMÉSTICOS" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "ELETRÔNICOS" => Deal::CATEGORY_ELECTRONICS,
+    "ELETROPORTÁTEIS" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "ESPORTE E LAZER" => Deal::CATEGORY_FITNESS,
+    "FERRAMENTAS E JARDIM" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "INFORMÁTICA" => Deal::CATEGORY_COMPUTER,
+    "LIVROS" => Deal::CATEGORY_CULTURE,
+    "MÓVEIS E DECORAÇÃo" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "UTILIDADES DOMÉSTICAS" => Deal::CATEGORY_HOME_AND_APPLIANCE
+  }
+
+  PONTO_FRIO_CATEGORIES = {
+    "Automotivo" => Deal::CATEGORY_CAR,
+    "Bebês" => Deal::CATEGORY_KIDS,
+    "Beleza & Saúde" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Brinquedos" => Deal::CATEGORY_KIDS,
+    "Cama, Mesa e Banho" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Cine & Foto" => Deal::CATEGORY_CULTURE,
+    "DVDs e Blu-Ray" => Deal::CATEGORY_CULTURE,
+    "Eletrodomésticos" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Eletrônicos" => Deal::CATEGORY_ELECTRONICS,
+    "Eletroportáteis" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Esporte & Lazer" => Deal::CATEGORY_FITNESS,
+    "Ferramentas" => Deal::CATEGORY_OTHER,
+    "Flores" => Deal::CATEGORY_OTHER,
+    "Futebol" => Deal::CATEGORY_OTHER,
+    "Games" => Deal::CATEGORY_OTHER,
+    "Informática" => Deal::CATEGORY_COMPUTER,
+    "Livros" => Deal::CATEGORY_CULTURE,
+    "Malas" => Deal::CATEGORY_OTHER,
+    "Móveis" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Papelaria" => Deal::CATEGORY_OTHER,
+    "Perfumaria" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Telefones & Celulares" => Deal::CATEGORY_ELECTRONICS,
+    "Relógios" => Deal::CATEGORY_OTHER,
+    "Utilidades Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
+  }
+
   CATEGORIES = {
     "bares-e-baladas" => Deal::CATEGORY_RESTAURANT,
     "cursos-e-aulas" => Deal::CATEGORY_CULTURE,
@@ -31,7 +81,13 @@ class Share
     @deal = Deal.new :link => link
 
     begin
-      populate_deal(@deal)
+      if @deal.link.match(AMERICANAS)
+        populate_americanas_deal(@deal)
+      elsif @deal.link.match(PONTO_FRIO)
+        populate_pontofrio_deal(@deal)
+      else
+        populate_deal(@deal)
+      end
     rescue Errno::ENOENT => wrong_link_exception
       @deal = Deal.new
     end
@@ -51,5 +107,37 @@ class Share
 
     deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
     
+  end
+
+  def self.populate_americanas_deal(deal)
+    page = open_page(deal.link)
+
+    deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
+    deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+    deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+    deal.description = page.at_css(".infoProdBox").try(:text).try(:strip)[0,1200]
+    deal.category = AMERICANAS_CATEGORIES[page.at_css(".category").try(:text).try(:strip).sub(">","")]
+    deal.company = "Americanas"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+  end
+
+  def self.populate_pontofrio_deal(deal)
+    page = open_page(deal.link)
+
+    deal.title = page.at_css(".produtoNome").try(:text).try(:strip)
+    deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+    deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+    deal.description = page.at_css(".descricao").try(:text).try(:strip)[0,1200]
+    deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
+    deal.company = "Ponto Frio"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
   end
 end
