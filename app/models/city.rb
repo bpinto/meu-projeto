@@ -31,4 +31,8 @@ class City < ActiveRecord::Base
     hash_of_states.merge!({last_state => cities_of_last_state})
   end
 
+  def self.find_by_name(name)
+    where(:name => name)
+  end
+
 end
