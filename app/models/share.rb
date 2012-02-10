@@ -122,10 +122,12 @@ class Share
     page = open_page(deal.link)
 
     deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
-    deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
-    deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
-    deal.description = page.at_css(".infoProdBox").try(:text).try(:strip)[0,1200]
-    deal.category = AMERICANAS_CATEGORIES[page.at_css(".category").try(:text).try(:strip).sub(">","")]
+    if page.at_css(".sale").try(:text)
+      deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css(".infoProdBox").try(:text).try(:strip)[0,1200]
+      deal.category = AMERICANAS_CATEGORIES[page.at_css(".category").try(:text).try(:strip).sub(">","")]
+    end
     deal.company = "Americanas"
     #if deal.price
       deal.kind = Deal::KIND_OFFER
@@ -177,11 +179,13 @@ class Share
   def self.populate_pontofrio_deal(deal)
     page = open_page(deal.link)
 
-    deal.title = page.at_css(".produtoNome").try(:text).try(:strip)
-    deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
-    deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
-    deal.description = page.at_css(".descricao").try(:text).try(:strip)[0,1200]
-    deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
+    if page.at_css(".sale").try(:text)
+      deal.title = page.at_css(".produtoNome").try(:text).try(:strip)
+      deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css(".descricao").try(:text).try(:strip)[0,1200]
+      deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
+    end
     deal.company = "Ponto Frio"
     #if deal.price
       deal.kind = Deal::KIND_OFFER
@@ -194,9 +198,11 @@ class Share
     page = open_page(deal.link)
 
     deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
-    deal.price_mask = page.at_css(".for").try(:text).try(:strip)[7..-1].try(:strip)
-    deal.real_price_mask = page.at_css(".from").try(:text).try(:strip)[6..-1].try(:strip)
-    deal.description = page.at_css(".ficheTechnique").try(:text).try(:strip)[0,1200]
+    if page.at_css(".for").try(:text)
+      deal.price_mask = page.at_css(".for").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".from").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css(".ficheTechnique").try(:text).try(:strip)[0,1200]
+    end
     #deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
     deal.company = "Submarino"
     #if deal.price
