@@ -17,6 +17,7 @@ class Share
 
   AMERICANAS = "americanas.com"
   GROUPON = "groupon.com"
+  PEIXE_URBANO = "peixeurbano.com"
   PONTO_FRIO = "pontofrio.com"
   SUBMARINO = "submarino.com"
 
@@ -87,6 +88,8 @@ class Share
         populate_americanas_deal(@deal)
       elsif @deal.link.match(GROUPON)
         populate_groupon_deal(@deal)
+      elsif @deal.link.match(PEIXE_URBANO)
+        populate_peixeurbano_deal(@deal)
       elsif @deal.link.match(PONTO_FRIO)
         populate_pontofrio_deal(@deal)
       elsif @deal.link.match(SUBMARINO)
@@ -143,6 +146,30 @@ class Share
     deal.city = City.find_by_name(page.at_css("#headerCityButton").try(:text).try(:strip)).first
     if deal.city
       deal.city_id = deal.city.id
+    end
+    deal.kind = Deal::KIND_DAILY_DEAL
+  end
+
+  def self.populate_peixeurbano_deal(deal)
+    page = open_page(deal.link)
+
+    deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
+    if page.at_css(".new_price").try(:text)
+      deal.price_mask = page.at_css(".new_price").try(:text).try(:strip)[2..-1].try(:strip)
+      if not deal.price_mask.match(",")
+        deal.price_mask = deal.price_mask + ",00"
+      end
+      deal.real_price_mask = page.at_css(".old_price").try(:text).try(:strip)[2..-1].try(:strip)
+      if not deal.real_price_mask.match(",")
+        deal.real_price_mask = deal.real_price_mask + ",00"
+      end
+      deal.description = page.at_css(".deal_details").try(:text).try(:strip)[0,1200]
+      deal.company = page.at_css("#CompanyName").try(:text).try(:strip)
+    #TODO: O método consegue setar city_id da oferta, mas não consegue exibir corretamente já na tela de cadastro de nova oferta
+      deal.city = City.find_by_name(page.at_css("#city_name").try(:text).try(:strip)).first
+      if deal.city
+        deal.city_id = deal.city.id
+      end
     end
     deal.kind = Deal::KIND_DAILY_DEAL
   end
