@@ -19,6 +19,7 @@ class Share
   GROUPON = "groupon.com"
   PEIXE_URBANO = "peixeurbano.com"
   PONTO_FRIO = "pontofrio.com"
+  SARAIVA = "saraiva.com"
   SUBMARINO = "submarino.com"
 
   AMERICANAS_CATEGORIES = {
@@ -92,6 +93,8 @@ class Share
         populate_peixeurbano_deal(@deal)
       elsif @deal.link.match(PONTO_FRIO)
         populate_pontofrio_deal(@deal)
+      elsif @deal.link.match(SARAIVA)
+        populate_saraiva_deal(@deal)
       elsif @deal.link.match(SUBMARINO)
         populate_submarino_deal(@deal)
       else
@@ -122,7 +125,7 @@ class Share
     page = open_page(deal.link)
 
     deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
-    if page.at_css(".sale").try(:text)
+    if page.at_css(".sale").try(:text) && page.at_css(".infoProdBox").try(:text) && page.at_css(".category").try(:text)
       deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
       deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
       deal.description = page.at_css(".infoProdBox").try(:text).try(:strip)[0,1200]
@@ -179,7 +182,7 @@ class Share
   def self.populate_pontofrio_deal(deal)
     page = open_page(deal.link)
 
-    if page.at_css(".sale").try(:text)
+    if page.at_css(".sale").try(:text) && page.at_css(".produtoNome").try(:text) && page.at_css(".descricao").try(:text) && page.at_css(".selected").try(:text)
       deal.title = page.at_css(".produtoNome").try(:text).try(:strip)
       deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
       deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
@@ -194,21 +197,41 @@ class Share
     #end
   end
 
-  def self.populate_submarino_deal(deal)
+  def self.populate_saraiva_deal(deal)
     page = open_page(deal.link)
 
-    deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
-    if page.at_css(".for").try(:text)
-      deal.price_mask = page.at_css(".for").try(:text).try(:strip)[7..-1].try(:strip)
-      deal.real_price_mask = page.at_css(".from").try(:text).try(:strip)[6..-1].try(:strip)
-      deal.description = page.at_css(".ficheTechnique").try(:text).try(:strip)[0,1200]
+    
+    if page.at_css("#tituloprod").try(:text) && page.at_css(".precoDe").try(:text) && page.at_css("#PassosConteudo").try(:text)
+      deal.title = page.at_css("#tituloprod").try(:text).try(:strip)
+      deal.price_mask = page.at_css(".precoPor").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".precoDe").try(:text).try(:strip)[5..-1].try(:strip)
+      deal.description = page.at_css("#PassosConteudo").try(:text).try(:strip)[0,1200]
+      #deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
     end
-    #deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
-    deal.company = "Submarino"
+    
+    deal.company = "Saraiva"
     #if deal.price
       deal.kind = Deal::KIND_OFFER
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
   end
+
+  def self.populate_submarino_deal(deal)
+    page = open_page(deal.link)
+
+    deal.title = page.at_css(XPATH_TITLE).try(:text).try(:strip)
+    if page.at_css(".for").try(:text) && page.at_css(".ficheTechnique").try(:text)
+      deal.price_mask = page.at_css(".for").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".from").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css(".ficheTechnique").try(:text).try(:strip)[0,1200]
+      #deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
+    end
+    deal.company = "Submarino"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+  end  
 end
