@@ -16,6 +16,7 @@ class Share
   XPATH_TITLE = 'title'
 
   AMERICANAS = "americanas.com"
+  COMPRA_FACIL = "comprafacil.com"
   GROUPON = "groupon.com"
   PEIXE_URBANO = "peixeurbano.com"
   PONTO_FRIO = "pontofrio.com"
@@ -87,6 +88,8 @@ class Share
     begin
       if @deal.link.match(AMERICANAS)
         populate_americanas_deal(@deal)
+      elsif @deal.link.match(COMPRA_FACIL)
+        populate_comprafacil_deal(@deal)
       elsif @deal.link.match(GROUPON)
         populate_groupon_deal(@deal)
       elsif @deal.link.match(PEIXE_URBANO)
@@ -132,6 +135,25 @@ class Share
       deal.category = AMERICANAS_CATEGORIES[page.at_css(".category").try(:text).try(:strip).sub(">","")]
     end
     deal.company = "Americanas"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+  end
+
+  def self.populate_comprafacil_deal(deal)
+    page = open_page(deal.link)
+
+    
+    if page.at_css(".produto-titulo").try(:text) && page.at_css(".produto-de").try(:text) && page.at_css("#produto-caracteristicas").try(:text)
+      deal.title = page.at_css(".produto-titulo").try(:text).try(:strip)
+      deal.price_mask = page.at_css(".produto-por").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".produto-de").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css("#produto-caracteristicas").try(:text).try(:strip)[0,1200]
+      #deal.category = AMERICANAS_CATEGORIES[page.at_css(".category").try(:text).try(:strip).sub(">","")]
+    end
+    deal.company = "Compra Fácil"
     #if deal.price
       deal.kind = Deal::KIND_OFFER
     #else
