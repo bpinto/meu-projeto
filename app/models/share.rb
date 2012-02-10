@@ -16,6 +16,7 @@ class Share
   XPATH_TITLE = 'title'
 
   AMERICANAS = "americanas.com"
+  PONTO_FRIO = "pontofrio.com"
 
   AMERICANAS_CATEGORIES = {
     "ELETRODOMÉSTICOS" => Deal::CATEGORY_HOME_AND_APPLIANCE,
@@ -35,6 +36,32 @@ class Share
     "BEBÊS" => Deal::CATEGORY_KIDS,
     "ESPORTE E LAZER" => Deal::CATEGORY_FITNESS,
     "AUTOMOTIVO" => Deal::CATEGORY_CAR 
+
+  PONTO_FRIO_CATEGORIES = {
+    "Automotivo" => Deal::CATEGORY_CAR,
+    "Bebês" => Deal::CATEGORY_KIDS,
+    "Beleza & Saúde" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Brinquedos" => Deal::CATEGORY_KIDS,
+    "Cama, Mesa e Banho" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Cine & Foto" => Deal::CATEGORY_CULTURE,
+    "DVDs e Blu-Ray" => Deal::CATEGORY_CULTURE,
+    "Eletrodomésticos" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Eletrônicos" => Deal::CATEGORY_ELECTRONICS,
+    "Eletroportáteis" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Esporte & Lazer" => Deal::CATEGORY_FITNESS,
+    "Ferramentas" => Deal::CATEGORY_OTHER,
+    "Flores" => Deal::CATEGORY_OTHER,
+    "Futebol" => Deal::CATEGORY_OTHER,
+    "Games" => Deal::CATEGORY_OTHER,
+    "Informática" => Deal::CATEGORY_COMPUTER,
+    "Livros" => Deal::CATEGORY_CULTURE,
+    "Malas" => Deal::CATEGORY_OTHER,
+    "Móveis" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Papelaria" => Deal::CATEGORY_OTHER,
+    "Perfumaria" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Telefones & Celulares" => Deal::CATEGORY_ELECTRONICS,
+    "Relógios" => Deal::CATEGORY_OTHER,
+    "Utilidades Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
   }
 
   CATEGORIES = {
@@ -55,6 +82,11 @@ class Share
     begin
       if @deal.link.match(AMERICANAS)
         populate_americanas_deal(@deal)
+<<<<<<< HEAD
+=======
+      elsif @deal.link.match(PONTO_FRIO)
+        populate_pontofrio_deal(@deal)
+>>>>>>> pontofrio
       else
         populate_deal(@deal)
       end
@@ -94,4 +126,23 @@ class Share
     #  deal.kind = Deal::KIND_ON_SALE
     #end
   end
+<<<<<<< HEAD
+=======
+
+  def self.populate_pontofrio_deal(deal)
+    page = open_page(deal.link)
+
+    deal.title = page.at_css(".produtoNome").try(:text).try(:strip)
+    deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+    deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+    deal.description = page.at_css(".descricao").try(:text).try(:strip)[0,1200]
+    deal.category = PONTO_FRIO_CATEGORIES[page.at_css(".selected").try(:text).try(:strip)]
+    deal.company = "Ponto Frio"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+  end
+>>>>>>> pontofrio
 end
