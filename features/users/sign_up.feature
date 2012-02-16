@@ -13,7 +13,7 @@ Feature: Criar perfil
       And I fill in user's password confirmation with "please"
       And I check "terms_privacy"
       And I press "Criar perfil"
-      Then I should see "A sua conta foi criada com sucesso. No entanto, não foi possível fazer login, pois ela está unconfirmed."
+      Then I should see "A sua conta foi criada com sucesso. No entanto, não foi possível fazer login, pois ela não foi confirmada ainda."
 
     Scenario: User signs up with invalid email
       Given I am not logged in

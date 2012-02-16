@@ -17,7 +17,7 @@ pt-BR:
       invalid_token: 'O token de autenticação não é válido.'
       timeout: 'A sua sessão expirou, por favor faça login novamente para poder continuar.'
       inactive: 'A sua conta ainda não foi ativada.'
-      already_authenticated: 'Você já possui um perfil no DealWit.Me.'
+      already_authenticated: 'Você já possui um perfil no OfertUs.'
     sessions:
       sign_in: 'Entrar'
       signed_in: 'Fez login com sucesso.'
@@ -31,6 +31,7 @@ pt-BR:
     registrations:
       user:
         inactive_signed_up: 'A sua conta foi criada com sucesso. No entanto, não foi possível fazer login, pois ela está %{reason}.'
+        signed_up_but_unconfirmed: 'A sua conta foi criada com sucesso. No entanto, não foi possível fazer login, pois ela não foi confirmada ainda.'
       signed_up: 'Fez login com sucesso. Se não autorizado, a confirmação foi enviada por email.'
       updated: 'A sua conta foi atualizada com sucesso.'
       destroyed: 'Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
@@ -54,7 +55,7 @@ pt-BR:
         click_to_unlock: 'Clique no link abaixo para desbloquear a sua conta:'
         unlock: 'Desbloquear minha conta'
       hello: 'Olá'
-      welcome: 'Bem vindo ao DealWit.Me,'
+      welcome: 'Bem vindo ao OfertUs,'
     omniauth_callbacks:
       user:
         failure: 'Conta não vinculada ao facebook.'

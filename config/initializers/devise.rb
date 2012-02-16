@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "no-reply@dealwit.me" #TODO: CONFIGURAR!
+  config.mailer_sender = "no-reply@ofertus.com.br" #TODO: CONFIGURAR!
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"

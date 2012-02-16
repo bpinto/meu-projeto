@@ -170,7 +170,7 @@ class Share
     deal.description = page.at_css(".contentDealDescriptionFacts").try(:text).try(:strip)[0,1200]
     deal.company = "Groupon"
     #TODO: O método consegue setar city_id da oferta, mas não consegue exibir corretamente já na tela de cadastro de nova oferta
-    deal.city = City.find_by_name(page.at_css("#headerCityButton").try(:text).try(:strip)).first
+    deal.city = City.find_by_name(page.at_css("#headerCityButton").try(:text).try(:strip))
     if deal.city
       deal.city_id = deal.city.id
     end
@@ -193,7 +193,7 @@ class Share
       deal.description = page.at_css(".deal_details").try(:text).try(:strip)[0,1200]
       deal.company = page.at_css("#CompanyName").try(:text).try(:strip)
     #TODO: O método consegue setar city_id da oferta, mas não consegue exibir corretamente já na tela de cadastro de nova oferta
-      deal.city = City.find_by_name(page.at_css("#city_name").try(:text).try(:strip)).first
+      deal.city = City.find_by_name(page.at_css("#city_name").try(:text).try(:strip))
       if deal.city
         deal.city_id = deal.city.id
       end

@@ -55,7 +55,7 @@ DealWitMe::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'dealwit.me' }
+  config.action_mailer.default_url_options = { :host => 'ofertus.com.br' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -67,9 +67,9 @@ DealWitMe::Application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :authentication => :plain,
-    :domain => 'dealwit.me', #ENV['GMAIL_SMTP_USER'],
-    :user_name => 'dealwitme@dealwit.me', #ENV['GMAIL_SMTP_USER'],
-    :password => '123dealwitme', #ENV['GMAIL_SMTP_PASSWORD'],
+    :domain => 'ofertus.com.br', #ENV['GMAIL_SMTP_USER'],
+    :user_name => 'contato@ofertus.com.br', #ENV['GMAIL_SMTP_USER'],
+    :password => '123ofertus', #ENV['GMAIL_SMTP_PASSWORD'],
     :enable_starttls_auto => true
   }
 

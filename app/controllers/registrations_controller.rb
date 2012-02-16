@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
       super
       if ((not current_user.nil?) && current_user.provider?)
         me = FbGraph::User.me(current_user.access_token)
-        me.feed!( :message => current_user.name + " está usando o DealWit.Me para buscar e compartilhar ofertas!", :link => "http://dealwit.me", :description => "O DealWit.Me é uma plataforma social online voltada para a agregação de informações a respeito de ofertas em produtos e serviços, que permite a interação dos usuários através de ferramentas de relacionamento e compartilhamento, de modo a facilitar as decisões dos consumidores.")
+        me.feed!( :message => current_user.name + " está usando o OfertUs para buscar e compartilhar ofertas!", :link => "http://www.ofertus.com.br", :description => "O OfertUs é uma plataforma social online voltada para a agregação de informações a respeito de ofertas em produtos e serviços, que permite a interação dos usuários através de ferramentas de relacionamento e compartilhamento, de modo a facilitar as decisões dos consumidores.")
       end
     end
   end

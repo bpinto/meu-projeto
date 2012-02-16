@@ -50,7 +50,7 @@ class SaveMe
     @doc = open_page("#{URL}#{DAILY_DEALS}rio-de-janeiro/pagina-#{number}/")
   end
 
-  def get_user_id(username = "dealwitme")
+  def get_user_id(username = "ofertus")
     user = User.find_by_username(username)
     raise Exception, "User '#{username}' not found" unless user
     user.id

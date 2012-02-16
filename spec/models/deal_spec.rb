@@ -79,18 +79,18 @@ describe Deal do
         end
 
         describe "should begin with http:// or https://" do
-          it "http://www.dealwit.me should be valid" do
-            deal.link = "http://www.dealwit.me"
+          it "http://www.ofertus.com.br should be valid" do
+            deal.link = "http://www.ofertus.com.br"
             deal.should be_valid
           end
 
-          it "https://www.dealwit.me should be valid" do
-            deal.link = "https://www.dealwit.me"
+          it "https://www.ofertus.com.br should be valid" do
+            deal.link = "https://www.ofertus.com.br"
             deal.should be_valid
           end
 
-          it "www.dealwit.me should be invalid" do
-            deal.link = "www.dealwit.me"
+          it "www.ofertus.com.br should be invalid" do
+            deal.link = "www.ofertus.com.br"
             deal.should have(1).error_on(:link)
           end
         end
