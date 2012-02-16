@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       current_user.follow! @user
       if current_user.provider? && current_user.facebook_follow_user
         me = FbGraph::User.me(current_user.access_token)
-        me.feed!(:message => current_user.name + " está seguindo as ofertas de " + @user.name + " no OfertUs", :link => user_url(@user))
+        me.feed!(:message => current_user.name + " está seguindo as ofertas de " + @user.name + " no OfertuS", :link => user_url(@user))
       end
       if stored_location
         redirect_to stored_location, :notice => I18n.t('models.user.started_following', :username => @user.username)
