@@ -11,6 +11,5 @@
     <li>Olá, seja bem-vindo</li>
     <li><%= link_to I18n.t("actions.sign_up"), new_user_registration_path %></li>
     <li><%= link_to I18n.t("actions.sign_in"), new_user_session_path %></li>
-    <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %>
   </ul>
 <% end %>
