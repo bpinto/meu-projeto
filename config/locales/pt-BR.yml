@@ -242,6 +242,7 @@
         description: "Descrição"
         discount: "Desconto"
         end_date: "Data de Validade"
+        image_url: "Link para a Imagem"
         kind: "Tipo"
         link: "Link"
         price: "Preço Promocional"

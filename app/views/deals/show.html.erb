@@ -22,7 +22,13 @@
     <div class="details">
       <div class="deal_picture">
         <!-- TODO: IMAGEM -->
-        <div><%= link_to(image_tag(asset_path('no_picture_big.png'), :alt => "Oferta sem imagem", :title => @deal.title, :size => '10px'), deal_path(@deal), :class => "foto") %></div>
+        <div>
+          <% if @deal.image_url %>
+            <%= link_to(image_tag(@deal.image_url, :alt => @deal.image_url, :title => @deal.title, :size => '10px'), deal_path(@deal), :class => "foto") %>
+          <% else %>
+            <%= link_to(image_tag(asset_path('no_picture_big.png'), :alt => "Oferta sem imagem", :title => @deal.title, :size => '10px'), deal_path(@deal), :class => "foto") %>
+          <% end %>
+        </div>
       </div>
       <div class="discount">
         <div class="bigTicket special discountTicket">

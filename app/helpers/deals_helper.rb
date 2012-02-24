@@ -89,7 +89,7 @@ module DealsHelper
   end
 
   def truncate_title(title)
-    truncate(title, :length => 48)
+    truncate(title, :length => 60)
   end
 
   def truncate_side_title(title)

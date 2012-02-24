@@ -1,7 +1,12 @@
 <div class="offer">
   <div class="deal">
+    <strong class="deal_title"><%= link_to truncate_title(deal.title), deal_path(deal), :title => deal.title %></strong>
     <div class="deal_left">
-      <%= link_to(image_tag(asset_path('no_picture_small.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
+      <% if deal.image_url %>
+        <%= link_to(image_tag(deal.image_url, :alt => deal.image_url, :title => deal.title), deal_path(deal), :class => "deal_picture") %>
+      <% else %>
+        <%= link_to(image_tag(asset_path('no_picture_big.png'), :alt => "Oferta sem imagem", :title => deal.title), deal_path(deal), :class => "deal_picture") %>
+      <% end %>
       <!--<% if user_signed_in? %>
         <div class="votes">
           <%= link_to "Gostei!", upvote_deal_path(deal), :class => "like" %>
@@ -9,7 +14,6 @@
         </div>
       <% end %>-->
     </div>
-    <strong class="deal_title"><%= link_to truncate_title(deal.title), deal_path(deal), :title => deal.title %></strong>
     <ul>
       <li class="deal_user"><strong>Compartilhada por: </strong><%= link_to deal.user.name, user_path(deal.user.username) %></li>
       <li class="deal_category"><strong>Categoria: </strong><%= Deal.i18n_category(deal.category) %></li>
