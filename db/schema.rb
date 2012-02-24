@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120208004659) do
+ActiveRecord::Schema.define(:version => 20120224134500) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20120208004659) do
     t.integer  "city_id",                                                  :null => false
     t.integer  "up_votes",                                  :default => 0, :null => false
     t.integer  "down_votes",                                :default => 0, :null => false
+    t.string   "image_url"
   end
 
   add_index "deals", ["city_id"], :name => "index_deals_on_city_id"

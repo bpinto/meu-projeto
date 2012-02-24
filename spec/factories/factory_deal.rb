@@ -12,6 +12,7 @@ FactoryGirl.define do
     title "F_TITLE"
     up_votes = 0
     down_votes = 0
+    image_url = "http://F_IMAGE"
 
     city
     user
@@ -22,21 +23,26 @@ FactoryGirl.define do
     discount 30
     price_mask nil
     real_price_mask nil
+    image_url = "http://F_IMAGE"
   end
 
   factory :deal_offer, :parent => :deal do
     kind Deal::KIND_OFFER
+    image_url = "http://F_IMAGE"
   end
 
   factory :daily_deal, :parent => :deal do
     kind Deal::KIND_DAILY_DEAL
+    image_url = "http://F_IMAGE"
   end
 
   factory :active_deal, :parent => :deal do
     end_date Date.tomorrow
+    image_url = "http://F_IMAGE"
   end
 
   factory :inactive_deal, :parent => :deal do
     end_date Date.yesterday
+    image_url = "http://F_IMAGE"
   end
 end

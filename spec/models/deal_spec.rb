@@ -17,6 +17,7 @@ describe Deal do
       it { should allow_mass_assignment_of(:description) }
       it { should allow_mass_assignment_of(:discount) }
       it { should allow_mass_assignment_of(:end_date) }
+      it { should allow_mass_assignment_of(:image_url) }
       it { should allow_mass_assignment_of(:kind) }
       it { should allow_mass_assignment_of(:link) }
       it { should allow_mass_assignment_of(:price) }
@@ -73,7 +74,7 @@ describe Deal do
       end
 
       describe "#link" do
-        it "should be required"do
+        it "should be required" do
           deal.link = nil
           deal.should_not be_valid
         end
@@ -92,6 +93,31 @@ describe Deal do
           it "www.ofertus.com.br should be invalid" do
             deal.link = "www.ofertus.com.br"
             deal.should have(1).error_on(:link)
+          end
+        end
+      end
+
+      describe "#image_url" do
+
+        it "should not be required" do
+          deal.image_url = ""
+          deal.should be_valid
+        end
+
+        describe "should begin with http:// or https://" do
+          it "http://www.ofertus.com.br should be valid" do
+            deal.image_url = "http://www.ofertus.com.br"
+            deal.should be_valid
+          end
+
+          it "https://www.ofertus.com.br should be valid" do
+            deal.image_url = "https://www.ofertus.com.br"
+            deal.should be_valid
+          end
+
+          it "www.ofertus.com.br should be invalid" do
+            deal.image_url = "www.ofertus.com.br"
+            deal.should have(1).error_on(:image_url)
           end
         end
       end

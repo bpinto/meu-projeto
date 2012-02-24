@@ -41,6 +41,7 @@ class Deal < ActiveRecord::Base
   validates :description, :presence => true
   validates :discount,    :presence => true,      :if => "on_sale?"
   validates :end_date,    :date => {:after_or_equal_to => Date.today},  :allow_nil => true
+  validates :image_url,   :format => /(^$)|(^https?:\/\/.+)/
   validates :kind,        :presence => true,      :inclusion => KINDS
   validates :link,        :presence => true,      :format => /^https?:\/\/.+/
   validates :price,       :numericality => true,  :unless => "on_sale?"
@@ -59,7 +60,7 @@ class Deal < ActiveRecord::Base
   before_validation :prices_to_number, :if => "not on_sale?"
 
   attr_accessor :price_mask, :real_price_mask
-  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :kind, :link, :price, :price_mask, :real_price, :real_price_mask, :title, :user_id
+  attr_accessible :address, :category, :city_id, :company, :description, :discount, :end_date, :image_url, :kind, :link, :price, :price_mask, :real_price, :real_price_mask, :title, :user_id
 
   scope :recent, order("deals.created_at DESC")
   scope :lowest_price, order("deals.price ASC")
