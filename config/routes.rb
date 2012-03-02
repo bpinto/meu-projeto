@@ -36,6 +36,7 @@ DealWitMe::Application.routes.draw do
 
   match '/deals/today/:category', :to => "deals#today"
   match '/deals/active/:category', :to => "deals#index"
+  match '/auth/failure' => 'applications#failure'
 
   root :to => "deals#index"
 

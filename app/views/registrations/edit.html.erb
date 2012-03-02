@@ -10,14 +10,20 @@
 
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <ol>
-            <div ="user_data"
+            <div ="user_data">
               <li>
-                <div class="user_picture"> 
-                  <%= image_tag @user.gravatar_url %>
-                </div>
-                <div class = "edit_user_picture">
-                  <a href="http://gravatar.com/emails/" target="_blank" > <%= I18n.t('actions.edit_picture') %></a>
-                </div>
+                <% if resource.provider? %>
+                  <div class="user_picture"> 
+                    <%= image_tag resource.facebook_profile_picture %>
+                  </div>
+                <% else %>
+                  <div class="user_picture"> 
+                    <%= image_tag resource.gravatar_url %>
+                  </div>
+                  <div class = "edit_user_picture">
+                    <a href="http://gravatar.com/emails/" target="_blank" > <%= I18n.t('actions.edit_picture') %></a>
+                  </div>
+                <% end %>
               </li>
               <li>
                 <%= f.label :email %>

@@ -28,7 +28,11 @@
     <div class="content">
       <div class="profile">
         <div class="userPicture"> 
-          <%= image_tag(@user.gravatar_url, :alt => @user.username, :title => @user.username) %>
+          <% if @user.provider? %>
+            <%= image_tag(@user.facebook_profile_picture, :alt => @user.username, :title => @user.username) %>
+          <% else %>
+            <%= image_tag(@user.gravatar_url, :alt => @user.username, :title => @user.username) %>  
+          <% end %>
         </div>
         <div class="edit_user">
           <% if current_user == @user %>

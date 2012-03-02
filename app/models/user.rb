@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
     relationships.exists? :followed_id => another_user.id
   end
 
+  def facebook_profile_picture
+    FbGraph::User.fetch(uid).picture("large")
+  end
+
   def self.by_username(username)
     where(:username => username).first
   end
@@ -49,6 +53,9 @@ class User < ActiveRecord::Base
     data = access_token.info
     if user = User.where(:email => data.email).first
       user.update_attributes!(:name => data.name, :avatar_url => data.image, :access_token => access_token.credentials.token)
+      puts "INICIO INICIO ACCESS_TOKEN INICIO INICIO"
+      puts access_token
+      puts "FIM FIM ACCESS_TOKEN FIM FIM"
       user
     end
   end

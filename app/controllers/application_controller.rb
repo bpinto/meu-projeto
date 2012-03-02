@@ -1,3 +1,4 @@
+#coding: UTF-8
 class ApplicationController < ActionController::Base
 #  before_filter :authenticate
   before_filter :fill_deals_lists, :delete_facebook_data
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+  def failure
+    redirect_to root_path, :alert => "Não foi possível efetuar o login via facebook."
   end
 
   private
@@ -35,4 +40,5 @@ class ApplicationController < ActionController::Base
 #      username == "dealwitme" && password == "123dealwitme"
 #    end
 #  end
+
 end
