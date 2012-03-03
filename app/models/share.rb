@@ -18,6 +18,8 @@ class Share
   AMERICANAS = "americanas.com"
   COMPRA_FACIL = "comprafacil.com"
   GROUPON = "groupon.com"
+  LEADER = "leader.com.br"
+  MAGAZINE = "magazineluiza.com.br"
   PEIXE_URBANO = "peixeurbano.com"
   PONTO_FRIO = "pontofrio.com"
   SARAIVA = "saraiva.com"
@@ -73,6 +75,50 @@ class Share
     "U. Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
   }
 
+  LEADER_CATEGORIES = {
+    "Bebês" => Deal::CATEGORY_KIDS,
+    "Beleza & Saúde" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Brinquedos" => Deal::CATEGORY_KIDS,
+    "Calçados e Acessórios" => Deal::CATEGORY_CLOTHES,
+    "Cama, Mesa e Banho" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Cine e Foto" => Deal::CATEGORY_ELECTRONICS,
+    "Eletrodomésticos" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Eletrônicos" => Deal::CATEGORY_ELECTRONICS,
+    "Esporte e Lazer" => Deal::CATEGORY_FITNESS,
+    "Eletroportáteis" => Deal::CATEGORY_ELECTRONICS,
+    "Games" => Deal::CATEGORY_KIDS,
+    "Informática" => Deal::CATEGORY_COMPUTER,
+    "Moda" => Deal::CATEGORY_CLOTHES,
+    "Mode Íntima" => Deal::CATEGORY_CLOTHES,
+    "Móveis" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Relógios" => Deal::CATEGORY_OTHER,
+    "Telefonia" => Deal::CATEGORY_ELECTRONICS,
+    "Utilidades Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
+  }
+
+  MAGAZINE_CATEGORIES = {
+    "Automotivo" => Deal::CATEGORY_CAR,
+    "Bebês" => Deal::CATEGORY_KIDS,
+    "Beleza e Saúde" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Brinquedos" => Deal::CATEGORY_KIDS,
+    "Cama, Mesa e Banho" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Casa e Jardim" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Celulares e Telefones" => Deal::CATEGORY_ELECTRONICS,
+    "Cine e Foto" => Deal::CATEGORY_ELECTRONICS,
+    "Eletrodomésticos" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Eletrônicos" => Deal::CATEGORY_ELECTRONICS,
+    "Eletroportáteis" => Deal::CATEGORY_ELECTRONICS,
+    "Esporte e Lazer" => Deal::CATEGORY_FITNESS,
+    "Ferramentas e Segurança" => Deal::CATEGORY_OTHER,
+    "Informática" => Deal::CATEGORY_COMPUTER,
+    "Informática Acessórios" => Deal::CATEGORY_COMPUTER,
+    "Instrumentos Musicais" => Deal::CATEGORY_OTHER,
+    "Móveis" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Perfumaria e Cosméticos" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
+    "Relógios" => Deal::CATEGORY_OTHER,
+    "Utilidades Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
+  }
+
   PONTO_FRIO_CATEGORIES = {
     "Automotivo" => Deal::CATEGORY_CAR,
     "Bebês" => Deal::CATEGORY_KIDS,
@@ -122,6 +168,10 @@ class Share
         populate_comprafacil_deal(@deal)
       elsif @deal.link.match(GROUPON)
         populate_groupon_deal(@deal)
+      elsif @deal.link.match(LEADER)
+        populate_leader_deal(@deal)
+      elsif @deal.link.match(MAGAZINE)
+        populate_magazine_deal(@deal)
       elsif @deal.link.match(PEIXE_URBANO)
         populate_peixeurbano_deal(@deal)
       elsif @deal.link.match(PONTO_FRIO)
@@ -210,6 +260,60 @@ class Share
     deal.kind = Deal::KIND_DAILY_DEAL
   end
 
+  def self.populate_leader_deal(deal)
+    page = open_page(deal.link)
+
+    
+    if page.at_css(".name").try(:text) && page.at_css(".sale").try(:text) && page.at_css("#descricao").try(:text)
+      deal.title = page.at_css(".name").try(:text).try(:strip)
+      deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css("#descricao").try(:text).try(:strip)[0,1200]
+      deal.category = LEADER_CATEGORIES[page.at_css("#ctl00_BreadCrumb_lnkDepartamento").try(:text).try(:strip)]
+      deal.image_url = page.at_css(".fotoPrincipal").at_xpath(".//img")[:src].try(:strip)
+    end
+    deal.company = "Leader"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+  end
+
+  def self.populate_magazine_deal(deal)
+    page = open_page(deal.link)
+
+    
+    #if page.at_css(".name").try(:text) && page.at_css(".sale").try(:text) && page.at_css("#descricao").try(:text)
+      deal.title = page.at_css(".description").try(:text).try(:strip)
+      deal.price_mask = page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
+      deal.real_price_mask = page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css("#descricaoProduto").try(:text).try(:strip)[0,1200]
+      deal.category = MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop]
+      deal.image_url = page.at_css(".imagem_produto").at_xpath(".//img")[:src].try(:strip)
+    #end
+    deal.company = "Magazine Luiza"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+
+    puts "-"*100
+    puts "INICIO DA BUSCA NA PAGINA"
+    puts "-"*100
+    puts "TITULO = " + page.at_css(".description").try(:text).try(:strip)
+    puts "PRECO PROMOCIONAL = " + page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
+    puts "PRECO REAL = " + page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
+    puts "DESCRICAO = " + page.at_css("#descricaoProduto").try(:text).try(:strip)[0,1200]
+    puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
+    puts "LINK DA IMAGEM = " + page.at_css(".imagem_produto").at_xpath(".//img")[:src].try(:strip)
+    puts "-"*100
+    puts "FIM DA BUSCA NA PAGINA"
+    puts "-"*100
+
+  end
+
   def self.populate_peixeurbano_deal(deal)
     page = open_page(deal.link)
 
@@ -293,4 +397,18 @@ class Share
     #  deal.kind = Deal::KIND_ON_SALE
     #end
   end  
+
+  private
+
+  def self.drop_product_name_from_breadcrumb(breadcrumb, char)
+    new_breadcrumb = ""
+    breadcrumb.each_char do |c|
+      if c == char
+        return new_breadcrumb.try(:strip)
+      else
+        new_breadcrumb = new_breadcrumb + c
+      end
+    end
+    new_breadcrumb.strip
+  end
 end
