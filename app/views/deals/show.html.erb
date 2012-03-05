@@ -100,51 +100,47 @@
     </div>
   </div>
   <!-- /pagina oferta -->
-
-    <!-- TODO: COMENTÁRIO -->
-    <div class="content">
-      <!-- janela CONTEÚDO --> 
-      <div class="window"> 
-        <div class="medium_window"> 
-          <div class="up"></div> 
-          <div class="middle comment_list" id="tabAreaId" style="min-height: 150px;"> 
-            <div class="briefWindow opinions"> 
-              <div class="upBar"> 
-                <h4><%= I18n.t("comments") %></h4> 
-                <div class="topic newTopic" >
-                  <% if can? :manage, @comment %>
-                    <div class="new_comment" >
-                      <%= form_for([@deal,@comment]) do |f| %>
-                        <%= f.text_area :comment, :class => "TextArea" %><br/>
-                        <%= f.submit I18n.t("actions.comment"), :class => :button %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              </div> 
-              <% if not @deal.comments.empty? %>
-                <div class="content"> 
-                  <% @deal.comments.each do |comment| %>
-                    <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
-                  <% end %>
-                </div>  
-              <% else %>
-                <div class="withoutContent">
-                  <h4>Não há comentários cadastrados para essa oferta ainda. Seja o primeiro a dar sua opinião escrevendo seu comentário no campo acima.</h4>
-                </div>
-              <% end %>
-              <div class="downBar"><!-- paginacao  --></div> 
-            </div> 
-          </div>
-          <div class="down"></div>
-        </div>
-      </div>
-      <!-- /janela CONTEÚDO --> 
-    </div>
 </div>
 <!-- /PRINCIPAL -->
 
-<div class="side">
+<!-- TODO: COMENTÁRIO -->
+<div class="content span8">
+  <!-- janela CONTEÚDO --> 
+  <div class="default_window comments_window">
+    <div class="comment_list" id="tabAreaId" style="min-height: 150px;"> 
+      <div class="briefWindow opinions"> 
+        <div class="upBar"> 
+          <h4><%= I18n.t("comments") %></h4> 
+          <div class="topic newTopic" >
+            <% if can? :manage, @comment %>
+              <div class="new_comment" >
+                <%= form_for([@deal,@comment]) do |f| %>
+                  <%= f.text_area :comment, :class => "TextArea" %><br/>
+                  <%= f.submit I18n.t("actions.comment"), :class => :button %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div> 
+        <% if not @deal.comments.empty? %>
+          <div class="content"> 
+            <% @deal.comments.each do |comment| %>
+              <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
+            <% end %>
+          </div>  
+        <% else %>
+          <div class="withoutContent">
+            <h4>Não há comentários cadastrados para essa oferta ainda. Seja o primeiro a dar sua opinião escrevendo seu comentário no campo acima.</h4>
+          </div>
+        <% end %>
+        <div class="downBar"><!-- paginacao  --></div> 
+      </div> 
+    </div>
+  </div>
+  <!-- /janela CONTEÚDO --> 
+</div>
+
+<div class="side span4">
   <div class="buttonPanel">
     <% if user_signed_in? %>
       <%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => :shareButton %>

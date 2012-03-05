@@ -1,17 +1,19 @@
-<div class="default_window page_title grey_background">
-  <h1>Ofertas do Dia</h1>
-</div>
-<div class="main">
-  <div class="dealsMap">
-    <div class="default_window grey_background dealsList" id="dealsList">
-      <div class="content">
-        <div class="content defaultDeal">
-          <div class="zero-PagingTable">
-            <div class="zero-PagingTableGrid">
-              <% @deals.each_with_index do |deal, index| %>
-                <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
-              <% end %>
-              <%= will_paginate @deals %>
+<div class="span8">
+  <div class="default_window page_title grey_background">
+    <h1>Ofertas do Dia</h1>
+  </div>
+  <div class="main">
+    <div class="dealsMap">
+      <div class="default_window grey_background dealsList" id="dealsList">
+        <div class="content">
+          <div class="content defaultDeal">
+            <div class="zero-PagingTable">
+              <div class="zero-PagingTableGrid">
+                <% @deals.each_with_index do |deal, index| %>
+                  <%= render :partial => 'deals/deal', :locals => {:deal => deal, :index => index} %>
+                <% end %>
+                <%= will_paginate @deals %>
+              </div>
             </div>
           </div>
         </div>
@@ -20,7 +22,7 @@
   </div>
 </div>
 
-<div class="side">
+<div class="side span4">
   <div class="buttonPanel">
     <% if user_signed_in? %>
       <%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => :shareButton %>
@@ -44,6 +46,48 @@
 
         <%= select_tag "search_order", search_options(params[:search_order]) %>
       </form>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Melhores Ofertas</h3>
+    </div>
+    <div class="content">
+      <div class="best">
+        <div class="small_deal">
+          <% @best_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Ofertas Mais Comentadas</h3>
+    </div>
+    <div class="content">
+      <div class="most_commented">
+        <div class="small_deal">
+          <% @most_comment_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Últimas Ofertas Compartilhadas</h3>
+    </div>
+    <div class="content">
+      <div class="newest">
+        <div class="small_deal">
+          <% @newest_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

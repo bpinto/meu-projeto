@@ -36,23 +36,27 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 
     <div id="page">
-      <div id="header">
+      <div id="header" class="container-fluid" >
         <!-- TODO: Menu -->
-				<div class="admin">
+				<div class="admin row-fluid">
 					<div class="intern">
-						<ul class="globalNavigation">
-              <li><%= link_to_active I18n.t("actions.home"), root_path %></li>
-                <li><%= link_to_active I18n.t("actions.todays_offers"), deals_today_path %></li>
-                <li><%= link_to_active I18n.t("actions.search_users"), users_path %></li>
-              <li><%= link_to 'Blog', 'http://www.dealwit.us', :target => '_blank' %></li>
-						</ul>
-            <%= render 'devise/menu/login_items' %>
+            <div id="global_nav" class="span6">
+  						<ul class="globalNavigation ">
+                <li><%= link_to_active I18n.t("actions.home"), root_path %></li>
+                  <li><%= link_to_active I18n.t("actions.todays_offers"), deals_today_path %></li>
+                  <li><%= link_to_active I18n.t("actions.search_users"), users_path %></li>
+                <li><%= link_to 'Blog', 'http://www.dealwit.us', :target => '_blank' %></li>
+  						</ul>
+            </div>
+            <div id="user_nav" class="span6">
+              <%= render 'devise/menu/login_items' %>
+            </div>
 					</div>
 				</div>
 
         <!-- TODO: CATEGORIAS -->
         <div class="logo">
-          <div class="content">
+          <div class="content ">
             <%= link_to "OfertuS", root_path, :class => "logo" %>
             <% if user_signed_in? %>
               <form action="<%= share_deals_path %>" method="get" class="share_offer_url">
@@ -77,34 +81,82 @@
           </div>
         </div>
         <div class="categories">
-          <div class="content">
-            <ul class="menu">
+          <div class="content container-fluid">
+            <ul class="menu row-fluid">
               <% if controller_name == 'deals' && action_name ==  'today' %>
-                <li class="restaurant"><a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
-                <li class="beauty-health"><a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-                <li class="electronics"><a href="/deals/today/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
-                <li class="culture"><a href="/deals/today/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
-                <li class="home"><a href="/deals/today/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
-                <li class="fitness"><a href="/deals/today/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
-                <li class="computer"><a href="/deals/today/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-                <li class="clothes"><a href="/deals/today/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
-                <li class="travel"><a href="/deals/today/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-                <li class="kids"><a href="/deals/today/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
-                <li class="car"><a href="/deals/today/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
-                <li class="others"><a href="/deals/today/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
+                <div class="span1" >
+                  <li class="restaurant"><a href="/deals/today/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="beauty-health"><a href="/deals/today/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="electronics"><a href="/deals/today/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="culture"><a href="/deals/today/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="home"><a href="/deals/today/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="fitness"><a href="/deals/today/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="computer"><a href="/deals/today/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="clothes"><a href="/deals/today/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="travel"><a href="/deals/today/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="kids"><a href="/deals/today/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="car"><a href="/deals/today/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="others"><a href="/deals/today/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
+                </div>
               <% else %>
-                <li class="restaurant"><a href="/deals/active/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
-                <li class="beauty-health"><a href="/deals/active/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
-                <li class="electronics"><a href="/deals/active/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
-                <li class="culture"><a href="/deals/active/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
-                <li class="home"><a href="/deals/active/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
-                <li class="fitness"><a href="/deals/active/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
-                <li class="computer"><a href="/deals/active/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
-                <li class="clothes"><a href="/deals/active/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
-                <li class="travel"><a href="/deals/active/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
-                <li class="kids"><a href="/deals/active/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
-                <li class="car"><a href="/deals/active/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
-                <li class="others"><a href="/deals/active/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
+                <div class="span1" >
+                  <li class="restaurant"><a href="/deals/active/restaurant" title="Visualizar a categoria Restaurantes"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="beauty-health"><a href="/deals/active/beauty_and_health" title="Visualizar a categoria Beleza e saúde"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="electronics"><a href="/deals/active/electronics" title="Visualizar a categoria Eletrônicos"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="culture"><a href="/deals/active/culture" title="Visualizar a categoria Cultura"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="home"><a href="/deals/active/home_and_appliance" title="Visualizar a categoria Eletrodomésticos"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="fitness"><a href="/deals/active/fitness" title="Visualizar a categoria Esporte e Lazer"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="computer"><a href="/deals/active/computer" title="Visualizar a categoria Informática"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="clothes"><a href="/deals/active/clothes" title="Visualizar a categoria Vestuário"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="travel"><a href="/deals/active/travel" title="Visualizar a categoria Viagens"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="kids"><a href="/deals/active/kids" title="Visualizar a categoria Infantil"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="car"><a href="/deals/active/car" title="Visualizar a categoria Artigos automotivos"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a></li>
+                </div>
+                <div class="span1" >
+                  <li class="others"><a href="/deals/active/others" title="Visualizar a categoria Diversos"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a></li>
+                </div>
               <% end %>
             </ul>
           </div>
@@ -126,53 +178,16 @@
           <% end %>
         <%- end -%>
     
-        <%= yield %>
-        <%- if controller_name != 'sessions' && controller_name != 'pages' %>
-          <div class="side">
-            <div class="default_window white_background">
-              <div class="title">
-                <h3>Melhores Ofertas</h3>
-              </div>
-              <div class="content">
-                <div class="best">
-                  <div class="small_deal">
-                    <% @best_deals.each do |deal| %>
-                      <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="default_window white_background">
-              <div class="title">
-                <h3>Ofertas Mais Comentadas</h3>
-              </div>
-              <div class="content">
-                <div class="most_commented">
-                  <div class="small_deal">
-                    <% @most_comment_deals.each do |deal| %>
-                      <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="default_window white_background">
-              <div class="title">
-                <h3>Últimas Ofertas Compartilhadas</h3>
-              </div>
-              <div class="content">
-                <div class="newest">
-                  <div class="small_deal">
-                    <% @newest_deals.each do |deal| %>
-                      <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <%= yield %>
+            
+              <%- if controller_name != 'sessions' && controller_name != 'pages' %>
+                
+              <%- end %>
             </div>
           </div>
-        <%- end %>
+        </div>
       </div>
 
       <!--  RODAPÉ -->
