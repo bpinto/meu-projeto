@@ -1,5 +1,9 @@
 <div class="hreview topic opinion answer happiness">
-  <%= link_to(image_tag(comment.user.gravatar_url(:size => 39)), user_path(comment.user.username), :class => "user") %>
+  <% if comment.user.provider? %>
+  	<%= link_to(image_tag(comment.user.facebook_profile_picture("square")), user_path(comment.user.username), :class => "user") %>
+  <% else %>
+  	<%= link_to(image_tag(comment.user.gravatar_url(:size => 39)), user_path(comment.user.username), :class => "user") %>
+  <% end %>
   <div class="comment">
     <p class="description text"><%= comment.comment %></p>
     <div class="details">
