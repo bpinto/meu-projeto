@@ -299,18 +299,18 @@ class Share
     #  deal.kind = Deal::KIND_ON_SALE
     #end
 
-    puts "-"*100
-    puts "INICIO DA BUSCA NA PAGINA"
-    puts "-"*100
-    puts "TITULO = " + page.at_css(".description").try(:text).try(:strip)
-    puts "PRECO PROMOCIONAL = " + page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
-    puts "PRECO REAL = " + page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
-    puts "DESCRICAO = " + page.at_css("#descricaoProduto").try(:text).try(:strip)[0,1200]
-    puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
-    puts "LINK DA IMAGEM = " + page.at_css(".imagem_produto").at_xpath(".//img")[:src].try(:strip)
-    puts "-"*100
-    puts "FIM DA BUSCA NA PAGINA"
-    puts "-"*100
+    #puts "-"*100
+    #puts "INICIO DA BUSCA NA PAGINA"
+    #puts "-"*100
+    #puts "TITULO = " + page.at_css(".description").try(:text).try(:strip)
+    #puts "PRECO PROMOCIONAL = " + page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
+    #puts "PRECO REAL = " + page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
+    #puts "DESCRICAO = " + page.at_css("#descricaoProduto").try(:text).try(:strip)[0,1200]
+    #puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
+    #puts "LINK DA IMAGEM = " + page.at_css(".imagem_produto").at_xpath(".//img")[:src].try(:strip)
+    #puts "-"*100
+    #puts "FIM DA BUSCA NA PAGINA"
+    #puts "-"*100
 
   end
 
