@@ -4,7 +4,7 @@ div.dealPage div.title { display: block; padding: 0 15px 20px; }
 
 div.dealPage div.title h1 { color: #4C92AC; display: block; font-size: 22px; margin: 0 100px 2px 0; }
 
-div.dealPage div.details { display: block; height: 232px; padding: 0 15px 30px; float: left; }
+div.dealPage div.details { display: block; height: 270px; padding: 0 15px 30px; float: left; }
 
 div.dealPage div.details div.deal_picture { background: white; border: 1px solid #CCC; display: block; float: left; margin-right: 30px; margin-bottom: 15px; overflow: hidden; padding: 5px; box-shadow: 1px 1px 3px #ddd; -webkit-box-shadow: 1px 1px 3px #ddd; -moz-box-shadow: 1px 1px 3px #ddd; }
 
@@ -51,11 +51,13 @@ div.dealPage div.info div.title { background: #4C92AC; border: none; display: bl
 
 div.dealPage div.info div.title h2 { color: white; font: bold 14px/14px Arial, Helvetica, Sans-Serif; text-align: center; }
 
-div.dealPage div.info div.content { border: 1px solid #DDD; border-top: none; display: block; padding: 20px 20px 5px; border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px }
+div.dealPage div.info div.content { border: 1px solid #DDD; border-top: none; display: block; padding: 20px 20px 5px; border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; word-wrap: break-word; }
 
 div.dealPage div.info div.content p { color: #666; display: block; font: 11px/15px Verdana, Sans-Serif; padding-bottom: 15px; width: 543px; }
 
-div.comments_window { background: #FFF; border-radius: 10px; }
+div#comments { clear: both; margin: 0; }
+
+div.comments_window { background: #FFF; border-radius: 10px; padding: 20px 10px; min-width: 470px; min-height: 600px; }
 
 div.opinions { display: block !important; min-height: 300px; }
 
@@ -73,19 +75,18 @@ div.opinions div.content { padding-top: 15px; }
 
 div.opinions div.content div.comment { border-color: #9CB571; }
 
-div.opinions div.opinion { padding-top: 20px; }
+div.opinions div.opinion { padding-top: 20px; clear: both; }
 
 div.opinions div.opinion div.comment { position: relative; }
 
 div.opinions div.topic a.user,
 div.opinions div.topic div.user { height: 30px; width: 40px; background: #DDD; display: block; float: left; margin: 0 10px 0 0; overflow: hidden; position: relative; }
 
-div.opinions div.topic div.comment { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -455px 0;
-width: 455px; }
+div.opinions div.topic div.comment { background: url(<%= asset_path 'topico-avaliacoes.png' %>) repeat-y -455px 0; width: 455px; float: left; word-wrap: break-word; }
 
-div.opinions div.topic div.comment p.text { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat 0 0; padding-top: 12px; width: 415px; }
+div.opinions div.topic div.comment p.text { background: url(<%= asset_path 'topico-avaliacoes.png' %>) no-repeat 0 0; padding: 12px 10px 0 20px; }
 
-div.opinions div.topic div.comment div.details { background: none; overflow: visible; padding-bottom: 0; width: 415px; }
+div.opinions div.topic div.comment div.details { background: none; overflow: visible; padding-bottom: 0; width: 415px; padding-left: 20px; }
 
 div.opinions div.topic div.comment p.user { color: #888; display: block; font: 10px/15px Verdana, Sans-Serif; margin: 0 15px 15px 0; }
 

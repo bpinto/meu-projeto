@@ -1,5 +1,5 @@
 <!-- PRINCIPAL -->
-<div class="main">
+<div class="main dealPage">
   <!-- pagina oferta -->
   <div class="defaulWindow dealPage">
     <!-- AddThis Button BEGIN -->
@@ -104,7 +104,7 @@
 <!-- /PRINCIPAL -->
 
 <!-- TODO: COMENTÁRIO -->
-<div class="content span8">
+<div id="comments" class="content span8">
   <!-- janela CONTEÚDO --> 
   <div class="default_window comments_window">
     <div class="comment_list" id="tabAreaId" style="min-height: 150px;"> 
@@ -140,7 +140,7 @@
   <!-- /janela CONTEÚDO --> 
 </div>
 
-<div class="side span4">
+<div id="comments_side" class="side span4">
   <div class="buttonPanel">
     <% if user_signed_in? %>
       <%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => :shareButton %>
@@ -149,5 +149,47 @@
       <%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => :signupButton %>
       <%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => :signinButton %>
     <% end %>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Melhores Ofertas</h3>
+    </div>
+    <div class="content">
+      <div class="best">
+        <div class="small_deal">
+          <% @best_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Ofertas Mais Comentadas</h3>
+    </div>
+    <div class="content">
+      <div class="most_commented">
+        <div class="small_deal">
+          <% @most_comment_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Últimas Ofertas Compartilhadas</h3>
+    </div>
+    <div class="content">
+      <div class="newest">
+        <div class="small_deal">
+          <% @newest_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
