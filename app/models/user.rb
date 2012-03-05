@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
     relationships.exists? :followed_id => another_user.id
   end
 
-  def facebook_profile_picture
-    FbGraph::User.fetch(uid).picture("large")
+  def facebook_profile_picture(size = "large")
+    FbGraph::User.fetch(uid).picture(size)
   end
 
   def self.by_username(username)
