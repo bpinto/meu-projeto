@@ -1,67 +1,67 @@
-<div class="main">
-  <div class="window medium_window">
-    <div class="up"></div>
-    <div class="middle newProfile" id="userCreateAreaId">
-      <h1>OfertuS</h1>
-      <h3>Crie seu perfil preenchendo os campos abaixo e comece a compartilhar ofertas com seus amigos</h3>
-      <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %>
+<div class="span8">
+  <div class="main">
+    <div class="window medium_window">
+      <div class="middle newProfile" id="userCreateAreaId">
+        <h1>OfertuS</h1>
+        <h3>Crie seu perfil preenchendo os campos abaixo e comece a compartilhar ofertas com seus amigos</h3>
+        <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %>
 
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-        <ol>
-          <li>
-            <%= f.label :email %>
-            <%= f.text_field :email %>
-          </li>
-
-          <li>
-            <%= f.label :username %>
-            <%= f.text_field :username %>
-            <span class="limite">Mínimo <strong>5</strong> e máximo <strong>20</strong> caracteres.</span>
-          </li>
-
-          <li>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-          </li>
-
-          <% if @user.password_required? %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <ol>
             <li>
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-              <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+              <%= f.label :email %>
+              <%= f.text_field :email %>
             </li>
 
             <li>
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
+              <%= f.label :username %>
+              <%= f.text_field :username %>
+              <span class="limite">Mínimo <strong>5</strong> e máximo <strong>20</strong> caracteres.</span>
             </li>
-          <% end %>
 
-          <li>
-            <span class="agree">
-              <%= check_box_tag(:terms_privacy, :terms_privacy) %>
-              <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
-            </span>
-          </li>
+            <li>
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </li>
 
-          <!-- TODO: RECAPTCHA>
-          <li>
-            <label>Digite as letras:</label>
-            <img src="../simpleCaptcha" class="captcha">
-            <input type="text" tabindex="10" class="captcha" maxlength="10">
-          </li>
-          <-->
-          
-        </ol>
+            <% if @user.password_required? %>
+              <li>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+                <span class="limite">Mínimo <strong>6</strong> caracteres</span>
+              </li>
 
-        <div class="button"><%= f.submit "Criar perfil", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
-      <% end %>
+              <li>
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %>
+              </li>
+            <% end %>
+
+            <li>
+              <span class="agree">
+                <%= check_box_tag(:terms_privacy, :terms_privacy) %>
+                <label for="terms_privacy">Concordo com os <%= link_to 'termos de uso', pages_termsofuse_path, :target=> "_blank" %> e <%= link_to 'política de privacidade', pages_privacypolicy_path, :target=>"_blank" %> do site</label>
+              </span>
+            </li>
+
+            <!-- TODO: RECAPTCHA>
+            <li>
+              <label>Digite as letras:</label>
+              <img src="../simpleCaptcha" class="captcha">
+              <input type="text" tabindex="10" class="captcha" maxlength="10">
+            </li>
+            <-->
+            
+          </ol>
+
+          <div class="button"><%= f.submit "Criar perfil", :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %></div>
+        <% end %>
+      </div>
     </div>
-    <div class="down"></div>
   </div>
 </div>
 				
-<div class="side">
+<div class="side span4">
   <div class="default_window white_background">
     <div class="title">
         <h3>O Que é o OfertuS?</h3>

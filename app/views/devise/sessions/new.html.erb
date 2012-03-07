@@ -1,41 +1,45 @@
 <!-- TODO: Refatorar o nome do css -->
-<div class="window medium_window">
-  <div class="up"></div>
-  <div class="middle newProfile">
+<div class="container">
+  <div class="window medium_window row">
+    <div class="middle newProfile">
       <h1>OfertuS</h1>
       <h3>Preencha os campos abaixo</h3>
       <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %>
 
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <ol>
-          <li>
-            <%= f.label :login %>
-            <%= f.text_field :login %>
-          </li>
+        <div class="span5">
+          <ol>
+            <li>
+              <%= f.label :login %>
+              <%= f.text_field :login %>
+            </li>
 
-          <li>
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-          </li>
+            <li>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </li>
 
-          <li>
-            <% if devise_mapping.rememberable? -%>
-              <%= f.label :remember_me, 'Mantenha-me Conectado' %>
-              <%= f.check_box :remember_me %>
-            <% end -%>
-          </li>
-        </ol>
-
+            <li>
+              <% if devise_mapping.rememberable? -%>
+                <%= f.label :remember_me, 'Mantenha-me Conectado' %>
+                <%= f.check_box :remember_me %>
+              <% end -%>
+            </li>
+          </ol>
+        </div>
         <!-- TODO: Transformar o botão igual ao link -->
         <!--link_to 'Entrar', url_for(resource), :class => 'button'} -->
-        <div class="button">
+        <div class="button span2">
           <%= f.submit I18n.t("actions.sign_in"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
         </div>
       <% end %>
-
-      <%= render :partial => "devise/shared/links" %>
+      <div class="row">
+        <div class="span12">
+          <%= render :partial => "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="down"></div>
 </div>
 
 <script>

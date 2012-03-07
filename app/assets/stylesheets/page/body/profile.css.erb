@@ -1,13 +1,13 @@
 div.profile { display: block !important; overflow: hidden; position: relative; }
 
-div.profile div.userPicture { height: 180px; width: 160px; float: left; margin: 0 65px; position: relative; overflow: hidden; }
+div.profile div.userPicture { max-height: 180px; min-width: 160px; float: left; position: relative; overflow: hidden; }
 
-div.profile div.edit_user { margin: 0 89px 10px; }
+div.profile div.edit_user { text-align: center; }
 
 div.profile a.title,
 div.profile strong.title { color: #666; display: block; font: bold 20px/20px Arial, Helvetica, Sans-Serif; letter-spacing: -0.05em; margin: 0 15px 10px 0; table-layout: fixed; word-wrap: break-word; }
 
-div.profile div.aboutMe { margin: 0; width: 290px; }
+div.profile div.aboutMe { margin: 0; min-width: 290px; }
 
 div.profile p { color: #777; display: block; font: normal normal normal 12px/20px Verdana, Sans-Serif; margin: 0 15px 0 0; table-layout: fixed; word-wrap: break-word; }
 
@@ -18,3 +18,5 @@ div.profile div.interactions a:hover { text-decoration: none; }
 div.profile div.interactions div.follow { height: 30px; margin-left: 30px; }
 
 div.profile div.interactions div.unfollow { height: 30px; margin-left: 1px; }
+
+div.profile div.span6 { min-width: 160px; }

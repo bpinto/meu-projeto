@@ -1,17 +1,19 @@
-<div class="default_window page_title grey_background">
-  <h1>Usuários</h1>
-</div>
-<div class="main">
-  <div class="users_map">
-    <div class="default_window grey_background users_list" id="users_list">
-      <div class="content">
-        <div class="content default_user">
-          <div class="zero-PagingTable">
-            <div class="zero-PagingTableGrid">
-              <% @users.each_with_index do |user, index| %>
-                <%= render :partial => 'users/user', :locals => {:user => user, :index => index} %>
-              <% end %>
-              <%= will_paginate @users %>
+<div class="span8">
+  <div class="default_window page_title grey_background">
+    <h1>Usuários</h1>
+  </div>
+  <div class="main">
+    <div class="users_map">
+      <div class="default_window grey_background users_list" id="users_list">
+        <div class="content">
+          <div class="content default_user">
+            <div class="zero-PagingTable">
+              <div class="zero-PagingTableGrid">
+                <% @users.each_with_index do |user, index| %>
+                  <%= render :partial => 'users/user', :locals => {:user => user, :index => index} %>
+                <% end %>
+                <%= will_paginate @users %>
+              </div>
             </div>
           </div>
         </div>
@@ -19,8 +21,7 @@
     </div>
   </div>
 </div>
-
-<div class="side">
+<div class="side span4">
   <% if not user_signed_in? %>
     <div class="buttonPanel">
       <%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => :signupButton %>

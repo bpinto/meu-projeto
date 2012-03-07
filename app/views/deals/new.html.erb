@@ -1,94 +1,138 @@
-<div class="main">
-  <div class="window medium_window">
-    <div class="up"></div>
-    <div class="middle newProfile" id="newDealPage">
-        <h1>OfertuS</h1>
-        <!-- TODO: Facebook / Google -->
-        <h3>Compartilhe uma oferta preenchendo os campos abaixo e clicando em salvar</h3>
+<div class="span8">
+  <div class="main">
+    <div class="window medium_window">
+      <div class="middle newProfile" id="newDealPage">
+          <h1>OfertuS</h1>
+          <!-- TODO: Facebook / Google -->
+          <h3>Compartilhe uma oferta preenchendo os campos abaixo e clicando em salvar</h3>
 
-        <%= form_for(@deal) do |f| %>
-          <ol>
-            <li>
-              <%= f.label :title %>
-              <%= f.text_field :title %>
-            </li>
+          <%= form_for(@deal) do |f| %>
+            <ol>
+              <li>
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+              </li>
 
-            <li>
-              <%= f.label :kind %>
-              <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'}, {'data-switcher' => "1:#li_deal_price,#li_deal_real_price||2:#li_deal_price,#li_deal_real_price||3:#li_deal_discount"} %>
-            </li>
+              <li>
+                <%= f.label :kind %>
+                <%= f.select :kind, Deal.i18n_kinds, {:include_blank => 'Selecione'}, {'data-switcher' => "1:#li_deal_price,#li_deal_real_price||2:#li_deal_price,#li_deal_real_price||3:#li_deal_discount"} %>
+              </li>
 
-            <li id="li_deal_real_price">
-              <%= f.label :real_price %>
-              <%= f.text_field :real_price_mask, :class => "money" %>
-            </li>
+              <li id="li_deal_real_price">
+                <%= f.label :real_price %>
+                <%= f.text_field :real_price_mask, :class => "money" %>
+              </li>
 
-            <li id="li_deal_price">
-              <%= f.label :price %>
-              <%= f.text_field :price_mask, :class => "money" %>
-            </li>
+              <li id="li_deal_price">
+                <%= f.label :price %>
+                <%= f.text_field :price_mask, :class => "money" %>
+              </li>
 
-            <li id="li_deal_discount">
-              <%= f.label :discount %>
-              <%= f.text_field :discount %>
-              <span class="tips">
-                Somente números
-              </span>
-            </li>
+              <li id="li_deal_discount">
+                <%= f.label :discount %>
+                <%= f.text_field :discount %>
+                <span class="tips">
+                  Somente números
+                </span>
+              </li>
 
-            <li>
-              <%= f.label :category %>
-              <%= f.select :category, Deal.i18n_categories, {:include_blank => 'Selecione'} %>
-            </li>
+              <li>
+                <%= f.label :category %>
+                <%= f.select :category, Deal.i18n_categories, {:include_blank => 'Selecione'} %>
+              </li>
 
-            <li>
-              <%= f.label :description %>
-              <%= f.text_area :description %>
-            </li>
+              <li>
+                <%= f.label :description %>
+                <%= f.text_area :description %>
+              </li>
 
-            <li>
-              <%= f.label :end_date %>
-              <%= f.text_field :end_date, :class => "datepicker" %>
-              <span class="tips">
-                Informe a data no formato dd/mm/aaaa
-              </span>
-            </li>
+              <li>
+                <%= f.label :end_date %>
+                <%= f.text_field :end_date, :class => "datepicker" %>
+                <span class="tips">
+                  Informe a data no formato dd/mm/aaaa
+                </span>
+              </li>
 
-            <li>
-              <%= f.label :link %>
-              <%= f.text_field :link %>
-              <span class="tips">
-                O link deve ser no formato http:// ou https://
-              </span>
-            </li>
+              <li>
+                <%= f.label :link %>
+                <%= f.text_field :link %>
+                <span class="tips">
+                  O link deve ser no formato http:// ou https://
+                </span>
+              </li>
 
-            <li>
-              <%= f.label :image_url %>
-              <%= f.text_field :image_url %>
-              <span class="tips">
-                O link deve ser no formato http:// ou https://
-              </span>
-            </li>
+              <li>
+                <%= f.label :image_url %>
+                <%= f.text_field :image_url %>
+                <span class="tips">
+                  O link deve ser no formato http:// ou https://
+                </span>
+              </li>
 
-            <li>
-              <%= f.label :company %>
-              <%= f.text_field :company %>
-            </li>
+              <li>
+                <%= f.label :company %>
+                <%= f.text_field :company %>
+              </li>
 
-            <li>
-              <%= f.label :city_id %>
-              <%= f.select(:city_id, unsorted_grouped_options_for_select(@cities_state_hash), {:include_blank => 'Selecione'}) %>
-            </li>
-          </ol>
+              <li>
+                <%= f.label :city_id %>
+                <%= f.select(:city_id, unsorted_grouped_options_for_select(@cities_state_hash), {:include_blank => 'Selecione'}) %>
+              </li>
+            </ol>
 
-          <!-- TODO: Transformar o botão igual ao link -->
-          <!--a tabindex="11" class="perfil" href="javascript:;"><%= I18n.t("actions.share") %></a-->
-          <div class="button">
-            <%= f.submit I18n.t("actions.share"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
-          </div>
-        <% end %>
+            <!-- TODO: Transformar o botão igual ao link -->
+            <!--a tabindex="11" class="perfil" href="javascript:;"><%= I18n.t("actions.share") %></a-->
+            <div class="button">
+              <%= f.submit I18n.t("actions.share"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
+            </div>
+          <% end %>
+      </div>
     </div>
-    <div class="down"></div>
+  </div>
+</div>
+<div class="side span4">
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Melhores Ofertas</h3>
+    </div>
+    <div class="content">
+      <div class="best">
+        <div class="small_deal">
+          <% @best_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Ofertas Mais Comentadas</h3>
+    </div>
+    <div class="content">
+      <div class="most_commented">
+        <div class="small_deal">
+          <% @most_comment_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="default_window white_background">
+    <div class="title">
+      <h3>Últimas Ofertas Compartilhadas</h3>
+    </div>
+    <div class="content">
+      <div class="newest">
+        <div class="small_deal">
+          <% @newest_deals.each do |deal| %>
+            <%= render :partial => 'deals/side_deal', :locals => {:deal => deal} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
