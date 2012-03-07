@@ -6,13 +6,18 @@ div.logo { background-color: #EEE; display: block; overflow: hidden; }
 
 div.categories { display: block; background-color: #EEE; }
 
-div.social { background-color: #EEE; display: block; overflow: hidden; }
+div#social { background-color: #EEE; display: block; overflow: hidden; margin: 10px 30px 0 0; }
+div#logo { background-color: #EEE; display: block; overflow: hidden; width: 330px; }
 
 div.fb-like { margin: auto; position: relative; z-index: 10; display: block; padding: 0 20px 5px; }
 
+div.plus_one { margin: auto; position: relative; z-index: 10; display: block; padding: 0 20px 5px; }
+
 div.twitter-follow-button { margin: auto; position: relative; z-index: 10; display: block; padding: 0 20px 5px; }
 
-div.logo div.login_facebook { display: block; float: right; margin-top: 35px; overflow: hidden; width: 450px; }
+div.logo div#login_facebook { display: block; float: right; margin-top: 35px; overflow: hidden; width: 270px; }
 div.logo a.facebook_login_button { text-indent:-9999px; overflow:hidden; display: block; background: url(<%= asset_path 'login-facebook1.png' %>) no-repeat; width: 450px; height: 50px; margin: 0; }
 div.logo a.facebook_login_button:hover { background: url(<%= asset_path 'login-facebook1.png' %>) no-repeat; }
 div.logo a.facebook_login_button:active { position:relative; top:1px; }
+
+div.logo div#share_deals { display: block; float: left; overflow: hidden; width: 480px; }

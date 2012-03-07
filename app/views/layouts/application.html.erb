@@ -70,31 +70,40 @@
 				</div>
 
         <!-- TODO: CATEGORIAS -->
-        <div class="logo">
-          <div class="content ">
-            <%= link_to "OfertuS", root_path, :class => "logo" %>
+        <div class="logo container-fluid">
+          <div class="content row-fluid">
+            <div id="logo" class="span4">
+              <%= link_to "OfertuS", root_path, :class => "logo" %>
+            </div>
+            <div id="social" class="span2">
+              <div class="fb-like" data-href="https://www.facebook.com/OfertUs" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+              <div class="twitter-follow-button">
+                <a href="https://twitter.com/OfertuS" class="twitter-follow-button" data-lang="pt">Siga @OfertuS</a>
+                <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+              </div>
+                <!-- Coloque esta tag onde você deseja que o botão +1 seja renderizado -->
+              <div class="plus_one">
+                <g:plusone annotation="inline"></g:plusone>
+              </div>
+            </div>
             <% if user_signed_in? %>
-              <form action="<%= share_deals_path %>" method="get" class="share_offer_url">
-                <fieldset>
-                  <legend>Compartilhar</legend>
-                  <%= text_field_tag :share, params[:share], :title => "Compartilhe uma oferta" %>
-                  <button id="share" type="submit" title="Compartilhar">Compartilhar</button>
-                </fieldset>
-              </form>
+              <div id="share_deals" class="span4">
+                <form action="<%= share_deals_path %>" method="get" class="share_offer_url">
+                  <fieldset>
+                    <legend>Compartilhar</legend>
+                    <%= text_field_tag :share, params[:share], :title => "Compartilhe uma oferta" %>
+                    <button id="share" type="submit" title="Compartilhar">Compartilhar</button>
+                  </fieldset>
+                </form>
+              </div>
             <% else %>
-              <div class="login_facebook">
+              <div id="login_facebook" class="span4">
                 <%= link_to "entre com sua conta do facebook", user_omniauth_authorize_path(:facebook), :class => "facebook_login_button" %>
               </div>
             <% end %>
           </div>
         </div>
-        <div class="social">
-          <div class="fb-like" data-href="https://www.facebook.com/OfertUs" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
-          <div class="twitter-follow-button">
-            <a href="https://twitter.com/OfertuS" class="twitter-follow-button" data-lang="pt">Siga @OfertuS</a>
-            <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
-          </div>
-        </div>
+
         <div class="categories">
           <div class="content container-fluid">
             <ul class="menu row-fluid">
@@ -207,123 +216,125 @@
 
       <!--  RODAPÉ -->
       <div id="footer">
-        <div class="intern bottomMenu">
-          <ul class="first">
-            <li class="title">Sobre OfertuS</li>
-            <li><a href="/pages/whoarewe"><%= I18n.t("actions.who_are_we") %></a></li>
-          </ul>
+        <div class="intern bottomMenu container-fluid">
+          <div  class="row-fluid">
+            <ul class="first span2">
+              <li class="title">Sobre OfertuS</li>
+              <li><a href="/pages/whoarewe"><%= I18n.t("actions.who_are_we") %></a></li>
+            </ul>
 
-          <ul class="second">
-            <li class="title">Categorias</li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
-              <% else %>
-                <a href="/deals/active/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
-              <% else %>
-                <a href="/deals/active/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
-              <% else %>
-                <a href="/deals/active/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
-              <% else %>
-                <a href="/deals/active/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
-              <% else %>
-                <a href="/deals/active/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
-              <% else %>
-                <a href="/deals/active/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
-              <% end %>
-            </li>
-          </ul>
+            <ul class="second span2">
+              <li class="title">Categorias</li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
+                <% else %>
+                  <a href="/deals/active/restaurant"><%= Deal.i18n_category(Deal::CATEGORY_RESTAURANT) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
+                <% else %>
+                  <a href="/deals/active/beauty_and_health"><%= Deal.i18n_category(Deal::CATEGORY_BEAUTY_AND_HEALTH) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
+                <% else %>
+                  <a href="/deals/active/electronics"><%= Deal.i18n_category(Deal::CATEGORY_ELECTRONICS) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
+                <% else %>
+                  <a href="/deals/active/culture"><%= Deal.i18n_category(Deal::CATEGORY_CULTURE) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
+                <% else %>
+                  <a href="/deals/active/home_and_appliance"><%= Deal.i18n_category(Deal::CATEGORY_HOME_AND_APPLIANCE) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
+                <% else %>
+                  <a href="/deals/active/fitness"><%= Deal.i18n_category(Deal::CATEGORY_FITNESS) %></a>
+                <% end %>
+              </li>
+            </ul>
 
-          <ul class="third">
-            <li class="title">Categorias</li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
-              <% else %>
-                <a href="/deals/active/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
-              <% else %>
-                <a href="/deals/active/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
-              <% end %>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
-              <% else %>
-                <a href="/deals/active/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
-              <% else %>
-                <a href="/deals/active/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
-              <% else %>
-                <a href="/deals/active/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
-              <% end %>
-            </li>
-            <li>
-              <% if controller_name == 'deals' && action_name ==  'today' %>
-                <a href="/deals/today/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
-              <% else %>
-                <a href="/deals/active/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
-              <% end %>
-            </li>
-          </ul>
+            <ul class="third span2">
+              <li class="title">Categorias</li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
+                <% else %>
+                  <a href="/deals/active/computer"><%= Deal.i18n_category(Deal::CATEGORY_COMPUTER) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
+                <% else %>
+                  <a href="/deals/active/clothes"><%= Deal.i18n_category(Deal::CATEGORY_CLOTHES) %></a>
+                <% end %>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
+                <% else %>
+                  <a href="/deals/active/travel"><%= Deal.i18n_category(Deal::CATEGORY_TRAVEL) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
+                <% else %>
+                  <a href="/deals/active/kids"><%= Deal.i18n_category(Deal::CATEGORY_KIDS) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
+                <% else %>
+                  <a href="/deals/active/car"><%= Deal.i18n_category(Deal::CATEGORY_CAR) %></a>
+                <% end %>
+              </li>
+              <li>
+                <% if controller_name == 'deals' && action_name ==  'today' %>
+                  <a href="/deals/today/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
+                <% else %>
+                  <a href="/deals/active/others"><%= Deal.i18n_category(Deal::CATEGORY_OTHER) %></a>
+                <% end %>
+              </li>
+            </ul>
 
-          <ul class="fourth">
-            <li class="title">Informações</li>
-            <li><a href="/pages/help"><%= I18n.t("actions.help") %></a></li>
-          </ul>
+            <ul class="fourth span2">
+              <li class="title">Informações</li>
+              <li><a href="/pages/help"><%= I18n.t("actions.help") %></a></li>
+            </ul>
 
-          <ul class="fifth">
-            <li class="title">Contato</li>
-            <li><a href="http://ofertus.uservoice.com/" target="_blank"><%= I18n.t("actions.talk_with_us") %></a></li>
-            <li><a href="http://www.dealwit.us/" target="_blank"><%= I18n.t("actions.follow_our_blog") %></a></li><br/>
-            <% if user_signed_in? %>
-                <!-- TODO: Menu logado -->
-                <li><%= link_to I18n.t("actions.my_profile"), user_path(current_user.username), :class => "specialLink" %></li>
-                <li><%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => "specialLink" %></li>
-                <li><%= link_to I18n.t("actions.logout"), destroy_user_session_path, :class => "specialLink" %></li>
-              </ul>
-            <% else %>
-                <li><%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => "specialLink" %></li>
-                <li><%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => "specialLink" %></li>
-            <% end %>
-          </ul>
+            <ul class="fifth span2">
+              <li class="title">Contato</li>
+              <li><a href="http://ofertus.uservoice.com/" target="_blank"><%= I18n.t("actions.talk_with_us") %></a></li>
+              <li><a href="http://www.dealwit.us/" target="_blank"><%= I18n.t("actions.follow_our_blog") %></a></li><br/>
+              <% if user_signed_in? %>
+                  <!-- TODO: Menu logado -->
+                  <li><%= link_to I18n.t("actions.my_profile"), user_path(current_user.username), :class => "specialLink" %></li>
+                  <li><%= link_to I18n.t("actions.share_an_offer"), new_deal_path, :class => "specialLink" %></li>
+                  <li><%= link_to I18n.t("actions.logout"), destroy_user_session_path, :class => "specialLink" %></li>
+                </ul>
+              <% else %>
+                  <li><%= link_to I18n.t("actions.sign_up"), new_user_registration_path, :class => "specialLink" %></li>
+                  <li><%= link_to I18n.t("actions.sign_in"), new_user_session_path, :class => "specialLink" %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
 
         <div class="socialMenu">
@@ -345,21 +356,33 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- User Voice -->
-    <script type="text/javascript">
-      var uvOptions = {};
-      (function() {
-        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/KhjBP9Wz0hWPZKkPOj6DbQ.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-      })();
-    </script>
-    <!-- User Voice -->
-    
-    <script>
-      $('#share').coolinput('Copie a url da oferta aqui para compartilhar!');
-    </script>
+  <!-- User Voice -->
+  <script type="text/javascript">
+    var uvOptions = {};
+    (function() {
+      var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/KhjBP9Wz0hWPZKkPOj6DbQ.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+    })();
+  </script>
+  <!-- User Voice -->
+  
+  <script>
+    $('#share').coolinput('Copie a url da oferta aqui para compartilhar!');
+  </script>
+  
+  <!-- Coloque esta chamada de renderização conforme necessário -->
+  <script type="text/javascript">
+    window.___gcfg = {lang: 'pt-BR'};
+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
 
   </body>
 </html>
