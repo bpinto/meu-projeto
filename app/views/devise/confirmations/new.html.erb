@@ -1,28 +1,33 @@
-<div class="main">
-  <div class="window medium_window">
-    <div class="up"></div>
+<div class="span12">
+  <div id="edit_user_window" class="window medium_window row">
     <div class="middle newProfile" id="userCreateAreaId">
       <div>
         <h1>OfertuS</h1>
         <!-- TODO: Facebook / Google -->
         <h3>Reenviar e-mail de confirmação</h3>
 
-        <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-          <ol>
-            <li>
-              <%= f.label :email %>
-              <%= f.email_field :email %>
-            </li>
-          </ol>
+        <div class="row-fluid">
+          <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+            <div class="span5">
+              <ol>
+                <li>
+                  <%= f.label :email %>
+                  <%= f.email_field :email %>
+                </li>
+              </ol>
+            </div>
 
-          <div class="button">
-            <%= f.submit I18n.t("actions.send_confirmation"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
+            <div class="password_button span2">
+              <%= f.submit I18n.t("actions.send_confirmation"), :type=>"image", :src=> asset_path('botao.png'), :alt=> "Confirmar" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <%= render :partial => "devise/shared/links" %>
           </div>
-        <% end %>
-
-        <%= render :partial => "devise/shared/links" %>
+        </div>
       </div>
     </div>
-    <div class="down"></div>
   </div>
 </div>
