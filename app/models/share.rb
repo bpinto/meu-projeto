@@ -18,6 +18,7 @@ class Share
   AMERICANAS = "americanas.com"
   COMPRA_FACIL = "comprafacil.com"
   GROUPON = "groupon.com"
+  HOTEL_URBANO = "hotelurbano.com.br"
   LEADER = "leader.com.br"
   MAGAZINE = "magazineluiza.com.br"
   PEIXE_URBANO = "peixeurbano.com"
@@ -168,6 +169,8 @@ class Share
         populate_comprafacil_deal(@deal)
       elsif @deal.link.match(GROUPON)
         populate_groupon_deal(@deal)
+      elsif @deal.link.match(HOTEL_URBANO)
+        populate_hotelurbano_deal(@deal)
       elsif @deal.link.match(LEADER)
         populate_leader_deal(@deal)
       elsif @deal.link.match(MAGAZINE)
@@ -253,11 +256,45 @@ class Share
     deal.company = "Groupon"
     deal.image_url = page.at_css(".nobg").at_xpath(".//img")[:src].try(:strip)
     #TODO: O método consegue setar city_id da oferta, mas não consegue exibir corretamente já na tela de cadastro de nova oferta
-    deal.city = City.find_by_name(page.at_css("#headerCityButton").try(:text).try(:strip))
-    if deal.city
-      deal.city_id = deal.city.id
-    end
+    #deal.city = City.find_by_name(page.at_css("#headerCityButton").try(:text).try(:strip))
+    #if deal.city
+    #  deal.city_id = deal.city.id
+    #end
     deal.kind = Deal::KIND_DAILY_DEAL
+  end
+
+  def self.populate_hotelurbano_deal(deal)
+    page = open_page(deal.link)
+
+    #if page.at_css(".name").try(:text) && page.at_css(".sale").try(:text) && page.at_css("#descricao").try(:text)
+      deal.title = page.at_css("title").try(:text).try(:strip)
+      precos = page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
+      deal.price_mask = precos[2]
+      deal.real_price_mask = precos[1]
+      deal.description = page.at_css("#que-saber").try(:text).try(:strip)[0,1200]
+      deal.category = Deal::CATEGORY_TRAVEL
+      deal.company = "Hotel Urbano"
+      deal.image_url = page.at_css("#imagem-oferta").at_xpath(".//img")[:src].try(:strip)
+    #  #TODO: O método consegue setar city_id da oferta, mas não consegue exibir corretamente já na tela de cadastro de nova oferta
+    #  deal.city = City.find_by_name(page.at_css("#headerCityButton").try(:text).try(:strip))
+    #  if deal.city
+    #    deal.city_id = deal.city.id
+    #  end
+    #end
+    deal.kind = Deal::KIND_DAILY_DEAL
+
+    #puts "-"*100
+    #puts "INICIO DA BUSCA NA PAGINA"
+    #puts "-"*100
+    #puts "TITULO = " + page.at_css("title").try(:text).try(:strip)
+    #puts "PRECO PROMOCIONAL = " + page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
+    #puts "PRECO REAL = " + page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
+    #puts "DESCRICAO = " + page.at_css("#que-saber").try(:text).try(:strip)[0,1200]
+    ##puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
+    #puts "LINK DA IMAGEM = " + page.at_css("#imagem-oferta").at_xpath(".//img")[:src].try(:strip)
+    #puts "-"*100
+    #puts "FIM DA BUSCA NA PAGINA"
+    #puts "-"*100
   end
 
   def self.populate_leader_deal(deal)
@@ -284,34 +321,20 @@ class Share
     page = open_page(deal.link)
 
     
-    #if page.at_css(".name").try(:text) && page.at_css(".sale").try(:text) && page.at_css("#descricao").try(:text)
+    if page.at_css(".description").try(:text) && page.at_css(".prodPor").try(:text) && page.at_css("#descricaoProduto").try(:text)
       deal.title = page.at_css(".description").try(:text).try(:strip)
       deal.price_mask = page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
       deal.real_price_mask = page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
       deal.description = page.at_css("#descricaoProduto").try(:text).try(:strip)[0,1200]
       deal.category = MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop]
       deal.image_url = page.at_css(".imagem_produto").at_xpath(".//img")[:src].try(:strip)
-    #end
+    end
     deal.company = "Magazine Luiza"
     #if deal.price
       deal.kind = Deal::KIND_OFFER
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
-
-    #puts "-"*100
-    #puts "INICIO DA BUSCA NA PAGINA"
-    #puts "-"*100
-    #puts "TITULO = " + page.at_css(".description").try(:text).try(:strip)
-    #puts "PRECO PROMOCIONAL = " + page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
-    #puts "PRECO REAL = " + page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
-    #puts "DESCRICAO = " + page.at_css("#descricaoProduto").try(:text).try(:strip)[0,1200]
-    #puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
-    #puts "LINK DA IMAGEM = " + page.at_css(".imagem_produto").at_xpath(".//img")[:src].try(:strip)
-    #puts "-"*100
-    #puts "FIM DA BUSCA NA PAGINA"
-    #puts "-"*100
-
   end
 
   def self.populate_peixeurbano_deal(deal)
@@ -331,10 +354,10 @@ class Share
       deal.company = page.at_css("#CompanyName").try(:text).try(:strip)
       deal.image_url = page.at_css(".deal_photo").at_xpath(".//img")["src"].try(:strip)
     #TODO: O método consegue setar city_id da oferta, mas não consegue exibir corretamente já na tela de cadastro de nova oferta
-      deal.city = City.find_by_name(page.at_css("#city_name").try(:text).try(:strip))
-      if deal.city
-        deal.city_id = deal.city.id
-      end
+    #  deal.city = City.find_by_name(page.at_css("#city_name").try(:text).try(:strip))
+    #  if deal.city
+    #    deal.city_id = deal.city.id
+    #  end
     end
     deal.kind = Deal::KIND_DAILY_DEAL
   end
