@@ -48,7 +48,7 @@ class Deal < ActiveRecord::Base
   validates :real_price,  :numericality => true,  :unless => "on_sale?"
   validates :real_price,  :greater_than => :price, :if => "price? and real_price?"
 
-  validates :title,       :presence => true
+  validates :title,       :presence => true,      :length => { :maximum => 255 }
   validates :city_id,     :presence => true
   validates :user,        :presence => true
 

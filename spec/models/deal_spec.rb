@@ -128,9 +128,16 @@ describe Deal do
         end
       end
 
-      it "should require a title" do
-        deal.title = nil
-        deal.should_not be_valid
+      describe "#title" do
+        it "should require a title" do
+          deal.title = nil
+          deal.should_not be_valid
+        end
+
+        it "should not let a title with more then 255 chars" do
+          deal.title = "a"*256
+          deal.should_not be_valid
+        end
       end
     end
   end
