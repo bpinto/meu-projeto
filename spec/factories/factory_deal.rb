@@ -6,7 +6,7 @@ FactoryGirl.define do
     company "F_COMPANY"
     description "F_DESCRIPTION"
     kind Deal::KIND_OFFER
-    f.link "http://F_LINK" #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
+    sequence(:link) { |n| "http://F_LINK/#{n}" } #O FactoryGirl se perde caso não fique explícito que o método link é do deal.
     price_mask "0,99"
     real_price_mask "1,99"
     title "F_TITLE"

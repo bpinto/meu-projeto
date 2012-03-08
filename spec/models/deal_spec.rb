@@ -79,6 +79,12 @@ describe Deal do
           deal.should_not be_valid
         end
 
+        it "should be unique" do
+          duplicated_link = FactoryGirl.create(:deal).link
+          deal.link = duplicated_link
+          deal.should_not be_valid
+        end
+
         describe "should begin with http:// or https://" do
           it "http://www.ofertus.com.br should be valid" do
             deal.link = "http://www.ofertus.com.br"

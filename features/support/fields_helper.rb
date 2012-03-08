@@ -31,7 +31,7 @@ module Fields
     "company" => "deal_company",
     "description" => "deal_description",
     "discount" => "deal_discount",
-    "image_url" => "deal_image_url"
+    "image_url" => "deal_image_url",
     "link" => "deal_link",
     "price" => "deal_price",
     "price_mask" => "deal_price_mask",

@@ -43,7 +43,7 @@ class Deal < ActiveRecord::Base
   validates :end_date,    :date => {:after_or_equal_to => Date.today},  :allow_nil => true
   validates :image_url,   :format => /(^$)|(^https?:\/\/.+)/
   validates :kind,        :presence => true,      :inclusion => KINDS
-  validates :link,        :presence => true,      :format => /^https?:\/\/.+/
+  validates :link,        :presence => true,      :uniqueness => true,  :format => /^https?:\/\/.+/
   validates :price,       :numericality => true,  :unless => "on_sale?"
   validates :real_price,  :numericality => true,  :unless => "on_sale?"
   validates :real_price,  :greater_than => :price, :if => "price? and real_price?"
@@ -91,6 +91,10 @@ class Deal < ActiveRecord::Base
     where(:kind => kind)
   end
 
+  def self.by_link(link)
+    where(:link => link).first
+  end
+
   def self.search(search)
     where("deals.title ILIKE :search OR deals.description ILIKE :search", :search => "%#{search}%")
   end
@@ -115,6 +119,10 @@ class Deal < ActiveRecord::Base
 
   def self.i18n_kinds
     Deal::KINDS.collect {|id| [Deal.i18n_kind(id), id]}
+  end
+
+  def already_shared?
+    Deal.by_link(self.link)
   end
 
   def average

@@ -25,3 +25,14 @@ Feature: New Deal
       And I press "Compartilhar" within the new deal form
       Then I should see "Foram encontrados erros ao criar a oferta."
       And go to the home page
+
+    Scenario: Creating a deal already created
+      Given I am on the new deal page
+      When I fill in the deal fields correctly
+      And I fill in deal's link with "http://www"
+      And I press "Compartilhar" within the new deal form
+      And I am on the new deal page
+      And I fill in the deal fields correctly
+      And I fill in deal's link with "http://www"
+      And I press "Compartilhar" within the new deal form
+      Then I should see "A oferta abaixo já foi compartilhada por outro usuário"

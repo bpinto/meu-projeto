@@ -15,17 +15,22 @@ class DealsController < AuthorizedController
 
   def create
     @deal.user = current_user
-    if @deal.save
-      if current_user.provider? && current_user.facebook_share_offer
-        me = FbGraph::User.me(current_user.access_token)
-        me.feed!( :message => current_user.name + " acabou de compartilhar uma oferta no OfertuS", :link => deal_url(@deal), :description => @deal.description)
-      end
-      redirect_to root_path, :notice => "Oferta criada com sucesso!"
+    if @deal.already_shared?
+      @deal = Deal.by_link(@deal.link)
+      redirect_to deal_path(@deal), :alert => "A oferta abaixo já foi compartilhada por outro usuário"
     else
-      populate_cities_name
+      if @deal.save
+        if current_user.provider? && current_user.facebook_share_offer
+          me = FbGraph::User.me(current_user.access_token)
+          me.feed!( :message => current_user.name + " acabou de compartilhar uma oferta no OfertuS", :link => deal_url(@deal), :description => @deal.description)
+        end
+        redirect_to root_path, :notice => "Oferta criada com sucesso!"
+      else
+        populate_cities_name
 
-      flash.now[:error] = "Foram encontrados erros ao criar a oferta."
-      render :new
+        flash.now[:error] = "Foram encontrados erros ao criar a oferta."
+        render :new
+      end
     end
   end
 
