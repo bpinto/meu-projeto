@@ -225,6 +225,7 @@
   activerecord:
     attributes:
       user:
+        credit: "Saldo"
         current_password: "Senha atual"
         facebook_share_offer: "Publicar no facebook ao compartilhar oferta"
         facebook_vote_offer: "Publicar no facebook ao votar em uma oferta"

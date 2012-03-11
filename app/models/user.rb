@@ -15,11 +15,18 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships,  :foreign_key => "followed_id",      :class_name => "Relationship"
 
   validates :username,  :presence => true,  :uniqueness => true,  :format => /^[a-zA-Z0-9_]{5,20}$/
+  validates :credit,    :presence => true
 
-  attr_accessible :access_token, :avatar_url, :facebook_follow_user, :facebook_vote_offer, :facebook_share_offer, :email, :login, :name, :password, :password_confirmation, :provider, :remember_me, :uid, :username
+  attr_accessible :access_token, :avatar_url, :credit, :facebook_follow_user, :facebook_vote_offer, :facebook_share_offer, :email, :login, :name, :password, :password_confirmation, :provider, :remember_me, :uid, :username
+
+  before_validation :set_credit_to_zero
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
+
+  def set_credit_to_zero
+    self.credit = 0 if not credit
+  end
 
   def guest?
     self.new_record?

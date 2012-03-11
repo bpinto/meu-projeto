@@ -236,6 +236,15 @@ describe User do
     it "should be all true if is a new user" do
       (user.facebook_share_offer && user.facebook_follow_user && user.facebook_vote_offer).should be_true
     end
+  end
 
+  describe "afilliate data" do
+
+    it "user without credit iinformation should be saved as 0 credit" do
+      user.credit = nil
+      user.save
+      user.reload
+      user.credit.should == 0.0
+    end
   end
 end
