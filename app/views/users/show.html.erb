@@ -51,7 +51,7 @@
               <% if (user_signed_in? && (current_user == @user || @user.follow?(current_user))) %>
                 <p>Email: <%= @user.email if @user.email %></p><br/>
               <% end %>
-            </div> 
+            </div>
             <% if user_signed_in? && current_user != @user %>
               <div class="interactions"> 
                 <% if current_user.follow? @user %>
@@ -65,6 +65,12 @@
                 <% end %>
                 </li>
               </div> 
+            <% else %>
+              <% if @user.credit < 30.00 %>
+                <span class="credit unavailable"><%= number_to_currency @user.credit %></span>
+              <% else %>
+                <span class="credit available"><%= number_to_currency @user.credit %></span>
+              <% end %>
             <% end %>
           </div>
         </div>
