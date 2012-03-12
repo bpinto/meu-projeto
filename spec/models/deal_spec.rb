@@ -140,6 +140,15 @@ describe Deal do
         end
       end
     end
+
+    describe "affiliate" do
+      it "compra facil links should have '&a_aid=OfertuSCF'" do
+        deal.link = "http://www.comprafacil.com.br/comprafacil/Produto.jsf?VP=2883,1237,1237,1237,49169"
+        deal.save
+        deal.reload
+        deal.link.should match(/&a_aid=OfertuSCF$/)
+      end
+    end
   end
 
   shared_examples_for "Not On Sale Deals" do
@@ -479,5 +488,4 @@ describe Deal do
       end
     end
   end
-
 end
