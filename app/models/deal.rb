@@ -146,6 +146,9 @@ class Deal < ActiveRecord::Base
   def add_affiliate_code_to_link
     if self.link.match(Share::COMPRA_FACIL)
       self.link = self.link.strip + "&a_aid=OfertuSCF"
+    elsif self.link.match(Share::LIVRARIA_CULTURA)
+      self.link = add_cultura_affiliate_code(self.link)
+      puts self.link
     end
   end
 
@@ -157,5 +160,9 @@ class Deal < ActiveRecord::Base
 
   def to_number(mask)
     return mask.gsub(/[^\d]/,'').to_f/100
+  end
+
+  def add_cultura_affiliate_code(link)
+    "http://www.livrariacultura.com.br/scripts/cultura/externo/index.asp?id_link=9151&tipo=25&nitem=#{link.split("?")[1].split("&")[0].split("=")[1]}"
   end
 end

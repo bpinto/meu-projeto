@@ -20,6 +20,7 @@ class Share
   GROUPON = "groupon.com"
   HOTEL_URBANO = "hotelurbano.com.br"
   LEADER = "leader.com.br"
+  LIVRARIA_CULTURA = "livrariacultura.com.br"
   MAGAZINE = "magazineluiza.com.br"
   PEIXE_URBANO = "peixeurbano.com"
   PONTO_FRIO = "pontofrio.com"
