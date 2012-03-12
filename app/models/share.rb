@@ -174,6 +174,8 @@ class Share
         populate_hotelurbano_deal(@deal)
       elsif @deal.link.match(LEADER)
         populate_leader_deal(@deal)
+      elsif @deal.link.match(LIVRARIA_CULTURA)
+        populate_livrariacultura_deal(@deal)
       elsif @deal.link.match(MAGAZINE)
         populate_magazine_deal(@deal)
       elsif @deal.link.match(PEIXE_URBANO)
@@ -283,19 +285,6 @@ class Share
     #  end
     end
     deal.kind = Deal::KIND_DAILY_DEAL
-
-    #puts "-"*100
-    #puts "INICIO DA BUSCA NA PAGINA"
-    #puts "-"*100
-    #puts "TITULO = " + page.at_css("title").try(:text).try(:strip)
-    #puts "PRECO PROMOCIONAL = " + page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
-    #puts "PRECO REAL = " + page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
-    #puts "DESCRICAO = " + page.at_css("#que-saber").try(:text).try(:strip)[0,1200]
-    ##puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
-    #puts "LINK DA IMAGEM = " + page.at_css("#imagem-oferta").at_xpath(".//img")[:src].try(:strip)
-    #puts "-"*100
-    #puts "FIM DA BUSCA NA PAGINA"
-    #puts "-"*100
   end
 
   def self.populate_leader_deal(deal)
@@ -316,6 +305,39 @@ class Share
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
+  end
+
+  def self.populate_livrariacultura_deal(deal)
+    page = open_page(deal.link)
+
+    
+    if page.at_css("h2.resenha").try(:text) && page.at_css("div.resenha").try(:text)
+      deal.title = page.at_css("h2.resenha").try(:text).try(:strip)[0,255]
+    #  deal.price_mask = page.at_css(".sale").try(:text).try(:strip)[7..-1].try(:strip)
+    #  deal.real_price_mask = page.at_css(".regular").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css("div.resenha").try(:text).try(:strip)[0,1200]
+      deal.image_url = page.at_css(".boxImg2").at_xpath(".//img")[:src].try(:strip)
+    end
+    deal.category = Deal::CATEGORY_CULTURE
+    deal.company = "Livraria Cultura"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+
+    #puts "-"*100
+    #puts "INICIO DA BUSCA NA PAGINA"
+    #puts "-"*100
+    #puts "TITULO = " + page.at_css("h2.resenha").try(:text).try(:strip)[0,255]
+    #puts "PRECO PROMOCIONAL = " + page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
+    #puts "PRECO REAL = " + page.at_css(".preco").try(:text).try(:strip)
+    #puts "DESCRICAO = " + page.at_css("div.resenha").try(:text).try(:strip)[0,1200]
+    #puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
+    #puts "LINK DA IMAGEM = " + page.at_css(".boxImg2").at_xpath(".//img")[:src].try(:strip)
+    #puts "-"*100
+    #puts "FIM DA BUSCA NA PAGINA"
+    #puts "-"*100
   end
 
   def self.populate_magazine_deal(deal)
