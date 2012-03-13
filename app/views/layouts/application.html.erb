@@ -192,13 +192,13 @@
          <!-- TODO: FLASH -->
         <%- flash.each do |name, msg| -%>
           <% if name == :error %>
-            <div class="alert error_alert" style="opacity: 1; " id="flash_error" ><p><%= msg %></p></div>
+            <div class="alert alert-error" style="opacity: 1; " id="flash_error" ><p><%= msg %></p></div>
           <% end %>
           <% if name == :alert %>
-            <div class="alert warnAlert" style="opacity: 1; " id="flash_warning" ><p><%= msg %></p></div>
+            <div class="alert alert-info" style="opacity: 1; " id="flash_warning" ><p><%= msg %></p></div>
           <% end %>
           <% if name == :notice %>
-            <div class="alert success_alert" style="opacity: 1; " id="flash_notice" ><p><%= msg %></p></div>
+            <div class="alert alert-success" style="opacity: 1; " id="flash_notice" ><p><%= msg %></p></div>
           <% end %>
         <%- end -%>
     
