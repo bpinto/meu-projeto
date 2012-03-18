@@ -22,6 +22,7 @@ class Share
   LEADER = "leader.com.br"
   LIVRARIA_CULTURA = "livrariacultura.com.br"
   MAGAZINE = "magazineluiza.com.br"
+  NETSHOES = "netshoes.com.br"
   PEIXE_URBANO = "peixeurbano.com"
   PONTO_FRIO = "pontofrio.com"
   SARAIVA = "saraiva.com"
@@ -121,6 +122,10 @@ class Share
     "Utilidades Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
   }
 
+  NETSHOES_CATEGORIES = {
+
+  }
+
   PONTO_FRIO_CATEGORIES = {
     "Automotivo" => Deal::CATEGORY_CAR,
     "Bebês" => Deal::CATEGORY_KIDS,
@@ -178,6 +183,8 @@ class Share
         populate_livrariacultura_deal(@deal)
       elsif @deal.link.match(MAGAZINE)
         populate_magazine_deal(@deal)
+      elsif @deal.link.match(NETSHOES)
+        populate_netshoes_deal(@deal)
       elsif @deal.link.match(PEIXE_URBANO)
         populate_peixeurbano_deal(@deal)
       elsif @deal.link.match(PONTO_FRIO)
@@ -325,19 +332,6 @@ class Share
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
-
-    #puts "-"*100
-    #puts "INICIO DA BUSCA NA PAGINA"
-    #puts "-"*100
-    #puts "TITULO = " + page.at_css("h2.resenha").try(:text).try(:strip)[0,255]
-    #puts "PRECO PROMOCIONAL = " + page.at_css("#preco-oferta").try(:text).try(:strip).split("R$").map(&:strip)
-    #puts "PRECO REAL = " + page.at_css(".preco").try(:text).try(:strip)
-    #puts "DESCRICAO = " + page.at_css("div.resenha").try(:text).try(:strip)[0,1200]
-    #puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
-    #puts "LINK DA IMAGEM = " + page.at_css(".boxImg2").at_xpath(".//img")[:src].try(:strip)
-    #puts "-"*100
-    #puts "FIM DA BUSCA NA PAGINA"
-    #puts "-"*100
   end
 
   def self.populate_magazine_deal(deal)
@@ -358,6 +352,39 @@ class Share
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
+  end
+
+  def self.populate_netshoes_deal(deal)
+    page = open_page(deal.link)
+
+    
+    if page.at_css(".h1.titProduct").try(:text) &&  page.at_css(".txtFeatures").try(:text)
+      deal.title = page.at_css("h1.titProduct").try(:text).try(:strip)[0,255]
+    #  deal.price_mask = page.at_css(".prodPor").try(:text).try(:strip)[7..-1].try(:strip)
+    #  deal.real_price_mask = page.at_css(".prodDe").try(:text).try(:strip)[6..-1].try(:strip)
+      deal.description = page.at_css(".txtFeatures").try(:text).try(:strip)[0,1200]
+      deal.image_url = page.at_css(".lstImages").at_xpath(".//img")[:src].sub("thumb","zoom")
+    end
+    deal.company = "Netshoes"
+    deal.category = Deal::CATEGORY_CLOTHES
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+
+    #puts "-"*100
+    #puts "INICIO DA BUSCA NA PAGINA"
+    #puts "-"*100
+    #uts "TITULO = " + page.at_css("h1.titProduct").try(:text).try(:strip)[0,255]
+    #puts "PRECO PROMOCIONAL = " + page.at_css(".infoProduct").at_xpath(".//div[@id='priceInfo']").try(:text)
+    #puts "PRECO REAL = " + page.at_css(".preco").try(:text).try(:strip)
+    #puts "DESCRICAO = " + page.at_css(".txtFeatures").try(:text).try(:strip)[0,1200]
+    #puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
+    #puts "LINK DA IMAGEM = " + page.at_css(".lstImages").at_xpath(".//img")[:src].sub("thumb","zoom")
+    #puts "-"*100
+    #puts "FIM DA BUSCA NA PAGINA"
+    #puts "-"*100
   end
 
   def self.populate_peixeurbano_deal(deal)
