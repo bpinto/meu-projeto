@@ -17,6 +17,7 @@ class Share
 
   AMERICANAS = "americanas.com"
   COMPRA_FACIL = "comprafacil.com"
+  FASTSHOP = "fastshop.com.br"
   GROUPON = "groupon.com"
   HOTEL_URBANO = "hotelurbano.com.br"
   LEADER = "leader.com.br"
@@ -78,6 +79,20 @@ class Share
     "U. Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
   }
 
+  FASTSHOP_CATEGORIES = {
+    "Áudio" => Deal::CATEGORY_ELECTRONICS,
+    "Vídeo" => Deal::CATEGORY_ELECTRONICS,
+    "Cine e Foto" => Deal::CATEGORY_ELECTRONICS,
+    "Eletrodomésticos" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Portáteis" => Deal::CATEGORY_ELECTRONICS,
+    "Utensílios Domésticos" => Deal::CATEGORY_HOME_AND_APPLIANCE,
+    "Informática" => Deal::CATEGORY_COMPUTER,
+    "Telefonia" => Deal::CATEGORY_ELECTRONICS,
+    "Apple" => Deal::CATEGORY_COMPUTER,
+    "Games" => Deal::CATEGORY_KIDS,
+    "Tablet" => Deal::CATEGORY_ELECTRONICS
+  }
+
   LEADER_CATEGORIES = {
     "Bebês" => Deal::CATEGORY_KIDS,
     "Beleza & Saúde" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
@@ -120,10 +135,6 @@ class Share
     "Perfumaria e Cosméticos" => Deal::CATEGORY_BEAUTY_AND_HEALTH,
     "Relógios" => Deal::CATEGORY_OTHER,
     "Utilidades Domésticas" => Deal::CATEGORY_HOME_AND_APPLIANCE
-  }
-
-  NETSHOES_CATEGORIES = {
-
   }
 
   PONTO_FRIO_CATEGORIES = {
@@ -173,6 +184,8 @@ class Share
         populate_americanas_deal(@deal)
       elsif @deal.link.match(COMPRA_FACIL)
         populate_comprafacil_deal(@deal)
+      elsif @deal.link.match(FASTSHOP)
+        populate_fastshop_deal(@deal)
       elsif @deal.link.match(GROUPON)
         populate_groupon_deal(@deal)
       elsif @deal.link.match(HOTEL_URBANO)
@@ -254,6 +267,39 @@ class Share
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
+  end
+
+  def self.populate_fastshop_deal(deal)
+    page = open_page(deal.link)
+
+    
+    if page.at_css("h1.name").try(:text) && page.at_css(".price").try(:text) && page.at_css("#divDescr1").try(:text)
+      deal.title = page.at_css("h1.name").try(:text).try(:strip)[0,255]
+      deal.price_mask = page.at_css(".price").try(:text).split(" ")[5]
+      deal.real_price_mask = page.at_css(".price").try(:text).split(" ")[2]
+      deal.description = page.at_css("#divDescr1").try(:text).try(:strip)[0,1200]
+      deal.category = FASTSHOP_CATEGORIES[page.at_css(".breadcrumb").try(:text).try(:strip).split(" ")[1]]
+      deal.image_url = page.at_css(".photo").at_xpath(".//input")[:src]
+    end
+    deal.company = "Fast Shop"
+    #if deal.price
+      deal.kind = Deal::KIND_OFFER
+    #else
+    #  deal.kind = Deal::KIND_ON_SALE
+    #end
+
+    #puts "-"*100
+    #puts "INICIO DA BUSCA NA PAGINA"
+    #puts "-"*100
+    #puts "TITULO = " + page.at_css("h1.name").try(:text).try(:strip)[0,255]
+    #puts "PRECO PROMOCIONAL = " + page.at_css(".price").try(:text).split(" ")[5]
+    #puts "PRECO REAL = " + page.at_css(".price").try(:text).split(" ")[2]
+    #puts "DESCRICAO = " + page.at_css("#divDescr1").try(:text).try(:strip)[0,1200]
+    #puts "CATEGORIA = " + FASTSHOP_CATEGORIES[page.at_css(".breadcrumb").try(:text).try(:strip).split(" ")[1]].to_s
+    #puts "LINK DA IMAGEM = " + page.at_css(".photo").at_xpath(".//input")[:src]
+    #puts "-"*100
+    #puts "FIM DA BUSCA NA PAGINA"
+    #puts "-"*100
   end
 
   def self.populate_groupon_deal(deal)
@@ -372,19 +418,6 @@ class Share
     #else
     #  deal.kind = Deal::KIND_ON_SALE
     #end
-
-    #puts "-"*100
-    #puts "INICIO DA BUSCA NA PAGINA"
-    #puts "-"*100
-    #uts "TITULO = " + page.at_css("h1.titProduct").try(:text).try(:strip)[0,255]
-    #puts "PRECO PROMOCIONAL = " + page.at_css(".infoProduct").at_xpath(".//div[@id='priceInfo']").try(:text)
-    #puts "PRECO REAL = " + page.at_css(".preco").try(:text).try(:strip)
-    #puts "DESCRICAO = " + page.at_css(".txtFeatures").try(:text).try(:strip)[0,1200]
-    #puts "CATEGORIA = " + MAGAZINE_CATEGORIES[page.at_css("#breadCrumb").try(:text).try(:strip).split("›").map(&:strip)[1].chop].to_s
-    #puts "LINK DA IMAGEM = " + page.at_css(".lstImages").at_xpath(".//img")[:src].sub("thumb","zoom")
-    #puts "-"*100
-    #puts "FIM DA BUSCA NA PAGINA"
-    #puts "-"*100
   end
 
   def self.populate_peixeurbano_deal(deal)
