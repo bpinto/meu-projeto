@@ -51,7 +51,7 @@
       - Ago
       - Set
       - Out
-       Nov
+      - Nov
       - Dez
     order:
       - :day
@@ -304,8 +304,9 @@
     follow: "Seguir"
     follow_our_blog: "Siga nosso Blog"
     forgot_password: "Esqueceu sua Senha?"
-    home: "Início"
     help: "Ajuda"
+    home: "Início"
+    how_it_works: "Como Funciona?"
     logout: "Sair"
     my_profile: "Meu Perfil"
     privacy_policy: "Política de Privacidade"
