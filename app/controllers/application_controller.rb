@@ -34,11 +34,16 @@ class ApplicationController < ActionController::Base
       session["devise.facebook_data"] = nil
     end
   end
+
 #  def authenticate
 #    return true unless Rails.env == "production"
 #    authenticate_or_request_with_http_basic do |username, password|
 #      username == "dealwitme" && password == "123dealwitme"
 #    end
 #  end
+
+  def authenticate
+    redirect_to "https://www.facebook.com/OfertUs/app_151503908244383" if Rails.env == "production"
+  end
 
 end
