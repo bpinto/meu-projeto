@@ -1,6 +1,6 @@
 #coding: UTF-8
 class ApplicationController < ActionController::Base
-#  before_filter :authenticate
+  before_filter :go_to_facebook
   before_filter :fill_deals_lists, :delete_facebook_data
 
   protect_from_forgery
@@ -42,8 +42,8 @@ class ApplicationController < ActionController::Base
 #    end
 #  end
 
-  def authenticate
-    redirect_to "https://www.facebook.com/OfertUs/app_151503908244383" if Rails.env == "production"
+  def go_to_facebook
+    redirect_to "https://www.facebook.com/OfertUs/app_151503908244383" #if Rails.env == "production"
   end
 
 end
