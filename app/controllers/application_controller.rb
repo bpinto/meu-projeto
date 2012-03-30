@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 #  end
 
   def go_to_facebook
-    redirect_to "https://www.facebook.com/OfertUs/app_151503908244383" #if Rails.env == "production"
+    redirect_to "https://www.facebook.com/OfertUs/app_151503908244383" if Rails.env == "production"
   end
 
 end
