@@ -6,7 +6,11 @@ class DealsController < AuthorizedController
   before_filter :populate_cities_name, :only => [:new, :share]
 
   def index
-    flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && params[:search]
+    if params[:search]
+      flash.now[:notice] = "Não foi encontrada nenhuma oferta com '#{params[:search]}'" if @deals.empty? && not(params[:search].empty?) && params[:search_city].empty?
+      flash.now[:notice] = "Não foi encontrada nenhuma oferta para a cidade selecionada" if @deals.empty? && not(params[:search_city].empty?) && params[:search].empty?
+      flash.now[:notice] = "Não foi encontrada nenhuma oferta para a cidade selecionada com '#{params[:search]}'" if @deals.empty? && not(params[:search_city].empty?) && not(params[:search].empty?)
+    end
     @title = Deal.i18n_category(Deal::CATEGORIES_DICTIONARY[params[:category]]) if params[:category]
   end
 
@@ -89,7 +93,7 @@ class DealsController < AuthorizedController
     @deals = search_order(@deals, params)
     @deals = @deals.by_category_string(params[:category]) if params[:category]
     @deals = @deals.search(params[:search]) if params[:search]
-    @deals = @deals.by_cities(user_cities_ids) if user_cities_ids.try(:any?)
+    @deals = @deals.by_cities(params[:search_city]) if params[:search_city] && not(params[:search_city].empty?)
 
     case action_name
     when "index"

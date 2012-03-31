@@ -3,6 +3,9 @@ Feature: Recover password
   A user
   Should be able to recover his password by receiving an e-mail
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+    
     Scenario: E-mail not filled
       Given I am not logged in
       And I am on recover email page

@@ -4,7 +4,8 @@ Feature: Adding deal's comments
   So I can express my opinion
 
     Background:
-      Given I am a user
+      Given the city "Rio de Janeiro" exists
+      And I am a user
       And 1 deal with title as "my deal" was registered today
       And I am on today's deals page
       When I follow "Saiba mais"

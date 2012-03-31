@@ -3,6 +3,9 @@ Feature: View default deal details
   I want to see the deal's page
   so I can see their price, company, comments, etc.
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+
     Scenario: Viewing deal's title
       Given 1 deal with title as "my deal" was registered today
       And I am on today's deals page

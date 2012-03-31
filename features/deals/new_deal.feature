@@ -4,8 +4,8 @@ Feature: New Deal
   so I can share the deal with others users
 
     Background:
-      Given I am a user with an username "username"
-      And the city "Rio de Janeiro" exists
+      Given the city "Rio de Janeiro" exists
+      And I am a user with an username "username"
 
     Scenario: Viewing new deal form
       When I follow "Cadastrar uma Oferta"

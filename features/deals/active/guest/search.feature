@@ -4,7 +4,9 @@ Feature: Search Deal as Guest
   so I can browse them easier
 
     Background:
-      Given I am a guest
+      Given the city "Rio de Janeiro" exists
+      And the city "São Paulo" exists
+      And I am a guest
       And I am on active's deals page
 
     Scenario: Search result page should remain active deals page
@@ -52,15 +54,6 @@ Feature: Search Deal as Guest
       And I press "Buscar"
       Then I should see 1 deal
 
-    Scenario: Search should show deals from all cities
-      Given the city "Rio de Janeiro" exists
-      And the city "São Paulo" exists
-      And 1 active deal from "Rio de Janeiro" with title as "Título da Oferta" exists
-      And 1 active deal from "São Paulo" with title as "Título da Oferta" exists
-      When I fill in the search field with "Oferta"
-      And I press "Buscar"
-      Then I should see 2 deals
-
     Scenario: Search ordered by most recent
       Given 1 deal with title as "Primeira Oferta" was registered today
       Given 1 deal with title as "Segunda Oferta" was registered today
@@ -94,3 +87,17 @@ Feature: Search Deal as Guest
       And I press "Buscar"
       Then I should see "40" before "30"
       And I should see "30" before "20"
+
+    Scenario: Search deals from a specific city
+      Given 1 deal from "Rio de Janeiro" with title as "Oferta do RJ" was registered today
+      Given 1 deal from "São Paulo" with title as "Oferta de SP" was registered today
+      When I select search's city with "Rio de Janeiro"
+      And I press "Buscar"
+      Then I should see 1 deal
+
+    Scenario: Search deals from all cities
+      Given 1 deal from "Rio de Janeiro" with title as "Oferta do RJ" was registered today
+      Given 1 deal from "São Paulo" with title as "Oferta de SP" was registered today
+      When I select search's city with "Todas Cidades"
+      And I press "Buscar"
+      Then I should see 2 deals

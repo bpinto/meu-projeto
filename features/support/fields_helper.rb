@@ -47,7 +47,8 @@ module Fields
   }
 
   SEARCH = {
-    "order" => "search_order"
+    "order" => "search_order",
+    "city" => "search_city"
   }
 end
 

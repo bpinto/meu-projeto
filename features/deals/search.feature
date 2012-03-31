@@ -4,10 +4,16 @@ Feature: New Deal
   so I can browse them easier
 
     Background:
-      Given I am a guest
+      Given the city "Rio de Janeiro" exists
+      And I am a guest
       And I am on the homepage
 
     Scenario: Search order box should not change after a search
       When I select search's order with "Maior Desconto"
       And I press "Buscar"
       Then search's order should be selected with "Maior Desconto"
+    
+    Scenario: Search City box should not change after a search
+      When I select search's city with "Todas Cidades"
+      And I press "Buscar"
+      Then search's city should be selected with "Todas Cidades"

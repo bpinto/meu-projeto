@@ -4,7 +4,8 @@ Feature: New Deal
   so I can browse them easier
 
     Background:
-      Given I am a guest
+      Given the city "Rio de Janeiro" exists
+      And I am a guest
       And I am on today's deals page
 
     Scenario: Search result page should remain active deals page
@@ -51,15 +52,6 @@ Feature: New Deal
       When I fill in the search field with "Oferta"
       And I press "Buscar"
       Then I should see 1 deal
-
-    Scenario: Search should show deals from all cities
-      Given the city "Rio de Janeiro" exists
-      And the city "São Paulo" exists
-      And 1 active deal from "Rio de Janeiro" with title as "Título da Oferta" exists
-      And 1 active deal from "São Paulo" with title as "Título da Oferta" exists
-      When I fill in the search field with "Oferta"
-      And I press "Buscar"
-      Then I should see 2 deals
 
     Scenario: Search ordered by most recent
       Given 1 deal with title as "Primeira Oferta" was registered today

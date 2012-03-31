@@ -3,6 +3,9 @@ Feature: Search Users
   A user
   Should be able search for others users
 
+  Background:
+    Given the city "Rio de Janeiro" exists
+
   Scenario: Viewing the Follow link on another user page
     Given I am a user with an username "my_user"
     And one user with an username "unfollow_user" exists

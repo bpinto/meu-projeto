@@ -3,6 +3,9 @@ Feature: Sign out
   A signed in user
   Should be able to sign out
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+
     Scenario: User signs out
       Given I am a user with an email "user@email.com" and password "password"
       When I sign in as "user@email.com/password"

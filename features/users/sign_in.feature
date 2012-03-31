@@ -3,6 +3,9 @@ Feature: Sign in
   A user
   Should be able to sign in
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+
     Scenario: User is not signed up
       Given I am not logged in
       And no user exists with an email of "user_not_signed_up@email.com"

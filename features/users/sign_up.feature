@@ -3,6 +3,9 @@ Feature: Criar perfil
   A user
   Should be able to sign up
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+
     Scenario: User signs up with valid data
       Given I am not logged in
       When I go to the sign up page

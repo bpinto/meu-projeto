@@ -4,6 +4,7 @@ Feature: Unfollow a user
   So I can unfollow his deals
 
     Background:
+      Given the city "Rio de Janeiro" exists
       Given one user with an username "user_to_unfollow" exists
       And I am a user with an username "myself"
 

@@ -4,7 +4,8 @@ Feature: Show Users
   so I can see my informations on the site
 
     Background:
-      Given I am a user with an username "my_user"
+      Given the city "Rio de Janeiro" exists
+      And I am a user with an username "my_user"
 
     Scenario: Viewing my deals
       Given I have 1 deal

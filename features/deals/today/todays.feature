@@ -3,6 +3,9 @@ Feature: View today's deals
   I want to view today's deals
   so I can buy them
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+
     Scenario: Going to today's deals page
       Given I am on the home page
       When I follow "Ofertas do Dia"

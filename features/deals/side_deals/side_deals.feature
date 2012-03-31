@@ -4,7 +4,8 @@ Feature: Deals
   so I can browse them easier
 
     Background:
-      Given I am a guest
+      Given the city "Rio de Janeiro" exists
+      And I am a guest
 
     Scenario: I should see the 3 most recent offers
       Given 1 deal with title as "Primeira" was registered today

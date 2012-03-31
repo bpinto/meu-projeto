@@ -4,6 +4,7 @@ Feature: Follow a user
   So I can follow his deals
 
     Background:
+      Given the city "Rio de Janeiro" exists
       Given one user with an username "user_to_follow" exists
       And I am a user with an username "myself"
 

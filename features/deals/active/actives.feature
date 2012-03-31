@@ -3,6 +3,9 @@ Feature: View active deals
   I want to view active deals
   so I can buy them
 
+    Background:
+      Given the city "Rio de Janeiro" exists
+
     Scenario: Viewing active deals
       Given 2 active deals exists
       And I am on the homepage
