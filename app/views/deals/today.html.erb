@@ -26,6 +26,8 @@
   <div class="default_window white_background">
     <div class="title">
       <h3>Opções de Busca</h3>
+      <% "Parâmetro: #{params[:search_order]}" %>
+      <% "Parâmetro: #{params[:search_city]}" %>
     </div>
     <div class="content">
       <form id="search_form" action="<%= deals_today_path %>" method="get" class="search">
@@ -36,6 +38,7 @@
         </fieldset>
 
         <%= select_tag "search_order", search_options(params[:search_order]) %>
+        <%= select_tag "search_city", search_city_options(params[:search_city]) %>
       </form>
     </div>
   </div>

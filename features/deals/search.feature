@@ -14,6 +14,6 @@ Feature: New Deal
       Then search's order should be selected with "Maior Desconto"
     
     Scenario: Search City box should not change after a search
-      When I select search's city with "Todas Cidades"
+      When I select search's city with "Rio de Janeiro"
       And I press "Buscar"
-      Then search's city should be selected with "Todas Cidades"
+      Then search's city should be selected with "Rio de Janeiro"

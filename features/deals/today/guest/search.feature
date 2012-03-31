@@ -5,6 +5,7 @@ Feature: New Deal
 
     Background:
       Given the city "Rio de Janeiro" exists
+      And the city "São Paulo" exists
       And I am a guest
       And I am on today's deals page
 
@@ -86,3 +87,17 @@ Feature: New Deal
       And I press "Buscar"
       Then I should see "40" before "30"
       And I should see "30" before "20"
+
+    Scenario: Search deals from a specific city
+      Given 1 deal from "Rio de Janeiro" with title as "Oferta do RJ" was registered today
+      Given 1 deal from "São Paulo" with title as "Oferta de SP" was registered today
+      When I select search's city with "Rio de Janeiro"
+      And I press "Buscar"
+      Then I should see 1 deal
+
+    Scenario: Search deals from all cities
+      Given 1 deal from "Rio de Janeiro" with title as "Oferta do RJ" was registered today
+      Given 1 deal from "São Paulo" with title as "Oferta de SP" was registered today
+      When I select search's city with "Todas Cidades"
+      And I press "Buscar"
+      Then I should see 2 deals
